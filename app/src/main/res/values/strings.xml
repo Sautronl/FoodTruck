@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">FoodTruck</string>
+    <string name="titrePage">Contact &amp; Privatisation</string>
+    <string name="buttonEnvoyer">Envoyer</string>
+    <string name="numTel">06.29.03.19.84</string>
+    <string name="checkbox">Je souhaite privatiser le Food Truck</string>
+    <string name="prenomNom">Nom Prénom*</string>
+    <string name="tel">Téléphone</string>
+    <string name="sujet">Sujet*</string>
+    <string name="message">Votre message*</string>
+    <string name="messToast">Veuillez remplir les champs :o)</string>
+    <string name="messToastValider">Votre message à bien été envoyé</string>
+    <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
+    <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
+
 </resources>
