@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 public class SplashActivity extends Activity {
 
     private Handler handler = new Handler();
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 3500;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

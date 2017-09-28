@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+
+        <activity android:name=".Commande"></activity>
+        <activity android:name=".MainActivity"></activity>
         <activity
             android:name=".Presentation"
             android:label="A propos" />
@@ -24,7 +30,6 @@
 =======
         <activity android:name=".SplashActivity" />
         <activity android:name=".EventActivity"></activity>
->>>>>>> cf366d570087bd265dec700b08845dacc084c1cd
     </application>
 
 </manifest>
