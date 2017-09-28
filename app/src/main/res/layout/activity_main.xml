@@ -10,54 +10,88 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name" />
+        android:text="@string/name"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/contact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/btn_star_big_on"
-        tools:layout_editor_absoluteX="63dp"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintRight_toLeftOf="@+id/event"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="214dp"
+        app:layout_constraintTop_toBottomOf="@+id/presentation"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.25" />
 
     <ImageView
         android:id="@+id/event"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="276dp" />
+        android:layout_marginTop="230dp"
+        app:layout_constraintTop_toBottomOf="@+id/lieu"
+        android:layout_marginRight="81dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/actualite"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/btn_dialog"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="96dp" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/presentation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_delete"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="194dp" />
+        android:layout_marginTop="33dp"
+        app:layout_constraintTop_toBottomOf="@+id/menu"
+        android:layout_marginLeft="68dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageView
         android:id="@+id/lieu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_notification_overlay"
-        tools:layout_editor_absoluteX="236dp"
-        tools:layout_editor_absoluteY="146dp" />
+        android:layout_marginTop="33dp"
+        app:layout_constraintTop_toBottomOf="@+id/menu"
+        app:layout_constraintLeft_toRightOf="@+id/presentation"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.638" />
 
     <TextView
         android:id="@+id/actualite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/actualite"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="454dp" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="96dp"
+        app:layout_constraintTop_toBottomOf="@+id/contact"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 
 </android.support.constraint.ConstraintLayout>

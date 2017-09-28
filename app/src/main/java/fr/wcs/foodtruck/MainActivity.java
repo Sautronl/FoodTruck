@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
 
-        menu.setOnClickListener(new View.OnClickListener() {
+       /* menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, xx.class);
@@ -58,6 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, xx.class);
                 startActivity(intent);
             }
-        });
+        });*/
     }
 }
