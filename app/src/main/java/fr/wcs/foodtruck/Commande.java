@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ public class Commande  extends AppCompatActivity {
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
+        final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
 
         checkCommande.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,5 +126,11 @@ public class Commande  extends AppCompatActivity {
             }
         });
 
+
+
+        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.model_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCommande.setAdapter(adapter);
     }
 }

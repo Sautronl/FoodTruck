@@ -14,6 +14,23 @@
     <string name="votre_tel">Votre n° de telephone</string>
     <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+
+    <string-array name="model_array">
+        <item>Sélectionnez un créneau horaire ...</item>
+        <item>12h00</item>
+        <item>12h15</item>
+        <item>12h30</item>
+        <item>12h45</item>
+        <item>13h00</item>
+        <item>13h15</item>
+        <item>13h30</item>
+        <item>13h45</item>
+        <item>14h00</item>
+
+
+
+
+    </string-array>
 =======
     <string name="name">CERF\'VEND</string>
     <string name="actualite">Suivez notre actualité sur Facebook</string>
