@@ -33,6 +33,7 @@
     </string-array>
 =======
     <string name="name">CERF\'VEND</string>
+    <string name="notif">Je souhaite recevoir des notifications</string>
     <string name="actualite">Suivez notre actualité sur Facebook</string>
 
 </resources>

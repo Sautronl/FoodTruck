@@ -22,6 +22,8 @@
 
         <activity android:name=".Commande"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".EventActivity"></activity>
     </application>
 
 </manifest>
