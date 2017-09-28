@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.CommandeActivity"
+    tools:context="fr.wcs.foodtruck.Commande"
     tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    >
 
 
     <Button
@@ -17,10 +18,11 @@
         android:layout_marginTop="447dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp"
+        android:enabled="false"
         app:layout_constraintLeft_toLeftOf="@+id/editTextTel" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
@@ -40,7 +42,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -65,8 +67,8 @@
         app:layout_constraintVertical_bias="0.0" />
     <TextView
         android:id="@+id/votreTel"
-        android:layout_width="253dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
         android:text="@string/votre_tel"
         android:layout_marginLeft="25dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -74,12 +76,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="138dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNom" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextNom"
+        app:layout_constraintVertical_bias="0.545" />
 
     <TextView
         android:id="@+id/votreNom"
-        android:layout_width="253dp"
-        android:layout_height="28dp"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:text="@string/votre_nom"
@@ -111,12 +114,14 @@
         android:layout_width="341dp"
         android:layout_height="45dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="phone"
+        android:enabled="false"
         android:hint="@string/edit_text_tel"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="30dp"
+        android:maxLength="10"
         app:layout_constraintTop_toBottomOf="@+id/votreTel"
-        tools:layout_editor_absoluteY="388dp" />
+        android:layout_marginLeft="-1dp" />
 
     <EditText
         android:id="@+id/editTextNom"
@@ -125,8 +130,37 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/edit_text_nom"
+        android:enabled="false"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/votreNom" />
+
+    <ImageView
+        android:id="@+id/warningTel"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        app:srcCompat="@drawable/point_exclamation"
+        app:layout_constraintTop_toTopOf="@+id/votreTel"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toRightOf="@+id/votreTel"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/votreTel"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/warningNom"
+        android:layout_width="39dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/votreNom"
+        app:layout_constraintLeft_toRightOf="@+id/votreNom"
+        app:layout_constraintTop_toTopOf="@+id/votreNom"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/point_exclamation" />
 
 </android.support.constraint.ConstraintLayout>

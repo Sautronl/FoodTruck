@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">FoodTruck</string>
+
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
     <string name="buttonReserver">RESERVER</string>
@@ -8,5 +9,13 @@
     <string name="checkbox_text">Je souhaite réserver le plat du jour</string>
     <string name="choix_creneau">Choisissez votre créneau</string>
     <string name="votre_nom">Votre Nom</string>
+    <string name="toast_champ_vide_tel">Veillez renseigner votre numero de téléphone</string>
+    <string name="toast_champ_vide_nom">Veillez renseigner votre nom</string>
     <string name="votre_tel">Votre n° de telephone</string>
+    <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
+    <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+=======
+    <string name="name">CERF\'VEND</string>
+    <string name="actualite">Suivez notre actualité sur Facebook</string>
+
 </resources>
