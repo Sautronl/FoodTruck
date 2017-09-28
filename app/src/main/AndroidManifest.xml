@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ContactPrivatisation"></activity>
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".EventActivity"></activity>
     </application>
 
 </manifest>
