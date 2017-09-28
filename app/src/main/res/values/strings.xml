@@ -13,4 +13,7 @@
     <string name="formule2">Formule plat + boisson + dessert = 10€</string>
     <string name="boissons">Nos Boissons</string>
     <string name="desserts">Nos desserts</string>
+    <string name="name">CERF\'VEND</string>
+    <string name="notif">Je souhaite recevoir des notifications</string>
+    <string name="actualite">Suivez notre actualité sur Facebook</string>
 </resources>

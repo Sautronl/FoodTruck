@@ -16,11 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity
             android:name=".Presentation"
             android:label="A propos" />
         <activity android:name=".fullImageActivity" />
         <activity android:name=".MenuDuJourActivity"></activity>
+=======
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".EventActivity"></activity>
+>>>>>>> cf366d570087bd265dec700b08845dacc084c1cd
     </application>
 
 </manifest>

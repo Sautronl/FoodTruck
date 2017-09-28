@@ -78,7 +78,6 @@ public class Presentation extends AppCompatActivity {
             public void onClick(View view) {
                 Intent backhome = new Intent(Presentation.this, MainActivity.class);
                 startActivity(backhome);
-
             }
         });
 
