@@ -16,4 +16,53 @@
     <string name="name">CERF\'VEND</string>
     <string name="notif">Je souhaite recevoir des notifications</string>
     <string name="actualite">Suivez notre actualité sur Facebook</string>
+    <string name="buttonPresentation2">Nos valeurs</string>
+    <string name="buttonPresentation1">Qui sommes-nous ?</string>
+    <string name="buttonPresentation3">Galerie Photo</string>
+    <string name="Aujourdhui">Aujourd\'hui</string>
+    <string name="Placement">Nous sommes ici :</string>
+    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
+    <string name="platdujour">Plat\ndu jour</string>
+    <string name="nomduplat">Sandwich Végétarien\nTomates, salade, concombres, oignons</string>
+    <string name="reserver">Reserver</string>
+    <string name="formule1">Formule plat + boisson = 8€</string>
+    <string name="formule2">Formule plat + boisson + dessert = 10€</string>
+    <string name="boissons">Nos Boissons</string>
+    <string name="desserts">Nos desserts</string>
+
+    <string name="votrecommande">Votre Commande</string>
+    <string name="buttonRetour">Retour</string>
+    <string name="buttonReserver">RESERVER</string>
+    <string name="edit_text_nom">Nom</string>
+    <string name="edit_text_tel">Téléphone</string>
+    <string name="checkbox_text">Je souhaite réserver le plat du jour</string>
+    <string name="choix_creneau">Choisissez votre créneau</string>
+    <string name="votre_nom">Votre Nom</string>
+    <string name="toast_champ_vide_tel">Veillez renseigner votre numero de téléphone</string>
+    <string name="toast_champ_vide_nom">Veillez renseigner votre nom</string>
+    <string name="votre_tel">Votre n° de telephone</string>
+    <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
+    <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+
+    <string-array name="model_array">
+        <item>Sélectionnez un créneau horaire ...</item>
+        <item>12h00</item>
+        <item>12h15</item>
+        <item>12h30</item>
+        <item>12h45</item>
+        <item>13h00</item>
+        <item>13h15</item>
+        <item>13h30</item>
+        <item>13h45</item>
+        <item>14h00</item>
+
+
+
+
+    </string-array>
+=======
+    <string name="name">CERF\'VEND</string>
+    <string name="notif">Je souhaite recevoir des notifications</string>
+    <string name="actualite">Suivez notre actualité sur Facebook</string>
+
 </resources>

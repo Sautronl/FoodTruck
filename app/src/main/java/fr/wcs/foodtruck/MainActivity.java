@@ -2,10 +2,10 @@ package fr.wcs.foodtruck;
 
 import android.app.Presentation;
 import android.content.Intent;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
 
-       /* menu.setOnClickListener(new View.OnClickListener() {
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, xx.class);
+                Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
         });
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, xx.class);
+                Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
         });
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         presentation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Presentation.class);
+                Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
         });
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, xx.class);
+                Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
         });
@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, xx.class);
+                Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
-        });*/
+        });
+
     }
 }

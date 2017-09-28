@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,6 +19,13 @@
         </activity>
         <activity android:name=".ContactPrivatisation"></activity>
         <activity android:name=".SplashActivity" />
+        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".Commande"></activity>
+        <activity
+            android:name=".Presentation"
+            android:label="A propos" />
+        <activity android:name=".fullImageActivity" />
+        <activity android:name=".MenuDuJourActivity"></activity>
         <activity android:name=".EventActivity"></activity>
     </application>
 
