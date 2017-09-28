@@ -16,8 +16,7 @@ public class GalleryAdapter extends BaseAdapter {
             R.drawable.pic_1, R.drawable.pic_2,
             R.drawable.pic_1, R.drawable.pic_2,
             R.drawable.pic_1, R.drawable.pic_2,
-            R.drawable.pic_1, R.drawable.pic_2,
-            R.drawable.pic_1, R.drawable.pic_2,
+            R.drawable.pic_1,
     };
 
     public GalleryAdapter(Context c) {
@@ -44,7 +43,7 @@ public class GalleryAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(images[i]);
         imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        imageView.setLayoutParams(new GridView.LayoutParams(240, 240));
+        imageView.setLayoutParams(new GridView.LayoutParams(300, 300));
         return imageView;
     }
 }

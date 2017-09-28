@@ -20,7 +20,8 @@
             android:layout_marginTop="38dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back" />
+            app:srcCompat="@drawable/back"
+            android:layout_marginStart="16dp" />
 
         <ImageView
             android:id="@+id/logo"
@@ -34,12 +35,11 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo"
-            tools:layout_editor_absoluteX="174dp" />
+            app:srcCompat="@drawable/logo" />
 
         <ImageView
             android:id="@+id/truck_img"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="194dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
@@ -47,7 +47,9 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo"
-            app:srcCompat="@drawable/truck" />
+            app:srcCompat="@drawable/truck"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp" />
 
         <Button
             android:id="@+id/buttonPresentation1"
@@ -67,10 +69,8 @@
 
         <TextView
             android:id="@+id/textViewPresentation1"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquam dapibus ultrices. Mauris eleifend volutpat urna, a semper justo tincidunt eget. Vestibulum ac dui sed lectus sodales interdum. Vestibulum nunc magna, convallis et ex sed, rhoncus dapibus ante. Vivamus vel interdum lectus, eu porta sapien. Donec placerat mollis interdum. In hac habitasse platea dictumst. Nunc ac magna urna. Curabitur ornare fringilla velit et suscipit. Integer dignissim posuere velit vitae condimentum. Duis consequat ante et dolor tempus laoreet. Proin eget turpis orci. Morbi suscipit pellentesque erat sit amet dignissim. Integer ac hendrerit massa. Donec vitae efficitur metus. In hac habitasse platea dictumst."
             android:textAlignment="center"
             android:textColor="@android:color/darker_gray"
@@ -98,10 +98,8 @@
 
         <TextView
             android:id="@+id/textViewPresentation2"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris aliquam dapibus ultrices. Mauris eleifend volutpat urna, a semper justo tincidunt eget. Vestibulum ac dui sed lectus sodales interdum. Vestibulum nunc magna, convallis et ex sed, rhoncus dapibus ante. Vivamus vel interdum lectus, eu porta sapien. Donec placerat mollis interdum. In hac habitasse platea dictumst. Nunc ac magna urna. Curabitur ornare fringilla velit et suscipit. Integer dignissim posuere velit vitae condimentum. Duis consequat ante et dolor tempus laoreet. Proin eget turpis orci. Morbi suscipit pellentesque erat sit amet dignissim. Integer ac hendrerit massa. Donec vitae efficitur metus. In hac habitasse platea dictumst."
             android:textAlignment="center"
             android:textColor="@android:color/darker_gray"
