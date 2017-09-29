@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         // bascule sur la page menu en cliquant sur le logo menu
 
-        ImageButton boutonRetourMenu = (ImageButton) findViewById(R.id.boutonRetourMenu);
+        ImageView boutonRetourMenu = (ImageView)findViewById(R.id.backHomePage);
         final Intent intent2 = new Intent(ContactPrivatisation.this,MainActivity.class);
         boutonRetourMenu.setOnClickListener(new View.OnClickListener() {
 

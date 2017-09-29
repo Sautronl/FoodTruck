@@ -33,8 +33,8 @@
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
     <string name="buttonReserver">RESERVER</string>
-    <string name="edit_text_nom">Nom</string>
-    <string name="edit_text_tel">Téléphone</string>
+    <string name="edit_text_nom"> Nom</string>
+    <string name="edit_text_tel"> Téléphone</string>
     <string name="checkbox_text">Je souhaite réserver le plat du jour</string>
     <string name="choix_creneau">Choisissez votre créneau</string>
     <string name="votre_nom">Votre Nom</string>
