@@ -17,16 +17,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactPrivatisation"></activity>
-        <activity android:name=".SplashActivity" />
-        <activity android:name=".EventActivity"></activity>
-        <activity android:name=".Commande"></activity>
-        <activity
-            android:name=".Presentation"
-            android:label="A propos" />
+        <activity android:name=".ContactPrivatisation"/>
+        <activity android:name=".EventActivity"/>
+        <activity android:name=".Commande"/>
+        <activity android:name=".Presentation"/>
         <activity android:name=".fullImageActivity" />
-        <activity android:name=".MenuDuJourActivity"></activity>
-        <activity android:name=".EventActivity"></activity>
+        <activity android:name=".MenuDuJourActivity"/>
+
     </application>
 
 </manifest>

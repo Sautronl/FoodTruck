@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         presentation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Presentation.class);
+                Intent intent = new Intent(MainActivity.this, fr.wcs.foodtruck.Presentation.class);
                 startActivity(intent);
             }
         });
