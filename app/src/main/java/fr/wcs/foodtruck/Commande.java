@@ -121,7 +121,7 @@ public class Commande  extends AppCompatActivity {
         backCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Commande.this, MainActivity.class);
+                Intent intent = new Intent(Commande.this, MenuDuJourActivity.class);
                 startActivity(intent);
             }
         });
