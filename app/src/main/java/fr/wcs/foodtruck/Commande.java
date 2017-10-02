@@ -48,12 +48,16 @@ public class Commande  extends AppCompatActivity {
             // Si la checkBox est cocher alors les champs Nom et téléphone son disponible.
                 if (checkCommande.isChecked()) {
                     btReserverCommande.setEnabled(true);
+                    txtNomCommande.setFocusableInTouchMode(true);
+                    txtTelCommande.setFocusableInTouchMode(true);
                     txtNomCommande.setEnabled(true);
                     txtTelCommande.setEnabled(true);
 
                 }else {
                     btReserverCommande.setEnabled(false);
                     txtNomCommande.setEnabled(false);
+                    txtNomCommande.setFocusableInTouchMode(false);
+                    txtTelCommande.setFocusableInTouchMode(false);
                     txtTelCommande.setEnabled(false);
                 }
 

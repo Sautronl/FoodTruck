@@ -19,7 +19,7 @@ public class Presentation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presentation);
 
-        GridView gridView = (GridView) findViewById(R.id.gallery);
+        final GridView gridView = (GridView) findViewById(R.id.gallery);
         gridView.setAdapter(new GalleryAdapter(this));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -36,15 +36,20 @@ public class Presentation extends AppCompatActivity {
         Button button2 = (Button) findViewById(R.id.buttonPresentation2);
         Button button3 = (Button) findViewById(R.id.buttonPresentation3);
         ImageView back = (ImageView) findViewById(R.id.backHomePage);
+        final TextView textView1 = (TextView) findViewById(R.id.textViewPresentation1);
+        final TextView textView2 = (TextView) findViewById(R.id.textViewPresentation2);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView1 = (TextView) findViewById(R.id.textViewPresentation1);
+
                 if (textView1.getVisibility() == View.VISIBLE) {
                     textView1.setVisibility(View.GONE);
                 } else {
                     textView1.setVisibility(VISIBLE);
+                    textView2.setVisibility(View.GONE);
+                    gridView.setVisibility(View.GONE);
+
                 }
             }
         });
@@ -52,11 +57,12 @@ public class Presentation extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TextView textView2 = (TextView) findViewById(R.id.textViewPresentation2);
                 if (textView2.getVisibility() == View.VISIBLE) {
                     textView2.setVisibility(View.GONE);
                 } else {
                     textView2.setVisibility(VISIBLE);
+                    textView1.setVisibility(View.GONE);
+                    gridView.setVisibility(View.GONE);
                 }
             }
         });
@@ -64,11 +70,12 @@ public class Presentation extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GridView gridView = (GridView) findViewById(R.id.gallery);
                 if (gridView.getVisibility() == View.VISIBLE) {
                     gridView.setVisibility(View.GONE);
                 } else {
                     gridView.setVisibility(VISIBLE);
+                    textView2.setVisibility(View.GONE);
+                    textView1.setVisibility(View.GONE);
                 }
             }
         });
