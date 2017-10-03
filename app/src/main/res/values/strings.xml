@@ -43,17 +43,15 @@
 
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
-        <item>12h00</item>
-        <item>12h15</item>
-        <item>12h30</item>
-        <item>12h45</item>
-        <item>13h00</item>
-        <item>13h15</item>
-        <item>13h30</item>
-        <item>13h45</item>
-        <item>14h00</item>
-
-
+        <item>1200</item>
+        <item>1215</item>
+        <item>1230</item>
+        <item>1245</item>
+        <item>1300</item>
+        <item>1315</item>
+        <item>1330</item>
+        <item>1345</item>
+        <item>1400</item>
 
 
     </string-array>

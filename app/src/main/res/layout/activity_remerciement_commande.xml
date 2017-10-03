@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.wcs.foodtruck.RemerciementCommande"
+    android:background="#000000">
+    <Button
+        android:id="@+id/btHomeRemerciement"
+        android:layout_width="99dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/buttonRetour"
+        android:background="@drawable/button_border_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="20dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.036" />
+
+    <TextView
+        android:id="@+id/tvRemerciementNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="146dp"
+        app:layout_constraintTop_toBottomOf="@+id/btHomeRemerciement"
+        app:layout_constraintHorizontal_bias="0.575"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="429dp"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginRight="0dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>

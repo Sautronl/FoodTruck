@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#000000">
+
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.Commande"
-    android:background="#000"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp"
-    >
+    android:layout_height="wrap_content">
+
 
 
     <Button
@@ -16,16 +17,13 @@
         android:layout_width="356dp"
         android:layout_height="49dp"
         android:text= "@string/buttonReserver"
-        android:enabled="false"
         android:layout_marginTop="37dp"
         app:layout_constraintTop_toBottomOf="@+id/editTextTel"
-
         android:background="@drawable/button_border_white"
         android:layout_marginLeft="0dp"
         app:layout_constraintLeft_toLeftOf="@+id/editTextTel"
-        android:layout_marginRight="20dp"
-        app:layout_constraintRight_toRightOf="@+id/editTextTel"
-        app:layout_constraintHorizontal_bias="0.0" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="@+id/editTextTel" />
 
     <Button
         android:id="@+id/buttonBack"
@@ -58,32 +56,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="45dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="-20dp"
-        android:layout_marginTop="0dp"
-        android:textColor="@color/textEnvoyer"
-        app:buttonTint="@android:color/background_light"
-        app:layout_constraintLeft_toRightOf="@+id/checkboxText"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/checkboxText"
-        android:layout_width="231dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/checkbox_text"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="@+id/checkBox"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.2" />
 
     <TextView
         android:id="@+id/votreTel"
@@ -121,14 +93,14 @@
         android:id="@+id/choixHeure"
         android:layout_width="253dp"
         android:layout_height="28dp"
-        android:layout_marginLeft="25dp"
+        android:layout_marginLeft="26dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="26dp"
         android:text="@string/choix_creneau"
         android:textColor="#ffffff"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkboxText" />
+        android:layout_marginTop="44dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Spinner
         android:id="@+id/spinnerCommande"
@@ -146,9 +118,6 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="phone"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="true"
         android:hint="@string/edit_text_tel"
         android:background="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -167,8 +136,6 @@
         android:layout_marginLeft="27dp"
         android:layout_marginTop="16dp"
         android:background="@android:color/white"
-        android:focusable="false"
-        android:focusableInTouchMode="true"
         android:ems="10"
         android:hint="@string/edit_text_nom"
         android:inputType="textPersonName"
@@ -211,3 +178,4 @@
         android:layout_marginBottom="20dp" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

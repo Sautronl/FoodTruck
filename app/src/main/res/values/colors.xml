@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="rougeDark">#8B0000</color>
     <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+
 
     <color name="textEnvoyer">#FFFFFF</color>
 </resources>
