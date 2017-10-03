@@ -21,8 +21,10 @@
         <activity android:name=".Commande"/>
         <activity android:name=".Presentation"/>
         <activity android:name=".fullImageActivity" />
-        <activity android:name=".MenuDuJourActivity"/>
+        <activity android:name=".MenuDuJourActivity" />
+        <activity android:name=".RemerciementCommande"></activity>
 
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>
