@@ -1,8 +1,12 @@
 package fr.wcs.foodtruck;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +36,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editSujet= (EditText) findViewById(R.id.sujet);
+                EditText editSujet = (EditText) findViewById(R.id.sujet);
 
                 if (checkbox.isChecked()) {
                     // est coché
@@ -50,8 +54,8 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         // bascule sur la page menu en cliquant sur le logo menu
 
-        ImageView boutonRetourMenu = (ImageView)findViewById(R.id.backHomePage);
-        final Intent intent2 = new Intent(ContactPrivatisation.this,MainActivity.class);
+        ImageView boutonRetourMenu = (ImageView) findViewById(R.id.backHomePage);
+        final Intent intent2 = new Intent(ContactPrivatisation.this, MainActivity.class);
         boutonRetourMenu.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -60,19 +64,18 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
 
-          // Message Toast si les champs obligatoires ne sont pas remplis
+        // Message Toast si les champs obligatoires ne sont pas remplis
 
-        Button boutonValider = (Button)findViewById(R.id.boutonEnvoyer);
+        Button boutonValider = (Button) findViewById(R.id.boutonEnvoyer);
         boutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
-                EditText editSujet = (EditText)findViewById(R.id.sujet);
-                EditText editMessage = (EditText)findViewById(R.id.message);
-                if(editPrenomNom.getText().toString().isEmpty()
+                EditText editSujet = (EditText) findViewById(R.id.sujet);
+                EditText editMessage = (EditText) findViewById(R.id.message);
+                if (editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
-                        || editMessage.getText().toString().isEmpty() )
-                {
+                        || editMessage.getText().toString().isEmpty()) {
 
                     CharSequence text = getResources().getString(R.string.messToast);
                     int duration = Toast.LENGTH_SHORT;
@@ -80,22 +83,20 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show();
                 }
-             // Message Toast de confirmation d'envoie
+                // Message Toast de confirmation d'envoie
                 else {
                     CharSequence text = getResources().getString(R.string.messToastValider);
                     int duration = Toast.LENGTH_SHORT;
                     Context context = getApplicationContext();
                     Toast messToast = Toast.makeText(context, text, duration);
-                    messToast.show(); }
+                    messToast.show();
+                }
 
             }
 
 
-
         });
-
-
-
     }
-
 }
+
+

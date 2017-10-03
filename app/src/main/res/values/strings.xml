@@ -43,6 +43,21 @@
     <string name="votre_tel">Votre n° de telephone</string>
     <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+    <string name="emplacement">EMPLACEMENTS</string>
+    <string name="lundi">LUNDI</string>
+    <string name="adresseLundi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mardi">MARDI</string>
+    <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mercredi">MERCREDI</string>
+    <string name="adresseMercredi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="jeudi">JEUDI</string>
+    <string name="adresseJeudi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="vendredi">VENDREDI</string>
+    <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
+
+
+
+    <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
 
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
@@ -55,8 +70,6 @@
         <item>13h30</item>
         <item>13h45</item>
         <item>14h00</item>
-
-
 
 
     </string-array>

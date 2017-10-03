@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context="fr.wcs.foodtruck.Emplacement">
+
+
+    <TextView
+        android:id="@+id/emplacement"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/emplacement"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/lundi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/lundi"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"/>
+
+    <TextView
+        android:id="@+id/adresseLundi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/adresseLundi"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"
+
+        />
+
+    <TextView
+        android:id="@+id/mardi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/mardi"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"/>
+
+    <TextView
+        android:id="@+id/adresseMardi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/adresseMardi"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"/>
+
+    <TextView
+        android:id="@+id/mercredi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/mercredi"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"/>
+
+    <TextView
+        android:id="@+id/adresseMercredi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/adresseMercredi"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"/>
+
+    <TextView
+        android:id="@+id/jeudi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/jeudi"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"/>
+
+    <TextView
+        android:id="@+id/adresseJeudi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/adresseJeudi"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"/>
+
+    <TextView
+        android:id="@+id/vendredi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/vendredi"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"/>
+
+    <TextView
+        android:id="@+id/adresseVendredi"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/adresseVendredi"
+        android:layout_weight="1"
+        android:textColor="@color/blanc"/>
+
+    <TextView
+        android:id="@+id/fermeture"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/fermeture"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        android:textColor="@android:color/holo_orange_dark"
+    />
+</LinearLayout>
