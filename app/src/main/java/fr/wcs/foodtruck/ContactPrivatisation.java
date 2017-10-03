@@ -2,6 +2,7 @@ package fr.wcs.foodtruck;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,6 +26,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         setContentView(R.layout.contactprivatisation);
 
         EditText editSujet = (EditText) findViewById(R.id.sujet);
+        TextView numTel = (TextView) findViewById(R.id.numTel);
 
 
         // checkbox
@@ -43,6 +45,15 @@ public class ContactPrivatisation extends AppCompatActivity {
                     // n'est pas coché
                     editSujet.setText("");
                 }
+            }
+        });
+
+        numTel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0123456789"));
+                startActivity(intent);
             }
         });
 
