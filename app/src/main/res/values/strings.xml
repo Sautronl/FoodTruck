@@ -16,19 +16,7 @@
     <string name="name">CERF\'VEND</string>
     <string name="notif">Je souhaite recevoir des notifications</string>
     <string name="actualite">Suivez notre actualité sur Facebook</string>
-    <string name="buttonPresentation2">Nos valeurs</string>
-    <string name="buttonPresentation1">Qui sommes-nous ?</string>
-    <string name="buttonPresentation3">Galerie Photo</string>
-    <string name="Aujourdhui">Aujourd\'hui</string>
-    <string name="Placement">Nous sommes ici :</string>
-    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
-    <string name="platdujour">Plat\ndu jour</string>
-    <string name="nomduplat">Sandwich Végétarien\nTomates, salade, concombres, oignons</string>
-    <string name="reserver">Reserver</string>
-    <string name="formule1">Formule plat + boisson = 8€</string>
-    <string name="formule2">Formule plat + boisson + dessert = 10€</string>
-    <string name="boissons">Nos Boissons</string>
-    <string name="desserts">Nos desserts</string>
+
 
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
