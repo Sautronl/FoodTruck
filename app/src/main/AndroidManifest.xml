@@ -10,22 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-            </activity>
-        <activity android:name=".MainActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ContactPrivatisation"/>
-        <activity android:name=".EventActivity"/>
-        <activity android:name=".Commande"/>
-        <activity android:name=".Presentation"/>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".ContactPrivatisation" />
+        <activity android:name=".EventActivity" />
+        <activity android:name=".Commande" />
+        <activity android:name=".Presentation" />
         <activity android:name=".fullImageActivity" />
-        <activity android:name=".MenuDuJourActivity"/>
-
+        <activity android:name=".MenuDuJourActivity" />
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>

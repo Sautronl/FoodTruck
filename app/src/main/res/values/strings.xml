@@ -2,7 +2,7 @@
     <string name="app_name">FoodTruck</string>
     <string name="titrePage">Contact &amp; Privatisation</string>
     <string name="buttonEnvoyer">Envoyer</string>
-    <string name="numTel">06.29.03.19.84</string>
+    <string name="numTel">06.74.66.07.20</string>
     <string name="checkbox">Je souhaite privatiser le Food Truck</string>
     <string name="prenomNom">Nom Prénom*</string>
     <string name="tel">Téléphone</string>
@@ -55,8 +55,6 @@
         <item>13h30</item>
         <item>13h45</item>
         <item>14h00</item>
-
-
 
 
     </string-array>
