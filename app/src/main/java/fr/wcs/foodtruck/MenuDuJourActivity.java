@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MenuDuJourActivity extends AppCompatActivity {
 
@@ -18,7 +19,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_du_jour);
 
         Button reserver = (Button) findViewById(R.id.reserver);
-        ImageView back = (ImageView) findViewById(R.id.backHomePage);
+        TextView decouvrez = (TextView) findViewById(R.id.totheformules);
 
         final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
@@ -28,13 +29,13 @@ public class MenuDuJourActivity extends AppCompatActivity {
             }
         });
 
-        /*back.setOnClickListener(new View.OnClickListener() {
+        final Intent intent2 = new Intent(MenuDuJourActivity.this, FormuleActivity.class);
+        decouvrez.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent backhome = new Intent(MenuDuJourActivity.this, MainActivity.class);
-                startActivity(backhome);
-
+                startActivity(intent2);
             }
-        });*/
+        });
+
     }
 }

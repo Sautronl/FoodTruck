@@ -47,6 +47,9 @@
             android:textColor="@android:color/background_light"
             android:textSize="16sp" />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgDuPlat"
@@ -55,8 +58,28 @@
             android:layout_gravity="center"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:layout_marginTop="30dp"
-            app:srcCompat="@drawable/todaymeal" />
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/burger" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="-20"
+                android:background="@drawable/button_border_white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/price"
+                android:textColor="@color/textEnvoyer"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/nomDuPlat"
@@ -65,6 +88,7 @@
             android:layout_gravity="center"
             android:text="@string/nomduplat"
             android:textAlignment="center"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/background_light"
             android:textSize="20sp" />
 
@@ -95,11 +119,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/totheformules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
-            android:text="Découvrez nos formules >"
+            android:text="@string/decouvrez"
             android:textAlignment="center"
             android:textColor="@color/textEnvoyer"
             android:textSize="20sp" />

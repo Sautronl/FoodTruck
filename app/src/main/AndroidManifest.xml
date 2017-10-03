@@ -12,19 +12,20 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ContactPrivatisation"/>
-        <activity android:name=".EventActivity"/>
-        <activity android:name=".Commande"/>
-        <activity android:name=".Presentation"/>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ContactPrivatisation" />
+        <activity android:name=".EventActivity" />
+        <activity android:name=".Commande" />
+        <activity android:name=".Presentation" />
         <activity android:name=".fullImageActivity" />
         <activity android:name=".MenuDuJourActivity" />
-        <activity android:name=".RemerciementCommande"></activity>
-
-        <activity android:name=".AdminActivity"></activity>
+        <activity android:name=".RemerciementCommande" />
+        <activity android:name=".AdminActivity" />
+        <activity android:name=".FormuleActivity"></activity>
     </application>
 
 </manifest>
