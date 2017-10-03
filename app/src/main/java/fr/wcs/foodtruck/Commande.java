@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -18,7 +20,7 @@ import android.widget.Toast;
  */
 
 public class Commande  extends AppCompatActivity {
-    CheckBox checkCommande;
+
     Button btReserverCommande;
     EditText txtNomCommande;
     EditText txtTelCommande;
@@ -29,7 +31,7 @@ public class Commande  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
-        checkCommande = (CheckBox) findViewById(R.id.checkBox);
+
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
@@ -40,87 +42,64 @@ public class Commande  extends AppCompatActivity {
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
         final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
 
-        checkCommande.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
 
-            // Si la checkBox est cocher alors les champs Nom et téléphone son disponible.
-                if (checkCommande.isChecked()) {
-                    btReserverCommande.setEnabled(true);
-                    txtNomCommande.setFocusableInTouchMode(true);
-                    txtTelCommande.setFocusableInTouchMode(true);
-                    txtNomCommande.setEnabled(true);
-                    txtTelCommande.setEnabled(true);
 
-                }else {
-                    btReserverCommande.setEnabled(false);
-                    txtNomCommande.setEnabled(false);
-                    txtNomCommande.setFocusableInTouchMode(false);
-                    txtTelCommande.setFocusableInTouchMode(false);
-                    txtTelCommande.setEnabled(false);
+                String telCommande = txtTelCommande.getText().toString();
+                String nomCommande = txtNomCommande.getText().toString();
+
+                //Si les champs nom et telephone sont vide alors on affiche un toast.
+
+
+                if (telCommande.equals("") && (nomCommande.equals(""))) {
+
+                    Toast.makeText(getApplicationContext(), getResources().getString
+                            (R.string.toast_champ_vide), Toast.LENGTH_SHORT).show();
+                    warningNom.setVisibility(View.VISIBLE);
+                    warningTel.setVisibility(View.VISIBLE);
+                    votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
+                    votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
+
+                }
+                //Si le champ telephone est vide alors on affiche un toast.
+                else if (telCommande.equals("") && !nomCommande.equals("")) {
+
+                    Toast.makeText(getApplicationContext(), getResources().getString
+                            (R.string.toast_champ_vide_tel), Toast.LENGTH_SHORT).show();
+                    warningTel.setVisibility(View.VISIBLE);
+                    warningNom.setVisibility(View.GONE);
+                    votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
+                    votreNom.setTextColor(getResources().getColor(R.color.white));
+
+
+                }
+                //Si le champ nom est vide alors on affiche un toast.
+                else if (nomCommande.equals("") && !telCommande.equals("")) {
+
+                    Toast.makeText(getApplicationContext(), getResources().getString
+                            (R.string.toast_champ_vide_nom), Toast.LENGTH_SHORT).show();
+                    warningNom.setVisibility(View.VISIBLE);
+                    warningTel.setVisibility(View.GONE);
+                    votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
+                    votreTel.setTextColor(getResources().getColor(R.color.white));
+
+                }
+                //Sinon on affiche un toast expliquant que la commande a était prise en compt.
+                else {
+                    btReserverCommande.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                            startActivity(intent);
+                        }
+                    });
+                    warningTel.setVisibility(View.GONE);
+                    warningNom.setVisibility(View.GONE);
+                    votreNom.setTextColor(getResources().getColor(R.color.white));
+                    votreTel.setTextColor(getResources().getColor(R.color.white));
+
                 }
 
-             //On effectue une action au click.
-                btReserverCommande.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        String telCommande = txtTelCommande.getText().toString();
-                        String nomCommande = txtNomCommande.getText().toString();
-
-            //Si les champs nom et telephone sont vide alors on affiche un toast.
-                        if (telCommande.equals("") && (nomCommande.equals(""))) {
-
-                            Toast.makeText(getApplicationContext(), getResources().getString
-                                    (R.string.toast_champ_vide), Toast.LENGTH_SHORT).show();
-                            warningNom.setVisibility(View.VISIBLE);
-                            warningTel.setVisibility(View.VISIBLE);
-                            votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                            votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-
-                        }
-            //Si le champ telephone est vide alors on affiche un toast.
-                        else if (telCommande.equals("") && !nomCommande.equals("")){
-
-                            Toast.makeText(getApplicationContext(), getResources().getString
-                                    (R.string.toast_champ_vide_tel), Toast.LENGTH_SHORT).show();
-                            warningTel.setVisibility(View.VISIBLE);
-                            warningNom.setVisibility(View.GONE);
-                            votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                            votreNom.setTextColor(getResources().getColor(R.color.black));
-
-
-                        }
-             //Si le champ nom est vide alors on affiche un toast.
-                        else if (nomCommande.equals("") && !telCommande.equals("")){
-
-                            Toast.makeText(getApplicationContext(), getResources().getString
-                                    (R.string.toast_champ_vide_nom), Toast.LENGTH_SHORT).show();
-                            warningNom.setVisibility(View.VISIBLE);
-                            warningTel.setVisibility(View.GONE);
-                            votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                            votreTel.setTextColor(getResources().getColor(R.color.black));
-
-                        }
-             //Sinon on affiche un toast expliquant que la commande a était prise en compt.
-                        else {
-                            Toast.makeText(getApplicationContext(), getResources().getString
-                                    (R.string.toast_champ_remplis), Toast.LENGTH_SHORT).show();
-                            warningTel.setVisibility(View.GONE);
-                            warningNom.setVisibility(View.GONE);
-                            votreNom.setTextColor(getResources().getColor(R.color.black));
-                            votreTel.setTextColor(getResources().getColor(R.color.black));
-
-                        }
-
-                    }
-                });
-
-
-
-            }
-        });
 
         backCommande.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,10 +110,22 @@ public class Commande  extends AppCompatActivity {
         });
 
 
-
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.model_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCommande.setAdapter(adapter);
+
+        final Intent intent = new Intent(Commande.this,
+                RemerciementCommande.class);
+        btReserverCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent.putExtra("heure", spinnerCommande.getSelectedItemPosition());
+                intent.putExtra("nom", txtNomCommande.getText().toString());
+
+                Commande.this.startActivity(intent);
+
+            }
+        });
     }
 }
