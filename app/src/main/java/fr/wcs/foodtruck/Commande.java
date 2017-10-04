@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -41,8 +42,6 @@ public class Commande  extends AppCompatActivity {
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
         final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
-
-
 
 
                 String telCommande = txtTelCommande.getText().toString();

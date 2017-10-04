@@ -41,6 +41,12 @@
     <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
 
+    <string name="adminEmail">Email</string>
+    <string name="adminPassword">Mot de passe</string>
+    <string name="adminConnex">Se connecter</string>
+    <string name="auth_failed">Echec authentification</string>
+
+
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
         <item>12h00</item>
