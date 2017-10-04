@@ -4,309 +4,131 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#2d2d2d"
     tools:context="fr.wcs.foodtruck.MenuDuJourActivity">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/backHomePage"
-            android:layout_width="44dp"
-            android:layout_height="41dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="38dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back"
-            android:layout_marginStart="16dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/today"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-condensed"
             android:text="@string/Aujourdhui"
             android:textAllCaps="true"
             android:textColor="@android:color/background_light"
             android:textSize="25sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/placement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
             android:text="@string/Placement"
             android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/today" />
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/adress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:text="@string/Adresse"
             android:textAlignment="center"
+            android:layout_gravity="center"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/placement"
-            app:layout_constraintVertical_bias="0.0" />
+            android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/platdujour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/button_border_white"
-            android:rotation="-20"
-            android:text="@string/platdujour"
-            android:textColor="@android:color/background_dark"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toTopOf="@+id/imgDuPlat"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imgDuPlat"
-            app:layout_constraintVertical_bias="0.14"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/imgDuPlat"
-            android:layout_width="339dp"
-            android:layout_height="194dp"
-            app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@drawable/todaymeal"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.216"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_width="match_parent"
+            android:layout_height="223dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="40dp"
+            app:srcCompat="@drawable/burger" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="-20"
+                android:background="@drawable/button_border_white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="@string/price"
+                android:textColor="@color/textEnvoyer"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/nomDuPlat"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
             android:text="@string/nomduplat"
             android:textAlignment="center"
+            android:layout_marginTop="10dp"
             android:textColor="@android:color/background_light"
-            android:textSize="19sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgDuPlat"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/descriPlat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/descriPlat"
+            android:textAlignment="center"
+            android:textColor="@color/textEnvoyer"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/reserver"
-            android:layout_width="169dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button_border_white"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="@string/reserver"
-            android:textColor="@android:color/background_dark"
+            android:textColor="@android:color/background_light"
             android:textSize="20sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nomDuPlat"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <ImageView
-            android:id="@+id/formule1"
-            android:layout_width="382dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reserver"
-            app:srcCompat="@drawable/cadre_formule"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/formule1_txt"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/formule1"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.507"
-            app:layout_constraintLeft_toLeftOf="@+id/formule1"
-            app:layout_constraintRight_toRightOf="@+id/formule1"
-            app:layout_constraintTop_toBottomOf="@+id/reserver"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <ImageView
-            android:id="@+id/imgFormule1"
-            android:layout_width="wrap_content"
+            android:id="@+id/totheformules"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@mipmap/ic_launcher"
-            app:layout_constraintTop_toBottomOf="@+id/formule1_txt"
-            tools:layout_editor_absoluteY="544dp" />
-
-        <ImageView
-            android:id="@+id/formule2"
-            android:layout_width="382dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formule1"
-            app:srcCompat="@drawable/cadre_formule"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <TextView
-            android:id="@+id/formule2_txt"
-            android:layout_width="0dp"
-            android:layout_height="26dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/formule2"
+            android:layout_marginTop="35dp"
+            android:text="@string/decouvrez"
             android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formule1"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <ImageView
-            android:id="@+id/imgFormule2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:srcCompat="@mipmap/ic_launcher"
-            app:layout_constraintTop_toBottomOf="@+id/formule2_txt"
-            tools:layout_editor_absoluteY="544dp" />
-
-        <ImageView
-            android:id="@+id/boissons"
-            android:layout_width="382dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formule2"
-            app:srcCompat="@drawable/cadre_formule"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <TextView
-            android:id="@+id/boissons_txt"
-            android:layout_width="230dp"
-            android:layout_height="26dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/boissons"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/formule2"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <ImageView
-            android:id="@+id/dessert"
-            android:layout_width="382dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boissons"
-            app:srcCompat="@drawable/cadre_formule"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
-
-        <TextView
-            android:id="@+id/dessert_txt"
-            android:layout_width="230dp"
-            android:layout_height="26dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/desserts"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:textSize="18sp"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/boissons"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:textColor="@color/textEnvoyer"
+            android:textSize="20sp" />
 
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </ScrollView>

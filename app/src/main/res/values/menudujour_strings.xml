@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="Aujourdhui">Aujourd\'hui</string>
+    <string name="Placement">Nous sommes ici :</string>
+    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
+    <string name="price">Burger\n5€</string>
+    <string name="nomduplat">Burger Végétarien</string>
+    <string name="descriPlat">Tomates, Salade, Bacon, Oignons</string>
+    <string name="reserver">Reserver le plat du jour</string>
+    <string name="decouvrez">Découvrez nos formules ></string>
+
+    <string name="formules">Nos formules</string>
+    <string name="formule1">Formule burger + frites + boisson = 8€</string>
+    <string name="formule2">Formule burger + frites + boisson + dessert = 10€</string>
+    <string name="boissons">Nos Boissons</string>
+    <string name="desserts">Nos desserts</string>
+
+</resources>

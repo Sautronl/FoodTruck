@@ -13,19 +13,10 @@
     <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
     <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
 
-    <string name="buttonPresentation2">Nos valeurs</string>
-    <string name="buttonPresentation1">Qui sommes-nous ?</string>
-    <string name="buttonPresentation3">Galerie Photo</string>
-    <string name="Aujourdhui">Aujourd\'hui</string>
-    <string name="Placement">Nous sommes ici :</string>
-    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
-    <string name="platdujour">Plat\ndu jour</string>
-    <string name="nomduplat">Sandwich Végétarien\nTomates, salade, concombres, oignons</string>
-    <string name="reserver">Reserver</string>
-    <string name="formule1">Formule plat + boisson = 8€</string>
-    <string name="formule2">Formule plat + boisson + dessert = 10€</string>
-    <string name="boissons">Nos Boissons</string>
-    <string name="desserts">Nos desserts</string>
+    <string name="name">CERF\'VEND</string>
+    <string name="notif">Je souhaite recevoir des notifications</string>
+    <string name="actualite">Suivez notre actualité sur Facebook</string>
+
 
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
@@ -40,6 +31,21 @@
     <string name="votre_tel">Votre n° de telephone</string>
     <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+    <string name="emplacement">EMPLACEMENTS</string>
+    <string name="lundi">LUNDI</string>
+    <string name="adresseLundi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mardi">MARDI</string>
+    <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mercredi">MERCREDI</string>
+    <string name="adresseMercredi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="jeudi">JEUDI</string>
+    <string name="adresseJeudi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="vendredi">VENDREDI</string>
+    <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
+
+
+
+    <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
 
     <string name="adminEmail">Email</string>
     <string name="adminPassword">Mot de passe</string>
