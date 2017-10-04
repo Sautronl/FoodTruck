@@ -1,33 +1,33 @@
 package fr.wcs.foodtruck;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.sql.Time;
-
 public class RemerciementCommande extends AppCompatActivity {
 
+    @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remerciement_commande);
         final Button btHome = (Button) findViewById(R.id.btHomeRemerciement);
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
+        final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);
 
 
 
 
         String nom = getIntent().getStringExtra("nom");
+       String heure = getIntent().getStringExtra("heure");
 
-
-
-        RemerciementModel rem = new RemerciementModel(nom);
+        RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(rem.getNom());
-
+        tvHeure.setText(rem.getHeure());
 
 
         btHome.setOnClickListener(new View.OnClickListener() {
