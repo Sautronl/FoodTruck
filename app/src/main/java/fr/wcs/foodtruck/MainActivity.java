@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        logo.setOnClickListener(new View.OnClickListener() {
+        /*logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent adminScreen = new Intent(MainActivity.this, AdminActivity.class);
                 startActivity(adminScreen);
             }
-        });
+        });*/
 
 
         menu.setOnClickListener(new View.OnClickListener() {
@@ -74,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ContactPrivatisation.class);
+                startActivity(intent);
+            }
+        });
+
+        lieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Emplacement.class);
                 startActivity(intent);
             }
         });

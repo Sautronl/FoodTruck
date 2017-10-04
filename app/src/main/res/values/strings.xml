@@ -44,6 +44,27 @@
     <string name="merci_string">Merci</string>
     <string name="commande_prise_en_compte">Votre commande a été prise en compte</string>
     <string name="commande_prete_vers">Votre commande sera prête vers</string>
+    <string name="emplacement">EMPLACEMENTS</string>
+    <string name="lundi">LUNDI</string>
+    <string name="adresseLundi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mardi">MARDI</string>
+    <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mercredi">MERCREDI</string>
+    <string name="adresseMercredi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="jeudi">JEUDI</string>
+    <string name="adresseJeudi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="vendredi">VENDREDI</string>
+    <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
+
+
+
+    <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
+
+    <string name="adminEmail">Email</string>
+    <string name="adminPassword">Mot de passe</string>
+    <string name="adminConnex">Se connecter</string>
+    <string name="auth_failed">Echec authentification</string>
+
 
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
