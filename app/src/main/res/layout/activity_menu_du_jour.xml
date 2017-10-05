@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2d2d2d"
+    android:background="@drawable/foodtruck_bg"
     tools:context="fr.wcs.foodtruck.MenuDuJourActivity">
 
     <LinearLayout
@@ -59,7 +59,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/burger" />
+            app:srcCompat="@drawable/burgerdujour" />
 
             <Button
                 android:id="@+id/button"

@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -19,9 +21,29 @@ public class MenuDuJourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_du_jour);
 
-        /* Pour afficher toolbar personnalisée
+        //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);*/
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(MenuDuJourActivity.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+        //Fin de la toolbar
+
+        TextView adress = (TextView)findViewById(R.id.adress);
+        SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
+        adressSS.setSpan(new UnderlineSpan(), 0, adressSS.length(), 0);
+        adress.setText(adressSS);
+
+        TextView voirFormules = (TextView)findViewById(R.id.totheformules);
+        SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
+        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
+        voirFormules.setText(formuleSS);
 
         Button reserver = (Button) findViewById(R.id.reserver);
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);

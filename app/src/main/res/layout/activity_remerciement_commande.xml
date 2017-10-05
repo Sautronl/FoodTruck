@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.wcs.foodtruck.RemerciementCommande"
-    android:background="#000000">
+    android:background="@drawable/foodtruck_bg">
 
     <Button
         android:id="@+id/btHomeRemerciement"
@@ -30,7 +30,7 @@
             android:layout_width="194dp"
             android:layout_height="151dp"
 
-        android:textColor="@color/white"
+        android:textColor="@color/blanc"
             android:textSize="30sp"
             tools:text="Nom"
         android:layout_toRightOf="@+id/remerciementMerci"

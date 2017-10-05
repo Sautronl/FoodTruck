@@ -16,8 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-/*public class AdminActivity extends AppCompatActivity {
-
+public class AdminActivity extends AppCompatActivity {
+/*
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private EditText mEmail;
@@ -113,5 +113,5 @@ import com.google.firebase.auth.FirebaseUser;
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
-    }
-}*/
+    }*/
+}
