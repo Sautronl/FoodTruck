@@ -33,7 +33,7 @@
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
     <string name="emplacement">EMPLACEMENTS</string>
     <string name="lundi">LUNDI</string>
-    <string name="adresseLundi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="adresseLundi">1 Place de la Bourse\n31000 Toulouse</string>
     <string name="mardi">MARDI</string>
     <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
     <string name="mercredi">MERCREDI</string>
@@ -46,6 +46,7 @@
 
 
     <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
+    <string name="a_propos">A Propos</string>
 
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>

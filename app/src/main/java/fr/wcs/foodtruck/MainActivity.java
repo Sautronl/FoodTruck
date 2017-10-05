@@ -2,12 +2,14 @@ package fr.wcs.foodtruck;
 
 import android.app.Presentation;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import java.util.logging.Handler;
 

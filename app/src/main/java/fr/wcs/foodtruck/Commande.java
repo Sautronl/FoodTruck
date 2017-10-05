@@ -35,7 +35,6 @@ public class Commande  extends AppCompatActivity {
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
-        Button backCommande = (Button) findViewById(R.id.buttonBack);
         final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
@@ -69,7 +68,7 @@ public class Commande  extends AppCompatActivity {
                     warningTel.setVisibility(View.VISIBLE);
                     warningNom.setVisibility(View.GONE);
                     votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                    votreNom.setTextColor(getResources().getColor(R.color.white));
+                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
 
 
                 }
@@ -81,7 +80,7 @@ public class Commande  extends AppCompatActivity {
                     warningNom.setVisibility(View.VISIBLE);
                     warningTel.setVisibility(View.GONE);
                     votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                 }
                 //Sinon on affiche un toast expliquant que la commande a était prise en compt.
@@ -95,19 +94,10 @@ public class Commande  extends AppCompatActivity {
                     });
                     warningTel.setVisibility(View.GONE);
                     warningNom.setVisibility(View.GONE);
-                    votreNom.setTextColor(getResources().getColor(R.color.white));
-                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
+                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                 }
-
-
-        backCommande.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Commande.this, MenuDuJourActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
