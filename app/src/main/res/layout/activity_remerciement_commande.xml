@@ -30,7 +30,7 @@
             android:layout_width="194dp"
             android:layout_height="151dp"
 
-        android:textColor="@color/white"
+        android:textColor="@color/blanc"
             android:textSize="30sp"
             tools:text="Nom"
         android:layout_toRightOf="@+id/remerciementMerci"

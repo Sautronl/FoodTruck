@@ -13,19 +13,9 @@
     <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
     <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
 
-    <string name="buttonPresentation2">Nos valeurs</string>
-    <string name="buttonPresentation1">Qui sommes-nous ?</string>
-    <string name="buttonPresentation3">Galerie Photo</string>
-    <string name="Aujourdhui">Aujourd\'hui</string>
-    <string name="Placement">Nous sommes ici :</string>
-    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
+
     <string name="platdujour">Plat\ndu jour</string>
-    <string name="nomduplat">Sandwich Végétarien\nTomates, salade, concombres, oignons</string>
-    <string name="reserver">Reserver</string>
-    <string name="formule1">Formule plat + boisson = 8€</string>
-    <string name="formule2">Formule plat + boisson + dessert = 10€</string>
-    <string name="boissons">Nos Boissons</string>
-    <string name="desserts">Nos desserts</string>
+
 
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
@@ -57,7 +47,6 @@
     <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
 
 
-
     <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
 
     <string name="adminEmail">Email</string>
@@ -80,5 +69,6 @@
 
 
     </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

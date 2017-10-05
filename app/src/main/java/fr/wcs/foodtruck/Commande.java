@@ -109,7 +109,7 @@ public class Commande  extends AppCompatActivity {
                                     warningTel.setVisibility(View.VISIBLE);
                                     warningNom.setVisibility(View.GONE);
                                     votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                                    votreNom.setTextColor(getResources().getColor(R.color.white));
+                                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
 
 
                                 }
@@ -124,7 +124,7 @@ public class Commande  extends AppCompatActivity {
                                     warningNom.setVisibility(View.VISIBLE);
                                     warningTel.setVisibility(View.GONE);
                                     votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                                    votreTel.setTextColor(getResources().getColor(R.color.black));
 
                                 }
 
@@ -136,8 +136,8 @@ public class Commande  extends AppCompatActivity {
 
                                     warningTel.setVisibility(View.GONE);
                                     warningNom.setVisibility(View.GONE);
-                                    votreNom.setTextColor(getResources().getColor(R.color.white));
-                                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
+                                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                                 //on recuperer le nom et l'heure pour l'envoyer sur la page
                                     // de remerciement.
