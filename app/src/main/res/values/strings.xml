@@ -13,10 +13,19 @@
     <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
     <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
 
-    <string name="name">CERF\'VEND</string>
-    <string name="notif">Je souhaite recevoir des notifications</string>
-    <string name="actualite">Suivez notre actualité sur Facebook</string>
-
+    <string name="buttonPresentation2">Nos valeurs</string>
+    <string name="buttonPresentation1">Qui sommes-nous ?</string>
+    <string name="buttonPresentation3">Galerie Photo</string>
+    <string name="Aujourdhui">Aujourd\'hui</string>
+    <string name="Placement">Nous sommes ici :</string>
+    <string name="Adresse">1 Place de la Bourse 31000 Toulouse</string>
+    <string name="platdujour">Plat\ndu jour</string>
+    <string name="nomduplat">Sandwich Végétarien\nTomates, salade, concombres, oignons</string>
+    <string name="reserver">Reserver</string>
+    <string name="formule1">Formule plat + boisson = 8€</string>
+    <string name="formule2">Formule plat + boisson + dessert = 10€</string>
+    <string name="boissons">Nos Boissons</string>
+    <string name="desserts">Nos desserts</string>
 
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
@@ -30,7 +39,11 @@
     <string name="toast_champ_vide_nom">Veillez renseigner votre nom</string>
     <string name="votre_tel">Votre n° de telephone</string>
     <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
+    <string name="toast_spinner_vide">Veillez selectionner un créneau horaire </string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+    <string name="merci_string">Merci</string>
+    <string name="commande_prise_en_compte">Votre commande a été prise en compte</string>
+    <string name="commande_prete_vers">Votre commande sera prête vers</string>
     <string name="emplacement">EMPLACEMENTS</string>
     <string name="lundi">LUNDI</string>
     <string name="adresseLundi">1 Place de la Bourse\n31000 Toulouse</string>
@@ -47,6 +60,12 @@
 
     <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
     <string name="a_propos">A Propos</string>
+
+    <string name="adminEmail">Email</string>
+    <string name="adminPassword">Mot de passe</string>
+    <string name="adminConnex">Se connecter</string>
+    <string name="auth_failed">Echec authentification</string>
+
 
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
