@@ -2,12 +2,14 @@ package fr.wcs.foodtruck;
 
 import android.app.Presentation;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import java.util.logging.Handler;
 
@@ -29,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*logo.setOnClickListener(new View.OnClickListener() {
+        logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent adminScreen = new Intent(MainActivity.this, AdminActivity.class);
                 startActivity(adminScreen);
             }
-        });*/
+        });
 
 
         menu.setOnClickListener(new View.OnClickListener() {

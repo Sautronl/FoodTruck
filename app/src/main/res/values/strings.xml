@@ -36,7 +36,7 @@
     <string name="commande_prete_vers">Votre commande sera prête vers</string>
     <string name="emplacement">EMPLACEMENTS</string>
     <string name="lundi">LUNDI</string>
-    <string name="adresseLundi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="adresseLundi">1 Place de la Bourse\n31000 Toulouse</string>
     <string name="mardi">MARDI</string>
     <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
     <string name="mercredi">MERCREDI</string>
@@ -46,13 +46,21 @@
     <string name="vendredi">VENDREDI</string>
     <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
 
+    <string name="loading">Loading…</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_out">Signed Out</string>
+
 
     <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
+    <string name="a_propos">A Propos</string>
 
     <string name="adminEmail">Email</string>
     <string name="adminPassword">Mot de passe</string>
     <string name="adminConnex">Se connecter</string>
     <string name="auth_failed">Echec authentification</string>
+
 
 
     <string-array name="model_array">

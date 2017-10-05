@@ -1,129 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="#2d2d2d"
     tools:context="fr.wcs.foodtruck.Emplacement">
 
-
-    <TextView
-        android:id="@+id/emplacement"
-        android:gravity="center"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/emplacement"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"
-        android:textSize="20sp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/lundi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/lundi"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"/>
 
-    <TextView
-        android:id="@+id/adresseLundi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/adresseLundi"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"
+        <TextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/emplacement"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-        />
+        <TextView
+            android:id="@+id/lundi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/lundi"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp"
+            android:layout_weight="1.20" />
 
-    <TextView
-        android:id="@+id/mardi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/mardi"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"/>
+        <TextView
+            android:id="@+id/adresseLundi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="@string/adresseLundi"
+            android:textAlignment="center"
+            android:textColor="@color/blanc"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/adresseMardi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/adresseMardi"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"/>
+        <TextView
+            android:id="@+id/mardi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/mardi"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/mercredi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/mercredi"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"/>
+        <TextView
+            android:id="@+id/adresseMardi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.76"
+            android:gravity="center"
+            android:text="@string/adresseMardi"
+            android:textAlignment="center"
+            android:textColor="@color/blanc"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/adresseMercredi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/adresseMercredi"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"/>
+        <TextView
+            android:id="@+id/mercredi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/mercredi"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/jeudi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/jeudi"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"/>
+        <TextView
+            android:id="@+id/adresseMercredi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.71"
+            android:gravity="center"
+            android:text="@string/adresseMercredi"
+            android:textAlignment="center"
+            android:textColor="@color/blanc"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/adresseJeudi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/adresseJeudi"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"/>
+        <TextView
+            android:id="@+id/jeudi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/jeudi"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/vendredi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/vendredi"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"/>
+        <TextView
+            android:id="@+id/adresseJeudi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.74"
+            android:gravity="center"
+            android:text="@string/adresseJeudi"
+            android:textAlignment="center"
+            android:textColor="@color/blanc"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/adresseVendredi"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/adresseVendredi"
-        android:layout_weight="1"
-        android:textColor="@color/blanc"/>
+        <TextView
+            android:id="@+id/vendredi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/vendredi"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/fermeture"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/fermeture"
-        android:textSize="15sp"
-        android:layout_weight="1"
-        android:textColor="@android:color/holo_orange_dark"
-    />
-</LinearLayout>
+        <TextView
+            android:id="@+id/adresseVendredi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.72"
+            android:gravity="center"
+            android:text="@string/adresseVendredi"
+            android:textAlignment="center"
+            android:textColor="@color/blanc"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/fermeture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fermeture"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</ScrollView>

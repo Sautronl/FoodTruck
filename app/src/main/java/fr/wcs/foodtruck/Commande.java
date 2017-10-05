@@ -36,7 +36,6 @@ public class Commande  extends AppCompatActivity {
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
-        Button backCommande = (Button) findViewById(R.id.buttonBack);
         final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
@@ -174,19 +173,5 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-
-
-        // Intent pour revenir au Menu.
-        backCommande.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Commande.this, MenuDuJourActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-
-
     }
 }

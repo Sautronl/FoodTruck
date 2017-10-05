@@ -2,7 +2,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="#000000">
 
@@ -11,58 +12,29 @@ android:background="#000000">
     android:layout_height="wrap_content">
 
 
-
-    <Button
-        android:id="@+id/buttonReserver"
-        android:layout_width="356dp"
-        android:layout_height="49dp"
-        android:text= "@string/buttonReserver"
-        android:layout_marginTop="37dp"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTel"
-        android:background="@drawable/button_border_white"
-        android:layout_marginLeft="0dp"
-        app:layout_constraintLeft_toLeftOf="@+id/editTextTel"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/editTextTel" />
-
-    <Button
-        android:id="@+id/buttonBack"
-        android:layout_width="99dp"
-        android:layout_height="36dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/buttonRetour"
-        android:background="@drawable/button_border_white"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="20dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.036" />
-
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="364dp"
-        android:layout_height="35dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="43dp"
+        android:id="@+id/textViewCommande"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/votrecommande"
         android:textAllCaps="true"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.428"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBack" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="27dp" />
 
     <TextView
         android:id="@+id/votreTel"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginBottom="100dp"
-        android:layout_marginLeft="26dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="8dp"
         android:text="@string/votre_tel"
@@ -71,14 +43,14 @@ android:background="#000000">
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNom"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <TextView
         android:id="@+id/votreNom"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginBottom="0dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="26dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="22dp"
         android:text="@string/votre_nom"
@@ -93,21 +65,23 @@ android:background="#000000">
         android:id="@+id/choixHeure"
         android:layout_width="253dp"
         android:layout_height="28dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="25dp"
         android:text="@string/choix_creneau"
         android:textColor="#ffffff"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="44dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="47dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCommande"
+        app:layout_constraintHorizontal_bias="0.147"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp" />
 
     <Spinner
         android:id="@+id/spinnerCommande"
         android:layout_width="352dp"
         android:layout_height="44dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="#ffffff"
         app:layout_constraintTop_toBottomOf="@+id/choixHeure"
         android:layout_marginLeft="29dp" />
@@ -122,7 +96,7 @@ android:background="#000000">
         android:focusableInTouchMode="true"
         android:background="#ffffff"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="1dp"
         android:maxLength="10"
         app:layout_constraintTop_toBottomOf="@+id/votreTel"
         android:layout_marginLeft="24dp"
@@ -136,7 +110,7 @@ android:background="#000000">
         android:layout_width="357dp"
         android:layout_height="44dp"
         android:layout_marginLeft="27dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:ems="10"
         android:hint="@string/edit_text_nom"
@@ -153,15 +127,15 @@ android:background="#000000">
         android:layout_height="28dp"
         app:srcCompat="@drawable/point_exclamation"
         android:visibility="gone"
-        app:layout_constraintRight_toRightOf="@+id/editTextTel"
-        app:layout_constraintLeft_toRightOf="@+id/votreTel"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/votreTel"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/votreTel"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/votreTel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintVertical_bias="0.588" />
 
     <ImageView
         android:id="@+id/warningNom"
@@ -169,15 +143,34 @@ android:background="#000000">
         android:layout_height="28dp"
         android:visibility="gone"
         app:srcCompat="@drawable/point_exclamation"
-        app:layout_constraintLeft_toRightOf="@+id/votreNom"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintRight_toRightOf="@+id/editTextNom"
-        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintTop_toTopOf="@+id/votreNom"
         android:layout_marginTop="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/votreNom"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="8dp"
+        app:layout_constraintVertical_bias="0.411"
+        app:layout_constraintLeft_toRightOf="@+id/votreNom"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.074" />
+
+    <Button
+        android:id="@+id/buttonReserver"
+        android:layout_width="356dp"
+        android:layout_height="49dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/button_border_white"
+        android:fontFamily="sans-serif-condensed"
+        android:text="@string/buttonReserver"
+        android:textColor="@color/blanc"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="@+id/editTextTel"
+        app:layout_constraintRight_toRightOf="@+id/editTextTel"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTel" />
 
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -6,7 +6,7 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -21,21 +21,26 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ContactPrivatisation" />
-        <activity android:name=".EventActivity" />
-        <activity android:name=".Commande" />
-        <activity android:name=".Presentation" />
-        <activity android:name=".fullImageActivity" />
-        <activity android:name=".MenuDuJourActivity" />
-        <activity android:name=".RemerciementCommande" />
+            </activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ContactPrivatisation"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".EventActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".Commande"
+            android:parentActivityName=".MenuDuJourActivity"/>
+        <activity android:name=".Presentation"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".fullImageActivity"
+            android:parentActivityName=".Presentation"/>
+        <activity android:name=".MenuDuJourActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".RemerciementCommande"
+            android:parentActivityName=".Commande"/>
         <activity android:name=".AdminActivity" />
-        <activity android:name=".FormuleActivity" />
-        <activity android:name=".Emplacement" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -45,13 +50,17 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity android:name=".AdminAccueil"></activity>
+        <activity android:name=".FormuleActivity"
+            android:parentActivityName=".MenuDuJourActivity"></activity>
+        <activity android:name=".Emplacement"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
