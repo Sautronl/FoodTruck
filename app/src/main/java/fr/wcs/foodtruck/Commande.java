@@ -36,7 +36,6 @@ public class Commande  extends AppCompatActivity {
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
-        Button backCommande = (Button) findViewById(R.id.buttonBack);
         final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
@@ -136,8 +135,8 @@ public class Commande  extends AppCompatActivity {
 
                                     warningTel.setVisibility(View.GONE);
                                     warningNom.setVisibility(View.GONE);
-                                    votreNom.setTextColor(getResources().getColor(R.color.white));
-                                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
+                                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                                 //on recuperer le nom et l'heure pour l'envoyer sur la page
                                     // de remerciement.
