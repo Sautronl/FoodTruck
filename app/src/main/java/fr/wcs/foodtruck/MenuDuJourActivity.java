@@ -2,6 +2,7 @@ package fr.wcs.foodtruck;
 
 import android.content.Intent;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,10 @@ public class MenuDuJourActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_du_jour);
+
+        /* Pour afficher toolbar personnalisée
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);*/
 
         Button reserver = (Button) findViewById(R.id.reserver);
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);

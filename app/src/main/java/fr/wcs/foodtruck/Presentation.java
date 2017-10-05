@@ -80,13 +80,5 @@ public class Presentation extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent backhome = new Intent(Presentation.this, MainActivity.class);
-                startActivity(backhome);
-            }
-        });
-
     }
 }
