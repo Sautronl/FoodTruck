@@ -69,7 +69,7 @@ public class Commande  extends AppCompatActivity {
                     warningTel.setVisibility(View.VISIBLE);
                     warningNom.setVisibility(View.GONE);
                     votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                    votreNom.setTextColor(getResources().getColor(R.color.white));
+                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
 
 
                 }
@@ -81,7 +81,7 @@ public class Commande  extends AppCompatActivity {
                     warningNom.setVisibility(View.VISIBLE);
                     warningTel.setVisibility(View.GONE);
                     votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                 }
                 //Sinon on affiche un toast expliquant que la commande a était prise en compt.
@@ -95,8 +95,8 @@ public class Commande  extends AppCompatActivity {
                     });
                     warningTel.setVisibility(View.GONE);
                     warningNom.setVisibility(View.GONE);
-                    votreNom.setTextColor(getResources().getColor(R.color.white));
-                    votreTel.setTextColor(getResources().getColor(R.color.white));
+                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
+                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
                 }
 
