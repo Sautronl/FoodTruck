@@ -61,6 +61,8 @@
     <string name="adminConnex">Se connecter</string>
     <string name="auth_failed">Echec authentification</string>
 
+    <string name="maj">Mettre à jour</string>
+
 
 
     <string-array name="model_array">
@@ -78,5 +80,7 @@
 
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="admin_title">Administrateur</string>
+    <string name="deconnexion">Déconnexion</string>
 
 </resources>

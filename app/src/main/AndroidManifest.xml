@@ -21,6 +21,7 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             </activity>
@@ -35,12 +36,14 @@
         <activity android:name=".Presentation"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".fullImageActivity"
+            android:theme="@style/AppTheme.CustomTheme"
             android:parentActivityName=".Presentation"/>
         <activity android:name=".MenuDuJourActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".RemerciementCommande"
             android:parentActivityName=".Commande"/>
-        <activity android:name=".AdminActivity" />
+        <activity android:name=".AdminActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -61,6 +64,8 @@
             android:parentActivityName=".MenuDuJourActivity"></activity>
         <activity android:name=".Emplacement"
             android:parentActivityName=".MainActivity"></activity>
+
+        <activity android:name=".AdminMenuDuJour"></activity>
     </application>
 
 </manifest>
