@@ -64,13 +64,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        event.setOnClickListener(new View.OnClickListener() {
+        /*event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Commande.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
