@@ -21,6 +21,7 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             </activity>
@@ -63,6 +64,8 @@
             android:parentActivityName=".MenuDuJourActivity"></activity>
         <activity android:name=".Emplacement"
             android:parentActivityName=".MainActivity"></activity>
+
+        <activity android:name=".AdminMenuDuJour"></activity>
     </application>
 
 </manifest>

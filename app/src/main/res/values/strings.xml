@@ -61,6 +61,8 @@
     <string name="adminConnex">Se connecter</string>
     <string name="auth_failed">Echec authentification</string>
 
+    <string name="maj">Mettre à jour</string>
+
 
 
     <string-array name="model_array">
