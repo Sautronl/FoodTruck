@@ -104,7 +104,7 @@ public class AdminActivity extends BaseActivity implements
         }
 
         showProgressDialog();
-        final Intent intent = new Intent(AdminActivity.this, MainActivity.class);
+        final Intent intent = new Intent(AdminActivity.this, AdminAccueil.class);
         // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
