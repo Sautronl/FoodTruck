@@ -22,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MenuDuJourActivity extends AppCompatActivity {
 
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    /*private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mRootReference = firebaseDatabase.getReference();
     private DatabaseReference mChildReference = mRootReference.child("option1");
-    private  TextView mNomDuPlat;
+    private  TextView mNomDuPlat;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         Button reserver = (Button) findViewById(R.id.reserver);
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);
-        mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);
+       /* mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);*/
 
 
 
@@ -79,6 +79,8 @@ public class MenuDuJourActivity extends AppCompatActivity {
         });
 
     }
+
+    /*
     @Override
     protected void onStart(){
         super.onStart();
@@ -94,5 +96,5 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 }

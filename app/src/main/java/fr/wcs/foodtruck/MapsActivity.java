@@ -28,16 +28,30 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class MapsActivity extends AppCompatActivity {/*FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-   /* private static final int PERMISSION_REQUEST_LOCALISATION = 10;
+
+   /* public class AsyncMap extends AsyncTask<String, Void, Integer> {
+
+
+        @Override
+        protected Integer doInBackground(String... strings) {
+            return null;
+        }
+
+    }*/
+
+
+
+
+    private static final int PERMISSION_REQUEST_LOCALISATION = 10;
     private GoogleMap mMap;
     Geocoder  geocoder;
     List<Address> addresses ;
 
-    int num = 6;
-    String rue = " rue des arbustes ";
-    int cp = 31500;
+    int num = 1;
+    String rue = " place de la bourse ";
+    int cp = 31000;
     String ville = " Toulouse ";
     String pays = " France";
     String la = num + rue + cp + ville + pays;
@@ -132,21 +146,5 @@ public class MapsActivity extends AppCompatActivity {/*FragmentActivity implemen
 
 
     }
-
-    public class MoveLift extends AsyncTask<Integer, Void, Integer> {
-
-        @Override
-        protected Integer doInBackground(String... integers) {
-            Integer floor = integers[0];
-            SystemClock.sleep(1000);//l'action se lance au bout de 3 secondes
-            return floor;
-        }
-
-        @Override
-        protected void onPostExecute(Integer floor) {
-            super.onPostExecute(floor);
-
-        }
-    }*/
 }
 
