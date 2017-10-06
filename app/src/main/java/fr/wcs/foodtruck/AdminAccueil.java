@@ -1,49 +1,28 @@
 package fr.wcs.foodtruck;
 
-import android.app.Presentation;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
-import java.util.logging.Handler;
-
-public class MainActivity extends AppCompatActivity {
+public class AdminAccueil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_admin_accueil);
 
         ImageView menu = (ImageView) findViewById(R.id.menu);
         ImageView lieu = (ImageView) findViewById(R.id.lieu);
-        ImageView presentation = (ImageView) findViewById(R.id.presentation);
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
-
-
-
-
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent adminScreen = new Intent(MainActivity.this, AdminActivity.class);
-                startActivity(adminScreen);
-            }
-        });
-
-
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MenuDuJourActivity.class);
+                Intent intent = new Intent(AdminAccueil.this, MenuDuJourActivity.class);
                 startActivity(intent);
             }
         });
@@ -51,23 +30,16 @@ public class MainActivity extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Commande.class);
+                Intent intent = new Intent(AdminAccueil.this, Commande.class);
                 startActivity(intent);
             }
         });
 
-        presentation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, fr.wcs.foodtruck.Presentation.class);
-                startActivity(intent);
-            }
-        });
 
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Commande.class);
+                Intent intent = new Intent(AdminAccueil.this, Commande.class);
                 startActivity(intent);
             }
         });
@@ -75,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ContactPrivatisation.class);
+                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
                 startActivity(intent);
             }
         });
@@ -83,10 +55,9 @@ public class MainActivity extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Emplacement.class);
+                Intent intent = new Intent(AdminAccueil.this, Emplacement.class);
                 startActivity(intent);
             }
         });
-
     }
 }

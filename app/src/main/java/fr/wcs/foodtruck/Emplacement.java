@@ -57,5 +57,45 @@ public class Emplacement extends AppCompatActivity {
         SpannableString content5 = new SpannableString("1 Place de la Bourse 31000 Toulouse ");
         content5.setSpan(new UnderlineSpan(), 0, content5.length(), 0);
         textViewVendredi.setText(content5);
+
+        textViewLundi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentLundi = new Intent(Emplacement.this,MapsActivity.class);
+                startActivity(intentLundi);
+            }
+        });
+
+        textViewMardi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMardi = new Intent(Emplacement.this,MapsActivity.class);
+                startActivity(intentMardi);
+            }
+        });
+
+        textViewMercredi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentMercredi = new Intent(Emplacement.this,MapsActivity.class);
+                startActivity(intentMercredi);
+            }
+        });
+
+        textViewJeudi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentJeudi = new Intent(Emplacement.this,MapsActivity.class);
+                startActivity(intentJeudi);
+            }
+        });
+
+        textViewVendredi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentVendredi = new Intent(Emplacement.this,MapsActivity.class);
+                startActivity(intentVendredi);
+            }
+        });
     }
 }

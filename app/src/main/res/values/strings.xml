@@ -13,6 +13,10 @@
     <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
     <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
 
+
+    <string name="platdujour">Plat\ndu jour</string>
+
+
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
     <string name="buttonReserver">RESERVER</string>
@@ -42,6 +46,11 @@
     <string name="vendredi">VENDREDI</string>
     <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
 
+    <string name="loading">Loading…</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_out">Signed Out</string>
 
 
     <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
@@ -51,6 +60,7 @@
     <string name="adminPassword">Mot de passe</string>
     <string name="adminConnex">Se connecter</string>
     <string name="auth_failed">Echec authentification</string>
+
 
 
     <string-array name="model_array">
@@ -67,5 +77,6 @@
 
 
     </string-array>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
