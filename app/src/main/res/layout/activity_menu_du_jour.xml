@@ -82,15 +82,28 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/burger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Burger Végétarien"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/blanc"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!--
+        <TextView
             android:id="@+id/nomDuPlat"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:textAlignment="center"
-            android:textColor="@android:color/background_light"
+            android:textColor="@color/blanc"
             android:textSize="20sp"
             tools:text="@string/nomduplat" />
+        -->
 
         <TextView
             android:id="@+id/descriPlat"
