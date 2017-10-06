@@ -35,7 +35,6 @@ public class Presentation extends AppCompatActivity {
         Button button1 = (Button) findViewById(R.id.buttonPresentation1);
         Button button2 = (Button) findViewById(R.id.buttonPresentation2);
         Button button3 = (Button) findViewById(R.id.buttonPresentation3);
-        ImageView back = (ImageView) findViewById(R.id.backHomePage);
         final TextView textView1 = (TextView) findViewById(R.id.textViewPresentation1);
         final TextView textView2 = (TextView) findViewById(R.id.textViewPresentation2);
 

@@ -14,29 +14,42 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".ContactPrivatisation"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".EventActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Commande"
-            android:parentActivityName=".MenuDuJourActivity"/>
-        <activity android:name=".Presentation"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".fullImageActivity"
-            android:parentActivityName=".Presentation"/>
-        <activity android:name=".MenuDuJourActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".RemerciementCommande"
-            android:parentActivityName=".Commande"/>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ContactPrivatisation"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EventActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Commande"
+            android:parentActivityName=".MenuDuJourActivity" />
+        <activity
+            android:name=".Presentation"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".fullImageActivity"
+            android:parentActivityName=".Presentation" />
+        <activity
+            android:name=".MenuDuJourActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RemerciementCommande"
+            android:parentActivityName=".Commande" />
         <activity android:name=".AdminActivity" />
-        <activity android:name=".FormuleActivity"
-            android:parentActivityName=".MenuDuJourActivity"></activity>
-        <activity android:name=".Emplacement"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".FormuleActivity"
+            android:parentActivityName=".MenuDuJourActivity" />
+        <activity
+            android:name=".Emplacement"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".AdminMenuDuJour"></activity>
     </application>
+
 </manifest>

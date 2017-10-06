@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static fr.wcs.foodtruck.R.id.imageBoutonPhone;
+
 /**
  * Created by sam on 26/09/17.
  */
@@ -30,6 +32,7 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         EditText editSujet = (EditText) findViewById(R.id.sujet);
         TextView numTel = (TextView) findViewById(R.id.numTel);
+        ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
 
         // checkbox
@@ -51,7 +54,7 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
 
-        numTel.setOnClickListener(new View.OnClickListener() {
+        imageBoutonPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -62,19 +65,7 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        // bascule sur la page menu en cliquant sur le logo menu
-
-        ImageView boutonRetourMenu = (ImageView)findViewById(R.id.backHomePage);
-        final Intent intent2 = new Intent(ContactPrivatisation.this,MainActivity.class);
-        boutonRetourMenu.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                startActivity(intent2);
-            }
-        });
-
-          // Message Toast si les champs obligatoires ne sont pas remplis
+        // Message Toast si les champs obligatoires ne sont pas remplis
 
         Button boutonValider = (Button)findViewById(R.id.boutonEnvoyer);
         boutonValider.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +85,7 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show();
                 }
-             // Message Toast de confirmation d'envoie
+                // Message Toast de confirmation d'envoie
                 else {
                     CharSequence text = getResources().getString(R.string.messToastValider);
                     int duration = Toast.LENGTH_SHORT;
