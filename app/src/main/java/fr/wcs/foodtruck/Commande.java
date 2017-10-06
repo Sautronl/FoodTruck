@@ -3,6 +3,7 @@ package fr.wcs.foodtruck;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -32,6 +33,19 @@ public class Commande  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
+        //Toolbar personnalisée avec bouton retour à la page précédente
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(Commande.this, MenuDuJourActivity.class);
+                startActivity(back);
+            }
+        });
+        //Fin de la toolbar
 
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
@@ -42,11 +56,6 @@ public class Commande  extends AppCompatActivity {
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
         final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
 
-
-
-
-
-
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.model_array, android.R.layout.simple_spinner_item);
@@ -54,12 +63,9 @@ public class Commande  extends AppCompatActivity {
 
         spinnerCommande.setAdapter(adapter);
 
-
-
         spinnerCommande.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
 
                 //Si aucune horaires n'est selectionner on affiche un toast
 
@@ -69,17 +75,16 @@ public class Commande  extends AppCompatActivity {
                         public void onClick(View view) {
                             Toast.makeText(getApplicationContext(), getResources().getString
                                     (R.string.toast_spinner_vide), Toast.LENGTH_SHORT).show();
-
                         }
                     });
+                }
 
-                        //Si l'horaire est selectionner alors on effectuer les commandes suivante
+                    //Si l'horaire est selectionner alors on effectuer les commandes suivante
 
-                }else{
+                else {
                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-
 
                             String telCommande = txtTelCommande.getText().toString();
                             String nomCommande = txtNomCommande.getText().toString();
@@ -95,7 +100,6 @@ public class Commande  extends AppCompatActivity {
                                 warningTel.setVisibility(View.VISIBLE);
                                 votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
                                 votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-
                             }
 
                             //Si le champ telephone est vide alors on affiche un toast.
@@ -109,36 +113,30 @@ public class Commande  extends AppCompatActivity {
                                     warningNom.setVisibility(View.GONE);
                                     votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
                                     votreNom.setTextColor(getResources().getColor(R.color.blanc));
-
-
                                 }
 
                                 //Si le champ nom est vide alors on affiche un toastet
                                 // le texte s'affiche en rouge avec un logo.
 
                                 else if (nomCommande.equals("") && !telCommande.equals("")) {
-
                                     Toast.makeText(getApplicationContext(), getResources().getString
                                             (R.string.toast_champ_vide_nom), Toast.LENGTH_SHORT).show();
                                     warningNom.setVisibility(View.VISIBLE);
                                     warningTel.setVisibility(View.GONE);
                                     votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                                    votreTel.setTextColor(getResources().getColor(R.color.black));
-
+                                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
                                 }
 
                                 //Si tout est remplie on va sur la page Remerciement Commande en
                                 // expliquant que la commande a était prise en compte.
 
                                 else {
-
-
                                     warningTel.setVisibility(View.GONE);
                                     warningNom.setVisibility(View.GONE);
                                     votreNom.setTextColor(getResources().getColor(R.color.blanc));
                                     votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
-                                //on recuperer le nom et l'heure pour l'envoyer sur la page
+                                    //on recuperer le nom et l'heure pour l'envoyer sur la page
                                     // de remerciement.
 
                                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
@@ -153,11 +151,8 @@ public class Commande  extends AppCompatActivity {
                                             //Le finish permet de ne par revenir sur la page
                                             // Commande dès que l'on a deja commmander.
                                             finish();
-
-
                                         }
                                     });
-
 
                                 }
 
