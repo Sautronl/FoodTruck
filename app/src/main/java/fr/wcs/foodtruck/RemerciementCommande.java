@@ -32,7 +32,6 @@ public class RemerciementCommande extends AppCompatActivity {
         });
         //Fin de la toolbar
 
-        final Button btHome = (Button) findViewById(R.id.btHomeRemerciement);
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
         final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);
 
@@ -46,14 +45,6 @@ public class RemerciementCommande extends AppCompatActivity {
         tvRemerciementN.setText(rem.getNom());
         tvHeure.setText(rem.getHeure());
 
-
-        btHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RemerciementCommande.this, MenuDuJourActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
