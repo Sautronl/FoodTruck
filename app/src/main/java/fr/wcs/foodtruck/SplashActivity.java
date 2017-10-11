@@ -23,7 +23,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        myMediaPlayer = MediaPlayer.create(this, R.raw.projet);
+        /*myMediaPlayer = MediaPlayer.create(this, R.raw.projet);
         if (myMediaPlayer != null) {
             myMediaPlayer.start();
         } else {
@@ -39,7 +39,7 @@ public class SplashActivity extends Activity {
             }
 
             myMediaPlayer.start();
-        }
+        }*/
 
         handler.postDelayed(new Runnable() {
             @Override
