@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,43 +9,20 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        android:layout_gravity="center"
-        tools:layout_editor_absoluteX="177dp"
-        tools:layout_editor_absoluteY="8dp" />
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_gravity="center"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="65dp" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginRight="20dp"
-        app:srcCompat="@android:drawable/btn_dialog"
-        tools:layout_editor_absoluteX="306dp"
-        tools:layout_editor_absoluteY="119dp" />
-
     <ListView
+        android:id="@+id/list_data"
+        android:layout_below="@+id/txt_Date"
         android:layout_width="match_parent"
-        android:layout_height="587dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="159dp" />
+        android:layout_height="wrap_content">
+    </ListView>
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/circular_progress"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:theme="@style/CircularProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

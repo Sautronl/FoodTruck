@@ -54,15 +54,15 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-
+*/
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, Commande.class);
+                Intent intent = new Intent(AdminAccueil.this, AdminEvent.class);
                 startActivity(intent);
             }
         });
-
+/*
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
