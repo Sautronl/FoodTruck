@@ -47,7 +47,7 @@ public class AdminAccueil extends AppCompatActivity {
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
+                Intent intent = new Intent(AdminAccueil.this, ContactAdmin.class);
                 startActivity(intent);
             }
         });
