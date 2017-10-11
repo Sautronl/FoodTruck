@@ -109,6 +109,7 @@
             android:id="@+id/gallery"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
+
             android:columnWidth="100dp"
             android:gravity="center"
             android:horizontalSpacing="5dp"

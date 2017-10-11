@@ -10,10 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toolbar;
-
-import java.util.logging.Handler;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
+
+    private long timeElapsed = 0L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,18 +28,24 @@ public class MainActivity extends AppCompatActivity {
         ImageView contact = (ImageView) findViewById(R.id.contact);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
-
-
-
-
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent adminScreen = new Intent(MainActivity.this, AdminActivity.class);
-                startActivity(adminScreen);
-            }
-        });
-
+       logo.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View view, MotionEvent motionEvent) {
+               switch (motionEvent.getAction()) {
+                   case MotionEvent.ACTION_DOWN:
+                       timeElapsed = motionEvent.getDownTime();
+                       break;
+                   case MotionEvent.ACTION_UP:
+                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
+                       if (timeElapsed >= 10000){
+                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
+                           startActivity(admin);
+                       }
+                       break;
+                    }
+               return true;
+           }
+       });
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Commande.class);
+                Intent intent = new Intent(MainActivity.this, EventActivity.class);
                 startActivity(intent);
             }
         });
