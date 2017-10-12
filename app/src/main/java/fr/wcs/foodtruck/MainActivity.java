@@ -8,8 +8,12 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toolbar;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.logging.Handler;
 
@@ -26,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
-
 
 
 

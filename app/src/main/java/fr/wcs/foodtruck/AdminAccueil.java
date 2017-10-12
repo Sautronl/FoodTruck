@@ -22,7 +22,7 @@ public class AdminAccueil extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, MenuDuJourActivity.class);
+                Intent intent = new Intent(AdminAccueil.this, AdminListeMenuDuJour.class);
                 startActivity(intent);
             }
         });
