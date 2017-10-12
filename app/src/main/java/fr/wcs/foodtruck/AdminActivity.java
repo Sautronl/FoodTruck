@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class AdminActivity extends BaseActivity implements
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
+    private Button mExit;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -41,6 +43,7 @@ public class AdminActivity extends BaseActivity implements
         mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField =(EditText) findViewById(R.id.field_email);
         mPasswordField =(EditText) findViewById(R.id.field_password);
+        mExit = (Button) findViewById(R.id.exit);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -51,6 +54,14 @@ public class AdminActivity extends BaseActivity implements
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+
+        mExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent exit = new Intent(AdminActivity.this, MainActivity.class);
+                startActivity(exit);
+            }
+        });
     }
 
     // [START on_start_check_user]
