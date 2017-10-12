@@ -28,7 +28,7 @@
                 app:srcCompat="@drawable/burger01" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgplus"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignEnd="@+id/imgDuPlat"

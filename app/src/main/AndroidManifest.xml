@@ -67,7 +67,8 @@
         <activity android:name=".AdminListeMenuDuJour" />
         <activity android:name=".AdminMenuDuJourMardi" />
         <activity android:name=".AdminMenuDuJourMercredi" />
-        <activity android:name=".AdminMenuDuJour.AdminMenuDuJourJeudi" />
+        <activity android:name=".AdminMenuDuJour"/>
+        <activity android:name=".AdminMenuDuJourJeudi" />
         <activity android:name=".AdminMenuDuJourVendredi"></activity>
         <activity
             android:name=".AdminAccueil"
@@ -79,7 +80,6 @@
         <activity
             android:name=".Emplacement"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".AdminMenuDuJour" />
         <activity
             android:name=".AdminEvent"
             android:parentActivityName=".AdminAccueil"
