@@ -107,11 +107,11 @@
 
     <Button
         android:id="@+id/deconnect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="26dp"
+        android:layout_width="304dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="0dp"
         android:background="@drawable/button_border_white"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="40dp"
@@ -121,9 +121,9 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.497" />
+        app:layout_constraintLeft_toLeftOf="@+id/cadre_admin"
+        app:layout_constraintRight_toRightOf="@+id/cadre_admin"
+        app:layout_constraintHorizontal_bias="0.636" />
 
 
 </android.support.constraint.ConstraintLayout>

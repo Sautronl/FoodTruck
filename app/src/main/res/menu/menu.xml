@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/backButton"
+        android:title="Add"
+        android:icon="@drawable/back"
+        app:showAsAction="always"/>
+
     <item android:id="@+id/menu_add"
         android:title="Add"
         android:icon="@drawable/ic_new"
