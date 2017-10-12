@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/foodtruck_bg"
     tools:context="fr.wcs.foodtruck.AdminEvent">
 
     <android.support.v7.widget.Toolbar
@@ -15,9 +16,27 @@
     app:titleTextColor="#ffffff"
     />
 
+    <TextView
+        android:id="@+id/createEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Créer un évènement"
+        android:textAllCaps="true"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true" />
+
     <android.support.design.widget.TextInputLayout
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/createEvent"
         android:id="@+id/txt_Name"
+        android:background="@color/blanc"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -34,6 +53,10 @@
     <android.support.design.widget.TextInputLayout
         android:layout_below="@id/txt_Name"
         android:id="@+id/txt_Details"
+        android:background="@color/blanc"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -50,6 +73,10 @@
     <android.support.design.widget.TextInputLayout
         android:layout_below="@id/txt_Details"
         android:id="@+id/txt_Date"
+        android:background="@color/blanc"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -67,6 +94,9 @@
         android:id="@+id/list_data"
         android:layout_below="@+id/txt_Date"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
     </ListView>
 

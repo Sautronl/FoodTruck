@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -52,7 +54,6 @@ public class AdminEvent extends AppCompatActivity {
         Toolbar toolbar =(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         //Control
         circular_progress = (ProgressBar)findViewById(R.id.circular_progress);
 
@@ -74,12 +75,14 @@ public class AdminEvent extends AppCompatActivity {
             }
         });
 
+        input_date.setFocusable(false);
+
         //Date Picker
         final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener() {
-
+        final DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
@@ -93,16 +96,26 @@ public class AdminEvent extends AppCompatActivity {
         input_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(AdminEvent.this, datePicker,
+                DatePickerDialog date =
+                new DatePickerDialog(AdminEvent.this, datePickerListener,
                         myCalendar.get(Calendar.YEAR),
                         myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                date.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);//Désactive les jours précédents
+                date.show();
+
             }
         });
 
         //Firebase
         initFirebase();
         addEventFirebaseListener();
+    }
+
+    private void initFirebase() {
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
     private void addEventFirebaseListener() {
@@ -133,18 +146,13 @@ public class AdminEvent extends AppCompatActivity {
         });
     }
 
-    private void initFirebase() {
-        FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    //Clic on item menu (toolbar)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add)
@@ -160,6 +168,12 @@ public class AdminEvent extends AppCompatActivity {
         else if(item.getItemId() == R.id.menu_remove)
         {
             deleteEvent(selectedEvent);
+        }
+
+        else if(item.getItemId() == R.id.backButton)
+        {
+            Intent intent = new Intent(AdminEvent.this, AdminAccueil.class);
+            startActivity(intent);
         }
         return true;
     }
