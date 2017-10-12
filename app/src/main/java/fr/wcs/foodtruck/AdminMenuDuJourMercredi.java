@@ -1,4 +1,4 @@
-package fr.wcs.foodtruck.AdminMenuDuJour;
+package fr.wcs.foodtruck;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,9 +8,6 @@ import android.widget.EditText;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import fr.wcs.foodtruck.AdminMenuDuJour.Data.MajPlatDuJour;
-import fr.wcs.foodtruck.R;
 
 public class AdminMenuDuJourMercredi extends AppCompatActivity {
     public static String DB_URL="https://foodtruck-ebd2c.firebaseio.com/";

@@ -1,4 +1,4 @@
-package fr.wcs.foodtruck.AdminMenuDuJour.Data;
+package fr.wcs.foodtruck;
 
 import android.widget.Button;
 

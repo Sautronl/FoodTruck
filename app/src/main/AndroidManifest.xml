@@ -63,12 +63,12 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity android:name=".AdminMenuDuJour.AdminMenuDuJourLundi" />
+        <activity android:name=".AdminMenuDuJourLundi" />
         <activity android:name=".AdminListeMenuDuJour" />
-        <activity android:name=".AdminMenuDuJour.AdminMenuDuJourMardi" />
-        <activity android:name=".AdminMenuDuJour.AdminMenuDuJourMercredi" />
+        <activity android:name=".AdminMenuDuJourMardi" />
+        <activity android:name=".AdminMenuDuJourMercredi" />
         <activity android:name=".AdminMenuDuJour.AdminMenuDuJourJeudi" />
-        <activity android:name=".AdminMenuDuJour.AdminMenuDuJourVendredi"></activity>
+        <activity android:name=".AdminMenuDuJourVendredi"></activity>
         <activity
             android:name=".AdminAccueil"
             android:parentActivityName=".MainActivity"

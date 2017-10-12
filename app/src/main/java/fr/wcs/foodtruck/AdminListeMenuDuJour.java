@@ -7,11 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourJeudi;
-import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourLundi;
-import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourMardi;
-import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourMercredi;
-import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourVendredi;
+//import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourJeudi;
 
 public class AdminListeMenuDuJour extends AppCompatActivity {
 
