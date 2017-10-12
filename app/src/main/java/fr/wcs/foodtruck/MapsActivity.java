@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck;
 
 import android.*;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -31,23 +32,9 @@ import java.util.Locale;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
 
-   /* public class AsyncMap extends AsyncTask<String, Void, Integer> {
-
-
-        @Override
-        protected Integer doInBackground(String... strings) {
-            return null;
-        }
-
-    }*/
-
-
-
-
     private static final int PERMISSION_REQUEST_LOCALISATION = 10;
     private GoogleMap mMap;
-    Geocoder  geocoder;
-    List<Address> addresses ;
+
 
     int num = 1;
     String rue = " place de la bourse ";
@@ -59,6 +46,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Double mNblg;
 
 
+    private class GeocoderAsyncTask extends AsyncTask<String, Void, List<Address>> {
+
+
+        protected List<Address> doInBackground(String... adresses) {
+            String adresse = adresses[0];
+
+            Geocoder geocoder = new Geocoder(MapsActivity.this, Locale.FRANCE);
+            try {
+               return geocoder.getFromLocationName(adresse ,1,41.954747,4.576272,51.193997,7.913997);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
+
+
+        protected void onPostExecute(List<Address> addresses) {
+            // This method is executed in the UIThread
+            // with access to the result of the long running task
+            mNblt = addresses.get(0).getLatitude();
+            mNblg = addresses.get(0).getLongitude();
+            LatLng  bourse = new LatLng(mNblt,mNblg);
+            mMap.addMarker(new MarkerOptions().position(bourse).title("Truck 2 FOOD | 12h00 - 14h00 | (Lundi)"));
+            float zoomLevel = 16.0f;
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bourse, zoomLevel));
+
+        }
+    }
 
 
 
@@ -66,38 +83,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
-
-
     }
-
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        try {
-            addresses = geocoder.getFromLocationName(la ,1,41.954747,4.576272,51.193997,7.913997);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        mNblt = addresses.get(0).getLatitude();
-        mNblg = addresses.get(0).getLongitude();
-
-
-        LatLng  bourse = new LatLng(mNblt, mNblg);
-        mMap.addMarker(new MarkerOptions().position(bourse).title("Truck 2 FOOD | 12h00 - 14h00 | (Lundi)"));
-        float zoomLevel = 16.0f;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bourse, zoomLevel));
-
-
-
-
-
-
+        GeocoderAsyncTask geocoderAsyncTask = new GeocoderAsyncTask();
+        geocoderAsyncTask.execute(la);
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
@@ -106,11 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     chekPermission();
-
-
-
                 }
-
             }
         }
     }
@@ -120,6 +110,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onStart();
         chekPermission();
     }
+
     void chekPermission() {
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
@@ -133,18 +124,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
 
-        geocoder = new Geocoder(this, Locale.FRANCE);
-
-
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
-
-
         mapFragment.getMapAsync(this);
-
-
-
     }
 }
 
