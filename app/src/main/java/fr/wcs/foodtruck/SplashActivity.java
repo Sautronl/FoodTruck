@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 public class SplashActivity extends Activity {
@@ -51,5 +52,12 @@ public class SplashActivity extends Activity {
         }, SPLASH_TIME_OUT);
 
     }
+
+   /* Map<String,String> map = dataSnapshot.getValue(Map.class);
+    String plat = Map.get(MajPlatDuJour.getnomPlatDuJour);
+    String desc = Map.get(MajPlatDuJour.getdescriptionDuPlat);
+
+    m*/
+
 
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -18,6 +19,7 @@ import com.google.firebase.storage.UploadTask;
 public class  AdminMenuDuJour extends AppCompatActivity {
 
     private ImageView mMenu;
+    private ImageView mImgMenu;
     private StorageReference mStorage;
     private static final int GALLERY_INTENT = 20;
 
@@ -28,6 +30,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
         mMenu =(ImageView) findViewById(R.id.imageView4);
         mStorage = FirebaseStorage.getInstance().getReference();
+        mImgMenu = (ImageView)findViewById(R.id.imgDuPlat);
 
 
         mMenu.setOnClickListener(new View.OnClickListener() {
@@ -54,10 +57,20 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Uri downloadUri = taskSnapshot.getDownloadUrl();
+                    Glide.with(AdminMenuDuJour.this).load(downloadUri).into(mImgMenu);
                     Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
                 }
             });
         }
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        ;
     }
 
 }

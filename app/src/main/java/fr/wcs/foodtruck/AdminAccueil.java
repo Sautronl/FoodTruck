@@ -28,7 +28,7 @@ public class AdminAccueil extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        final Intent disconnect = new Intent(AdminAccueil.this, AdminActivity.class);
+        final Intent disconnect = new Intent(AdminAccueil.this, MainActivity.class);
         mDeco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
