@@ -12,13 +12,16 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-
+import java.util.Map;
 
 
 public class AdminMenuDuJourLundi extends AppCompatActivity {
@@ -26,8 +29,8 @@ public class AdminMenuDuJourLundi extends AppCompatActivity {
     //public static String DB_URL="https://foodtruck-ebd2c.firebaseio.com/";
 
 
-    private EditText nomPlatDuJour;
-    private EditText descriptionDuPlat;
+    private EditText mNomPlatDuJour;
+    private EditText mDescriptionDuPlat;
     //private EditText prix;
     private Button maj;
     private ImageView mMenu;
@@ -43,13 +46,8 @@ public class AdminMenuDuJourLundi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu_du_jour_lundi);
 
- // initialisation firebase
-
-       // initializeFirebase();
-
-        nomPlatDuJour = (EditText)findViewById(R.id.nomDuPlat);
-        descriptionDuPlat =(EditText)findViewById(R.id.descriPlat);
-        //prix = (EditText)findViewById(R.id.prixHint);
+        mNomPlatDuJour = (EditText)findViewById(R.id.nomDuPlat);
+        mDescriptionDuPlat =(EditText)findViewById(R.id.descriPlat);
         maj =(Button)findViewById(R.id.maj);
 
         mFire = FirebaseDatabase.getInstance();
@@ -68,41 +66,49 @@ public class AdminMenuDuJourLundi extends AppCompatActivity {
                 startActivityForResult(intent, GALLERY_INTENT);
             }
         });
-        // mFire = new Firebase (DB_URL);
 
         maj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MajPlatDuJour majLundi = new MajPlatDuJour();
-                majLundi.setNomPlatDuJour(nomPlatDuJour.getText().toString());
-                majLundi.setDescriptionDuPlat(descriptionDuPlat.getText().toString());
-                //majLundi.setPrix(maj.getText().toString());
+                majLundi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
+                majLundi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
 
                 mDbRef.setValue(majLundi);
-
-                nomPlatDuJour.setText("");
-                descriptionDuPlat.setText("");
-
+                mNomPlatDuJour.setText("");
+                mDescriptionDuPlat.setText("");
             }
         });
+        addValue();
+    }
 
-        /*mDbRef.addValueEventListener(new ValueEventListener() {
+   protected void addValue(){
+        mDbRef.child("nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                MajPlatDuJour nomDuPlat = dataSnapshot.getValue(MajPlatDuJour.class);
                 String plat = dataSnapshot.getValue(String.class);
-                String desc = dataSnapshot.getValue(String.class);
-                descriptionDuPlat.setText(desc);
-                nomPlatDuJour.setText(plat);
+                mNomPlatDuJour.setText(plat);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        }); */
+        });
+       mDbRef.child("descriptionDuPlat").addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               String desc = dataSnapshot.getValue(String.class);
+               mDescriptionDuPlat.setText(desc);
+           }
 
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -126,5 +132,10 @@ public class AdminMenuDuJourLundi extends AppCompatActivity {
             });
         }
     }
+    /*@Override
+    protected void onResume(){
+        super.onResume();
 
+    }*/
 }
+

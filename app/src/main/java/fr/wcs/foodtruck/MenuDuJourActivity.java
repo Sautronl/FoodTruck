@@ -22,10 +22,11 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MenuDuJourActivity extends AppCompatActivity {
 
-    /*private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference mRootReference = firebaseDatabase.getReference();
-    private DatabaseReference mChildReference = mRootReference.child("option1");
-    private  TextView mNomDuPlat;*/
+    private FirebaseDatabase mFire;
+    private DatabaseReference mDbRef;
+    private TextView mNomBurger;
+    private TextView mDescriptionMenu;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,12 @@ public class MenuDuJourActivity extends AppCompatActivity {
         });
         //Fin de la toolbar
 
+        mFire = FirebaseDatabase.getInstance();
+        mDbRef = mFire.getReference("MajPlatDuJourLundi");
+
+        mNomBurger = (TextView) findViewById(R.id.burger);
+        mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
+
         TextView adress = (TextView)findViewById(R.id.adress);
         SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
         adressSS.setSpan(new UnderlineSpan(), 0, adressSS.length(), 0);
@@ -60,6 +67,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);
        /* mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);*/
 
+       addValue();
 
 
         final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
@@ -80,15 +88,12 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
     }
 
-    /*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mChildReference.addValueEventListener(new ValueEventListener() {
+    protected void addValue(){
+        mDbRef.child("nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String optionMenu = dataSnapshot.getValue(String.class);
-                mNomDuPlat.setText(optionMenu);
+                String plat = dataSnapshot.getValue(String.class);
+                mNomBurger.setText(plat);
             }
 
             @Override
@@ -96,5 +101,17 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+        mDbRef.child("descriptionDuPlat").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String desc = dataSnapshot.getValue(String.class);
+                mDescriptionMenu.setText(desc);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

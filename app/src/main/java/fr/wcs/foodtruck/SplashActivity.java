@@ -53,11 +53,8 @@ public class SplashActivity extends Activity {
 
     }
 
-   /* Map<String,String> map = dataSnapshot.getValue(Map.class);
-    String plat = Map.get(MajPlatDuJour.getnomPlatDuJour);
-    String desc = Map.get(MajPlatDuJour.getdescriptionDuPlat);
 
-    m*/
+
 
 
 }

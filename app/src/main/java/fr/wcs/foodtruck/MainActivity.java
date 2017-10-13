@@ -10,12 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
     private long timeElapsed = 0L;
+    private int mBackButtonCount = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,5 +99,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBackButtonCount = 0;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(mBackButtonCount > 0) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "On va se calmer", Toast.LENGTH_SHORT).show();
+        }
     }
 }
