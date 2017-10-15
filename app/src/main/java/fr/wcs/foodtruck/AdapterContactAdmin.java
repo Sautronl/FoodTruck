@@ -55,7 +55,7 @@ public class AdapterContactAdmin extends BaseAdapter {
 
 
         textViewnom.setText(currentItem.getNom().toString());
-        textViewObjet.setText(currentItem.getObjet().toString());
+        textViewObjet.setText(currentItem.getTel().toString());
 
 
         return convertView;

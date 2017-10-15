@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 
 public class ContactAdmin extends AppCompatActivity {
-
+/*
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +36,14 @@ public class ContactAdmin extends AppCompatActivity {
         results.add(new ContactAdminModel("Rick", "go pro"));
         results.add(new ContactAdminModel("Raoul", "veste"));
 
+
         AdapterContactAdmin mResultsAdapter = new AdapterContactAdmin(this, results);
 
 
         mListViewResults.setAdapter(mResultsAdapter);
 
     }
-
+*/
 
 }
 
