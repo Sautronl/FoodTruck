@@ -114,35 +114,6 @@ public class ContactAdmin extends AppCompatActivity {
 
             }
         });
-       /*mDatabaseReference.child("contact").addChildEventListener(new ChildEventListener() {
-           @Override
-           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               ContactAdminModel contactAd = dataSnapshot.getValue(ContactAdminModel.class);
-               mList_contact.add(contactAd);
-               mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
-               mListViewContactAdmin.setAdapter(mAdapterContact);
-           }
-
-           @Override
-           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-           }
-
-           @Override
-           public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-           }
-
-           @Override
-           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-           }
-
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });*/
     }
 
 }
