@@ -12,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-//import fr.wcs.foodtruck.AdminMenuDuJour.AdminMenuDuJourJeudi;
+
 
 public class AdminListeMenuDuJour extends AppCompatActivity {
 
