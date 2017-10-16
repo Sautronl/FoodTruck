@@ -1,49 +1,149 @@
 package fr.wcs.foodtruck;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ContactAdmin extends AppCompatActivity {
-/*
+
+    private ListView mListViewContactAdmin;
+    //private ProgressBar circular_progress;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    private AdapterContactAdmin mAdapterContact;
+    private ContactAdminModel mSelectedContact;
+
+    private int mCurrentPosition;
+
+    private List<ContactAdminModel> mList_contact = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_admin);
-        ListView mListViewResults = (ListView) findViewById(R.id.listViewContactAdmin);
-        ArrayList<ContactAdminModel> results = new ArrayList<>();
 
+        //Toolbar personnalisée avec bouton retour à la page précédente
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
 
+        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(ContactAdmin.this, AdminAccueil.class);
+                startActivity(back);
+            }
+        });
+        //Fin de la toolbar
 
+        //Control
+        //circular_progress = (ProgressBar)findViewById(R.id.circular_progress);
 
-        results.add(new ContactAdminModel("Bruce", "Je voudrais privatisier votre food truck car c'est montasar qui a coder cette liste est ce mec est vraivement genial"));
-        results.add(new ContactAdminModel("Clark", "Wax il y a un second objet long putain c'est incroyable oh my godness oh my dayuuuuuuuuuuum this is a bacon and it's wonderfool"));
-        results.add(new ContactAdminModel("Bary", "perceuse"));
-        results.add(new ContactAdminModel("Lex", "go pro"));
-        results.add(new ContactAdminModel("Ruben", "iphone"));
-        results.add(new ContactAdminModel("Aziz", "chicha"));
-        results.add(new ContactAdminModel("Bastien", "télécommande"));
-        results.add(new ContactAdminModel("Thomas", "chaussure"));
-        results.add(new ContactAdminModel("Henri", "hello world non moi je me suis perdu j'habite sur mars et je suis unb gros troll ahahha  "));
-        results.add(new ContactAdminModel("Anne", "lit"));
-        results.add(new ContactAdminModel("Christine", "écharpe"));
-        results.add(new ContactAdminModel("Milan", "oculus rift"));
-        results.add(new ContactAdminModel("Luc", "voiture"));
-        results.add(new ContactAdminModel("Marie", "horloge"));
-        results.add(new ContactAdminModel("Anabelle", "poupée"));
-        results.add(new ContactAdminModel("Rick", "go pro"));
-        results.add(new ContactAdminModel("Raoul", "veste"));
+        //Liste d'events
+        mListViewContactAdmin = (ListView)findViewById(R.id.listeCon);
+        mListViewContactAdmin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                ContactAdminModel contact = (ContactAdminModel) adapterView.getItemAtPosition(position);
+                mCurrentPosition = position;
+                for (int i = 0; i < mListViewContactAdmin.getChildCount(); i++) {
+                    if(position == i ){
+                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.BLACK);
+                    }else{
+                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+            }
+        });
 
-
-        AdapterContactAdmin mResultsAdapter = new AdapterContactAdmin(this, results);
-
-
-        mListViewResults.setAdapter(mResultsAdapter);
-
+        //Firebase
+        initFirebase();
+        addEventFirebaseListener();
     }
-*/
+
+    private void initFirebase() {
+        FirebaseApp.initializeApp(this);
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference();
+    }
+
+    private void addEventFirebaseListener() {
+
+        //Progressing
+        //circular_progress.setVisibility(View.VISIBLE);
+        //mListViewContactAdmin.setVisibility(View.INVISIBLE);
+
+        mDatabaseReference.child("contact").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (mList_contact.size() > 0)
+                    mList_contact.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    ContactAdminModel contactAd = postSnapshot.getValue(ContactAdminModel.class);
+                    mList_contact.add(contactAd);
+                }
+                mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
+                mListViewContactAdmin.setAdapter(mAdapterContact);
+                //circular_progress.setVisibility(View.INVISIBLE);
+                //mListViewContactAdmin.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+       /*mDatabaseReference.child("contact").addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+               ContactAdminModel contactAd = dataSnapshot.getValue(ContactAdminModel.class);
+               mList_contact.add(contactAd);
+               mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
+               mListViewContactAdmin.setAdapter(mAdapterContact);
+           }
+
+           @Override
+           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+           }
+
+           @Override
+           public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+           }
+
+           @Override
+           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });*/
+    }
 
 }
 

@@ -1,70 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="fr.wcs.foodtruck.ContactAdmin"
-    android:background="@drawable/foodtruck_bg">
+    android:background="@drawable/foodtruck_bg"
+    tools:context="fr.wcs.foodtruck.EventActivity"
+    tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:layout_width="407dp"
-        android:layout_height="75dp"
-        android:orientation="horizontal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="4dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        android:id="@+id/linearLayout2">
+    <TextView
+        android:id="@+id/contAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Contact"
+        android:textAllCaps="true"
+        android:textColor="@android:color/background_light"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
+    <ListView
+        android:id="@+id/listeCon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/blanc"
+        android:dividerHeight="1dp"
+        android:layout_below="@+id/contAdmin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
 
-        <TextView
-            android:id="@+id/tvNomContactAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:text="@string/nom_contact_admin"
-            android:textColor="@color/blanc"
-            android:layout_weight="0.30"
-            android:textSize="35sp"/>
-        <TextView
-            android:id="@+id/tvObjetContactAdmin"
-            android:layout_width="wrap_content"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:text="@string/objet_contact_admin"
-            android:textColor="@color/blanc"
-            android:textSize="35sp"/>
+    <ProgressBar
+        android:id="@+id/circular_progress"
+        android:visibility="invisible"
+        android:layout_centerInParent="true"
+        android:theme="@style/CircularProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="407dp"
-        android:layout_height="500dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-        app:layout_constraintRight_toRightOf="parent">
-
-        <ListView
-            android:id="@+id/listViewContactAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@android:color/holo_orange_dark"
-            android:dividerHeight="15px"
-            >
-        </ListView>
-
-    </LinearLayout>
-
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,27 +8,27 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
+import java.util.List;
 
 
 public class AdapterContactAdmin extends BaseAdapter {
-    private Context context;
-    private ArrayList<ContactAdminModel> items;
+     private Activity activity;
+     private List<ContactAdminModel> listCont;
+     private LayoutInflater inflater;
 
-    public AdapterContactAdmin(Context context, ArrayList<ContactAdminModel> items) {
-        this.context = context;
-        this.items = items;
+    public AdapterContactAdmin(Activity activity, List<ContactAdminModel> listCont) {
+        this.activity = activity;
+        this.listCont = listCont;
     }
 
     @Override
     public int getCount() {
-        return items.size();
+        return listCont.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return items.get(position);
+        return listCont.get(position);
     }
 
     @Override
@@ -38,27 +39,24 @@ public class AdapterContactAdmin extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView == null) {
-            convertView = LayoutInflater.from(context).
-                    inflate(R.layout.textelistcontactadmin, parent, false);
-        }
 
+        inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View itemView = inflater.inflate(R.layout.textelistcontactadmin,null);
 
-        ContactAdminModel currentItem = (ContactAdminModel) getItem(position);
-
-
-        TextView textViewnom = (TextView)
-                convertView.findViewById(R.id.lvNomContactAdmin);
-        TextView textViewObjet = (TextView)
-                convertView.findViewById(R.id.lvObjetContactAdmin);
+        TextView textViewNom = (TextView) itemView.findViewById(R.id.lvNomContactAdmin);
+        TextView textViewTel = (TextView) itemView.findViewById(R.id.lvTelContactAdmin);
+        TextView textViewSujet = (TextView) itemView.findViewById(R.id.lvSujetContactAdmin);
+        TextView textViewMessage = (TextView) itemView.findViewById(R.id.lvMessageContactAdmin);
 
 
 
-        textViewnom.setText(currentItem.getNom().toString());
-        textViewObjet.setText(currentItem.getTel().toString());
+        textViewNom.setText(listCont.get(position).getNom());
+        textViewTel.setText(listCont.get(position).getTel());
+        textViewSujet.setText(listCont.get(position).getSujet());
+        textViewMessage.setText(listCont.get(position).getMessage());
 
 
-        return convertView;
+        return itemView;
     }
 
 }

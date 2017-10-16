@@ -9,7 +9,9 @@ public class ContactAdminModel {
     private String sujet;
     private String message;
 
+    public ContactAdminModel(){
 
+    }
 
     public ContactAdminModel(String id,String nom, String tel,String sujet,String message){
         this.id = id;
