@@ -6,13 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class AdminListeMenuDuJour extends AppCompatActivity {
 
@@ -34,21 +30,9 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
             }
         });
         afficherListeTweets();
-
     }
 
-    /*private List<ListeJourModel> genererTweets(){
-        mLtJour = new ArrayList<>();
-        mLtJour.add(new ListeJourModel("Lundi"));
-        mLtJour.add(new ListeJourModel("Mardi"));
-        mLtJour.add(new ListeJourModel("Mercredi"));
-        mLtJour.add(new ListeJourModel("Jeudi"));
-        mLtJour.add(new ListeJourModel("Vendredi"));
-        return mLtJour;
-    }*/
-
     private List<ListeJourModel> afficherListeTweets(){
-        //mLtJour = genererTweets();
         mLtJour = new ArrayList<>();
         mLtJour.add(new ListeJourModel("Lundi"));
         mLtJour.add(new ListeJourModel("Mardi"));
@@ -60,7 +44,5 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
         mListeJour.setAdapter(adapter);
 
         return mLtJour;
-
     }
-
 }
