@@ -25,15 +25,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class AdminEvent extends AppCompatActivity {
+
+    //deb
+    private final String TAG = "AdminEvent";
+
+    // The Keys
+    private String NAME = "name";
+    private String DETAILS = "Content";
+    private String DATE = "SubText";
+    //fin
 
     private EditText input_name,input_details, input_date;
     private ListView list_data;
@@ -107,6 +116,7 @@ public class AdminEvent extends AppCompatActivity {
 
             }
         });
+
         //Firebase
         initFirebase();
         addEventFirebaseListener();
@@ -133,7 +143,6 @@ public class AdminEvent extends AppCompatActivity {
                     EventModel event = postSnapshot.getValue(EventModel.class);
                     list_events.add(event);
                 }
-                Collections.reverse(list_events);
                 ListEventAdapter adapter = new ListEventAdapter(AdminEvent.this,list_events);
                 list_data.setAdapter(adapter);
                 circular_progress.setVisibility(View.INVISIBLE);
@@ -158,6 +167,7 @@ public class AdminEvent extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add)
         {
+            createNotifications();
             createEvent();
         }
         else if(item.getItemId() == R.id.menu_save)
@@ -185,6 +195,31 @@ public class AdminEvent extends AppCompatActivity {
                 input_details.getText().toString(), input_date.getText().toString());
         mDatabaseReference.child("events").child(event.getEid()).setValue(event);
         clearEditText();
+    }
+
+    private void createNotifications(){
+        // Get the Database
+
+        // Get the Notification Reference
+        final DatabaseReference notificationRef = mFirebaseDatabase.getReference("notification");
+        // Keep the Database sync in case of loosing connexion
+        notificationRef.keepSynced(true);
+        // Get Edit Text
+        EditText editTextName = (EditText) findViewById(R.id.name);
+        EditText editTextDetails = (EditText) findViewById(R.id.details);
+        EditText editTextDate = (EditText) findViewById(R.id.date);
+
+        // Get Text
+        String name = editTextName.getText().toString();
+        String details = editTextDetails.getText().toString();
+        String date = editTextDate.getText().toString();
+        // Store in a map
+        HashMap<String, String> notification = new HashMap<String, String>();
+        notification.put(NAME, name);
+        notification.put(DETAILS, details);
+        notification.put(DATE, date);
+        // Send the map
+        notificationRef.setValue(notification);
     }
 
     //Update Event
