@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -71,7 +72,7 @@ public class AdminEvent extends AppCompatActivity {
                 selectedEvent = event;
                 input_name.setText(event.getName());
                 input_details.setText(event.getDetails());
-                input_date.setText(event.getDate());
+                input_date.setText(event.getDate().toString());
             }
         });
 
@@ -87,7 +88,7 @@ public class AdminEvent extends AppCompatActivity {
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
                 input_date.setText(sdf.format(myCalendar.getTime()));
             }
@@ -162,7 +163,7 @@ public class AdminEvent extends AppCompatActivity {
         else if(item.getItemId() == R.id.menu_save)
         {
             EventModel event = new EventModel(selectedEvent.getEid(),input_name.getText().toString(),
-                    input_details.getText().toString(), input_date.getText().toString());
+                    input_details.getText().toString(),input_date.getText().toString());
             updateEvent(event);
         }
         else if(item.getItemId() == R.id.menu_remove)
@@ -180,8 +181,9 @@ public class AdminEvent extends AppCompatActivity {
 
     //Create Event
     private void createEvent() {
+
         EventModel event = new EventModel(UUID.randomUUID().toString(),input_name.getText().toString(),
-                input_details.getText().toString(), input_date.getText().toString());
+                input_details.getText().toString(), input_date.getText().toString() );
         mDatabaseReference.child("events").child(event.getEid()).setValue(event);
         clearEditText();
     }
