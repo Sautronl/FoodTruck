@@ -18,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static android.R.attr.id;
+
 public class AdminActivity extends BaseActivity implements
         View.OnClickListener {
 
@@ -69,10 +71,19 @@ public class AdminActivity extends BaseActivity implements
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
     // [END on_start_check_user]
+
+    public void onStop(){
+        super.onStop();
+
+        mAuth.signOut();
+        updateUI(null);
+    }
+
 
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
@@ -127,6 +138,7 @@ public class AdminActivity extends BaseActivity implements
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             startActivity(intent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

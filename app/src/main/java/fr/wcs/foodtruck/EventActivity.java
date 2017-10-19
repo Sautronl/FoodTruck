@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventActivity extends AppCompatActivity {
@@ -86,7 +87,7 @@ public class EventActivity extends AppCompatActivity {
     private void initFirebase() {
         FirebaseApp.initializeApp(this);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference();
+        mDatabaseReference = mFirebaseDatabase.getReference("events");
     }
 
     private void addEventFirebaseListener() {
@@ -95,7 +96,7 @@ public class EventActivity extends AppCompatActivity {
         circular_progress.setVisibility(View.VISIBLE);
         list_data.setVisibility(View.INVISIBLE);
 
-        mDatabaseReference.child("events").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (list_events.size() > 0)
@@ -104,6 +105,7 @@ public class EventActivity extends AppCompatActivity {
                     EventModel event = postSnapshot.getValue(EventModel.class);
                     list_events.add(event);
                 }
+                Collections.reverse(list_events);
                 mAdapter = new ListEventAdapter(EventActivity.this, list_events);
                 list_data.setAdapter(mAdapter);
                 circular_progress.setVisibility(View.INVISIBLE);

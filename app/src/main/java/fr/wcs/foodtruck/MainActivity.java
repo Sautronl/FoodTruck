@@ -1,18 +1,28 @@
 package fr.wcs.foodtruck;
 
+import android.app.Presentation;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
-
+    private PackageManager pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView presentation = (ImageView) findViewById(R.id.presentation);
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
+        ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
         // Start Service
@@ -48,6 +59,13 @@ public class MainActivity extends AppCompatActivity {
                return true;
            }
        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newFacebookIntent(getPackageManager(),"https://www.facebook.com/sautron.laurent");
+            }
+        });
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +116,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public static Intent newFacebookIntent(PackageManager pm, String url) {
+        Uri uri = Uri.parse(url);
+        try {
+            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
+            if (applicationInfo.enabled) {
+                // http://stackoverflow.com/a/24547437/1048340
+                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
+        }
+        return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();

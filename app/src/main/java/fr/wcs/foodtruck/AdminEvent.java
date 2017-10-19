@@ -3,14 +3,18 @@ package fr.wcs.foodtruck;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -21,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -102,10 +107,10 @@ public class AdminEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatePickerDialog date =
-                        new DatePickerDialog(AdminEvent.this, datePickerListener,
-                                myCalendar.get(Calendar.YEAR),
-                                myCalendar.get(Calendar.MONTH),
-                                myCalendar.get(Calendar.DAY_OF_MONTH));
+                new DatePickerDialog(AdminEvent.this, datePickerListener,
+                        myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
                 date.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);//Désactive les jours précédents
                 date.show();
 
@@ -115,19 +120,11 @@ public class AdminEvent extends AppCompatActivity {
         //Firebase
         initFirebase();
         addEventFirebaseListener();
-
-        //deb
-
-
-
-
-
-
     }
 
     private void initFirebase() {
         FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseHelper.getDatabase();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
@@ -137,7 +134,7 @@ public class AdminEvent extends AppCompatActivity {
         circular_progress.setVisibility(View.VISIBLE);
         list_data.setVisibility(View.INVISIBLE);
 
-        mDatabaseReference.child("events").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("events").orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (list_events.size() > 0)

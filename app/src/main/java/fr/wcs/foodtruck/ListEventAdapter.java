@@ -11,9 +11,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class ListEventAdapter extends BaseAdapter {
-    Activity activity;
-    List<EventModel> lstEvents;
-    LayoutInflater inflater;
+    private Activity activity;
+    private List<EventModel> lstEvents;
+    private LayoutInflater inflater;
 
 
     public ListEventAdapter(Activity activity, List<EventModel> lstEvents) {

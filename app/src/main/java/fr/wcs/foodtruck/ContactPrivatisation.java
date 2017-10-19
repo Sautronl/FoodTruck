@@ -18,6 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 import static fr.wcs.foodtruck.R.id.imageBoutonPhone;
 
 /**
@@ -25,6 +30,15 @@ import static fr.wcs.foodtruck.R.id.imageBoutonPhone;
  */
 
 public class ContactPrivatisation extends AppCompatActivity {
+
+    private FirebaseDatabase mFirebase = FirebaseDatabase.getInstance();
+    private DatabaseReference mref = mFirebase.getReference();
+    private EditText mPrenomNom;
+    private EditText mTel;
+    private EditText mSujet;
+    private EditText mMessage;
+    private Button mBoutonValider;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +59,10 @@ public class ContactPrivatisation extends AppCompatActivity {
         });
         //Fin de la toolbar
 
-        EditText editSujet = (EditText) findViewById(R.id.sujet);
+         mPrenomNom = (EditText) findViewById(R.id.prenomNom);
+         mTel = (EditText) findViewById(R.id.tel);
+         mSujet = (EditText) findViewById(R.id.sujet);
+         mMessage = (EditText) findViewById(R.id.message);
         TextView numTel = (TextView) findViewById(R.id.numTel);
         ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
@@ -82,8 +99,8 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         // Message Toast si les champs obligatoires ne sont pas remplis
 
-        Button boutonValider = (Button)findViewById(R.id.boutonEnvoyer);
-        boutonValider.setOnClickListener(new View.OnClickListener() {
+        mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
+        mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
@@ -107,15 +124,53 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Context context = getApplicationContext();
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show(); }
-
             }
-
-
-
         });
 
-
-
+        createContact();
     }
 
+    private void createContact() {
+
+         mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
+         mBoutonValider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
+                EditText editSujet = (EditText)findViewById(R.id.sujet);
+                EditText editMessage = (EditText)findViewById(R.id.message);
+                if(editPrenomNom.getText().toString().isEmpty()
+                        || editSujet.getText().toString().isEmpty()
+                        || editMessage.getText().toString().isEmpty() )
+                {
+
+                    CharSequence text = getResources().getString(R.string.messToast);
+                    int duration = Toast.LENGTH_SHORT;
+                    Context context = getApplicationContext();
+                    Toast messToast = Toast.makeText(context, text, duration);
+                    messToast.show();
+                }
+                // Message Toast de confirmation d'envoie
+                else {
+                    CharSequence text = getResources().getString(R.string.messToastValider);
+                    int duration = Toast.LENGTH_SHORT;
+                    Context context = getApplicationContext();
+                    Toast messToast = Toast.makeText(context, text, duration);
+                    messToast.show();
+                    ContactAdminModel contact = new ContactAdminModel(UUID.randomUUID().toString(),mPrenomNom.getText().toString(),
+                            mTel.getText().toString(), mSujet.getText().toString(),mMessage.getText().toString());
+
+                    mref.child("contact").child(contact.getId()).setValue(contact);
+                    clearEditText();
+                }
+            }
+        });
+    }
+
+    private void clearEditText() {
+        mPrenomNom.setText("");
+        mTel.setText("");
+        mSujet.setText("");
+        mMessage.setText("");
+    }
 }
