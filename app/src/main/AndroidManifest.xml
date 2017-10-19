@@ -63,6 +63,9 @@
             android:value="@string/google_maps_key" />
 
 
+        <activity android:name=".AdminListeMenuDuJour" />
+        <activity android:name=".ContactAdmin"/>
+        <activity android:name=".AdminMenuDuJour"/>
         <activity
             android:name=".AdminAccueil"
             android:parentActivityName=".MainActivity"

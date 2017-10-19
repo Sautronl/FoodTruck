@@ -29,6 +29,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -107,7 +108,6 @@ public class AdminEvent extends AppCompatActivity {
 
             }
         });
-
         //Firebase
         initFirebase();
         addEventFirebaseListener();
@@ -125,7 +125,7 @@ public class AdminEvent extends AppCompatActivity {
         circular_progress.setVisibility(View.VISIBLE);
         list_data.setVisibility(View.INVISIBLE);
 
-        mDatabaseReference.child("events").addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.child("events").orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (list_events.size() > 0)
@@ -134,6 +134,7 @@ public class AdminEvent extends AppCompatActivity {
                     EventModel event = postSnapshot.getValue(EventModel.class);
                     list_events.add(event);
                 }
+                Collections.reverse(list_events);
                 ListEventAdapter adapter = new ListEventAdapter(AdminEvent.this,list_events);
                 list_data.setAdapter(adapter);
                 circular_progress.setVisibility(View.INVISIBLE);
