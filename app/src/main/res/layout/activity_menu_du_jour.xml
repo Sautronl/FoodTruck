@@ -85,7 +85,6 @@
             android:id="@+id/burger"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Burger Végétarien"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/blanc"
@@ -109,7 +108,6 @@
             android:id="@+id/descriPlat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/descriPlat"
             android:textAlignment="center"
             android:textColor="@color/textEnvoyer"
             android:textSize="18sp" />

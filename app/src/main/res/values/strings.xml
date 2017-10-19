@@ -64,6 +64,7 @@
     <string name="maj">Mettre à jour</string>
 
 
+
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
         <item>12h00</item>
@@ -81,6 +82,10 @@
     <string name="title_activity_maps">Map</string>
     <string name="admin_title">Administrateur</string>
     <string name="deconnexion">Déconnexion</string>
+    <string name="nomplatdujour">nomPlatduJour</string>
+    <string name="nom_du_plat_du_jour">NOM DU PLAT DU JOUR</string>
+    <string name="description_du_plat">DESCRIPTION DU PLAT</string>
+    <string name="prix">PRIX</string>
     <string name="objet_contact_admin">Objet</string>
     <string name="nom_contact_admin">Nom</string>
     <string name="title_activity_admin_event">AdminEvent</string>

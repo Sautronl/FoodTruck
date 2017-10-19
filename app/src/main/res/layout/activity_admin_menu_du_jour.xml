@@ -28,7 +28,7 @@
                 app:srcCompat="@drawable/burger01" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgplus"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignEnd="@+id/imgDuPlat"
@@ -46,7 +46,6 @@
             android:layout_gravity="left"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="10dp"
-            android:text="@string/nomduplat"
             android:textAlignment="center"
             android:textColor="@android:color/background_light"
             android:textSize="20sp" />
@@ -57,7 +56,6 @@
             android:layout_marginLeft="40dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/descriPlat"
             android:textAlignment="center"
             android:textColor="@color/textEnvoyer"
             android:textSize="18sp" />

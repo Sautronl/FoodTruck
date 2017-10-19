@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +18,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static android.R.attr.id;
+
 public class AdminActivity extends BaseActivity implements
         View.OnClickListener {
 
@@ -26,6 +29,7 @@ public class AdminActivity extends BaseActivity implements
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
+    private Button mExit;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -41,6 +45,7 @@ public class AdminActivity extends BaseActivity implements
         mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField =(EditText) findViewById(R.id.field_email);
         mPasswordField =(EditText) findViewById(R.id.field_password);
+        mExit = (Button) findViewById(R.id.exit);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -51,6 +56,14 @@ public class AdminActivity extends BaseActivity implements
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
+
+        mExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent exit = new Intent(AdminActivity.this, MainActivity.class);
+                startActivity(exit);
+            }
+        });
     }
 
     // [START on_start_check_user]
@@ -58,10 +71,19 @@ public class AdminActivity extends BaseActivity implements
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
     }
     // [END on_start_check_user]
+
+    public void onStop(){
+        super.onStop();
+
+        mAuth.signOut();
+        updateUI(null);
+    }
+
 
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
@@ -116,6 +138,7 @@ public class AdminActivity extends BaseActivity implements
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             startActivity(intent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

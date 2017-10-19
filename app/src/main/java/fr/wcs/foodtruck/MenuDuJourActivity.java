@@ -20,12 +20,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Calendar;
+
 public class MenuDuJourActivity extends AppCompatActivity {
 
-    /*private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference mRootReference = firebaseDatabase.getReference();
-    private DatabaseReference mChildReference = mRootReference.child("option1");
-    private  TextView mNomDuPlat;*/
+    private FirebaseDatabase mFire;
+    private DatabaseReference mDbRef;
+    private TextView mNomBurger;
+    private TextView mDescriptionMenu;
+    private Calendar myCalendar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,12 @@ public class MenuDuJourActivity extends AppCompatActivity {
         });
         //Fin de la toolbar
 
+        mFire = FirebaseDatabase.getInstance();
+        mDbRef = mFire.getReference();
+
+        mNomBurger = (TextView) findViewById(R.id.burger);
+        mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
+
         TextView adress = (TextView)findViewById(R.id.adress);
         SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
         adressSS.setSpan(new UnderlineSpan(), 0, adressSS.length(), 0);
@@ -60,6 +70,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);
        /* mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);*/
 
+       checkDay();
 
 
         final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
@@ -80,15 +91,40 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
     }
 
-    /*
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mChildReference.addValueEventListener(new ValueEventListener() {
+    protected void checkDay() {
+
+        myCalendar = Calendar.getInstance();
+        int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
+        if (dayD == 2) {
+            mDbRef = mDbRef.child("app/menu/menuLundi");
+            majNomMenu();
+            majDescMenu();
+        }if (dayD == 3) {
+            mDbRef = mDbRef.child("app/menu/menuMardi");
+            majNomMenu();
+            majDescMenu();
+        }if (dayD == 4) {
+            mDbRef = mDbRef.child("app/menu/menuMercredi");
+            majNomMenu();
+            majDescMenu();
+        }if (dayD == 5) {
+            mDbRef = mDbRef.child("app/menu/menuJeudi");
+            majNomMenu();
+            majDescMenu();
+        }if (dayD == 6) {
+            mDbRef = mDbRef.child("app/menu/menuVendredi");
+            majNomMenu();
+            majDescMenu();
+        }
+    }
+
+    protected void majNomMenu() {
+
+        mDbRef.child("nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String optionMenu = dataSnapshot.getValue(String.class);
-                mNomDuPlat.setText(optionMenu);
+                String plat = dataSnapshot.getValue(String.class);
+                mNomBurger.setText(plat);
             }
 
             @Override
@@ -96,5 +132,21 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
+
+    protected void majDescMenu(){
+
+        mDbRef.child("descriptionDuPlat").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String desc = dataSnapshot.getValue(String.class);
+                mDescriptionMenu.setText(desc);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
