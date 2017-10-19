@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -32,6 +33,8 @@ public class ContactAdmin extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private AdapterContactAdmin mAdapterContact;
     private ContactAdminModel mSelectedContact;
+    private Button delete;
+    private int mTotal;
 
     private int mCurrentPosition;
 
@@ -77,9 +80,21 @@ public class ContactAdmin extends AppCompatActivity {
             }
         });
 
+        /*delete = (Button) findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // mDatabaseReference.child("contact").child(mSelectedContact.getId()).removeValue();
+                mTotal = mList_contact.size() - 1;
+                mList_contact.remove(mTotal);
+                mListViewContactAdmin.setAdapter(null);
+            }
+        });*/
+
         //Firebase
         initFirebase();
-        addEventFirebaseListener();
+        childFirebaseListener();
+        //addEventFirebaseListener();
     }
 
     private void initFirebase() {
@@ -88,7 +103,57 @@ public class ContactAdmin extends AppCompatActivity {
         mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
-    private void addEventFirebaseListener() {
+    private void childFirebaseListener(){
+        mDatabaseReference.child("contact").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+               // if (mList_contact.size() > 0)
+                //    mList_contact.clear();
+                //for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    ContactAdminModel contactAd = dataSnapshot.getValue(ContactAdminModel.class);
+                    mList_contact.add(contactAd);
+                    mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
+                    mListViewContactAdmin.setAdapter(mAdapterContact);
+               // }
+                //mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
+                //mListViewContactAdmin.setAdapter(mAdapterContact);
+                //circular_progress.setVisibility(View.INVISIBLE);
+                //mListViewContactAdmin.setVisibility(View.VISIBLE);
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(final DataSnapshot dataSnapshot) {
+               Button delete = (Button) findViewById(R.id.delete);
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mDatabaseReference.child("contact").removeValue();
+                        mTotal = mList_contact.size() - 1;
+                        mList_contact.remove(mTotal);
+                        mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
+                        mListViewContactAdmin.setAdapter(null);
+                    }
+                });
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+    /*private void addEventFirebaseListener() {
 
         //Progressing
         //circular_progress.setVisibility(View.VISIBLE);
@@ -114,7 +179,12 @@ public class ContactAdmin extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
+    /*private void deleteContact(ContactAdminModel mTotal) {
+        mDatabaseReference.child("contact").child(mSelectedContact.getId()).removeValue();
+        mList_contact.remove(mTotal);
+        mListViewContactAdmin.setAdapter(null);
+    }*/
 
 }
 
