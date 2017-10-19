@@ -80,6 +80,14 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                     //mDescriptionDuPlat.setText("");
                 }
             });
+            mMenu.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent, GALLERY_INTENT);
+                }
+            });
             addValueLundi();
         }
         if (day == 1) {
@@ -94,7 +102,6 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                     Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
                     //mNomPlatDuJour.setText("");
                     //mDescriptionDuPlat.setText("");
-                    addValueMardi();
                 }
             });
             mMenu.setOnClickListener(new View.OnClickListener() {
@@ -105,6 +112,8 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                     startActivityForResult(intent, GALLERY_INTENT);
                 }
             });
+            addValueMardi();
+
         }
         if (day == 2) {
             mMaj.setOnClickListener(new View.OnClickListener() {
@@ -181,7 +190,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
     protected void addValueLundi() {
 
-        mDbRef.child("menuLundi/nomBurger").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuLundi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String plat = dataSnapshot.getValue(String.class);
@@ -193,7 +202,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
             }
         });
-        mDbRef.child("menuLundi/descriptionMenu").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuLundi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
@@ -209,7 +218,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
     protected void addValueMardi() {
 
-        mDbRef.child("menuMardi/nomB").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuMardi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String plat = dataSnapshot.getValue(String.class);
@@ -221,7 +230,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
             }
         });
-        mDbRef.child("menuMardi/descriptB").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuMardi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
@@ -236,7 +245,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     protected void addValueMercredi() {
-        mDbRef.child("menuMercredi/nBurger").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuMercredi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String plat = dataSnapshot.getValue(String.class);
@@ -248,7 +257,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
             }
         });
-        mDbRef.child("menuMercredi/dBurger").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuMercredi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
@@ -263,7 +272,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     protected void addValueJeudi() {
-        mDbRef.child("menuJeudi/nameBurger").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuJeudi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String plat = dataSnapshot.getValue(String.class);
@@ -275,7 +284,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
             }
         });
-        mDbRef.child("menuJeudi/desBurger").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuJeudi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
@@ -290,7 +299,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     protected void addValueVendredi() {
-        mDbRef.child("menuVendredi/burgerName").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuVendredi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String plat = dataSnapshot.getValue(String.class);
@@ -302,7 +311,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
             }
         });
-        mDbRef.child("menuVendredi/burgerDesc").addValueEventListener(new ValueEventListener() {
+        mDbRef.child("menuVendredi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
