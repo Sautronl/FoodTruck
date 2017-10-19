@@ -3,18 +3,14 @@ package fr.wcs.foodtruck;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -28,11 +24,20 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class AdminEvent extends AppCompatActivity {
+
+    //deb
+    private final String TAG = "AdminEvent";
+
+    // The Keys
+    private String NAME = "name";
+    private String DETAILS = "Content";
+    private String DATE = "SubText";
+    //fin
 
     private EditText input_name,input_details, input_date;
     private ListView list_data;
@@ -97,10 +102,10 @@ public class AdminEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatePickerDialog date =
-                new DatePickerDialog(AdminEvent.this, datePickerListener,
-                        myCalendar.get(Calendar.YEAR),
-                        myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                        new DatePickerDialog(AdminEvent.this, datePickerListener,
+                                myCalendar.get(Calendar.YEAR),
+                                myCalendar.get(Calendar.MONTH),
+                                myCalendar.get(Calendar.DAY_OF_MONTH));
                 date.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);//Désactive les jours précédents
                 date.show();
 
@@ -110,11 +115,19 @@ public class AdminEvent extends AppCompatActivity {
         //Firebase
         initFirebase();
         addEventFirebaseListener();
+
+        //deb
+
+
+
+
+
+
     }
 
     private void initFirebase() {
         FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = FirebaseHelper.getDatabase();
         mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
@@ -157,6 +170,7 @@ public class AdminEvent extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add)
         {
+            createNotifications();
             createEvent();
         }
         else if(item.getItemId() == R.id.menu_save)
@@ -184,6 +198,31 @@ public class AdminEvent extends AppCompatActivity {
                 input_details.getText().toString(), input_date.getText().toString());
         mDatabaseReference.child("events").child(event.getEid()).setValue(event);
         clearEditText();
+    }
+
+    private void createNotifications(){
+        // Get the Database
+
+        // Get the Notification Reference
+        final DatabaseReference notificationRef = mFirebaseDatabase.getReference("notification");
+        // Keep the Database sync in case of loosing connexion
+        notificationRef.keepSynced(true);
+        // Get Edit Text
+        EditText editTextName = (EditText) findViewById(R.id.name);
+        EditText editTextDetails = (EditText) findViewById(R.id.details);
+        EditText editTextDate = (EditText) findViewById(R.id.date);
+
+        // Get Text
+        String name = editTextName.getText().toString();
+        String details = editTextDetails.getText().toString();
+        String date = editTextDate.getText().toString();
+        // Store in a map
+        HashMap<String, String> notification = new HashMap<String, String>();
+        notification.put(NAME, name);
+        notification.put(DETAILS, details);
+        notification.put(DATE, date);
+        // Send the map
+        notificationRef.setValue(notification);
     }
 
     //Update Event

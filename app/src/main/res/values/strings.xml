@@ -64,7 +64,6 @@
     <string name="maj">Mettre à jour</string>
 
 
-
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
         <item>12h00</item>
@@ -89,5 +88,6 @@
     <string name="objet_contact_admin">Objet</string>
     <string name="nom_contact_admin">Nom</string>
     <string name="title_activity_admin_event">AdminEvent</string>
+    <string name="notifs">Notifs</string>
 
 </resources>

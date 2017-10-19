@@ -15,6 +15,7 @@ public class AdminAccueil extends AppCompatActivity {
     private Button mDeco;
     private FirebaseAuth mAuth;
     private int mBackButtonCount = 0;
+    private Button buttonSend;
 
 
     @Override
@@ -27,6 +28,7 @@ public class AdminAccueil extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         mDeco = (Button) findViewById(R.id.deconnect);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -80,6 +82,8 @@ public class AdminAccueil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
     @Override
     protected void onResume() {

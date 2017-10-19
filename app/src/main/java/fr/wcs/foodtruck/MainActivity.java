@@ -1,18 +1,12 @@
 package fr.wcs.foodtruck;
 
-import android.app.Presentation;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
+
+        // Start Service
+        Intent serviceIntent = new Intent(this,NotificationService.class);
+        startService(serviceIntent);
 
        logo.setOnTouchListener(new View.OnTouchListener() {
            @Override
