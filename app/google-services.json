@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "613352542975-0ognrgo1oio6dqemrlq7sdcubhlkimsb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.foodtruck",
+            "certificate_hash": "397ef71fcf424841ed235e83cac8158e0168e995"
+          }
+        },
+        {
+          "client_id": "613352542975-dp3fok95ck0dgtla7siftoj06u3iocnh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.foodtruck",
+            "certificate_hash": "8fa637f387ef38afc11519478298ec391a057332"
+          }
+        },
+        {
           "client_id": "613352542975-2nr941j9lghm914ob98oh2snecghsfm6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

@@ -21,6 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class GeocoderActivity extends AppCompatActivity {
 
+    int jour;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
@@ -35,6 +37,7 @@ public class GeocoderActivity extends AppCompatActivity {
     Button actionButton;
     Double lat;
     Double lon;
+    String adrs;
 
     boolean fetchAddress;
     int fetchType = ConstantsAdminGeocoder.USE_ADDRESS_LOCATION;
@@ -57,6 +60,9 @@ public class GeocoderActivity extends AppCompatActivity {
         actionButton = (Button) findViewById(R.id.actionButton) ;
 
         mResultReceiver = new AddressResultReceiver(null);
+
+
+
 
 
     }
@@ -141,13 +147,29 @@ public class GeocoderActivity extends AppCompatActivity {
                         infoTextLong.setVisibility(View.VISIBLE);
                         lat = address.getLatitude();
                         lon = address.getLongitude();
+                        adrs = addressEdit.getText().toString();
                         infoTextLat.setText("Latitude: " + address.getLatitude() + "\n" );
                         infoTextLong.setText("Longitude: " + address.getLongitude() + "\n");
                         infoText.setText("Adresse: " + resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
 
-                        GeocoderModel coord = new GeocoderModel(lat, lon);
-                        String id = coordonnerRef.push().getKey();
-                        coordonnerRef.child(id).setValue(coord);
+                        jour = getIntent().getIntExtra("jour", 0);
+
+                        if (jour == 0){
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("Lundi").setValue(coord);
+                        }else if (jour == 1){
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("Mardi").setValue(coord);
+                        }else if (jour == 2) {
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("Mercredi").setValue(coord);
+                        }else if (jour == 3) {
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("Jeudi").setValue(coord);
+                        }else if (jour == 4) {
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("Vendredi").setValue(coord);
+                        }
 
                     }
                 });
@@ -163,6 +185,7 @@ public class GeocoderActivity extends AppCompatActivity {
                         infoText.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
                         infoTextLong.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
                         infoTextLat.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
+
                     }
                 });
             }

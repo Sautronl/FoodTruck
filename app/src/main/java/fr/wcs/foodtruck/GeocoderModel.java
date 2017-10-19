@@ -7,14 +7,20 @@ package fr.wcs.foodtruck;
 public class GeocoderModel {
     public Double lat;
     public Double lon;
+    public String adrs;
 
     public GeocoderModel(){}
 
-    public GeocoderModel(Double lat, Double lon) {
+
+    public GeocoderModel(Double lat, Double lon, String adrs) {
         this.lat = lat;
         this.lon = lon;
+        this.adrs = adrs;
     }
 
+    public String getAdrs() {
+        return adrs;
+    }
 }
 
 

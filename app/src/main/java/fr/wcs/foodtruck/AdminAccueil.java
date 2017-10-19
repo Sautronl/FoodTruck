@@ -49,7 +49,7 @@ public class AdminAccueil extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, AdminListLieu.class);
+                Intent intent = new Intent(AdminAccueil.this, ListLocalisationAdmin.class);
                 startActivity(intent);
             }
         });
