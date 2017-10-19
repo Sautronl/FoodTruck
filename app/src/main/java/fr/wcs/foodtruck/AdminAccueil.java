@@ -46,15 +46,15 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-        /*lieu.setOnClickListener(new View.OnClickListener() {
+        lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, Commande.class);
+                Intent intent = new Intent(AdminAccueil.this, AdminListLieu.class);
                 startActivity(intent);
             }
         });
 
-*/
+
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,13 +62,13 @@ public class AdminAccueil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-/*
+
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
+                Intent intent = new Intent(AdminAccueil.this, ContactAdmin.class);
                 startActivity(intent);
             }
-        });*/
+        });
     }
 }

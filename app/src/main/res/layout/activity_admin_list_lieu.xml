@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/foodtruck_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lundi_admin_list_lieu"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="40dp"
+        android:layout_marginTop="89dp"
+        android:id="@+id/lundi_admin_list_lieu"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mardi_admin_list_lieu"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="40dp"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/lundi_admin_list_lieu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/mardi_admin_list_lieu" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/vendredi_admin_list_lieu"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="40dp"
+        android:id="@+id/vendredi_admin_list_lieu"
+        android:layout_below="@+id/jeudi_admin_list_lieu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/jeudi_admin_list_lieu"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="40dp"
+        android:id="@+id/jeudi_admin_list_lieu"
+        android:layout_below="@+id/mercredi_admin_list_lieu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mercredi_admin_list_lieu"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="40dp"
+        android:id="@+id/mercredi_admin_list_lieu"
+        android:layout_below="@+id/mardi_admin_list_lieu"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="49dp" />
+
+</RelativeLayout>
+
+    </ScrollView>

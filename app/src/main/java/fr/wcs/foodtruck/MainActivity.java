@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                        break;
                    case MotionEvent.ACTION_UP:
                        timeElapsed = motionEvent.getEventTime() - timeElapsed;
-                       if (timeElapsed >= 10000){
+                       if (timeElapsed >= 500){
                            Intent admin = new Intent(MainActivity.this, AdminActivity.class);
                            startActivity(admin);
                        }
