@@ -1,22 +1,15 @@
 package fr.wcs.foodtruck;
 
-import android.app.Presentation;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,13 +68,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        lieu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Commande.class);
-                startActivity(intent);
-            }
-        });
 
         presentation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Emplacement.class);
+                Intent intent = new Intent(MainActivity.this, ListEmplacement.class);
                 startActivity(intent);
             }
         });

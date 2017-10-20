@@ -64,7 +64,6 @@
     <string name="maj">Mettre à jour</string>
 
 
-
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
         <item>12h00</item>
@@ -104,7 +103,6 @@
     <string name="vendredi_admin_lieu">VENDREDI</string>
 
 
-
     <string name="pause">Pause Location Updates</string>
     <string name="resume">Resume Location Updates</string>
 
@@ -115,6 +113,9 @@
     <string name="use_location">Use Latitude/Longitude</string>
     <string name="get_address">Get Address</string>
     <string name="string_changer">Changer</string>
+    <string name="notifs">Notifs</string>
+    <string name="title_activity_tacos">Map</string>
+    <string name="title_activity_maps2">Map</string>
 
 
 </resources>
