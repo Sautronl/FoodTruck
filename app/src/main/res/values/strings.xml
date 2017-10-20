@@ -88,5 +88,32 @@
     <string name="objet_contact_admin">Objet</string>
     <string name="nom_contact_admin">Nom</string>
     <string name="title_activity_admin_event">AdminEvent</string>
+    <string name="latitude_admin_lieu">Latitude</string>
+    <string name="adresse_admin_lieu">Adresse</string>
+    <string name="longitude_admin_lieu">Longitude</string>
+    <string name="lundi_admin_list_lieu">LUNDI</string>
+    <string name="mardi_admin_list_lieu">MARDI</string>
+    <string name="mercredi_admin_list_lieu">MERCREDI</string>
+    <string name="jeudi_admin_list_lieu">JEUDI</string>
+    <string name="vendredi_admin_list_lieu">VENDREDI</string>
+    <string name="lundi_admin_lieu">LUNDI</string>
+    <string name="mardi_admin_lieu">MARDI</string>
+    <string name="mercredi_admin_lieu">MERCREDI</string>
+    <string name="jeudi_admin_lieu">JEUDI</string>
+    <string name="vendredi_admin_lieu">VENDREDI</string>
+
+
+
+    <string name="pause">Pause Location Updates</string>
+    <string name="resume">Resume Location Updates</string>
+
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="adresse">Adresse</string>
+    <string name="use_address">Use Address</string>
+    <string name="use_location">Use Latitude/Longitude</string>
+    <string name="get_address">Get Address</string>
+    <string name="string_changer">Changer</string>
+
 
 </resources>

@@ -1,21 +1,24 @@
 package fr.wcs.foodtruck;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by apprenti on 27/09/17.
@@ -27,17 +30,23 @@ public class Commande  extends AppCompatActivity {
     EditText txtNomCommande;
     EditText txtTelCommande;
 
+    private DatabaseReference mReservRef;
+    private FirebaseDatabase mFirebase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
+        mFirebase = FirebaseDatabase.getInstance();
+        mReservRef = mFirebase.getReference("Réservation");
+
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
-        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +88,7 @@ public class Commande  extends AppCompatActivity {
                     });
                 }
 
-                    //Si l'horaire est selectionner alors on effectuer les commandes suivante
+                //Si l'horaire est selectionner alors on effectuer les commandes suivante
 
                 else {
                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +101,7 @@ public class Commande  extends AppCompatActivity {
                             //Si les champs nom et telephone sont vide alors on affiche un toast et
                             // le texte s'affiche en rouge avec un logo.
 
-                            if (telCommande.equals("") && (nomCommande.equals("")) ) {
+                            if (telCommande.equals("") && (nomCommande.equals(""))) {
 
                                 Toast.makeText(getApplicationContext(), getResources().getString
                                         (R.string.toast_champ_vide), Toast.LENGTH_SHORT).show();
@@ -142,6 +151,13 @@ public class Commande  extends AppCompatActivity {
                                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
+
+                                            ReservationModels reservation = new ReservationModels();
+                                            reservation.setNomReserv(txtNomCommande.getText().toString());
+                                            reservation.setNumTelReserv(txtTelCommande.getText().toString());
+
+                                            mReservRef.push().setValue(reservation);
+
                                             Intent intent = new Intent(Commande.this, RemerciementCommande.class);
                                             intent.putExtra("heure", spinnerCommande.getItemAtPosition
                                                     (spinnerCommande.getSelectedItemPosition()).toString());
@@ -163,10 +179,42 @@ public class Commande  extends AppCompatActivity {
 
                 }
             }
+
             @Override
-            public void onNothingSelected (AdapterView<?> parent){
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        addValue();
+    }
+
+    protected void addValue(){
+        mReservRef.child("Nom").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String snapNom = dataSnapshot.getValue(String.class);
+                txtNomCommande.setText(snapNom);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        mReservRef.child("Num téléphone").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String snapTel = dataSnapshot.getValue(String.class);
+                txtTelCommande.setText(snapTel);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
+
 }

@@ -21,6 +21,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,6 +61,7 @@
         <activity
             android:name=".AdminActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ContactAdmin" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -65,15 +71,17 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+             <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen> You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+
         <activity android:name=".AdminListeMenuDuJour" />
-        <activity android:name=".ContactAdmin" />
-        <activity android:name=".AdminMenuDuJour" />
+        <activity android:name=".ContactAdmin"/>
+        <activity android:name=".AdminMenuDuJour"/>
         <activity
             android:name=".AdminAccueil"
             android:parentActivityName=".MainActivity"
@@ -89,6 +97,20 @@
             android:parentActivityName=".AdminAccueil"
             android:theme="@style/NoActionBar" />
         <activity android:name=".CloseDay"></activity>
+            android:theme="@style/NoActionBar" />
+
+        <activity
+            android:name=".GeocoderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <service
+            android:name=".GeocodeAddressIntentService"
+            android:exported="false"/>
+
+        <activity android:name=".ListLocalisationAdmin"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+
     </application>
 
 </manifest>
