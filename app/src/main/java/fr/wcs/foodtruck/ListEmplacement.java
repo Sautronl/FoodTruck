@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +26,13 @@ import java.util.List;
 
 public class ListEmplacement extends AppCompatActivity {
 
-    private  List<ListJourEmplacementModel> mResults = new ArrayList<>();
 
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
     private ListView mListViewResults;
+    String mAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +43,9 @@ public class ListEmplacement extends AppCompatActivity {
 
 
 
-        afficherLists();
 
+
+        addAdrs();
 
         mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -56,7 +60,7 @@ public class ListEmplacement extends AppCompatActivity {
 
     }
 
-    private List<ListJourEmplacementModel> genererList(){
+   /* private List<ListJourEmplacementModel> genererList(){
         List<ListJourEmplacementModel> results = new ArrayList<>();
         results.add(new ListJourEmplacementModel("Lundi", "1 place de la bourse 31000 Toulouse"));
         results.add(new ListJourEmplacementModel("Mardi", "1 place de la bourse 31000 Toulouse"));
@@ -64,14 +68,38 @@ public class ListEmplacement extends AppCompatActivity {
         results.add(new ListJourEmplacementModel("Jeudi", "1 place de la bourse 31000 Toulouse"));
         results.add(new ListJourEmplacementModel("Vendredi", "1 place de la bourse 31000 Toulouse"));
         return results;
-    }
+    }*/
 
-    private void afficherLists(){
+    /*private void afficherLists(){
         List<ListJourEmplacementModel> jours = genererList();
 
         AdapterListEmplacement adapter = new AdapterListEmplacement(ListEmplacement.this, jours);
         mListViewResults.setAdapter(adapter);
+    }*/
+
+    private void addAdrs(){
+        final List<ListJourEmplacementModel> results = new ArrayList<>();
+
+        coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot daySnapshot : dataSnapshot.getChildren()) {
+                    String adresse = (String) daySnapshot.child("adrs").getValue();
+                    results.add(new ListJourEmplacementModel(daySnapshot.getKey(), adresse));
+                }
+                AdapterListEmplacement adapter = new AdapterListEmplacement(ListEmplacement.this, results);
+                mListViewResults.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
+
 
 
  /*   private void addEmplacement() {
