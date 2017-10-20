@@ -33,6 +33,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
+        android:visibility="gone"
         android:text="delete" />
 
     <ListView
@@ -40,6 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/blanc"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:dividerHeight="1dp"
         android:layout_below="@+id/contAdmin"
         android:layout_alignParentLeft="true"

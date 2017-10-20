@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.wcs.foodtruck.MainActivity"
-    android:background="@drawable/foodtruck_bg"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    android:background="@drawable/foodtruck_bg">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
         <ImageView
             android:id="@+id/logo"
@@ -30,7 +30,6 @@
             android:id="@+id/menu"
             android:layout_width="340dp"
             android:layout_height="162dp"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="2dp"
             app:layout_constraintHorizontal_bias="0.392"
             app:layout_constraintLeft_toLeftOf="parent"

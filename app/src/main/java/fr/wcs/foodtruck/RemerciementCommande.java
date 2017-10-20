@@ -22,11 +22,11 @@ public class RemerciementCommande extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
-        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        Button backButton = (Button)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(RemerciementCommande.this, MenuDuJourActivity.class);
+                Intent back = new Intent(RemerciementCommande.this, MainActivity.class);
                 startActivity(back);
             }
         });
@@ -35,11 +35,8 @@ public class RemerciementCommande extends AppCompatActivity {
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
         final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);
 
-
-
-
         String nom = getIntent().getStringExtra("nom");
-       String heure = getIntent().getStringExtra("heure");
+        String heure = getIntent().getStringExtra("heure");
 
         RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(rem.getNom());
