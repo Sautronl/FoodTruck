@@ -32,7 +32,6 @@ public class ListEmplacement extends AppCompatActivity {
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
     private ListView mListViewResults;
-    String mAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,14 @@ public class ListEmplacement extends AppCompatActivity {
 
         mListViewResults = (ListView) findViewById(R.id.listEmplacement);
 
-
+        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(ListEmplacement.this, MapsActivity.class);
+                intent.putExtra("jourMarkeur", i);
+                startActivity(intent);
+            }
+        });
 
 
 

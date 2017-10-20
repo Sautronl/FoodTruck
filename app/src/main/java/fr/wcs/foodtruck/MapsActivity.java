@@ -39,11 +39,15 @@ import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-
+    int mJourMarkeur;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
     private GoogleMap mMap;
     private Double latitude = 43.6013671;
     private Double longitude = 1.4420031;
+    Double lat;
+    Double lon;
 
 
     @Override
@@ -60,6 +64,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+
+         mJourMarkeur = getIntent().getIntExtra("jourMarkeur", 0);
+
+        if (mJourMarkeur == 0){
+            MapsActivityModel coord = new MapsActivityModel(lat, lon);
+            coordonnerRef.child("Lundi").setValue(coord);
+        }else if (mJourMarkeur == 1){
+            MapsActivityModel coord = new MapsActivityModel(lat, lon);
+            coordonnerRef.child("Mardi").setValue(coord);
+        }else if (mJourMarkeur == 2) {
+            MapsActivityModel coord = new MapsActivityModel(lat, lon);
+            coordonnerRef.child("Mercredi").setValue(coord);
+        }else if (mJourMarkeur == 3) {
+            MapsActivityModel coord = new MapsActivityModel(lat, lon);
+            coordonnerRef.child("Jeudi").setValue(coord);
+        }else if (mJourMarkeur == 4) {
+            MapsActivityModel coord = new MapsActivityModel(lat, lon);
+            coordonnerRef.child("Vendredi").setValue(coord);
+        }
+
 
         // Add a marker in Sydney and move the camera
         LatLng bourse = new LatLng(latitude, longitude);
