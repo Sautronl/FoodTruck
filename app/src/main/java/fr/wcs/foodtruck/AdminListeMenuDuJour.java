@@ -39,7 +39,6 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
         mLtJour.add(new ListeJourModel("Mercredi"));
         mLtJour.add(new ListeJourModel("Jeudi"));
         mLtJour.add(new ListeJourModel("Vendredi"));
-        mLtJour.add(new ListeJourModel("Fermé"));
 
         AdapterListeJour adapter = new AdapterListeJour(AdminListeMenuDuJour.this, mLtJour);
         mListeJour.setAdapter(adapter);

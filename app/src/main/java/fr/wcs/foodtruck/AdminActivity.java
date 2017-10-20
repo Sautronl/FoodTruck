@@ -45,7 +45,7 @@ public class AdminActivity extends BaseActivity implements
         mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField =(EditText) findViewById(R.id.field_email);
         mPasswordField =(EditText) findViewById(R.id.field_password);
-        mExit = (Button) findViewById(R.id.exit);
+        //mExit = (Button) findViewById(R.id.exit);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -57,13 +57,13 @@ public class AdminActivity extends BaseActivity implements
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-        mExit.setOnClickListener(new View.OnClickListener() {
+        /*mExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent exit = new Intent(AdminActivity.this, MainActivity.class);
                 startActivity(exit);
             }
-        });
+        });*/
     }
 
     // [START on_start_check_user]

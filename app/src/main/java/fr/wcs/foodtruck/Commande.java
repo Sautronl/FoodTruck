@@ -159,9 +159,9 @@ public class Commande  extends AppCompatActivity {
                                             mReservRef.push().setValue(reservation);
 
                                             Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure", spinnerCommande.getItemAtPosition
+                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
                                                     (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", txtNomCommande.getText().toString());
+                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
                                             Commande.this.startActivity(intent);
                                             //Le finish permet de ne par revenir sur la page
