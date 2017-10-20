@@ -90,7 +90,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             });
             addValueLundi();
         }
-        if (day == 1) {
+        else if (day == 1) {
             mMaj.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -115,7 +115,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             addValueMardi();
 
         }
-        if (day == 2) {
+        else if (day == 2) {
             mMaj.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -139,7 +139,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             });
             addValueMercredi();
         }
-        if (day == 3) {
+        else if (day == 3) {
             mMaj.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -163,7 +163,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             });
             addValueJeudi();
         }
-        if (day == 4) {
+        else if (day == 4) {
             mMaj.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

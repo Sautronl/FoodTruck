@@ -64,7 +64,6 @@
     <string name="maj">Mettre à jour</string>
 
 
-
     <string-array name="model_array">
         <item>Sélectionnez un créneau horaire ...</item>
         <item>12h00</item>
