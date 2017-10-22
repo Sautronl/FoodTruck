@@ -123,7 +123,8 @@
 
         <uses-library android:name="com.google.android.maps" />
 
-        <activity android:name=".ChoixReserveContactAdmin"></activity>
+        <activity android:name=".ChoixReserveContactAdmin" />
+        <activity android:name=".ReservationAdminActivity"></activity>
     </application>
 
 </manifest>

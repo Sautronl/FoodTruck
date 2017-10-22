@@ -27,11 +27,12 @@ public class ChoixReserveContactAdmin extends AppCompatActivity {
             }
         });
 
-        /*choixR.setOnClickListener(new View.OnClickListener() {
+        choixR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent reserv = new Intent(ChoixReserveContactAdmin.this, ReservationAdmin.class);
+                Intent reserv = new Intent(ChoixReserveContactAdmin.this, ReservationAdminActivity.class);
+                startActivity(reserv);
             }
-        });*/
+        });
     }
 }

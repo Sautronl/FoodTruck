@@ -5,22 +5,17 @@ package fr.wcs.foodtruck;
  */
 
 public class ReservationModels {
-
-
-
     private String nomReserv;
     private String numTelReserv;
-
-
-    //public ReservationModels(String nomReserv, String numTelReserv) {
-     //   this.nomReserv = nomReserv;
-      //  this.numTelReserv = numTelReserv;
-   // }
 
     public ReservationModels() {
 
     }
 
+    public ReservationModels(String nomReserv, String numTelReserv) {
+        this.nomReserv = nomReserv;
+        this.numTelReserv = numTelReserv;
+    }
 
     public String getNomReserv() {
         return nomReserv;
