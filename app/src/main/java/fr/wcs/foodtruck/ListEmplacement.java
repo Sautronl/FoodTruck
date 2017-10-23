@@ -53,7 +53,7 @@ public class ListEmplacement extends AppCompatActivity {
 
         addAdrs();
 
-        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ListEmplacement.this, MapsActivity.class);
@@ -62,7 +62,7 @@ public class ListEmplacement extends AppCompatActivity {
 
 
             }
-        });
+        });*/
 
     }
 
