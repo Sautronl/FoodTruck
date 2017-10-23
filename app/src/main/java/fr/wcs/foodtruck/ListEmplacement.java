@@ -3,10 +3,12 @@ package fr.wcs.foodtruck;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,6 +39,20 @@ public class ListEmplacement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_emplacement);
+
+        //Toolbar personnalisée avec bouton retour à la page précédente
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(ListEmplacement.this, MainActivity.class);
+                startActivity(back);
+            }
+        });
+        //Fin de la toolbar
 
         mListViewResults = (ListView) findViewById(R.id.listEmplacement);
 

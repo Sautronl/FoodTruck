@@ -54,7 +54,7 @@ public class ContactAdmin extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(ContactAdmin.this, AdminAccueil.class);
+                Intent back = new Intent(ContactAdmin.this, ChoixReserveContactAdmin.class);
                 startActivity(back);
             }
         });

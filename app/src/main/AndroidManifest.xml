@@ -108,11 +108,9 @@
             android:exported="false" />
 
         <activity
-            android:name=".ListLocalisationAdmin"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".ListLocalisationAdmin"/>
         <activity
-            android:name=".ListEmplacement"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:name=".ListEmplacement"/>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
