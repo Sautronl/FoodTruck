@@ -4,46 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/foodtruck_bg"
     android:weightSum="4">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1.13">
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/title_bottom_margin"
-            android:text="Admin"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="Connexion Administrateur"
+            android:textAllCaps="true"
+            android:textColor="@color/blanc"
+            android:textSize="22sp"
+            android:textStyle="bold"
             android:theme="@style/ThemeOverlay.MyTitleText" />
 
         <TextView
             android:id="@+id/status"
             style="@style/ThemeOverlay.MyTextDetail"
-            android:text="signed_out" />
+            android:text="signed_out"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
-            tools:text="Firebase User ID: 123456789abc" />
-
-        <Button
-            android:id="@+id/exit"
-            android:layout_marginTop="140dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Retour Utilisateur" />
+            tools:text="Firebase User ID: 123456789abc"
+            android:visibility="gone"/>
 
     </LinearLayout>
 
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center_vertical">
 
@@ -53,22 +55,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
-            android:paddingRight="16dp">
+            android:paddingRight="16dp"
+            android:paddingBottom="5dp">
 
             <EditText
                 android:id="@+id/field_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:hint="email"
+                android:background="@color/blanc"
+                android:hint=" email"
                 android:inputType="textEmailAddress" />
 
             <EditText
                 android:id="@+id/field_password"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
-                android:hint="password"
+                android:background="@color/blanc"
+                android:hint=" password"
                 android:inputType="textPassword" />
         </LinearLayout>
 
@@ -86,7 +92,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sign in"
+                android:background="@drawable/button_border_white"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Connexion"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
@@ -94,8 +104,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/button_border_white"
                 android:text="create account"
-                android:theme="@style/ThemeOverlay.MyDarkButton" />
+                android:theme="@style/ThemeOverlay.MyDarkButton"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
@@ -114,6 +126,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
+                android:background="@drawable/button_border_white"
                 android:text="sign out"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
@@ -122,6 +135,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
+                android:background="@drawable/button_border_white"
                 android:text="verify email"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 

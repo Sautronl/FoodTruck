@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/a_propos"
             android:textAllCaps="true"
@@ -30,11 +31,10 @@
         <ImageView
             android:id="@+id/truck_img"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="232dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="40dp"
             app:srcCompat="@drawable/truck" />
 
         <Button
@@ -48,7 +48,7 @@
             android:fontFamily="sans-serif-condensed"
             android:text="@string/buttonPresentation1"
             android:textColor="@color/blanc"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -75,7 +75,7 @@
             android:fontFamily="sans-serif-condensed"
             android:text="@string/buttonPresentation2"
             android:textColor="@color/blanc"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:fontFamily="sans-serif-condensed"
             android:text="@string/buttonPresentation3"
             android:textColor="@color/blanc"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <GridView

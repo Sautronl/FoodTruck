@@ -29,7 +29,6 @@ public class AdminAccueil extends AppCompatActivity {
         ImageView contact = (ImageView) findViewById(R.id.contact);
         mDeco = (Button) findViewById(R.id.deconnect);
 
-
         mAuth = FirebaseAuth.getInstance();
 
         final Intent disconnect = new Intent(AdminAccueil.this, MainActivity.class);
@@ -53,11 +52,10 @@ public class AdminAccueil extends AppCompatActivity {
         lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, Commande.class);
+                Intent intent = new Intent(AdminAccueil.this, ListLocalisationAdmin.class);
                 startActivity(intent);
             }
         });
-
 
         event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,18 +65,18 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-        contact.setOnClickListener(new View.OnClickListener() {
+        /*contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactAdmin.class);
+                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactAdmin.class);
+                Intent intent = new Intent(AdminAccueil.this, ChoixReserveContactAdmin.class);
                 startActivity(intent);
             }
         });

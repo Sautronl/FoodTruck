@@ -99,22 +99,26 @@ public class MenuDuJourActivity extends AppCompatActivity {
             mDbRef = mDbRef.child("app/menu/menuLundi");
             majNomMenu();
             majDescMenu();
-        }if (dayD == 3) {
+        }else if (dayD == 3) {
             mDbRef = mDbRef.child("app/menu/menuMardi");
             majNomMenu();
             majDescMenu();
-        }if (dayD == 4) {
+        }else if (dayD == 4) {
             mDbRef = mDbRef.child("app/menu/menuMercredi");
             majNomMenu();
             majDescMenu();
-        }if (dayD == 5) {
+        }else if (dayD == 5) {
             mDbRef = mDbRef.child("app/menu/menuJeudi");
             majNomMenu();
             majDescMenu();
-        }if (dayD == 6) {
+        }else if (dayD == 6) {
             mDbRef = mDbRef.child("app/menu/menuVendredi");
             majNomMenu();
             majDescMenu();
+        }
+        else{
+            Intent intentClose = new Intent(MenuDuJourActivity.this, CloseDay.class);
+            startActivity(intentClose);
         }
     }
 

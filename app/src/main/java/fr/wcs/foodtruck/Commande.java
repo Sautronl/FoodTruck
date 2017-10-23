@@ -152,16 +152,16 @@ public class Commande  extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
 
-                                            ReservationModels reservation = new ReservationModels();
+                                            /*ReservationModels reservation = new ReservationModels();
                                             reservation.setNomReserv(txtNomCommande.getText().toString());
                                             reservation.setNumTelReserv(txtTelCommande.getText().toString());
 
-                                            mReservRef.push().setValue(reservation);
-
+                                            mReservRef.push().setValue(reservation);*/
+                                            createRes();
                                             Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure", spinnerCommande.getItemAtPosition
+                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
                                                     (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", txtNomCommande.getText().toString());
+                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
                                             Commande.this.startActivity(intent);
                                             //Le finish permet de ne par revenir sur la page
@@ -187,9 +187,19 @@ public class Commande  extends AppCompatActivity {
         });
 
 
-        addValue();
+        //addValue();
     }
 
+    protected void createRes(){
+        String nomRes = txtNomCommande.getText().toString();
+        String telRes = txtTelCommande.getText().toString();
+        ReservationModels res = new ReservationModels(nomRes, telRes);
+        //res.setNomReserv(nomRes);
+       // res.setNumTelReserv(telRes);
+        String idRes = mReservRef.push().getKey();
+        mReservRef.child(idRes).setValue(res);
+    }
+/*
     protected void addValue(){
         mReservRef.child("Nom").addValueEventListener(new ValueEventListener() {
             @Override
@@ -215,6 +225,6 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
 }

@@ -16,7 +16,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="Contact"
+        android:text="Réservation"
         android:textAllCaps="true"
         android:textColor="@android:color/background_light"
         android:textSize="25sp"
@@ -37,7 +37,7 @@
         android:text="delete" />
 
     <ListView
-        android:id="@+id/listeCon"
+        android:id="@+id/listeres"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@color/blanc"

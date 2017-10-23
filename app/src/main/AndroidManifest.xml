@@ -40,26 +40,36 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".ContactPrivatisation"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".EventActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".Commande"
-            android:parentActivityName=".MenuDuJourActivity"/>
-        <activity android:name=".Presentation"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".fullImageActivity"
-            android:theme="@style/AppTheme.CustomTheme"
-            android:parentActivityName=".Presentation"/>
-        <activity android:name=".MenuDuJourActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".RemerciementCommande"
-            android:parentActivityName=".Commande"/>
-        <activity android:name=".AdminActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ContactPrivatisation"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".EventActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Commande"
+            android:parentActivityName=".MenuDuJourActivity" />
+        <activity
+            android:name=".Presentation"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".fullImageActivity"
+            android:parentActivityName=".Presentation"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".MenuDuJourActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RemerciementCommande"
+            android:parentActivityName=".Commande" />
+        <activity
+            android:name=".AdminActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ContactAdmin" />
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -69,16 +79,15 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+             <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen> You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
+            android:name="com.google.android.geo.AIzaSyACRlVeCe07xwZ2KdRn61XbF4XgQ9vrjH8"
             android:value="@string/google_maps_key" />
 
-
         <activity android:name=".AdminListeMenuDuJour" />
-        <activity android:name=".ContactAdmin"/>
-        <activity android:name=".AdminMenuDuJour"/>
+        <activity android:name=".AdminMenuDuJour" />
         <activity
             android:name=".AdminAccueil"
             android:parentActivityName=".MainActivity"
@@ -92,7 +101,38 @@
         <activity
             android:name=".AdminEvent"
             android:parentActivityName=".AdminAccueil"
-            android:theme="@style/NoActionBar"/>
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".GeocoderActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <service
+            android:name=".GeocodeAddressIntentService"
+            android:exported="false" />
+
+        <activity
+            android:name=".ListLocalisationAdmin"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ListEmplacement"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity android:name=".ChoixReserveContactAdmin" />
+        <activity android:name=".ReservationAdminActivity"></activity>
     </application>
 
 </manifest>
