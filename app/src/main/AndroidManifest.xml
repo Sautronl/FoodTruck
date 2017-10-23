@@ -96,9 +96,6 @@
             android:name=".FormuleActivity"
             android:parentActivityName=".MenuDuJourActivity" />
         <activity
-            android:name=".Emplacement"
-            android:parentActivityName=".MainActivity" />
-        <activity
             android:name=".AdminEvent"
             android:parentActivityName=".AdminAccueil"
             android:theme="@style/NoActionBar" />

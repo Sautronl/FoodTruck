@@ -9,8 +9,16 @@ public class MapsActivityModel {
     public Double lon;
 
 
-    public MapsActivityModel(){}
+    public MapsActivityModel(String key, String s){}
 
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public Double getLon() {
+        return lon;
+    }
 
     public MapsActivityModel(Double lat, Double lon) {
         this.lat = lat;

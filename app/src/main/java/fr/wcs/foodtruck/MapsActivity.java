@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -30,12 +31,17 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -44,10 +50,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     final DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
     private GoogleMap mMap;
-    private Double latitude = 43.6013671;
-    private Double longitude = 1.4420031;
-    Double lat;
-    Double lon;
+    //private Double latitude = 43.6013671;
+    //private Double longitude = 1.4420031;
+     Double mLat;
+     Double mLon;
 
 
     @Override
@@ -69,29 +75,165 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
          mJourMarkeur = getIntent().getIntExtra("jourMarkeur", 0);
 
         if (mJourMarkeur == 0){
-            MapsActivityModel coord = new MapsActivityModel(lat, lon);
-            coordonnerRef.child("Lundi").setValue(coord);
+            coordonnerRef.child("Jeudi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                        Double latJeudi = (Double) dataSnapshot.getValue(Double.class);
+                        mLat = latJeudi;
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("Jeudi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        Double lonJeudi = (Double) dataSnapshot.getValue(Double.class);
+                        mLon = lonJeudi;
+                        addMark();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            });
+
         }else if (mJourMarkeur == 1){
-            MapsActivityModel coord = new MapsActivityModel(lat, lon);
-            coordonnerRef.child("Mardi").setValue(coord);
+            coordonnerRef.child("Lundi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latLundi = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latLundi;
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("Lundi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonLundi = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonLundi;
+                    addMark();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            });
         }else if (mJourMarkeur == 2) {
-            MapsActivityModel coord = new MapsActivityModel(lat, lon);
-            coordonnerRef.child("Mercredi").setValue(coord);
+            coordonnerRef.child("Mardi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latMardi = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latMardi;
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("Mardi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonMardi = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonMardi;
+                    addMark();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            });
         }else if (mJourMarkeur == 3) {
-            MapsActivityModel coord = new MapsActivityModel(lat, lon);
-            coordonnerRef.child("Jeudi").setValue(coord);
+            coordonnerRef.child("Mercredi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latMercredi = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latMercredi;
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("Mercredi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonMercredi = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonMercredi;
+                    addMark();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            });
         }else if (mJourMarkeur == 4) {
-            MapsActivityModel coord = new MapsActivityModel(lat, lon);
-            coordonnerRef.child("Vendredi").setValue(coord);
+            coordonnerRef.child("Vendredi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latVendredi = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latVendredi;
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("Vendredi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonVendredi = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonVendredi;
+                    addMark();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {}
+            });
         }
 
 
         // Add a marker in Sydney and move the camera
-        LatLng bourse = new LatLng(latitude, longitude);
+        /*LatLng bourse = new LatLng(lat, lon);
+        mMap.addMarker(new MarkerOptions().position(bourse).title("Truck 2 FOOD | 12h00 - 14h00 | (Lundi)").icon(BitmapDescriptorFactory.fromResource(R.drawable.markeur)));
+        float zoomLevel = 16.0f;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bourse, zoomLevel));*/
+
+
+    }
+   /* protected void addMap() {
+
+        coordonnerRef.child("lat").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //Double latJeudi = dataSnapshot.getValue(Double.class);
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        coordonnerRef.child("lon").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String adresse = (String) dataSnapshot.child("lon").getValue();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }*/
+
+    private void addMark(){
+        LatLng bourse = new LatLng(mLat, mLon);
         mMap.addMarker(new MarkerOptions().position(bourse).title("Truck 2 FOOD | 12h00 - 14h00 | (Lundi)").icon(BitmapDescriptorFactory.fromResource(R.drawable.markeur)));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bourse, zoomLevel));
-
 
     }
 }

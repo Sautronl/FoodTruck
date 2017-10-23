@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -25,12 +24,12 @@ public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementMode
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.text_list_emplacement,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_emplacement_item,parent, false);
         }
 
-        TweetViewHolder viewHolder = (TweetViewHolder) convertView.getTag();
+        EmplacementViewHolder viewHolder = (EmplacementViewHolder) convertView.getTag();
         if(viewHolder == null){
-            viewHolder = new TweetViewHolder();
+            viewHolder = new EmplacementViewHolder();
             viewHolder.jourEmplacement = convertView.findViewById(R.id.jourEmplacement);
             viewHolder.jourAdresse = convertView.findViewById(R.id.jourAdresse);
 
@@ -44,7 +43,7 @@ public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementMode
         return convertView;
     }
 
-    private class TweetViewHolder{
+    private class EmplacementViewHolder {
         public TextView jourEmplacement;
         public TextView jourAdresse;
 
