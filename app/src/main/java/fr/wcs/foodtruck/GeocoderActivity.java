@@ -178,7 +178,7 @@ public class GeocoderActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        progressBar.setVisibility(View.GONE);
+                        progressBar.setVisibility(View.GONE );
                         infoText.setVisibility(View.VISIBLE);
                         infoTextLat.setVisibility(View.VISIBLE);
                         infoTextLong.setVisibility(View.VISIBLE);

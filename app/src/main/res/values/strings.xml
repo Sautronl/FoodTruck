@@ -103,7 +103,6 @@
     <string name="vendredi_admin_lieu">VENDREDI</string>
 
 
-
     <string name="pause">Pause Location Updates</string>
     <string name="resume">Resume Location Updates</string>
 
@@ -114,6 +113,11 @@
     <string name="use_location">Use Latitude/Longitude</string>
     <string name="get_address">Get Address</string>
     <string name="string_changer">Changer</string>
+    <string name="notifs">Notifs</string>
+    <string name="title_activity_tacos">Map</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="choix_res">Réservation</string>
+    <string name="choix_contact">Contact</string>
 
 
 </resources>
