@@ -24,8 +24,8 @@ public class NotificationServiceContact extends Service {
     DatabaseReference notificationContactRef;
 
     private String TITLE = "Title";
-   // private String CONTENT = "Content";
-    private String SUBTEXT = "SubText";
+    private String CONTENT = "Content";
+    //private String SUBTEXT = "SubText";
 
 
     public NotificationServiceContact() {
@@ -49,11 +49,11 @@ public class NotificationServiceContact extends Service {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get the text
                 String title = dataSnapshot.child(TITLE).getValue(String.class);
-                //String content = dataSnapshot.child(CONTENT).getValue(String.class);
-                String subtext = dataSnapshot.child(SUBTEXT).getValue(String.class);
+                String content = dataSnapshot.child(CONTENT).getValue(String.class);
+                //String subtext = dataSnapshot.child(SUBTEXT).getValue(String.class);
 
                 // Send the Notification
-                sendNotification(title, subtext);
+                sendNotification(title, content);
             }
 
             @Override
@@ -71,7 +71,7 @@ public class NotificationServiceContact extends Service {
         return null;
     }
 
-    public void sendNotification(String title, String subText) {
+    public void sendNotification(String title, String content) {
 
         int NOTIFICATION_ID = 1;
 
@@ -129,8 +129,8 @@ public class NotificationServiceContact extends Service {
          *    anything vital!
          */
         builder.setContentTitle(title);
-       // builder.setContentText(content);
-        builder.setSubText(subText);
+        builder.setContentText(content);
+        //builder.setSubText(subText);
 
         // END_INCLUDE (build_notification)
 

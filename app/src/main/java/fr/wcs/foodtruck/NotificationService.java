@@ -4,7 +4,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
@@ -24,7 +26,7 @@ public class NotificationService extends Service {
     DatabaseReference notificationRef;
 
     private String NAME = "name";
-    private String DATAILS = "details";
+    private String DETAILS = "details";
     private String DATE = "date";
 
 
@@ -38,29 +40,40 @@ public class NotificationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        // Get the Database
-        database = FirebaseHelper.getDatabase();
-        // get the Notification Reference
-        notificationRef = database.getReference("notification");
 
-        // Set listener on the Reference
-        notificationRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // Get the text
-                String name = dataSnapshot.child(NAME).getValue(String.class);
-                String details = dataSnapshot.child(DATAILS).getValue(String.class);
-                String date = dataSnapshot.child(DATE).getValue(String.class);
+        // preference si admin, pas de reception en admin de notifs events.
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        boolean admin = preferences.getBoolean("admin", false);
+        if( !admin){
 
-                // Send the Notification
-                sendNotification(name, details, date);
-            }
+            // Get the Database
+            database = FirebaseHelper.getDatabase();
+            // get the Notification Reference
+            notificationRef = database.getReference("notification");
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            // Set listener on the Reference
+            notificationRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    // Get the text
+                    String name = dataSnapshot.child(NAME).getValue(String.class);
+                    String details = dataSnapshot.child(DETAILS).getValue(String.class);
+                    String date = dataSnapshot.child(DATE).getValue(String.class);
 
-            }
-        });
+                    // Send the Notification
+                    sendNotification(name, details, date);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
+
+
+
 
         return super.onStartCommand(intent, flags, startId);
     }

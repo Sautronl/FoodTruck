@@ -1,8 +1,10 @@
 package fr.wcs.foodtruck;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -87,6 +89,13 @@ public class AdminAccueil extends AppCompatActivity {
 
         Intent serviceIntent2 = new Intent(this,NotificationServiceContact.class);
         startService(serviceIntent2);
+
+        // // TODO: 23/10/17 ajout shardpreference
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean("admin", true);
+        editor.commit();
 
     }
     @Override
