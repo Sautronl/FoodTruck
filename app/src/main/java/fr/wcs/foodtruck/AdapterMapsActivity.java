@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,36 +14,38 @@ import java.util.List;
  * Code: il faut franchir les maquignons.
  */
 
-public class AdapterListLocalisation extends ArrayAdapter<ListLocalisationModel> {
+public class AdapterMapsActivity extends ArrayAdapter<MapsActivityModel> {
 
-    public AdapterListLocalisation(Context context, List<ListLocalisationModel> jour) {
-        super(context, 0, jour);
+    public AdapterMapsActivity(Context context, List<MapsActivityModel> coord) {
+        super(context, 0, coord);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.text_list_localisation,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_maps,parent, false);
         }
 
         MapsViewHolder viewHolder = (MapsViewHolder) convertView.getTag();
         if(viewHolder == null){
             viewHolder = new MapsViewHolder();
-            viewHolder.jour = convertView.findViewById(R.id.jours);;
+
             convertView.setTag(viewHolder);
         }
 
-        ListLocalisationModel jour = getItem(position);
-        viewHolder.jour.setText(jour.getJour());
+        MapsActivityModel coord = getItem(position);
+        viewHolder.lat.parseDouble(String.valueOf(coord.getLat()));
+        viewHolder.lon.parseDouble(String.valueOf(coord.getLon()));
 
         return convertView;
     }
 
     private class MapsViewHolder {
-        public TextView jour;
-        public TextView text;
+        public Double lat;
+        public Double lon;
 
 
     }
 }
+
