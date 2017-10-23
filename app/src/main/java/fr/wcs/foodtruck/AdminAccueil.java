@@ -31,7 +31,7 @@ public class AdminAccueil extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        final Intent disconnect = new Intent(AdminAccueil.this, AdminActivity.class);
+        final Intent disconnect = new Intent(AdminAccueil.this, MainActivity.class);
         mDeco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,12 +44,12 @@ public class AdminAccueil extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, AdminMenuDuJour.class);
+                Intent intent = new Intent(AdminAccueil.this, AdminListeMenuDuJour.class);
                 startActivity(intent);
             }
         });
 
-        /*lieu.setOnClickListener(new View.OnClickListener() {
+        lieu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminAccueil.this, Commande.class);
@@ -57,7 +57,7 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-*/
+
         event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +65,7 @@ public class AdminAccueil extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-/*
+
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
