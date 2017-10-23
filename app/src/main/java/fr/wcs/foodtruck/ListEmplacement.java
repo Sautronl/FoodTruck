@@ -53,17 +53,6 @@ public class ListEmplacement extends AppCompatActivity {
 
         addAdrs();
 
-        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ListEmplacement.this, MapsActivity.class);
-                intent.putExtra("jour", i);
-                startActivity(intent);
-
-
-            }
-        });
-
     }
 
    /* private List<ListJourEmplacementModel> genererList(){
