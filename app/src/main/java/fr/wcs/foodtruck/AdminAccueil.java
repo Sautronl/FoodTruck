@@ -83,6 +83,12 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
+        // Start Service
+        Intent serviceIntent = new Intent(this,NotificationServiceCommande.class);
+        startService(serviceIntent);
+
+        Intent serviceIntent2 = new Intent(this,NotificationServiceContact.class);
+        startService(serviceIntent2);
 
     }
     @Override
