@@ -5,22 +5,23 @@
     android:background="@drawable/foodtruck_bg">
 
     <TextView
-        android:id="@+id/emplacement"
-        android:layout_width="wrap_content"
+        android:id="@+id/EmplacementAdmin"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-condensed"
-        android:text="@string/emplacement"
+        android:text="Emplacements"
+        android:textAlignment="center"
         android:textAllCaps="true"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/blanc"
         android:textSize="25sp"
+        android:paddingBottom="30dp"
+        android:paddingTop="10dp"
         android:textStyle="bold" />
 
     <ListView
-        android:id="@+id/listEmplacement"
+        android:id="@+id/listLocalisation"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent">
+    </ListView>
 
 </LinearLayout>
