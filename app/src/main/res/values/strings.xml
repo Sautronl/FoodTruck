@@ -116,6 +116,8 @@
     <string name="notifs">Notifs</string>
     <string name="title_activity_tacos">Map</string>
     <string name="title_activity_maps2">Map</string>
+    <string name="choix_res">Réservation</string>
+    <string name="choix_contact">Contact</string>
 
 
 </resources>

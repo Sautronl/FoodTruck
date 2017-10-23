@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.wcs.foodtruck">
 
-
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,6 +23,14 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
         <service
             android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".NotificationServiceCommande"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".NotificationServiceContact"
             android:enabled="true"
             android:exported="true" />
 
@@ -122,8 +128,11 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-        <uses-library android:name="com.google.android.maps"/>
 
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity android:name=".ChoixReserveContactAdmin" />
+        <activity android:name=".ReservationAdminActivity"></activity>
     </application>
 
 </manifest>

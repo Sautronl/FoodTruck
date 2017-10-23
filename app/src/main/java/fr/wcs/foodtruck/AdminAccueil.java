@@ -65,22 +65,28 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-        contact.setOnClickListener(new View.OnClickListener() {
+        /*contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactAdmin.class);
+                Intent intent = new Intent(AdminAccueil.this, ChoixReserveContactAdmin.class);
                 startActivity(intent);
             }
         });
 
+        // Start Service
+        Intent serviceIntent = new Intent(this,NotificationServiceCommande.class);
+        startService(serviceIntent);
+
+        Intent serviceIntent2 = new Intent(this,NotificationServiceContact.class);
+        startService(serviceIntent2);
 
     }
     @Override
