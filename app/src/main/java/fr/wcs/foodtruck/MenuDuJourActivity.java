@@ -26,8 +26,10 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
     private FirebaseDatabase mFire;
     private DatabaseReference mDbRef;
+    private DatabaseReference mDbRefCoor;
     private TextView mNomBurger;
     private TextView mDescriptionMenu;
+    private TextView mAdress;
     private Calendar myCalendar;
 
 
@@ -52,14 +54,15 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         mFire = FirebaseDatabase.getInstance();
         mDbRef = mFire.getReference();
+        mDbRefCoor = mFire.getReference();
 
         mNomBurger = (TextView) findViewById(R.id.burger);
         mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
+        mAdress = (TextView)findViewById(R.id.adress);
 
-        TextView adress = (TextView)findViewById(R.id.adress);
-        SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
+        /*SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
         adressSS.setSpan(new UnderlineSpan(), 0, adressSS.length(), 0);
-        adress.setText(adressSS);
+        mAdress.setText(adressSS);*/
 
         TextView voirFormules = (TextView)findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
@@ -71,6 +74,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
        /* mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);*/
 
        checkDay();
+
 
 
         final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
@@ -99,22 +103,42 @@ public class MenuDuJourActivity extends AppCompatActivity {
             mDbRef = mDbRef.child("app/menu/menuLundi");
             majNomMenu();
             majDescMenu();
+            if (mDbRefCoor != mDbRef) {
+                mDbRefCoor = mDbRefCoor.child("Coordonner/Lundi");
+                majEmplacement();
+            }
         }else if (dayD == 3) {
             mDbRef = mDbRef.child("app/menu/menuMardi");
             majNomMenu();
             majDescMenu();
+            if (mDbRefCoor != mDbRef) {
+                mDbRefCoor = mDbRefCoor.child("Coordonner/Mardi");
+                majEmplacement();
+            }
         }else if (dayD == 4) {
             mDbRef = mDbRef.child("app/menu/menuMercredi");
             majNomMenu();
             majDescMenu();
+            if (mDbRefCoor != mDbRef) {
+                mDbRefCoor = mDbRefCoor.child("Coordonner/Mercredi");
+                majEmplacement();
+            }
         }else if (dayD == 5) {
             mDbRef = mDbRef.child("app/menu/menuJeudi");
             majNomMenu();
             majDescMenu();
+            if (mDbRefCoor != mDbRef) {
+                mDbRefCoor = mDbRefCoor.child("Coordonner/Jeudi");
+                majEmplacement();
+            }
         }else if (dayD == 6) {
             mDbRef = mDbRef.child("app/menu/menuVendredi");
             majNomMenu();
             majDescMenu();
+            if (mDbRefCoor != mDbRef) {
+                mDbRefCoor = mDbRefCoor.child("Coordonner/Vendredi");
+                majEmplacement();
+            }
         }
         else{
             Intent intentClose = new Intent(MenuDuJourActivity.this, CloseDay.class);
@@ -145,6 +169,22 @@ public class MenuDuJourActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String desc = dataSnapshot.getValue(String.class);
                 mDescriptionMenu.setText(desc);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    protected void majEmplacement(){
+        //mDbRef = mDbRef.child("Coordonner/Lundi/adrs");
+        mDbRefCoor.child("adrs").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String ad = dataSnapshot.getValue(String.class);
+                mAdress.setText(ad);
             }
 
             @Override

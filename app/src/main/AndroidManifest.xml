@@ -25,6 +25,14 @@
             android:name=".NotificationService"
             android:enabled="true"
             android:exported="true" />
+        <service
+            android:name=".NotificationServiceCommande"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".NotificationServiceContact"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>

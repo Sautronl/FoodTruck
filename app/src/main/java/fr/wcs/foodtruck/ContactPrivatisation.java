@@ -1,12 +1,9 @@
 package fr.wcs.foodtruck;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,9 +18,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.UUID;
-
-import static fr.wcs.foodtruck.R.id.imageBoutonPhone;
 
 /**
  * Created by sam on 26/09/17.
@@ -38,6 +34,10 @@ public class ContactPrivatisation extends AppCompatActivity {
     private EditText mSujet;
     private EditText mMessage;
     private Button mBoutonValider;
+
+    // The Keys
+    private String TITLE = "nom prenom";
+    private String SUBTEXT = "sujet";
 
 
     @Override
@@ -106,6 +106,8 @@ public class ContactPrivatisation extends AppCompatActivity {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
                 EditText editSujet = (EditText)findViewById(R.id.sujet);
                 EditText editMessage = (EditText)findViewById(R.id.message);
+                createNotifications();
+
                 if(editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
                         || editMessage.getText().toString().isEmpty() )
@@ -125,9 +127,12 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show(); }
             }
+
         });
 
         createContact();
+
+
     }
 
     private void createContact() {
@@ -166,6 +171,39 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
     }
+
+
+    private void createNotifications(){
+
+        // Get the Database
+        FirebaseDatabase database = FirebaseHelper.getDatabase();
+        // Get the Notification Reference
+        final DatabaseReference notificationContactRef = database.getReference("notificationContact");
+        // Keep the Database sync in case of loosing connexion
+        notificationContactRef.keepSynced(true);
+
+        // Send Notification on Send Click
+//        buttonSend.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        // Get Edit Text
+        EditText editTextNomPrenom = (EditText) findViewById(R.id.editTextNom);
+        EditText editTextSujet = (EditText) findViewById(R.id.editTextTel);
+        // Spinner editTextSubText = (Spinner) findViewById(R.id.spinnerCommande);
+
+        // Get Text
+        String nom = editTextNomPrenom.getText().toString();
+        String sujet = editTextSujet.getText().toString();
+        //String horaire = editTextSubText.getText().toString();
+        // Store in a map
+        HashMap<String, String> notification = new HashMap<String, String>();
+        notification.put(TITLE, nom);
+       // notification.put(CONTENT, tel);
+        notification.put(SUBTEXT, sujet);
+        // Send the map
+        notificationContactRef.setValue(notification);
+    }
+
 
     private void clearEditText() {
         mPrenomNom.setText("");
