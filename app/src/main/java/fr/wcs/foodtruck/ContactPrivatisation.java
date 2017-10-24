@@ -36,8 +36,13 @@ public class ContactPrivatisation extends AppCompatActivity {
     private Button mBoutonValider;
 
     // The Keys
-    private String TITLE = "nom prenom";
-    private String SUBTEXT = "sujet";
+    private String TITLE = "nom";
+    private String CONTENT = "sujet";
+   // private String SUBTEXT = "SubText";
+
+
+
+
 
 
     @Override
@@ -49,7 +54,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
-        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,10 +64,10 @@ public class ContactPrivatisation extends AppCompatActivity {
         });
         //Fin de la toolbar
 
-         mPrenomNom = (EditText) findViewById(R.id.prenomNom);
-         mTel = (EditText) findViewById(R.id.tel);
-         mSujet = (EditText) findViewById(R.id.sujet);
-         mMessage = (EditText) findViewById(R.id.message);
+        mPrenomNom = (EditText) findViewById(R.id.prenomNom);
+        mTel = (EditText) findViewById(R.id.tel);
+        mSujet = (EditText) findViewById(R.id.sujet);
+        mMessage = (EditText) findViewById(R.id.message);
         TextView numTel = (TextView) findViewById(R.id.numTel);
         ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
@@ -72,7 +77,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editSujet= (EditText) findViewById(R.id.sujet);
+                EditText editSujet = (EditText) findViewById(R.id.sujet);
 
                 if (checkbox.isChecked()) {
                     // est coché
@@ -99,19 +104,17 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         // Message Toast si les champs obligatoires ne sont pas remplis
 
-        mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
+        mBoutonValider = (Button) findViewById(R.id.boutonEnvoyer);
         mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
-                EditText editSujet = (EditText)findViewById(R.id.sujet);
-                EditText editMessage = (EditText)findViewById(R.id.message);
-                createNotifications();
+                EditText editSujet = (EditText) findViewById(R.id.sujet);
+                EditText editMessage = (EditText) findViewById(R.id.message);
 
-                if(editPrenomNom.getText().toString().isEmpty()
+                if (editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
-                        || editMessage.getText().toString().isEmpty() )
-                {
+                        || editMessage.getText().toString().isEmpty()) {
 
                     CharSequence text = getResources().getString(R.string.messToast);
                     int duration = Toast.LENGTH_SHORT;
@@ -125,13 +128,16 @@ public class ContactPrivatisation extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Context context = getApplicationContext();
                     Toast messToast = Toast.makeText(context, text, duration);
-                    messToast.show(); }
+                    messToast.show();
+                }
+
+                createNotifications();
+
             }
 
         });
 
         createContact();
-
 
     }
 
@@ -141,9 +147,12 @@ public class ContactPrivatisation extends AppCompatActivity {
          mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
                 EditText editSujet = (EditText)findViewById(R.id.sujet);
                 EditText editMessage = (EditText)findViewById(R.id.message);
+
+
                 if(editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
                         || editMessage.getText().toString().isEmpty() )
@@ -166,12 +175,14 @@ public class ContactPrivatisation extends AppCompatActivity {
                             mTel.getText().toString(), mSujet.getText().toString(),mMessage.getText().toString());
 
                     mref.child("contact").child(contact.getId()).setValue(contact);
+
                     clearEditText();
+
                 }
+
             }
         });
     }
-
 
     private void createNotifications(){
 
@@ -183,26 +194,30 @@ public class ContactPrivatisation extends AppCompatActivity {
         notificationContactRef.keepSynced(true);
 
         // Send Notification on Send Click
-//        buttonSend.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        // Get Edit Text
-        EditText editTextNomPrenom = (EditText) findViewById(R.id.editTextNom);
-        EditText editTextSujet = (EditText) findViewById(R.id.editTextTel);
-        // Spinner editTextSubText = (Spinner) findViewById(R.id.spinnerCommande);
+        Button buttonSend = (Button) findViewById(R.id.boutonEnvoyer);
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get Edit Text
+                EditText editTextTitle = (EditText) findViewById(R.id.prenomNom);
+                EditText editTextContent = (EditText) findViewById(R.id.sujet);
+                //EditText editTextSubText = (EditText) findViewById(R.id.editTextSubText);
 
-        // Get Text
-        String nom = editTextNomPrenom.getText().toString();
-        String sujet = editTextSujet.getText().toString();
-        //String horaire = editTextSubText.getText().toString();
-        // Store in a map
-        HashMap<String, String> notification = new HashMap<String, String>();
-        notification.put(TITLE, nom);
-       // notification.put(CONTENT, tel);
-        notification.put(SUBTEXT, sujet);
-        // Send the map
-        notificationContactRef.setValue(notification);
+                // Get Text
+                String nom = editTextTitle.getText().toString();
+                String sujet = editTextContent.getText().toString();
+                // String subtext = editTextSubText.getText().toString();
+                // Store in a map
+                HashMap<String, String> notificationContact = new HashMap<String, String>();
+                notificationContact.put(TITLE, nom);
+                notificationContact.put(CONTENT, sujet);
+                // notification.put(SUBTEXT, subtext);
+                // Send the map
+                notificationContactRef.setValue(notificationContact);
+            }
+        });
     }
+
 
 
     private void clearEditText() {
