@@ -47,11 +47,11 @@
                 android:id="@+id/imgplus"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:srcCompat="@android:drawable/ic_menu_add"
-                android:layout_marginTop="29dp"
-                android:layout_alignTop="@+id/imgDuPlat"
+                android:layout_alignEnd="@+id/imgDuPlat"
                 android:layout_alignRight="@+id/imgDuPlat"
-                android:layout_alignEnd="@+id/imgDuPlat" />
+                android:layout_alignTop="@+id/imgDuPlat"
+                android:layout_marginTop="29dp"
+                app:srcCompat="@android:drawable/ic_menu_add" />
 
 
         </RelativeLayout>
@@ -77,7 +77,7 @@
             android:textSize="18sp" />
 
         <Button
-            android:id="@+id/reserver"
+            android:id="@+id/reserverMenu"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_gravity="center"

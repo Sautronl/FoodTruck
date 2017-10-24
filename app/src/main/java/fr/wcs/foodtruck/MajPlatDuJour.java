@@ -1,48 +1,46 @@
 package fr.wcs.foodtruck;
 
-import android.widget.Button;
-
 /**
  * Created by sam on 12/10/17.
  */
 
 public class MajPlatDuJour {
 
+    private String nomPlat;
+    private String descPlat;
+    private String urlImg;
 
-
-    private String nomPlatDuJour;
-    private String descriptionDuPlat;
-    //private int prix;
-
-
-    public MajPlatDuJour() {
+    public MajPlatDuJour(){
 
     }
 
-
-
-    public String getNomPlatDuJour() {
-        return nomPlatDuJour;
+    public MajPlatDuJour(String nomPlat, String descPlat, String urlImg) {
+        this.nomPlat = nomPlat;
+        this.descPlat = descPlat;
+        this.urlImg = urlImg;
     }
 
-    public void setNomPlatDuJour(String nomPlatDuJour) {
-        this.nomPlatDuJour = nomPlatDuJour;
+    public String getNomPlat() {
+        return nomPlat;
     }
 
-    public String getDescriptionDuPlat() {
-        return descriptionDuPlat;
+    public void setNomPlat(String nomPlat) {
+        this.nomPlat = nomPlat;
     }
 
-    public void setDescriptionDuPlat(String descriptionDuPlat) {
-        this.descriptionDuPlat = descriptionDuPlat;
+    public String getDescPlat() {
+        return descPlat;
     }
 
-  /*  public int getPrix() {
-        return prix;
+    public void setDescPlat(String descPlat) {
+        this.descPlat = descPlat;
     }
 
-    public void setPrix(int prix) {
-        this.prix = prix;
-    }*/
+    public String getUrlImg() {
+        return urlImg;
+    }
 
+    public void setUrlImg(String urlImg) {
+        this.urlImg = urlImg;
+    }
 }

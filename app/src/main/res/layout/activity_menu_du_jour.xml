@@ -51,13 +51,12 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imgDuPlat"
+                android:id="@+id/imgDuPlatMenu"
                 android:layout_width="300dp"
                 android:layout_height="223dp"
                 android:layout_alignTop="@+id/button"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/burgerdujour" />
+                android:layout_gravity="center" />
 
             <Button
                 android:id="@+id/button"

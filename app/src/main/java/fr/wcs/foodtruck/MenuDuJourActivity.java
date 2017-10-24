@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +32,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
     private TextView mDescriptionMenu;
     private TextView mAdress;
     private Calendar myCalendar;
+    private ImageView mImgplatMenu;
 
 
     @Override
@@ -53,16 +55,13 @@ public class MenuDuJourActivity extends AppCompatActivity {
         //Fin de la toolbar
 
         mFire = FirebaseDatabase.getInstance();
-        mDbRef = mFire.getReference();
+        mDbRef = mFire.getReference("menu");
         mDbRefCoor = mFire.getReference();
 
         mNomBurger = (TextView) findViewById(R.id.burger);
         mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
         mAdress = (TextView)findViewById(R.id.adress);
-
-        /*SpannableString adressSS = new SpannableString("1 Place de la Bourse 31000 Toulouse");
-        adressSS.setSpan(new UnderlineSpan(), 0, adressSS.length(), 0);
-        mAdress.setText(adressSS);*/
+        mImgplatMenu = (ImageView) findViewById(R.id.imgDuPlatMenu);
 
         TextView voirFormules = (TextView)findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
@@ -71,11 +70,8 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         Button reserver = (Button) findViewById(R.id.reserver);
         TextView decouvrez = (TextView) findViewById(R.id.totheformules);
-       /* mNomDuPlat = (TextView) findViewById(R.id.nomDuPlat);*/
 
-       checkDay();
-
-
+        checkDay();
 
         final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
@@ -99,42 +95,33 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         myCalendar = Calendar.getInstance();
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
+
         if (dayD == 2) {
-            mDbRef = mDbRef.child("app/menu/menuLundi");
-            majNomMenu();
-            majDescMenu();
+            majMenu("menuLundi");
             if (mDbRefCoor != mDbRef) {
                 mDbRefCoor = mDbRefCoor.child("Coordonner/Lundi");
                 majEmplacement();
             }
         }else if (dayD == 3) {
-            mDbRef = mDbRef.child("app/menu/menuMardi");
-            majNomMenu();
-            majDescMenu();
+            majMenu("menuMardi");
             if (mDbRefCoor != mDbRef) {
                 mDbRefCoor = mDbRefCoor.child("Coordonner/Mardi");
                 majEmplacement();
             }
         }else if (dayD == 4) {
-            mDbRef = mDbRef.child("app/menu/menuMercredi");
-            majNomMenu();
-            majDescMenu();
+            majMenu("menuMercredi");
             if (mDbRefCoor != mDbRef) {
                 mDbRefCoor = mDbRefCoor.child("Coordonner/Mercredi");
                 majEmplacement();
             }
         }else if (dayD == 5) {
-            mDbRef = mDbRef.child("app/menu/menuJeudi");
-            majNomMenu();
-            majDescMenu();
+            majMenu("menuJeudi");
             if (mDbRefCoor != mDbRef) {
                 mDbRefCoor = mDbRefCoor.child("Coordonner/Jeudi");
                 majEmplacement();
             }
         }else if (dayD == 6) {
-            mDbRef = mDbRef.child("app/menu/menuVendredi");
-            majNomMenu();
-            majDescMenu();
+            majMenu("menuVendredi");
             if (mDbRefCoor != mDbRef) {
                 mDbRefCoor = mDbRefCoor.child("Coordonner/Vendredi");
                 majEmplacement();
@@ -146,45 +133,30 @@ public class MenuDuJourActivity extends AppCompatActivity {
         }
     }
 
-    protected void majNomMenu() {
-
-        mDbRef.child("nomPlatDuJour").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomBurger.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    protected void majDescMenu(){
-
-        mDbRef.child("descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionMenu.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     protected void majEmplacement(){
-        //mDbRef = mDbRef.child("Coordonner/Lundi/adrs");
         mDbRefCoor.child("adrs").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String ad = dataSnapshot.getValue(String.class);
                 mAdress.setText(ad);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void majMenu(String jour){
+        mDbRef.child(jour).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
+                    mNomBurger.setText(maj.getNomPlat());
+                    mDescriptionMenu.setText(maj.getDescPlat());
+                    Glide.with(MenuDuJourActivity.this).load(maj.getUrlImg()).into(mImgplatMenu);
             }
 
             @Override
