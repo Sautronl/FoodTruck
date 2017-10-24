@@ -1,21 +1,30 @@
 package fr.wcs.foodtruck;
 
+import android.*;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
     private PackageManager pm;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,32 +40,32 @@ public class MainActivity extends AppCompatActivity {
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
         // Start Service
-        Intent serviceIntent = new Intent(this,NotificationService.class);
+        Intent serviceIntent = new Intent(this, NotificationService.class);
         startService(serviceIntent);
 
-       logo.setOnTouchListener(new View.OnTouchListener() {
-           @Override
-           public boolean onTouch(View view, MotionEvent motionEvent) {
-               switch (motionEvent.getAction()) {
-                   case MotionEvent.ACTION_DOWN:
-                       timeElapsed = motionEvent.getDownTime();
-                       break;
-                   case MotionEvent.ACTION_UP:
-                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
-                       if (timeElapsed >= 1000){
-                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
-                           startActivity(admin);
-                       }
-                       break;
-                    }
-               return true;
-           }
-       });
+        logo.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        timeElapsed = motionEvent.getDownTime();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        timeElapsed = motionEvent.getEventTime() - timeElapsed;
+                        if (timeElapsed >= 1000) {
+                            Intent admin = new Intent(MainActivity.this, AdminActivity.class);
+                            startActivity(admin);
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
 
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newFacebookIntent(getPackageManager(),"https://www.facebook.com/sautron.laurent");
+                newFacebookIntent(getPackageManager(), "https://www.facebook.com/sautron.laurent");
             }
         });
 
@@ -100,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     public static Intent newFacebookIntent(PackageManager pm, String url) {
@@ -124,13 +132,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(mBackButtonCount > 0) {
+        if (mBackButtonCount > 0) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }
-        else {
+        } else {
             Toast.makeText(this, "On va se calmer", Toast.LENGTH_SHORT).show();
         }
     }
