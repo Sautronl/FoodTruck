@@ -1,5 +1,7 @@
 package fr.wcs.foodtruck;
 
+import android.widget.Spinner;
+
 /**
  * Created by sam on 19/10/17.
  */
@@ -7,14 +9,16 @@ package fr.wcs.foodtruck;
 public class ReservationModels {
     private String nomReserv;
     private String numTelReserv;
+    private String horaire;
 
     public ReservationModels() {
 
     }
 
-    public ReservationModels(String nomReserv, String numTelReserv) {
+    public ReservationModels(String nomReserv, String numTelReserv, String horaire) {
         this.nomReserv = nomReserv;
         this.numTelReserv = numTelReserv;
+        this.horaire = horaire;
     }
 
     public String getNomReserv() {
@@ -26,13 +30,20 @@ public class ReservationModels {
     }
 
 
-
     public String getNumTelReserv() {
         return numTelReserv;
     }
 
     public void setNumTelReserv(String numTelReserv) {
         this.numTelReserv = numTelReserv;
+    }
+
+    public String getHoraire() {
+        return horaire;
+    }
+
+    public void setHoraire(String horaire) {
+        this.horaire = horaire;
     }
 
 }

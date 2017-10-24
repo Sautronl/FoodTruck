@@ -4,6 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     android:layout_height="match_parent"
     tools:context="fr.wcs.foodtruck.RemerciementCommande"
     android:background="@drawable/foodtruck_bg">
@@ -11,18 +13,19 @@
 
     <TextView
         android:id="@+id/tvRemerciementNom"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:textColor="@color/blanc"
-        android:textSize="25sp"
-        tools:text="Nom"
         android:layout_alignTop="@+id/cadre_merci"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp" />
+        android:layout_marginTop="21dp"
+        android:textAlignment="center"
+        android:textColor="@color/blanc"
+        android:textSize="25sp"
+        tools:text="Nom" />
 
     <TextView
         android:id="@+id/remerciementCommandeValider"
-        android:layout_width="314dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/commande_prise_en_compte"
         android:textAlignment="center"
@@ -52,8 +55,6 @@
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:srcCompat="@drawable/cadre_formule"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="50dp"/>
 
     <Button
@@ -63,8 +64,6 @@
         android:layout_below="@+id/remerciementHeure"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/button_border_white"
         android:fontFamily="sans-serif-condensed"

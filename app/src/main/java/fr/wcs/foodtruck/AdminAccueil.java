@@ -83,20 +83,6 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-        // Start Service
-        Intent serviceIntent = new Intent(this,NotificationServiceCommande.class);
-        startService(serviceIntent);
-
-        Intent serviceIntent2 = new Intent(this,NotificationServiceContact.class);
-        startService(serviceIntent2);
-
-        // // TODO: 23/10/17 ajout shardpreference
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("admin", true);
-        editor.commit();
-
     }
     @Override
     protected void onResume() {

@@ -48,9 +48,11 @@ public class AdapterReservAdmin extends BaseAdapter{
 
         TextView nitem = (TextView)item.findViewById(R.id.nItem);
         TextView titem = (TextView)item.findViewById(R.id.tItem);
+        TextView heureItem = (TextView)item.findViewById(R.id.heureItem);
 
         nitem.setText(reserve.get(i).getNomReserv());
         titem.setText(reserve.get(i).getNumTelReserv());
+        heureItem.setText(reserve.get(i).getHoraire());
 
         return item;
     }

@@ -35,16 +35,6 @@ public class ContactPrivatisation extends AppCompatActivity {
     private EditText mMessage;
     private Button mBoutonValider;
 
-    // The Keys
-    private String TITLE = "nom";
-    private String CONTENT = "sujet";
-   // private String SUBTEXT = "SubText";
-
-
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +60,6 @@ public class ContactPrivatisation extends AppCompatActivity {
         mMessage = (EditText) findViewById(R.id.message);
         TextView numTel = (TextView) findViewById(R.id.numTel);
         ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
-
 
         // checkbox
         final CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
@@ -122,7 +111,7 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show();
                 }
-                // Message Toast de confirmation d'envoie
+                // Message Toast de confirmation d'envoi
                 else {
                     CharSequence text = getResources().getString(R.string.messToastValider);
                     int duration = Toast.LENGTH_SHORT;
@@ -130,21 +119,16 @@ public class ContactPrivatisation extends AppCompatActivity {
                     Toast messToast = Toast.makeText(context, text, duration);
                     messToast.show();
                 }
-
-                createNotifications();
-
             }
-
         });
 
         createContact();
-
     }
 
     private void createContact() {
 
-         mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
-         mBoutonValider.setOnClickListener(new View.OnClickListener() {
+        mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
+        mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -183,42 +167,6 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
     }
-
-    private void createNotifications(){
-
-        // Get the Database
-        FirebaseDatabase database = FirebaseHelper.getDatabase();
-        // Get the Notification Reference
-        final DatabaseReference notificationContactRef = database.getReference("notificationContact");
-        // Keep the Database sync in case of loosing connexion
-        notificationContactRef.keepSynced(true);
-
-        // Send Notification on Send Click
-        Button buttonSend = (Button) findViewById(R.id.boutonEnvoyer);
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get Edit Text
-                EditText editTextTitle = (EditText) findViewById(R.id.prenomNom);
-                EditText editTextContent = (EditText) findViewById(R.id.sujet);
-                //EditText editTextSubText = (EditText) findViewById(R.id.editTextSubText);
-
-                // Get Text
-                String nom = editTextTitle.getText().toString();
-                String sujet = editTextContent.getText().toString();
-                // String subtext = editTextSubText.getText().toString();
-                // Store in a map
-                HashMap<String, String> notificationContact = new HashMap<String, String>();
-                notificationContact.put(TITLE, nom);
-                notificationContact.put(CONTENT, sujet);
-                // notification.put(SUBTEXT, subtext);
-                // Send the map
-                notificationContactRef.setValue(notificationContact);
-            }
-        });
-    }
-
-
 
     private void clearEditText() {
         mPrenomNom.setText("");
