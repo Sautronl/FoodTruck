@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
 public class AdapterContactAdmin extends BaseAdapter {
      private Activity activity;
      private List<ContactAdminModel> listCont;
@@ -39,7 +38,6 @@ public class AdapterContactAdmin extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-
         inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.activity_admin_contact_item,null);
 
@@ -48,15 +46,11 @@ public class AdapterContactAdmin extends BaseAdapter {
         TextView textViewSujet = (TextView) itemView.findViewById(R.id.lvSujetContactAdmin);
         TextView textViewMessage = (TextView) itemView.findViewById(R.id.lvMessageContactAdmin);
 
-
-
         textViewNom.setText(listCont.get(position).getNom());
         textViewTel.setText(listCont.get(position).getTel());
         textViewSujet.setText(listCont.get(position).getSujet());
         textViewMessage.setText(listCont.get(position).getMessage());
 
-
         return itemView;
     }
-
 }

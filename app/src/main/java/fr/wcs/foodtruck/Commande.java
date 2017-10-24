@@ -152,16 +152,16 @@ public class Commande  extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
 
-                                            createRes();
-                                            Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                                                    (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
+                                        createRes();
+                                        Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                                        intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
+                                                (spinnerCommande.getSelectedItemPosition()).toString());
+                                        intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
-                                            Commande.this.startActivity(intent);
-                                            //Le finish permet de ne par revenir sur la page
-                                            // Commande dès que l'on a deja commmander.
-                                            finish();
+                                        Commande.this.startActivity(intent);
+                                        //Le finish permet de ne par revenir sur la page
+                                        // Commande dès que l'on a deja commmander.
+                                        finish();
                                         }
                                     });
 

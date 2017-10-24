@@ -48,42 +48,10 @@ public class ListEmplacement extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
         addAdrs();
-
-        /*mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(ListEmplacement.this, MapsActivity.class);
-                intent.putExtra("jour", i);
-                startActivity(intent);
-
-
-            }
-        });*/
-
     }
 
-   /* private List<ListJourEmplacementModel> genererList(){
-        List<ListJourEmplacementModel> results = new ArrayList<>();
-        results.add(new ListJourEmplacementModel("Lundi", "1 place de la bourse 31000 Toulouse"));
-        results.add(new ListJourEmplacementModel("Mardi", "1 place de la bourse 31000 Toulouse"));
-        results.add(new ListJourEmplacementModel("Mercredi", "1 place de la bourse 31000 Toulouse"));
-        results.add(new ListJourEmplacementModel("Jeudi", "1 place de la bourse 31000 Toulouse"));
-        results.add(new ListJourEmplacementModel("Vendredi", "1 place de la bourse 31000 Toulouse"));
-        return results;
-    }*/
-
-    /*private void afficherLists(){
-        List<ListJourEmplacementModel> jours = genererList();
-
-        AdapterListEmplacement adapter = new AdapterListEmplacement(ListEmplacement.this, jours);
-        mListViewResults.setAdapter(adapter);
-    }*/
-
-    private void addAdrs(){
+   private void addAdrs(){
         final List<ListJourEmplacementModel> results = new ArrayList<>();
 
         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
@@ -103,41 +71,5 @@ public class ListEmplacement extends AppCompatActivity {
 
             }
         });
-
     }
-
-
-
- /*   private void addEmplacement() {
-        coordonnerRef.child("Lundi").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ListJourEmplacementModel adresse = dataSnapshot.getValue(ListJourEmplacementModel.class);
-                mResults.add(adresse);
-                AdapterListEmplacement adapEmplacement = new AdapterListEmplacement(ListEmplacement.this, mResults);
-                mListViewResults.setAdapter(adapEmplacement);
-                //genererList();
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
 }

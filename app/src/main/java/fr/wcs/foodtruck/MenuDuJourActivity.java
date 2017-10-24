@@ -56,7 +56,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         mFire = FirebaseDatabase.getInstance();
         mDbRef = mFire.getReference("menu");
-        mDbRefCoor = mFire.getReference();
+        mDbRefCoor = mFire.getReference("Coordonner");
 
         mNomBurger = (TextView) findViewById(R.id.burger);
         mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
@@ -99,32 +99,27 @@ public class MenuDuJourActivity extends AppCompatActivity {
         if (dayD == 2) {
             majMenu("menuLundi");
             if (mDbRefCoor != mDbRef) {
-                mDbRefCoor = mDbRefCoor.child("Coordonner/Lundi");
-                majEmplacement();
+                majEmplacement("1 Lundi/adrs");
             }
         }else if (dayD == 3) {
             majMenu("menuMardi");
             if (mDbRefCoor != mDbRef) {
-                mDbRefCoor = mDbRefCoor.child("Coordonner/Mardi");
-                majEmplacement();
+                majEmplacement("2 Mardi/adrs");
             }
         }else if (dayD == 4) {
             majMenu("menuMercredi");
             if (mDbRefCoor != mDbRef) {
-                mDbRefCoor = mDbRefCoor.child("Coordonner/Mercredi");
-                majEmplacement();
+                majEmplacement("3 Mercredi/adrs");
             }
         }else if (dayD == 5) {
             majMenu("menuJeudi");
             if (mDbRefCoor != mDbRef) {
-                mDbRefCoor = mDbRefCoor.child("Coordonner/Jeudi");
-                majEmplacement();
+                majEmplacement("4 Jeudi/adrs");
             }
         }else if (dayD == 6) {
             majMenu("menuVendredi");
             if (mDbRefCoor != mDbRef) {
-                mDbRefCoor = mDbRefCoor.child("Coordonner/Vendredi");
-                majEmplacement();
+                majEmplacement("5 Vendredi/adrs");
             }
         }
         else{
@@ -133,8 +128,8 @@ public class MenuDuJourActivity extends AppCompatActivity {
         }
     }
 
-    protected void majEmplacement(){
-        mDbRefCoor.child("adrs").addValueEventListener(new ValueEventListener() {
+    protected void majEmplacement(String emp){
+        mDbRefCoor.child(emp).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String ad = dataSnapshot.getValue(String.class);

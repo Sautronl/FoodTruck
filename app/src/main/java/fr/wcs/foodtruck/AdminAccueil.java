@@ -67,14 +67,6 @@ public class AdminAccueil extends AppCompatActivity {
             }
         });
 
-        /*contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
-                startActivity(intent);
-            }
-        });*/
-
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,5 +94,4 @@ public class AdminAccueil extends AppCompatActivity {
             Toast.makeText(this, "On va se calmer", Toast.LENGTH_SHORT).show();
         }
     }
-
 }

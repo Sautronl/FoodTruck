@@ -42,7 +42,5 @@ public class AdapterListLocalisation extends ArrayAdapter<ListLocalisationModel>
     private class MapsViewHolder {
         public TextView jour;
         public TextView text;
-
-
     }
 }

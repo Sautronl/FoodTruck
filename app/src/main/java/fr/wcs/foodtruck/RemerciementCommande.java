@@ -41,9 +41,5 @@ public class RemerciementCommande extends AppCompatActivity {
         RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(rem.getNom());
         tvHeure.setText(rem.getHeure());
-
-
     }
-
-
 }
