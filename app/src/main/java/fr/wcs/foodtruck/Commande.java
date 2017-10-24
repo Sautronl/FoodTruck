@@ -195,7 +195,7 @@ public class Commande  extends AppCompatActivity {
         String telRes = txtTelCommande.getText().toString();
         ReservationModels res = new ReservationModels(nomRes, telRes);
         //res.setNomReserv(nomRes);
-       // res.setNumTelReserv(telRes);
+        // res.setNumTelReserv(telRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }

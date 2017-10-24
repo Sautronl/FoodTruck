@@ -4,6 +4,7 @@ package fr.wcs.foodtruck;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,20 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu_du_jour);
+
+        //Toolbar personnalisée avec bouton retour à la page précédente
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent back = new Intent(AdminMenuDuJour.this, AdminAccueil.class);
+                startActivity(back);
+            }
+        });
+        //Fin de la toolbar
 
         int day;
         mNomPlatDuJour = (EditText) findViewById(R.id.nomDuPlat);

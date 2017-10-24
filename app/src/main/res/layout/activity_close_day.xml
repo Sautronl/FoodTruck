@@ -4,17 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/foodtruck_bg"
+    android:background="@drawable/foodtruck_bg_splash"
     tools:context="fr.wcs.foodtruck.CloseDay">
 
     <TextView
         android:id="@+id/closed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Closed"
+        android:text="Désolé, nous sommes fermés !"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/blanc"
-        android:textSize="50sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="129dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
