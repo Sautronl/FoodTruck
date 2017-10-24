@@ -67,64 +67,36 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 
         if (day == 0) {
             mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                }
-            });
+            majClick();
         } else if (day == 1) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMardi");
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                }
-            });
+            majClick();
         }
 
         else if (day == 2) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMercredi");
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                }
-            });
+            majClick();
         }
         else if (day == 3) {
             mDbRefMenu = mDbRefMenu.child("menu/menuJeudi");
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                }
-            });
+            majClick();
         }
         else if (day == 4) {
             mDbRefMenu = mDbRefMenu.child("menu/menuVendredi");
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent();
-                    intent.setType("image/*");
-                    intent.setAction(intent.ACTION_GET_CONTENT);
-                    startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                }
-            });
+            majClick();
         }
+    }
+
+    protected void majClick(){
+        mMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
+            }
+        });
     }
 
      @Override
