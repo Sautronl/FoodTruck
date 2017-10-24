@@ -152,11 +152,6 @@ public class Commande  extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
 
-                                            /*ReservationModels reservation = new ReservationModels();
-                                            reservation.setNomReserv(txtNomCommande.getText().toString());
-                                            reservation.setNumTelReserv(txtTelCommande.getText().toString());
-
-                                            mReservRef.push().setValue(reservation);*/
                                             createRes();
                                             Intent intent = new Intent(Commande.this, RemerciementCommande.class);
                                             intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
@@ -185,46 +180,13 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-
-
-        //addValue();
     }
 
     protected void createRes(){
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
         ReservationModels res = new ReservationModels(nomRes, telRes);
-        //res.setNomReserv(nomRes);
-       // res.setNumTelReserv(telRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }
-/*
-    protected void addValue(){
-        mReservRef.child("Nom").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String snapNom = dataSnapshot.getValue(String.class);
-                txtNomCommande.setText(snapNom);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mReservRef.child("Num téléphone").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String snapTel = dataSnapshot.getValue(String.class);
-                txtTelCommande.setText(snapTel);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-
 }
