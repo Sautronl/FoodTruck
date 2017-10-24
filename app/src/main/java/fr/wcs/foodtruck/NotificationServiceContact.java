@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * Created by sam on 20/10/17.
+ * Created by Philippe-Adrien on 16/10/2017.
  */
 
 public class NotificationServiceContact extends Service {
@@ -23,9 +23,9 @@ public class NotificationServiceContact extends Service {
     FirebaseDatabase database;
     DatabaseReference notificationContactRef;
 
-    private String TITLE = "Title";
-    private String CONTENT = "Content";
-    //private String SUBTEXT = "SubText";
+    private String TITLE = "nom";
+    private String CONTENT = "sujet";
+   // private String SUBTEXT = "SubText";
 
 
     public NotificationServiceContact() {
@@ -48,12 +48,12 @@ public class NotificationServiceContact extends Service {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get the text
-                String title = dataSnapshot.child(TITLE).getValue(String.class);
-                String content = dataSnapshot.child(CONTENT).getValue(String.class);
+                String nom = dataSnapshot.child(TITLE).getValue(String.class);
+                String sujet = dataSnapshot.child(CONTENT).getValue(String.class);
                 //String subtext = dataSnapshot.child(SUBTEXT).getValue(String.class);
 
                 // Send the Notification
-                sendNotification(title, content);
+                sendNotification(nom, sujet);
             }
 
             @Override
@@ -71,7 +71,7 @@ public class NotificationServiceContact extends Service {
         return null;
     }
 
-    public void sendNotification(String title, String content) {
+    public void sendNotification(String nom, String sujet) {
 
         int NOTIFICATION_ID = 1;
 
@@ -128,8 +128,8 @@ public class NotificationServiceContact extends Service {
          *    versions of Android prior to 4.2 will ignore this field, so don't use it for
          *    anything vital!
          */
-        builder.setContentTitle(title);
-        builder.setContentText(content);
+        builder.setContentTitle(nom);
+        builder.setContentText(sujet);
         //builder.setSubText(subText);
 
         // END_INCLUDE (build_notification)

@@ -17,8 +17,10 @@ public class FirebaseHelper {
      */
     public static FirebaseDatabase getDatabase(){
         if(mDatabase == null) {
+
             mDatabase = FirebaseDatabase.getInstance();
-           mDatabase.setPersistenceEnabled(true);
+            mDatabase.setPersistenceEnabled(true);
+
             // utilie en cas de coupure du reseau, ça permet d'avoir une sauvegarde de la BDD en cache
 
             // Si activé,il faut utiliser cet appel partout

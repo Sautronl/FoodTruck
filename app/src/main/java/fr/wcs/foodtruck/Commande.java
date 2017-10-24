@@ -14,11 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 /**
  * Created by apprenti on 27/09/17.
@@ -32,6 +31,9 @@ public class Commande  extends AppCompatActivity {
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
+
+    private String TITLE = "nom";
+    private String CONTENT = "tel";
 
 
     @Override
@@ -109,6 +111,8 @@ public class Commande  extends AppCompatActivity {
                                 warningTel.setVisibility(View.VISIBLE);
                                 votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
                                 votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
+
+
                             }
 
                             //Si le champ telephone est vide alors on affiche un toast.
@@ -152,11 +156,14 @@ public class Commande  extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
 
+                                            createNotifications();
+
                                             /*ReservationModels reservation = new ReservationModels();
                                             reservation.setNomReserv(txtNomCommande.getText().toString());
                                             reservation.setNumTelReserv(txtTelCommande.getText().toString());
 
                                             mReservRef.push().setValue(reservation);*/
+
                                             createRes();
                                             Intent intent = new Intent(Commande.this, RemerciementCommande.class);
                                             intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
@@ -226,5 +233,36 @@ public class Commande  extends AppCompatActivity {
             }
         });
     }*/
+
+    private void createNotifications(){
+
+        // Get the Database
+        FirebaseDatabase database = FirebaseHelper.getDatabase();
+        // Get the Notification Reference
+        final DatabaseReference notificationContactRef = database.getReference("notificationCommande");
+        // Keep the Database sync in case of loosing connexion
+        notificationContactRef.keepSynced(true);
+
+        // Send Notification on Send Click
+//        buttonSend.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View view) {
+        // Get Edit Text
+        EditText editTextNomPrenom = (EditText) findViewById(R.id.editTextNom);
+        EditText editTextTel = (EditText) findViewById(R.id.editTextTel);
+        // Spinner editTextSbText = (Spinner) findViewById(R.id.spinnerCommande);
+
+        // Get Text
+        String nom = editTextNomPrenom.getText().toString();
+        String tel = editTextTel.getText().toString();
+        //String horaire = editTextSubText.getText().toString();
+        // Store in a map
+        HashMap<String, String> notification = new HashMap<String, String>();
+        notification.put(TITLE, nom);
+        notification.put(CONTENT, tel);
+       // notification.put(SUBTEXT, sujet);
+        // Send the map
+        notificationContactRef.setValue(notification);
+    }
 
 }

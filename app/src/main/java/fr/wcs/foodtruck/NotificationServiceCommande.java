@@ -79,7 +79,7 @@ public class NotificationServiceCommande extends Service {
          */
 
         // intent for notification Clicked
-        Intent intent = new Intent(getApplicationContext(), Commande.class);
+        Intent intent = new Intent(getApplicationContext(), ReservationAdminActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         // END_INCLUDE(build_action)
 
