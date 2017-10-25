@@ -14,21 +14,25 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-import java.util.HashMap;
-import java.util.UUID;
+/**
+ * Created by apprenti on 27/09/17.
+ */
 
 public class Commande  extends AppCompatActivity {
 
     Button btReserverCommande;
     EditText txtNomCommande;
     EditText txtTelCommande;
-    Spinner spinnerCommande;
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +63,9 @@ public class Commande  extends AppCompatActivity {
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
-        spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
+        final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
 
-        /**On crée l'adapter pour le spinner.**/
+        // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.model_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -72,19 +76,19 @@ public class Commande  extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                /**Si aucune horaires n'est selectionner on affiche un toast**/
+                //Si aucune horaires n'est selectionner on affiche un toast
 
                 if (i == 0) {
                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(), "Veuillez sélectionner un créneau",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString
+                                    (R.string.toast_spinner_vide), Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
 
-                /**Si l'horaire est selectionné alors on effectue les commandes suivantes**/
+                //Si l'horaire est selectionner alors on effectuer les commandes suivante
 
                 else {
                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
@@ -94,46 +98,46 @@ public class Commande  extends AppCompatActivity {
                             String telCommande = txtTelCommande.getText().toString();
                             String nomCommande = txtNomCommande.getText().toString();
 
-                            /**Si les champs nom et telephone sont vide alors on affiche un toast et
-                            le texte s'affiche en rouge avec un logo.**/
+                            //Si les champs nom et telephone sont vide alors on affiche un toast et
+                            // le texte s'affiche en rouge avec un logo.
 
                             if (telCommande.equals("") && (nomCommande.equals(""))) {
 
-                                Toast.makeText(getApplicationContext(),"Veuillez renseigner votre nom et votre n° de téléphone",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString
+                                        (R.string.toast_champ_vide), Toast.LENGTH_SHORT).show();
                                 warningNom.setVisibility(View.VISIBLE);
                                 warningTel.setVisibility(View.VISIBLE);
                                 votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
                                 votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
                             }
 
-                            /**Si le champ telephone est vide alors on affiche un toast.**/
+                            //Si le champ telephone est vide alors on affiche un toast.
 
                             else {
                                 if (telCommande.equals("") && !nomCommande.equals("")) {
 
-                                    Toast.makeText(getApplicationContext(), "Veuillez renseigner votre numéro de téléphone",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getResources().getString
+                                            (R.string.toast_champ_vide_tel), Toast.LENGTH_SHORT).show();
                                     warningTel.setVisibility(View.VISIBLE);
                                     warningNom.setVisibility(View.GONE);
                                     votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
                                     votreNom.setTextColor(getResources().getColor(R.color.blanc));
                                 }
 
-                                /**Si le champ nom est vide alors on affiche un toast et
-                                le texte s'affiche en rouge avec un logo.**/
+                                //Si le champ nom est vide alors on affiche un toastet
+                                // le texte s'affiche en rouge avec un logo.
 
                                 else if (nomCommande.equals("") && !telCommande.equals("")) {
-                                    Toast.makeText(getApplicationContext(),"Veuillez renseigner votre nom",
-                                    Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getResources().getString
+                                            (R.string.toast_champ_vide_nom), Toast.LENGTH_SHORT).show();
                                     warningNom.setVisibility(View.VISIBLE);
                                     warningTel.setVisibility(View.GONE);
                                     votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
                                     votreTel.setTextColor(getResources().getColor(R.color.blanc));
                                 }
 
-                                /**Si tout est remplie on va sur la page Remerciement Commande en
-                                expliquant que la commande a était prise en compte.**/
+                                //Si tout est remplie on va sur la page Remerciement Commande en
+                                // expliquant que la commande a était prise en compte.
 
                                 else {
                                     warningTel.setVisibility(View.GONE);
@@ -141,29 +145,33 @@ public class Commande  extends AppCompatActivity {
                                     votreNom.setTextColor(getResources().getColor(R.color.blanc));
                                     votreTel.setTextColor(getResources().getColor(R.color.blanc));
 
-                                    /**on recupère le nom et l'heure pour l'envoyer sur la page
-                                    de remerciement.**/
+                                    //on recuperer le nom et l'heure pour l'envoyer sur la page
+                                    // de remerciement.
 
                                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
 
-                                            createRes();
+                                        createRes();
+                                        Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                                        intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
+                                                (spinnerCommande.getSelectedItemPosition()).toString());
+                                        intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
-                                            Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                                                    (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
-
-                                            Commande.this.startActivity(intent);
-
-                                            finish();//Pour ne pas revenir sur la page commande
+                                        Commande.this.startActivity(intent);
+                                        //Le finish permet de ne par revenir sur la page
+                                        // Commande dès que l'on a deja commmander.
+                                        finish();
                                         }
                                     });
+
                                 }
+
                             }
+
                         }
                     });
+
                 }
             }
 
@@ -177,8 +185,7 @@ public class Commande  extends AppCompatActivity {
     protected void createRes(){
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
-        String horaire = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
-        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(),nomRes, telRes, horaire);
+        ReservationModels res = new ReservationModels(nomRes, telRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }

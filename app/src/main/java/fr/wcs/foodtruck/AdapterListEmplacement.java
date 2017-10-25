@@ -46,8 +46,6 @@ public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementMode
     private class EmplacementViewHolder {
         public TextView jourEmplacement;
         public TextView jourAdresse;
-
-
     }
 }
 

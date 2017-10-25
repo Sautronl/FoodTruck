@@ -71,9 +71,6 @@ public class ListLocalisationAdmin extends AppCompatActivity {
         AdapterListLocalisation adapter = new AdapterListLocalisation(ListLocalisationAdmin.this, jours);
         mListViewResults.setAdapter(adapter);
     }
-
-
-
-    }
+}
 
 

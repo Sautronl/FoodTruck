@@ -1,12 +1,15 @@
 package fr.wcs.foodtruck;
 
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,342 +26,96 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 
 public class  AdminMenuDuJour extends AppCompatActivity {
 
-    int day;
     private EditText mNomPlatDuJour;
     private EditText mDescriptionDuPlat;
     private Button mMaj;
     private ImageView mMenu;
     private ImageView mImgMenu;
     private StorageReference mStorage;
-    private static final int GALLERY_INTENT = 20;
+    private static final int REQUEST_CODE = 20;
+    private Uri imgUri;
 
-    private FirebaseDatabase mFire;
-    private DatabaseReference mDbRef;
+
+    private FirebaseDatabase mFireMenu;
+    private DatabaseReference mDbRefMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu_du_jour);
 
-        //Toolbar personnalisée avec bouton retour à la page précédente
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
-
-        ImageView backButton = (ImageView) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(AdminMenuDuJour.this, AdminAccueil.class);
-                startActivity(back);
-            }
-        });
-        //Fin de la toolbar
-
         int day;
         mNomPlatDuJour = (EditText) findViewById(R.id.nomDuPlat);
         mDescriptionDuPlat = (EditText) findViewById(R.id.descriPlat);
-        mMaj = (Button) findViewById(R.id.reserver);
+        mMaj = (Button) findViewById(R.id.reserverMenu);
 
-        mFire = FirebaseDatabase.getInstance();
-        mDbRef = mFire.getReference("app/menu");
+        mFireMenu = FirebaseDatabase.getInstance();
+        mDbRefMenu = mFireMenu.getReference();
 
-        mMenu = (ImageView) findViewById(R.id.imgDuPlat);
+        mMenu = (ImageView) findViewById(R.id.imgplus);
         mStorage = FirebaseStorage.getInstance().getReference();
         mImgMenu = (ImageView) findViewById(R.id.imgDuPlat);
 
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
 
-       /* mMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, GALLERY_INTENT);
-            }
-        });*/
-
         if (day == 0) {
-            mMaj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MajPlatDuJour majLundi = new MajPlatDuJour();
-                    majLundi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
-                    majLundi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
-
-                    mDbRef.child("menuLundi").setValue(majLundi);
-                    Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
-                    //mNomPlatDuJour.setText("");
-                    //mDescriptionDuPlat.setText("");
-                }
-            });
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, GALLERY_INTENT);
-                }
-            });
-            addValueLundi();
+            mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
+            majClick();
+        } else if (day == 1) {
+            mDbRefMenu = mDbRefMenu.child("menu/menuMardi");
+            majClick();
         }
-        else if (day == 1) {
-            mMaj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MajPlatDuJour majMardi = new MajPlatDuJour();
-                    majMardi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
-                    majMardi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
 
-                    mDbRef.child("menuMardi").setValue(majMardi);
-                    Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
-                    //mNomPlatDuJour.setText("");
-                    //mDescriptionDuPlat.setText("");
-                }
-            });
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, GALLERY_INTENT);
-                }
-            });
-            addValueMardi();
-
-        }
         else if (day == 2) {
-            mMaj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MajPlatDuJour majMercredi = new MajPlatDuJour();
-                    majMercredi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
-                    majMercredi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
-
-                    mDbRef.child("menuMercredi").setValue(majMercredi);
-                    Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
-                    //mNomPlatDuJour.setText("");
-                    //mDescriptionDuPlat.setText("");
-                }
-            });
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, GALLERY_INTENT);
-                }
-            });
-            addValueMercredi();
+            mDbRefMenu = mDbRefMenu.child("menu/menuMercredi");
+            majClick();
         }
         else if (day == 3) {
-            mMaj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MajPlatDuJour majJeudi = new MajPlatDuJour();
-                    majJeudi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
-                    majJeudi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
-
-                    mDbRef.child("menuJeudi").setValue(majJeudi);
-                    Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
-                    //mNomPlatDuJour.setText("");
-                    //mDescriptionDuPlat.setText("");
-                }
-            });
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, GALLERY_INTENT);
-                }
-            });
-            addValueJeudi();
+            mDbRefMenu = mDbRefMenu.child("menu/menuJeudi");
+            majClick();
         }
         else if (day == 4) {
-            mMaj.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    MajPlatDuJour majVendredi = new MajPlatDuJour();
-                    majVendredi.setNomPlatDuJour(mNomPlatDuJour.getText().toString());
-                    majVendredi.setDescriptionDuPlat(mDescriptionDuPlat.getText().toString());
-
-                    mDbRef.child("menuVendredi").setValue(majVendredi);
-                    Toast.makeText(AdminMenuDuJour.this, "Menu validé", Toast.LENGTH_SHORT).show();
-                    //mNomPlatDuJour.setText("");
-                    //mDescriptionDuPlat.setText("");
-                }
-            });
-            mMenu.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(Intent.ACTION_PICK);
-                    intent.setType("image/*");
-                    startActivityForResult(intent, GALLERY_INTENT);
-                }
-            });
-            addValueVendredi();
+            mDbRefMenu = mDbRefMenu.child("menu/menuVendredi");
+            majClick();
         }
     }
-    protected void addValueLundi() {
 
-        mDbRef.child("menuLundi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
+    protected void majClick(){
+        mMenu.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomPlatDuJour.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mDbRef.child("menuLundi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionDuPlat.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
             }
         });
     }
 
-    protected void addValueMardi() {
-
-        mDbRef.child("menuMardi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomPlatDuJour.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mDbRef.child("menuMardi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionDuPlat.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    protected void addValueMercredi() {
-        mDbRef.child("menuMercredi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomPlatDuJour.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mDbRef.child("menuMercredi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionDuPlat.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    protected void addValueJeudi() {
-        mDbRef.child("menuJeudi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomPlatDuJour.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mDbRef.child("menuJeudi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionDuPlat.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    protected void addValueVendredi() {
-        mDbRef.child("menuVendredi/nomPlatDuJour").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String plat = dataSnapshot.getValue(String.class);
-                mNomPlatDuJour.setText(plat);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mDbRef.child("menuVendredi/descriptionDuPlat").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String desc = dataSnapshot.getValue(String.class);
-                mDescriptionDuPlat.setText(desc);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-
-
-    @Override
+     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GALLERY_INTENT && resultCode == RESULT_OK){
+        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
 
-            //mProgressDia.setMessage("Upload..");
-            // mProgressDia.show();
-            Uri uri = data.getData();
+            imgUri = data.getData();
 
-            StorageReference filepath = mStorage.child("Photos").child(uri.getLastPathSegment());
-            filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            StorageReference ref = mStorage.child("image/").child(imgUri.getLastPathSegment());
+            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Uri downloadUri = taskSnapshot.getDownloadUrl();
-                    Glide.with(AdminMenuDuJour.this).load(downloadUri).into(mImgMenu);
+                    MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
+                            mDescriptionDuPlat.getText().toString(),taskSnapshot.getDownloadUrl().toString());
+                    mDbRefMenu.setValue(maj);
+                    Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
                     Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
                 }
             });

@@ -100,7 +100,7 @@ public class GeocoderActivity extends AppCompatActivity {
         intent.putExtra(ConstantsAdminGeocoder.FETCH_TYPE_EXTRA, fetchType);
         if(fetchType == ConstantsAdminGeocoder.USE_ADDRESS_NAME) {
             if(addressEdit.getText().length() == 0) {
-                Toast.makeText(this, "Please enter an address name", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Veillez remplir votre adresse", Toast.LENGTH_LONG).show();
                 return;
             }
             intent.putExtra(ConstantsAdminGeocoder.LOCATION_NAME_DATA_EXTRA, addressEdit.getText().toString());
@@ -108,7 +108,7 @@ public class GeocoderActivity extends AppCompatActivity {
         else {
             if(latitudeEdit.getText().length() == 0 || longitudeEdit.getText().length() == 0) {
                 Toast.makeText(this,
-                        "Please enter both latitude and longitude",
+                        "Veillez Confirmer votre adresse",
                         Toast.LENGTH_LONG).show();
                 return;
             }
@@ -156,19 +156,19 @@ public class GeocoderActivity extends AppCompatActivity {
 
                         if (jour == 0){
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
-                            coordonnerRef.child("Lundi").setValue(coord);
+                            coordonnerRef.child("1 Lundi").setValue(coord);
                         }else if (jour == 1){
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
-                            coordonnerRef.child("Mardi").setValue(coord);
+                            coordonnerRef.child("2 Mardi").setValue(coord);
                         }else if (jour == 2) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
-                            coordonnerRef.child("Mercredi").setValue(coord);
+                            coordonnerRef.child("3 Mercredi").setValue(coord);
                         }else if (jour == 3) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
-                            coordonnerRef.child("Jeudi").setValue(coord);
+                            coordonnerRef.child("4 Jeudi").setValue(coord);
                         }else if (jour == 4) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
-                            coordonnerRef.child("Vendredi").setValue(coord);
+                            coordonnerRef.child("5 Vendredi").setValue(coord);
                         }
 
                     }

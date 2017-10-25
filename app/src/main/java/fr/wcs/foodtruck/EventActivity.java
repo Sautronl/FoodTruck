@@ -77,8 +77,6 @@ public class EventActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         //Firebase
         initFirebase();
         addEventFirebaseListener();

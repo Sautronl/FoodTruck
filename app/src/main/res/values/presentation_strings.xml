@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="buttonPresentation2">Nos valeurs</string>
-    <string name="buttonPresentation1">Qui sommes-nous ?</string>
+    <string name="buttonPresentation2">NOS VALEURS</string>
+    <string name="buttonPresentation1">QUI SOMMES NOUS ?</string>
     <string name="buttonPresentation3">Galerie Photo</string>
 
 </resources>

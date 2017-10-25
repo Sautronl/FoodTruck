@@ -1,20 +1,29 @@
 package fr.wcs.foodtruck;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import static android.view.View.VISIBLE;
 
 public class Presentation extends AppCompatActivity {
-
+    private FirebaseDatabase mFirebase;
+    private DatabaseReference mAproposRef;
+    private TextView mTextViewQsn;
+    private TextView mTextViewNv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +35,7 @@ public class Presentation extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
-        ImageView backButton = (ImageView)findViewById(R.id.backButton);
+        ImageView backButton = (ImageView) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +44,8 @@ public class Presentation extends AppCompatActivity {
             }
         });
         //Fin de la toolbar
-
+        mFirebase = FirebaseDatabase.getInstance();
+        mAproposRef = mFirebase.getReference("ProposMAJ");
         final GridView gridView = (GridView) findViewById(R.id.gallery);
         gridView.setAdapter(new GalleryAdapter(this));
 
@@ -52,18 +62,18 @@ public class Presentation extends AppCompatActivity {
         Button button1 = (Button) findViewById(R.id.buttonPresentation1);
         Button button2 = (Button) findViewById(R.id.buttonPresentation2);
         Button button3 = (Button) findViewById(R.id.buttonPresentation3);
-        final TextView textView1 = (TextView) findViewById(R.id.textViewPresentation1);
-        final TextView textView2 = (TextView) findViewById(R.id.textViewPresentation2);
+        mTextViewQsn = (TextView) findViewById(R.id.textViewPresentation1);
+        mTextViewNv = (TextView) findViewById(R.id.textViewPresentation2);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (textView1.getVisibility() == View.VISIBLE) {
-                    textView1.setVisibility(View.GONE);
+                if (mTextViewQsn.getVisibility() == View.VISIBLE) {
+                    mTextViewQsn.setVisibility(View.GONE);
                 } else {
-                    textView1.setVisibility(VISIBLE);
-                    textView2.setVisibility(View.GONE);
+                    mTextViewQsn.setVisibility(VISIBLE);
+                    mTextViewNv.setVisibility(View.GONE);
                     gridView.setVisibility(View.GONE);
 
                 }
@@ -73,11 +83,11 @@ public class Presentation extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (textView2.getVisibility() == View.VISIBLE) {
-                    textView2.setVisibility(View.GONE);
+                if (mTextViewNv.getVisibility() == View.VISIBLE) {
+                    mTextViewNv.setVisibility(View.GONE);
                 } else {
-                    textView2.setVisibility(VISIBLE);
-                    textView1.setVisibility(View.GONE);
+                    mTextViewNv.setVisibility(VISIBLE);
+                    mTextViewQsn.setVisibility(View.GONE);
                     gridView.setVisibility(View.GONE);
                 }
             }
@@ -90,11 +100,46 @@ public class Presentation extends AppCompatActivity {
                     gridView.setVisibility(View.GONE);
                 } else {
                     gridView.setVisibility(VISIBLE);
-                    textView2.setVisibility(View.GONE);
-                    textView1.setVisibility(View.GONE);
+                    mTextViewNv.setVisibility(View.GONE);
+                    mTextViewQsn.setVisibility(View.GONE);
                 }
             }
         });
-
+        ValueAproposListener();
+        ValueNosValeursListener();
     }
+
+    protected void ValueAproposListener() {
+
+        mAproposRef.child("QuiSommesNous").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String quiSnous = dataSnapshot.getValue(String.class);
+                mTextViewQsn.setText(quiSnous);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    protected void ValueNosValeursListener() {
+
+        mAproposRef.child("NosValeurs").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String nosValeurs = dataSnapshot.getValue(String.class);
+                mTextViewNv.setText(nosValeurs);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
 }
