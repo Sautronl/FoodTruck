@@ -24,20 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class AdminEvent extends AppCompatActivity {
 
-    //deb
-    private final String TAG = "AdminEvent";
-
-    // The Keys
-    private String NAME = "name";
-    private String DETAILS = "Content";
-    private String DATE = "SubText";
-    //fin
 
     private EditText input_name,input_details, input_date;
     private ListView list_data;
@@ -120,7 +111,7 @@ public class AdminEvent extends AppCompatActivity {
 
     private void initFirebase() {
         FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = FirebaseHelper.getDatabase();
         mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
@@ -163,7 +154,7 @@ public class AdminEvent extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add)
         {
-            createNotifications();
+
             createEvent();
         }
         else if(item.getItemId() == R.id.menu_save)
@@ -193,30 +184,7 @@ public class AdminEvent extends AppCompatActivity {
         clearEditText();
     }
 
-    private void createNotifications(){
-        // Get the Database
 
-        // Get the Notification Reference
-        final DatabaseReference notificationRef = mFirebaseDatabase.getReference("notification");
-        // Keep the Database sync in case of loosing connexion
-        notificationRef.keepSynced(true);
-        // Get Edit Text
-        EditText editTextName = (EditText) findViewById(R.id.name);
-        EditText editTextDetails = (EditText) findViewById(R.id.details);
-        EditText editTextDate = (EditText) findViewById(R.id.date);
-
-        // Get Text
-        String name = editTextName.getText().toString();
-        String details = editTextDetails.getText().toString();
-        String date = editTextDate.getText().toString();
-        // Store in a map
-        HashMap<String, String> notification = new HashMap<String, String>();
-        notification.put(NAME, name);
-        notification.put(DETAILS, details);
-        notification.put(DATE, date);
-        // Send the map
-        notificationRef.setValue(notification);
-    }
 
     //Update Event
     private void updateEvent(EventModel event) {

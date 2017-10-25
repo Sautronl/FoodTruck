@@ -1,9 +1,7 @@
 package fr.wcs.foodtruck;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +16,7 @@ public class AdminAccueil extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private int mBackButtonCount = 0;
     private Button buttonSend;
+    private Button aPropos;
 
 
     @Override
@@ -30,6 +29,7 @@ public class AdminAccueil extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         mDeco = (Button) findViewById(R.id.deconnect);
+        aPropos = (Button)findViewById(R.id.buttonApropos);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -84,20 +84,15 @@ public class AdminAccueil extends AppCompatActivity {
         });
 
 
+        aPropos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminAccueil.this,AdminPresentation.class);
+                startActivity(intent);
+            }
+        });
 
-        // Start Service
-        Intent serviceIntent = new Intent(this,NotificationServiceCommande.class);
-        startService(serviceIntent);
 
-        Intent serviceIntent2 = new Intent(this,NotificationServiceContact.class);
-        startService(serviceIntent2);
-
-        // // TODO: 23/10/17 ajout shardpreference
-
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean("admin", true);
-        editor.commit();
 
     }
     @Override

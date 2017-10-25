@@ -30,9 +30,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
-        // Start ServiceEvent
-        Intent serviceIntent = new Intent(this,NotificationService.class);
-        startService(serviceIntent);
 
        logo.setOnTouchListener(new View.OnTouchListener() {
            @Override

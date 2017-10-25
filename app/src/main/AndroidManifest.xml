@@ -21,18 +21,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <service
-            android:name=".NotificationService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".NotificationServiceCommande"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".NotificationServiceContact"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -129,7 +117,8 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity android:name=".ChoixReserveContactAdmin" />
-        <activity android:name=".ReservationAdminActivity"></activity>
+        <activity android:name=".ReservationAdminActivity" />
+        <activity android:name=".AdminPresentation"></activity>
     </application>
 
 </manifest>

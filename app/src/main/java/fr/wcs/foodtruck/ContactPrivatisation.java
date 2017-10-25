@@ -18,7 +18,6 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -34,15 +33,6 @@ public class ContactPrivatisation extends AppCompatActivity {
     private EditText mSujet;
     private EditText mMessage;
     private Button mBoutonValider;
-
-    // The Keys
-    private String TITLE = "nom";
-    private String CONTENT = "sujet";
-   // private String SUBTEXT = "SubText";
-
-
-
-
 
 
     @Override
@@ -131,7 +121,6 @@ public class ContactPrivatisation extends AppCompatActivity {
                     messToast.show();
                 }
 
-                createNotifications();
 
             }
 
@@ -183,41 +172,6 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
     }
-
-    private void createNotifications(){
-
-        // Get the Database
-        FirebaseDatabase database = FirebaseHelper.getDatabase();
-        // Get the Notification Reference
-        final DatabaseReference notificationContactRef = database.getReference("notificationContact");
-        // Keep the Database sync in case of loosing connexion
-        notificationContactRef.keepSynced(true);
-
-        // Send Notification on Send Click
-        Button buttonSend = (Button) findViewById(R.id.boutonEnvoyer);
-        buttonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Get Edit Text
-                EditText editTextTitle = (EditText) findViewById(R.id.prenomNom);
-                EditText editTextContent = (EditText) findViewById(R.id.sujet);
-                //EditText editTextSubText = (EditText) findViewById(R.id.editTextSubText);
-
-                // Get Text
-                String nom = editTextTitle.getText().toString();
-                String sujet = editTextContent.getText().toString();
-                // String subtext = editTextSubText.getText().toString();
-                // Store in a map
-                HashMap<String, String> notificationContact = new HashMap<String, String>();
-                notificationContact.put(TITLE, nom);
-                notificationContact.put(CONTENT, sujet);
-                // notification.put(SUBTEXT, subtext);
-                // Send the map
-                notificationContactRef.setValue(notificationContact);
-            }
-        });
-    }
-
 
 
     private void clearEditText() {
