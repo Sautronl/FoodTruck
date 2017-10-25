@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by apprenti on 23/10/17.
@@ -45,7 +44,7 @@ public class AdapterReservAdmin extends BaseAdapter{
     public View getView(int i, View convertView, ViewGroup viewGroup) {
 
         inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View item = inflater.inflate(R.layout.activity_itemres_admin,null);
+        View item = inflater.inflate(R.layout.activity_admin_reservation_item,null);
 
         TextView nitem = (TextView)item.findViewById(R.id.nItem);
         TextView titem = (TextView)item.findViewById(R.id.tItem);

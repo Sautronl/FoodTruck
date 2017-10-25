@@ -19,7 +19,6 @@ public class ContactAdminModel {
         this.tel = tel;
         this.sujet = sujet;
         this.message = message;
-
     }
 
     public String getNom() {

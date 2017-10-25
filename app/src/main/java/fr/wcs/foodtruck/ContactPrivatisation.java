@@ -58,8 +58,8 @@ public class ContactPrivatisation extends AppCompatActivity {
          mTel = (EditText) findViewById(R.id.tel);
          mSujet = (EditText) findViewById(R.id.sujet);
          mMessage = (EditText) findViewById(R.id.message);
-        TextView numTel = (TextView) findViewById(R.id.numTel);
-        ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
+         TextView numTel = (TextView) findViewById(R.id.numTel);
+         ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
 
         // checkbox
@@ -123,10 +123,7 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
 
         });
-
         createContact();
-
-
     }
 
     private void createContact() {

@@ -52,5 +52,4 @@ public class EventModel {
 
     public void setDate(String date) { this.date = date; }
 
-
 }

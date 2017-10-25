@@ -24,7 +24,7 @@ public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementMode
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.text_list_emplacement,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_emplacement_item,parent, false);
         }
 
         EmplacementViewHolder viewHolder = (EmplacementViewHolder) convertView.getTag();
@@ -46,8 +46,6 @@ public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementMode
     private class EmplacementViewHolder {
         public TextView jourEmplacement;
         public TextView jourAdresse;
-
-
     }
 }
 

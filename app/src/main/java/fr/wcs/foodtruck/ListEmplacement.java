@@ -17,7 +17,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +25,8 @@ import java.util.List;
  */
 
 public class ListEmplacement extends AppCompatActivity {
+
+
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
@@ -50,24 +51,25 @@ public class ListEmplacement extends AppCompatActivity {
         addAdrs();
     }
 
-
-
-    private void addAdrs(){
+   private void addAdrs(){
         final List<ListJourEmplacementModel> results = new ArrayList<>();
 
         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot daySnapshot : dataSnapshot.getChildren()) {
                     String adresse = (String) daySnapshot.child("adrs").getValue();
                     results.add(new ListJourEmplacementModel(daySnapshot.getKey(), adresse));
-
                 }
                 AdapterListEmplacement adapter = new AdapterListEmplacement(ListEmplacement.this, results);
                 mListViewResults.setAdapter(adapter);
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
     }
 }

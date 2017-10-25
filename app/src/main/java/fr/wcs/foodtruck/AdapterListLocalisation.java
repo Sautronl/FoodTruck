@@ -23,7 +23,7 @@ public class AdapterListLocalisation extends ArrayAdapter<ListLocalisationModel>
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.text_list_localisation,parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_admin_list_emplacement_item,parent, false);
         }
 
         MapsViewHolder viewHolder = (MapsViewHolder) convertView.getTag();
@@ -42,7 +42,5 @@ public class AdapterListLocalisation extends ArrayAdapter<ListLocalisationModel>
     private class MapsViewHolder {
         public TextView jour;
         public TextView text;
-
-
     }
 }

@@ -151,16 +151,17 @@ public class Commande  extends AppCompatActivity {
                                     btReserverCommande.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
-                                            createRes();
-                                            Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                                                    (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
-                                            Commande.this.startActivity(intent);
-                                            //Le finish permet de ne par revenir sur la page
-                                            // Commande dès que l'on a deja commmander.
-                                            finish();
+                                        createRes();
+                                        Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                                        intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
+                                                (spinnerCommande.getSelectedItemPosition()).toString());
+                                        intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
+
+                                        Commande.this.startActivity(intent);
+                                        //Le finish permet de ne par revenir sur la page
+                                        // Commande dès que l'on a deja commmander.
+                                        finish();
                                         }
                                     });
 
@@ -185,8 +186,6 @@ public class Commande  extends AppCompatActivity {
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
         ReservationModels res = new ReservationModels(nomRes, telRes);
-        //res.setNomReserv(nomRes);
-       // res.setNumTelReserv(telRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }

@@ -25,8 +25,6 @@ public class ReservationModels {
         this.nomReserv = nomReserv;
     }
 
-
-
     public String getNumTelReserv() {
         return numTelReserv;
     }

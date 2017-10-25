@@ -79,6 +79,7 @@ public class ContactAdmin extends AppCompatActivity {
                 }
             }
         });
+
         //Firebase
         initFirebase();
         childFirebaseListener();
@@ -95,20 +96,12 @@ public class ContactAdmin extends AppCompatActivity {
         mDatabaseReference.child("contact").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               // if (mList_contact.size() > 0)
-                //    mList_contact.clear();
-                //for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+
                     ContactAdminModel contactAd = dataSnapshot.getValue(ContactAdminModel.class);
                     mList_contact.add(contactAd);
                     mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
                     mListViewContactAdmin.setAdapter(mAdapterContact);
-               // }
-                //mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
-                //mListViewContactAdmin.setAdapter(mAdapterContact);
-                //circular_progress.setVisibility(View.INVISIBLE);
-                //mListViewContactAdmin.setVisibility(View.VISIBLE);
             }
-
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -141,38 +134,5 @@ public class ContactAdmin extends AppCompatActivity {
             }
         });
     }
-    /*private void addEventFirebaseListener() {
-
-        //Progressing
-        //circular_progress.setVisibility(View.VISIBLE);
-        //mListViewContactAdmin.setVisibility(View.INVISIBLE);
-
-        mDatabaseReference.child("contact").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (mList_contact.size() > 0)
-                    mList_contact.clear();
-                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    ContactAdminModel contactAd = postSnapshot.getValue(ContactAdminModel.class);
-                    mList_contact.add(contactAd);
-                }
-                mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
-                mListViewContactAdmin.setAdapter(mAdapterContact);
-                //circular_progress.setVisibility(View.INVISIBLE);
-                //mListViewContactAdmin.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-    /*private void deleteContact(ContactAdminModel mTotal) {
-        mDatabaseReference.child("contact").child(mSelectedContact.getId()).removeValue();
-        mList_contact.remove(mTotal);
-        mListViewContactAdmin.setAdapter(null);
-    }*/
-
 }
 
