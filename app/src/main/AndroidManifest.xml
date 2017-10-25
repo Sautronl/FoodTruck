@@ -21,18 +21,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-        <service
-            android:name=".NotificationService"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".NotificationServiceCommande"
-            android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".NotificationServiceContact"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -95,9 +83,6 @@
         <activity
             android:name=".FormuleActivity"
             android:parentActivityName=".MenuDuJourActivity" />
-        <activity
-            android:name=".Emplacement"
-            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AdminEvent"
             android:parentActivityName=".AdminAccueil"

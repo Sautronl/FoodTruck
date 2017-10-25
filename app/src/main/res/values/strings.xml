@@ -109,7 +109,7 @@
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
     <string name="adresse">N°voie, Adresse, Code Postal, Ville</string>
-    <string name="use_address">Saisir une adresse</string>
+    <string name="use_address">Confirmer l\'adresse</string>
     <string name="use_location">Use Latitude/Longitude</string>
     <string name="get_address">Get Address</string>
     <string name="string_changer">Changer</string>

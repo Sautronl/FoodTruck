@@ -79,18 +79,6 @@ public class ContactAdmin extends AppCompatActivity {
                 }
             }
         });
-
-        /*delete = (Button) findViewById(R.id.delete);
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               // mDatabaseReference.child("contact").child(mSelectedContact.getId()).removeValue();
-                mTotal = mList_contact.size() - 1;
-                mList_contact.remove(mTotal);
-                mListViewContactAdmin.setAdapter(null);
-            }
-        });*/
-
         //Firebase
         initFirebase();
         childFirebaseListener();

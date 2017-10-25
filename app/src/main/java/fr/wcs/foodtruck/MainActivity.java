@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private int mBackButtonCount = 0;
     private PackageManager pm;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +35,6 @@ public class MainActivity extends AppCompatActivity {
         ImageView contact = (ImageView) findViewById(R.id.contact);
         ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
-
-        // Start Service
-        Intent serviceIntent = new Intent(this, NotificationService.class);
-        startService(serviceIntent);
 
         logo.setOnTouchListener(new View.OnTouchListener() {
             @Override

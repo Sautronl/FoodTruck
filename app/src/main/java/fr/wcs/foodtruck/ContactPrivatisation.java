@@ -35,11 +35,6 @@ public class ContactPrivatisation extends AppCompatActivity {
     private EditText mMessage;
     private Button mBoutonValider;
 
-    // The Keys
-    private String TITLE = "nom prenom";
-    private String SUBTEXT = "sujet";
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +101,6 @@ public class ContactPrivatisation extends AppCompatActivity {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
                 EditText editSujet = (EditText)findViewById(R.id.sujet);
                 EditText editMessage = (EditText)findViewById(R.id.message);
-                createNotifications();
 
                 if(editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
@@ -171,39 +165,6 @@ public class ContactPrivatisation extends AppCompatActivity {
             }
         });
     }
-
-
-    private void createNotifications(){
-
-        // Get the Database
-        FirebaseDatabase database = FirebaseHelper.getDatabase();
-        // Get the Notification Reference
-        final DatabaseReference notificationContactRef = database.getReference("notificationContact");
-        // Keep the Database sync in case of loosing connexion
-        notificationContactRef.keepSynced(true);
-
-        // Send Notification on Send Click
-//        buttonSend.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View view) {
-        // Get Edit Text
-        EditText editTextNomPrenom = (EditText) findViewById(R.id.editTextNom);
-        EditText editTextSujet = (EditText) findViewById(R.id.editTextTel);
-        // Spinner editTextSubText = (Spinner) findViewById(R.id.spinnerCommande);
-
-        // Get Text
-        String nom = editTextNomPrenom.getText().toString();
-        String sujet = editTextSujet.getText().toString();
-        //String horaire = editTextSubText.getText().toString();
-        // Store in a map
-        HashMap<String, String> notification = new HashMap<String, String>();
-        notification.put(TITLE, nom);
-       // notification.put(CONTENT, tel);
-        notification.put(SUBTEXT, sujet);
-        // Send the map
-        notificationContactRef.setValue(notification);
-    }
-
 
     private void clearEditText() {
         mPrenomNom.setText("");
