@@ -20,6 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.UUID;
+
 /**
  * Created by apprenti on 27/09/17.
  */
@@ -29,6 +31,7 @@ public class Commande  extends AppCompatActivity {
     Button btReserverCommande;
     EditText txtNomCommande;
     EditText txtTelCommande;
+    Spinner spinnerCommande;
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
@@ -63,7 +66,7 @@ public class Commande  extends AppCompatActivity {
         final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
         final TextView votreNom = (TextView) findViewById(R.id.votreNom);
         final TextView votreTel = (TextView) findViewById(R.id.votreTel);
-        final Spinner spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
+        spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -185,7 +188,8 @@ public class Commande  extends AppCompatActivity {
     protected void createRes(){
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
-        ReservationModels res = new ReservationModels(nomRes, telRes);
+        String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
+        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(),nomRes, telRes, horaireRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }
