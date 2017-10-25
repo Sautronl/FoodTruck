@@ -26,7 +26,23 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/removeButton"
+        android:id="@+id/removeSelectRes"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:background="@drawable/button_border_white"
+        android:text="Supprimer"
+        android:visibility="gone"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/blanc"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/listeres"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:id="@+id/removeReservationAll"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@drawable/button_border_white"
@@ -34,18 +50,19 @@
         android:textColor="@color/blanc"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_alignTop="@+id/contAdmin"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="46dp" />
+        android:layout_marginBottom="27dp" />
 
     <ListView
         android:id="@+id/listeres"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:divider="@color/blanc"
         android:dividerHeight="1dp"
-        android:layout_below="@+id/removeButton"
-        android:layout_centerHorizontal="true"></ListView>
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"></ListView>
 
     <ProgressBar
         android:id="@+id/circular_progress"

@@ -190,7 +190,6 @@ public class Commande  extends AppCompatActivity {
         String telRes = txtTelCommande.getText().toString();
         String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
         ReservationModels res = new ReservationModels(UUID.randomUUID().toString(),nomRes, telRes, horaireRes);
-        String idRes = mReservRef.push().getKey();
-        mReservRef.child(idRes).setValue(res);
+        mReservRef.child(res.getId()).setValue(res);
     }
 }

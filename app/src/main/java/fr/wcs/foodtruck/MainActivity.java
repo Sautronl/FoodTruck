@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
-    private PackageManager pm;
+    //private PackageManager pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView presentation = (ImageView) findViewById(R.id.presentation);
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
-        ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
+        //ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
 
@@ -50,12 +50,12 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-        facebook.setOnClickListener(new View.OnClickListener() {
+        /*facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 newFacebookIntent(getPackageManager(),"https://www.facebook.com/sautron.laurent");
             }
-        });
+        });*/
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static Intent newFacebookIntent(PackageManager pm, String url) {
+    /*public static Intent newFacebookIntent(PackageManager pm, String url) {
         Uri uri = Uri.parse(url);
         try {
             ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException ignored) {
         }
         return new Intent(Intent.ACTION_VIEW, uri);
-    }
+    }*/
 
     @Override
     protected void onResume() {

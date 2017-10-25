@@ -15,9 +15,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="26dp"
+        android:layout_alignLeft="@+id/cadre_admin"
+        android:layout_alignStart="@+id/cadre_admin"
+        android:layout_toStartOf="@+id/admin_title"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp" />
+        android:layout_alignRight="@+id/cadre_menu"
+        android:layout_alignEnd="@+id/cadre_menu" />
 
     <TextView
         android:id="@+id/admin_title"
@@ -28,61 +32,60 @@
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/blanc"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_alignBottom="@+id/cadre_admin"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="19dp" />
+        android:layout_alignBottom="@+id/logo"
+        android:layout_alignLeft="@+id/cadre_lieu"
+        android:layout_alignStart="@+id/cadre_lieu" />
 
     <ImageView
         android:id="@+id/cadre_admin"
         android:layout_width="314dp"
-        android:layout_height="71dp"
-        app:srcCompat="@drawable/cadre_formule"
-        android:layout_below="@id/logo"
-        android:layout_marginTop="20dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="14dp" />
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/cadre_formule" />
 
     <ImageView
         android:id="@+id/cadre_menu"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:srcCompat="@drawable/cadre_formule"
-        android:layout_below="@+id/cadre_admin"
+        android:layout_alignTop="@+id/cadre_lieu"
         android:layout_alignLeft="@+id/cadre_admin"
         android:layout_alignStart="@+id/cadre_admin" />
 
 
     <ImageView
         android:id="@+id/menu"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@drawable/menu_picto"
-        android:layout_marginBottom="13dp"
-        android:layout_alignBottom="@+id/cadre_menu"
-        android:layout_alignRight="@+id/contact"
-        android:layout_alignEnd="@+id/contact" />
+        android:layout_alignBottom="@+id/cadre_admin"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/cadre_lieu"
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:srcCompat="@drawable/cadre_formule"
-        android:layout_below="@+id/cadre_admin"
+        android:layout_above="@+id/cadre_event"
         android:layout_alignRight="@+id/cadre_admin"
-        android:layout_alignEnd="@+id/cadre_admin" />
+        android:layout_alignEnd="@+id/cadre_admin"
+        android:layout_marginBottom="10dp" />
 
     <ImageView
         android:id="@+id/lieu"
         android:layout_width="120dp"
         android:layout_height="120dp"
         app:srcCompat="@drawable/place_picto"
-        android:layout_alignTop="@+id/menu"
-        android:layout_alignLeft="@+id/cadre_lieu"
-        android:layout_alignStart="@+id/cadre_lieu"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp" />
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_alignTop="@+id/cadre_lieu"
+        android:layout_alignRight="@+id/deconnect"
+        android:layout_alignEnd="@+id/deconnect"
+        android:layout_marginTop="8dp" />
 
     <ImageView
         android:id="@+id/cadre_contact"
@@ -112,10 +115,10 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         app:srcCompat="@drawable/cadre_formule"
-        android:layout_below="@+id/cadre_lieu"
+        android:layout_above="@+id/deconnect"
         android:layout_alignLeft="@+id/cadre_lieu"
         android:layout_alignStart="@+id/cadre_lieu"
-        android:layout_marginTop="14dp" />
+        android:layout_marginBottom="14dp" />
 
     <ImageView
         android:id="@+id/event"
@@ -132,7 +135,7 @@
         android:id="@+id/deconnect"
         android:layout_width="304dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="13dp"
         android:background="@drawable/button_border_white"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="40dp"
@@ -147,18 +150,19 @@
         app:layout_constraintHorizontal_bias="0.636"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/cadre_contact"
-        android:layout_alignStart="@+id/cadre_contact"
-        android:layout_alignRight="@+id/cadre_event"
-        android:layout_alignEnd="@+id/cadre_event" />
+        android:layout_alignStart="@+id/cadre_contact" />
 
     <Button
         android:id="@+id/buttonApropos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cadre_contact"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:text="A propos" />
+        android:text="A propos"
+        android:layout_alignBottom="@+id/lieu"
+        android:layout_alignRight="@+id/contact"
+        android:layout_alignEnd="@+id/contact"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="33dp" />
 
 
 </RelativeLayout>

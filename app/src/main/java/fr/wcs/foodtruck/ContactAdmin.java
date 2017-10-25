@@ -80,6 +80,7 @@ public class ContactAdmin extends AppCompatActivity {
                     if(position == i ){
                         mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.BLACK);
                         Button supprime = (Button)findViewById(R.id.removeSelectedButton);
+                        supprime.setVisibility(View.VISIBLE);
                         supprime.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

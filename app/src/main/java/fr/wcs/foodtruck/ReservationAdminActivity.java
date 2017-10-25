@@ -47,7 +47,10 @@ public class ReservationAdminActivity extends AppCompatActivity {
                 startActivity(back);
             }
         });
-        final Button remove = (Button)findViewById(R.id.removeButton);
+
+        initFirebase();
+
+        final Button remove = (Button)findViewById(R.id.removeReservationAll);
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +69,8 @@ public class ReservationAdminActivity extends AppCompatActivity {
                 for (int i = 0; i < mListReserve.getChildCount(); i++) {
                     if(position == i ){
                         mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
-                        Button supprime = (Button)findViewById(R.id.removeButton);
+                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
+                        supprime.setVisibility(View.VISIBLE);
                         supprime.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -83,7 +87,6 @@ public class ReservationAdminActivity extends AppCompatActivity {
             }
         });
 
-        initFirebase();
         childFirebaseListener();
 
     }

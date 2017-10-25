@@ -63,7 +63,7 @@ public class EventActivity extends AppCompatActivity {
 
         //Liste d'events
         list_data = (ListView)findViewById(R.id.list_data);
-        list_data.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*list_data.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 EventModel event = (EventModel)adapterView.getItemAtPosition(position);
@@ -76,7 +76,7 @@ public class EventActivity extends AppCompatActivity {
                     }
                 }
             }
-        });
+        });*/
         //Firebase
         initFirebase();
         addEventFirebaseListener();
