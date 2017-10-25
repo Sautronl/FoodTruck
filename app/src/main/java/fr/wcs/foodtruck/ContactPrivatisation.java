@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.UUID;
 
 /**
@@ -34,7 +35,6 @@ public class ContactPrivatisation extends AppCompatActivity {
     private EditText mMessage;
     private Button mBoutonValider;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
-        ImageView backButton = (ImageView) findViewById(R.id.backButton);
+        ImageView backButton = (ImageView)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,12 +54,12 @@ public class ContactPrivatisation extends AppCompatActivity {
         });
         //Fin de la toolbar
 
-        mPrenomNom = (EditText) findViewById(R.id.prenomNom);
-        mTel = (EditText) findViewById(R.id.tel);
-        mSujet = (EditText) findViewById(R.id.sujet);
-        mMessage = (EditText) findViewById(R.id.message);
-        TextView numTel = (TextView) findViewById(R.id.numTel);
-        ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
+         mPrenomNom = (EditText) findViewById(R.id.prenomNom);
+         mTel = (EditText) findViewById(R.id.tel);
+         mSujet = (EditText) findViewById(R.id.sujet);
+         mMessage = (EditText) findViewById(R.id.message);
+         TextView numTel = (TextView) findViewById(R.id.numTel);
+         ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
 
         // checkbox
@@ -67,7 +67,7 @@ public class ContactPrivatisation extends AppCompatActivity {
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editSujet = (EditText) findViewById(R.id.sujet);
+                EditText editSujet= (EditText) findViewById(R.id.sujet);
 
                 if (checkbox.isChecked()) {
                     // est coché
@@ -94,17 +94,18 @@ public class ContactPrivatisation extends AppCompatActivity {
 
         // Message Toast si les champs obligatoires ne sont pas remplis
 
-        mBoutonValider = (Button) findViewById(R.id.boutonEnvoyer);
+        mBoutonValider = (Button)findViewById(R.id.boutonEnvoyer);
         mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
-                EditText editSujet = (EditText) findViewById(R.id.sujet);
-                EditText editMessage = (EditText) findViewById(R.id.message);
+                EditText editSujet = (EditText)findViewById(R.id.sujet);
+                EditText editMessage = (EditText)findViewById(R.id.message);
 
-                if (editPrenomNom.getText().toString().isEmpty()
+                if(editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
-                        || editMessage.getText().toString().isEmpty()) {
+                        || editMessage.getText().toString().isEmpty() )
+                {
 
                     CharSequence text = getResources().getString(R.string.messToast);
                     int duration = Toast.LENGTH_SHORT;
@@ -118,16 +119,11 @@ public class ContactPrivatisation extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Context context = getApplicationContext();
                     Toast messToast = Toast.makeText(context, text, duration);
-                    messToast.show();
-                }
-
-
+                    messToast.show(); }
             }
 
         });
-
         createContact();
-
     }
 
     private void createContact() {
@@ -136,12 +132,9 @@ public class ContactPrivatisation extends AppCompatActivity {
          mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
                 EditText editSujet = (EditText)findViewById(R.id.sujet);
                 EditText editMessage = (EditText)findViewById(R.id.message);
-
-
                 if(editPrenomNom.getText().toString().isEmpty()
                         || editSujet.getText().toString().isEmpty()
                         || editMessage.getText().toString().isEmpty() )
@@ -164,15 +157,11 @@ public class ContactPrivatisation extends AppCompatActivity {
                             mTel.getText().toString(), mSujet.getText().toString(),mMessage.getText().toString());
 
                     mref.child("contact").child(contact.getId()).setValue(contact);
-
                     clearEditText();
-
                 }
-
             }
         });
     }
-
 
     private void clearEditText() {
         mPrenomNom.setText("");

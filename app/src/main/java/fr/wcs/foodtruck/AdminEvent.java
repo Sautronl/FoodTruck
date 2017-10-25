@@ -3,14 +3,18 @@ package fr.wcs.foodtruck;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -21,14 +25,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
 public class AdminEvent extends AppCompatActivity {
-
 
     private EditText input_name,input_details, input_date;
     private ListView list_data;
@@ -106,12 +111,11 @@ public class AdminEvent extends AppCompatActivity {
         //Firebase
         initFirebase();
         addEventFirebaseListener();
-
     }
 
     private void initFirebase() {
         FirebaseApp.initializeApp(this);
-        mFirebaseDatabase = FirebaseHelper.getDatabase();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference();
     }
 
@@ -154,7 +158,6 @@ public class AdminEvent extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.menu_add)
         {
-
             createEvent();
         }
         else if(item.getItemId() == R.id.menu_save)
@@ -183,8 +186,6 @@ public class AdminEvent extends AppCompatActivity {
         mDatabaseReference.child("events").child(event.getEid()).setValue(event);
         clearEditText();
     }
-
-
 
     //Update Event
     private void updateEvent(EventModel event) {

@@ -50,8 +50,6 @@ public class ListEventAdapter extends BaseAdapter {
         if (lstEvents.get(i).getDate() != null){
             txtDate.setText(lstEvents.get(i).getDate().toString());
         }
-
-
         return itemView;
     }
 }

@@ -15,11 +15,9 @@ public class ListJourEmplacementModel {
         this.jour = jour;
         this.adresse = adresse;
     }
-
     public String getJour() {
         return jour;
     }
-
     public String getAdresse() {
         return adresse;
     }

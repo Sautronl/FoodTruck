@@ -19,7 +19,6 @@ public class RemerciementModel {
         this.heure = heure;
     }
 
-
     public String getNom() {
         return nom;
     }

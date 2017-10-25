@@ -14,8 +14,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Created by apprenti on 27/09/17.
@@ -31,16 +34,13 @@ public class Commande  extends AppCompatActivity {
     private FirebaseDatabase mFirebase;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
-
-         mFirebase = FirebaseHelper.getDatabase();
+        mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference("Réservation");
-
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
@@ -109,8 +109,6 @@ public class Commande  extends AppCompatActivity {
                                 warningTel.setVisibility(View.VISIBLE);
                                 votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
                                 votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-
-
                             }
 
                             //Si le champ telephone est vide alors on affiche un toast.
@@ -154,26 +152,16 @@ public class Commande  extends AppCompatActivity {
                                         @Override
                                         public void onClick(View view) {
 
+                                        createRes();
+                                        Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                                        intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
+                                                (spinnerCommande.getSelectedItemPosition()).toString());
+                                        intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
 
-         //
-                                            ReservationModels reservation = new ReservationModels();
-                                            reservation.setNomReserv(txtNomCommande.getText().toString());
-                                            reservation.setNumTelReserv(txtTelCommande.getText().toString());
-
-                                            mReservRef.push().setValue(reservation);
-
-                                            //
-
-                                            createRes();
-                                            Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                            intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                                                    (spinnerCommande.getSelectedItemPosition()).toString());
-                                            intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
-
-                                            Commande.this.startActivity(intent);
-                                            //Le finish permet de ne par revenir sur la page
-                                            // Commande dès que l'on a deja commmander.
-                                            finish();
+                                        Commande.this.startActivity(intent);
+                                        //Le finish permet de ne par revenir sur la page
+                                        // Commande dès que l'on a deja commmander.
+                                        finish();
                                         }
                                     });
 
@@ -192,48 +180,13 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-
-
-        //addValue();
     }
 
     protected void createRes(){
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
         ReservationModels res = new ReservationModels(nomRes, telRes);
-        //res.setNomReserv(nomRes);
-       // res.setNumTelReserv(telRes);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }
-/*
-    protected void addValue(){
-        mReservRef.child("Nom").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String snapNom = dataSnapshot.getValue(String.class);
-                txtNomCommande.setText(snapNom);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        mReservRef.child("Num téléphone").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                String snapTel = dataSnapshot.getValue(String.class);
-                txtTelCommande.setText(snapTel);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }*/
-
-
-
 }

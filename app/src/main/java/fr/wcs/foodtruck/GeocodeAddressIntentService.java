@@ -67,7 +67,7 @@ public class GeocodeAddressIntentService extends IntentService {
         resultReceiver = intent.getParcelableExtra(ConstantsAdminGeocoder.RECEIVER);
         if (addresses == null || addresses.size()  == 0) {
             if (errorMessage.isEmpty()) {
-                errorMessage = "Not Found";
+                errorMessage = "Adresse Invalide";
                 Log.e(TAG, errorMessage);
             }
             deliverResultToReceiver(ConstantsAdminGeocoder.FAILURE_RESULT, errorMessage, null);
