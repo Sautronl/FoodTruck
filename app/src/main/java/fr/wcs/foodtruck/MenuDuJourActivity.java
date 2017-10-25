@@ -151,7 +151,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                     MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
                     mNomBurger.setText(maj.getNomPlat());
                     mDescriptionMenu.setText(maj.getDescPlat());
-                    Glide.with(MenuDuJourActivity.this).load(maj.getUrlImg()).into(mImgplatMenu);
+                Glide.with(getApplicationContext()).load(maj.getUrlImg()).into(mImgplatMenu);
             }
 
             @Override

@@ -28,6 +28,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Calendar;
 
 
 public class  AdminMenuDuJour extends AppCompatActivity {
@@ -65,25 +66,31 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
 
+
         if (day == 0) {
             mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
             majClick();
+            addMaj();
+
         } else if (day == 1) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMardi");
             majClick();
+            addMaj();
         }
-
         else if (day == 2) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMercredi");
             majClick();
+            addMaj();
         }
         else if (day == 3) {
             mDbRefMenu = mDbRefMenu.child("menu/menuJeudi");
             majClick();
+            addMaj();
         }
         else if (day == 4) {
             mDbRefMenu = mDbRefMenu.child("menu/menuVendredi");
             majClick();
+            addMaj();
         }
     }
 
@@ -125,5 +132,22 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    protected void addMaj(){
+        mDbRefMenu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                MajPlatDuJour majText = dataSnapshot.getValue(MajPlatDuJour.class);
+                mNomPlatDuJour.setText(majText.getNomPlat());
+                mDescriptionDuPlat.setText(majText.getDescPlat());
+                Glide.with(AdminMenuDuJour.this).load(majText.getUrlImg()).into(mImgMenu);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
