@@ -36,21 +36,21 @@ public class AdminPresentation extends AppCompatActivity {
         mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (mQuiSommesNous.getText().toString().isEmpty() || mNosValeurs.getText().toString().isEmpty()){
+                    Toast.makeText(AdminPresentation.this, getResources().getString(R.string.messToast),Toast.LENGTH_SHORT).show();
+                }else{
                 Toast.makeText(AdminPresentation.this,"Vôtre page à bien été mise à jour !",Toast.LENGTH_LONG).show();
                 sendApropos();
-
-
+                }
             }
         });
-
     }
+
     protected void sendApropos(){
 
         String presentation = mQuiSommesNous.getText().toString();
         String  valeurs = mNosValeurs.getText().toString();
         mAproposRef.child("QuiSommesNous").setValue(presentation);
         mAproposRef.child("NosValeurs").setValue(valeurs);
-
     }
 }
