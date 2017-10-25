@@ -58,7 +58,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mFireMenu = FirebaseDatabase.getInstance();
         mDbRefMenu = mFireMenu.getReference();
 
-        mMenu = (ImageView) findViewById(R.id.imgplus);
+       // mMenu = (ImageView) findViewById(R.id.imgplus);
         mStorage = FirebaseStorage.getInstance().getReference();
         mImgMenu = (ImageView) findViewById(R.id.imgDuPlat);
 
@@ -88,7 +88,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     protected void majClick(){
-        mMenu.setOnClickListener(new View.OnClickListener() {
+        mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();

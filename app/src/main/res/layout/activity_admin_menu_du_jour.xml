@@ -45,17 +45,6 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp" />
 
-            <ImageView
-                android:id="@+id/imgplus"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_alignEnd="@+id/imgDuPlat"
-                android:layout_alignRight="@+id/imgDuPlat"
-                android:layout_alignTop="@+id/imgDuPlat"
-                android:layout_marginTop="29dp"
-                app:srcCompat="@android:drawable/ic_menu_add" />
-
-
         </RelativeLayout>
 
         <EditText
@@ -64,7 +53,7 @@
             android:layout_height="40dp"
             android:layout_gravity="left"
             android:hint="Nom du plat"
-            android:textColor="@android:color/background_light"
+            android:textColor="@android:color/black"
             android:background="@color/blanc"
             android:textSize="20sp"
             android:textStyle="italic" />
@@ -76,7 +65,7 @@
             android:layout_marginTop="5dp"
             android:layout_gravity="left"
             android:hint="Description du plat"
-            android:textColor="@color/textEnvoyer"
+            android:textColor="@color/black"
             android:background="@color/blanc"
             android:textSize="20sp"
             android:textStyle="italic" />
