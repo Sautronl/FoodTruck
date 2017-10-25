@@ -7,6 +7,7 @@ import android.widget.Spinner;
  */
 
 public class ReservationModels {
+    private String id;
     private String nomReserv;
     private String numTelReserv;
     private String horaire;
@@ -15,7 +16,8 @@ public class ReservationModels {
 
     }
 
-    public ReservationModels(String nomReserv, String numTelReserv, String horaire) {
+    public ReservationModels(String id, String nomReserv, String numTelReserv, String horaire) {
+        this.id = id;
         this.nomReserv = nomReserv;
         this.numTelReserv = numTelReserv;
         this.horaire = horaire;
@@ -46,4 +48,11 @@ public class ReservationModels {
         this.horaire = horaire;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }

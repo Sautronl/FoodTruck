@@ -40,7 +40,7 @@ public class GalleryAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(images[i]);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(300, 300));
+        imageView.setLayoutParams(new GridView.LayoutParams(220, 220));
         return imageView;
     }
 }

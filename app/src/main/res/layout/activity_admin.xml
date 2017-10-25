@@ -65,7 +65,9 @@
                 android:layout_weight="1"
                 android:background="@color/blanc"
                 android:hint=" Email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_default" />
 
             <EditText
                 android:id="@+id/field_password"
@@ -74,8 +76,10 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@color/blanc"
-                android:hint=" Mot de passe"
-                android:inputType="textPassword" />
+                android:hint="Mot de passe"
+                android:inputType="textPassword"
+                android:textColor="@color/common_google_signin_btn_text_light_focused"
+                android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
         </LinearLayout>
 
         <LinearLayout
@@ -127,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@drawable/button_border_white"
-                android:text="sign out"
+                android:text="Déconnexion"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button
@@ -135,6 +139,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
+                android:visibility="gone"
                 android:background="@drawable/button_border_white"
                 android:text="verify email"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />

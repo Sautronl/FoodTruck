@@ -1,10 +1,13 @@
 package fr.wcs.foodtruck;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -25,6 +28,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private AdapterReservAdmin mAdapRes;
     private List<ReservationModels> mReserve = new ArrayList<>();
+    private int selectedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +47,45 @@ public class ReservationAdminActivity extends AppCompatActivity {
                 startActivity(back);
             }
         });
+        final Button remove = (Button)findViewById(R.id.removeButton);
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabaseReference.child("Réservation").removeValue();
+                mListReserve.setAdapter(null);
+                mAdapRes.notifyDataSetChanged();
+            }
+        });
+
         mListReserve = (ListView) findViewById(R.id.listeres);
+        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+                final ReservationModels reserv = (ReservationModels) adapterView.getItemAtPosition(position);
+                selectedEvent = position;
+                for (int i = 0; i < mListReserve.getChildCount(); i++) {
+                    if(position == i ){
+                        mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
+                        Button supprime = (Button)findViewById(R.id.removeButton);
+                        supprime.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mDatabaseReference.child("Réservation").child(reserv.getId()).removeValue();
+                                mListReserve.setAdapter(mAdapRes);
+                                mAdapRes.notifyDataSetChanged();
+                            }
+                        });
+
+                    }else{
+                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+            }
+        });
 
         initFirebase();
         childFirebaseListener();
+
     }
 
     private void initFirebase() {

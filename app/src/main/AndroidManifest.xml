@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,16 +32,18 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".ContactPrivatisation"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".EventActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Commande"
-            android:parentActivityName=".MenuDuJourActivity" />
+            android:parentActivityName=".MenuDuJourActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Presentation"
             android:parentActivityName=".MainActivity" />
@@ -56,11 +59,15 @@
             android:parentActivityName=".Commande" />
         <activity
             android:name=".AdminActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ContactAdmin" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".ContactAdmin"
+            android:parentActivityName=".ChoixReserveContactAdmin"/>
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+            android:label="@string/title_activity_maps"
+            android:parentActivityName=".MainActivity"/>
         <!--
             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -74,22 +81,27 @@
             android:name="com.google.android.geo.AIzaSyACRlVeCe07xwZ2KdRn61XbF4XgQ9vrjH8"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".AdminListeMenuDuJour" />
-        <activity android:name=".AdminMenuDuJour" />
+        <activity
+            android:name=".AdminListeMenuDuJour" />
+        <activity
+            android:name=".AdminMenuDuJour"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".AdminAccueil"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".FormuleActivity"
             android:parentActivityName=".MenuDuJourActivity" />
         <activity
             android:name=".AdminEvent"
             android:parentActivityName=".AdminAccueil"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".GeocoderActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
 
         <service
             android:name=".GeocodeAddressIntentService"
@@ -114,8 +126,12 @@
 
         <uses-library android:name="com.google.android.maps" />
 
-        <activity android:name=".ChoixReserveContactAdmin" />
-        <activity android:name=".ReservationAdminActivity"></activity>
+        <activity
+            android:name=".ChoixReserveContactAdmin"
+            android:parentActivityName=".AdminAccueil"/>
+        <activity
+            android:name=".ReservationAdminActivity"
+            android:parentActivityName=".ChoixReserveContactAdmin"/>
     </application>
 
 </manifest>

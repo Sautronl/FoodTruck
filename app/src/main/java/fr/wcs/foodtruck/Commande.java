@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Commande  extends AppCompatActivity {
 
@@ -177,7 +178,7 @@ public class Commande  extends AppCompatActivity {
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
         String horaire = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
-        ReservationModels res = new ReservationModels(nomRes, telRes, horaire);
+        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(),nomRes, telRes, horaire);
         String idRes = mReservRef.push().getKey();
         mReservRef.child(idRes).setValue(res);
     }
