@@ -100,26 +100,66 @@ public class MenuDuJourActivity extends AppCompatActivity {
             majMenu("menuLundi");
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("1 Lundi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 0);
+                        startActivity(mapdetail);
+                    }
+                });
             }
         }else if (dayD == 3) {
             majMenu("menuMardi");
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("2 Mardi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 1);
+                        startActivity(mapdetail);
+                    }
+                });
             }
         }else if (dayD == 4) {
             majMenu("menuMercredi");
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("3 Mercredi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 2);
+                        startActivity(mapdetail);
+                    }
+                });
             }
         }else if (dayD == 5) {
             majMenu("menuJeudi");
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("4 Jeudi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 3);
+                        startActivity(mapdetail);
+                    }
+                });
             }
         }else if (dayD == 6) {
             majMenu("menuVendredi");
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("5 Vendredi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 4);
+                        startActivity(mapdetail);
+                    }
+                });
             }
         }
         else{
