@@ -112,11 +112,16 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
-                            mDescriptionDuPlat.getText().toString(),taskSnapshot.getDownloadUrl().toString());
-                    mDbRefMenu.setValue(maj);
-                    Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
-                    Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
+                    if (mDescriptionDuPlat.getText().toString().isEmpty() || mNomPlatDuJour.getText().toString().isEmpty()) {
+                        Toast.makeText(AdminMenuDuJour.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+                    }
+                        else{
+                        MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
+                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                        mDbRefMenu.setValue(maj);
+                        Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
+                        Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }
