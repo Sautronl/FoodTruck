@@ -65,7 +65,7 @@ public class ContactAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mAdapterContact == null) {
-                    Toast.makeText(ContactAdmin.this, "Rien à supprimer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContactAdmin.this, getResources().getString(R.string.suppListeAdmin), Toast.LENGTH_SHORT).show();
                 } else {
                     mDatabaseReference.child("contact").removeValue();
                     mListViewContactAdmin.setAdapter(null);

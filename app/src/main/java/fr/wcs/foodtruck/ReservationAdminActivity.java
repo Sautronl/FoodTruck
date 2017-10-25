@@ -56,7 +56,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mAdapRes == null) {
-                    Toast.makeText(ReservationAdminActivity.this, "Rien à supprimer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ReservationAdminActivity.this, getResources().getString(R.string.suppListeAdmin), Toast.LENGTH_SHORT).show();
                 } else {
                     mDatabaseReference.child("Réservation").removeValue();
                     mListReserve.setAdapter(null);
