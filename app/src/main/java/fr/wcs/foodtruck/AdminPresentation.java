@@ -7,8 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AdminPresentation extends AppCompatActivity {
 
@@ -44,6 +47,8 @@ public class AdminPresentation extends AppCompatActivity {
                 }
             }
         });
+        addPres();
+        addVal();
     }
 
     protected void sendApropos(){
@@ -52,5 +57,37 @@ public class AdminPresentation extends AppCompatActivity {
         String  valeurs = mNosValeurs.getText().toString();
         mAproposRef.child("QuiSommesNous").setValue(presentation);
         mAproposRef.child("NosValeurs").setValue(valeurs);
+    }
+
+    protected void addPres(){
+        mAproposRef.child("QuiSommesNous").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    String prop = dataSnapshot.getValue(String.class);
+                    mQuiSommesNous.setText(prop);
+                }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    protected void addVal(){
+        mAproposRef.child("NosValeurs").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String val = dataSnapshot.getValue(String.class);
+                mNosValeurs.setText(val);
+            }
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
