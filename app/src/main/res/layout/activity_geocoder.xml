@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:background="@drawable/foodtruck_bg"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/majEmplacementJour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imgplus"
-        android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif-condensed"
         android:text="Emplacement"
         android:layout_gravity="center"
@@ -48,42 +46,32 @@
         android:textColor="@android:color/holo_orange_dark"
         android:inputType="numberDecimal|numberSigned"/>
 
-    <EditText
-        android:id="@+id/addressEdit"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignBottom="@+id/radioGroup"
-        android:layout_marginBottom="52dp"
-        android:background="@color/blanc"
-        android:enabled="true"
-        android:hint="@string/adresse"
-        android:minLines="4"
-        android:scrollHorizontally="false"
-        android:scrollbars="vertical"
-        android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
+        <EditText
+            android:id="@+id/addressEdit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignBottom="@+id/radioGroup"
+            android:layout_marginBottom="52dp"
+            android:background="@color/blanc"
+            android:textColor="@color/black"
+            android:enabled="true"
+            android:hint="@string/adresse"
+            android:minLines="4"
+            android:layout_marginTop="120dp"
+            android:scrollHorizontally="false"
+            android:scrollbars="vertical"
+            android:textColorHint="@color/common_google_signin_btn_text_light_focused" />
 
-    <RadioGroup
+        <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="220dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp">
 
-        <RadioButton
-            android:id="@+id/radioAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2.12"
-            android:onClick="onRadioButtonClicked"
-            android:text="@string/use_address"
-            android:textColor="@android:color/holo_orange_dark" />
-
-        <RadioButton
+            <RadioButton
             android:id="@+id/radioLocation"
             android:layout_width="wrap_content"
             android:visibility="gone"
@@ -94,14 +82,23 @@
             android:checked="true"
             android:onClick="onRadioButtonClicked"/>
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/radioAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.12"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/use_address"
+                android:textColor="@android:color/holo_orange_dark" />
+
+        </RadioGroup>
 
     <Button
         android:id="@+id/actionButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_border_white"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="20dp"
@@ -112,45 +109,41 @@
         android:textColorLink="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_below="@+id/addressEdit"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        />
 
     <TextView
         android:id="@+id/infoText"
         android:layout_width="match_parent"
         android:textColor="@android:color/holo_orange_dark"
         android:layout_height="wrap_content"
-        android:layout_below="@id/actionButton"/>
+        android:textSize="16sp"
+        android:layout_marginTop="24dp" />
 
 
 
     <ProgressBar
         android:id="@+id/progressBar"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:layout_below="@+id/infoText"
-        android:layout_centerHorizontal="true" />
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/infoTextLat"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/holo_orange_dark"
         android:textSize="16sp"
-        android:layout_alignBottom="@+id/progressBar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp" />
+        android:layout_marginTop="24dp"
+         />
 
     <TextView
         android:id="@+id/infoTextLong"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/infoTextLat"
-        android:textColor="@android:color/white"
-        android:textSize="16sp" />
-</RelativeLayout>
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="16sp"
+        android:layout_marginTop="0dp" />
+
+    </LinearLayout>
+</LinearLayout>
