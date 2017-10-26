@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -181,18 +182,26 @@ public class AdminEvent extends AppCompatActivity {
 
     //Create Event
     private void createEvent() {
-        EventModel event = new EventModel(UUID.randomUUID().toString(),input_name.getText().toString(),
-                input_details.getText().toString(), input_date.getText().toString());
-        mDatabaseReference.child("events").child(event.getEid()).setValue(event);
-        clearEditText();
+        if (input_name.getText().toString().isEmpty() || input_details.getText().toString().isEmpty() || input_date.getText().toString().isEmpty()) {
+            Toast.makeText(AdminEvent.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+        } else {
+            EventModel event = new EventModel(UUID.randomUUID().toString(), input_name.getText().toString(),
+                    input_details.getText().toString(), input_date.getText().toString());
+            mDatabaseReference.child("events").child(event.getEid()).setValue(event);
+            clearEditText();
+        }
     }
 
     //Update Event
     private void updateEvent(EventModel event) {
-        mDatabaseReference.child("events").child(event.getEid()).child("name").setValue(event.getName());
-        mDatabaseReference.child("events").child(event.getEid()).child("details").setValue(event.getDetails());
-        mDatabaseReference.child("events").child(event.getEid()).child("date").setValue(event.getDate());
-        clearEditText();
+        if (input_name.getText().toString().isEmpty() || input_details.getText().toString().isEmpty() || input_date.getText().toString().isEmpty()) {
+            Toast.makeText(AdminEvent.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+        } else {
+            mDatabaseReference.child("events").child(event.getEid()).child("name").setValue(event.getName());
+            mDatabaseReference.child("events").child(event.getEid()).child("details").setValue(event.getDetails());
+            mDatabaseReference.child("events").child(event.getEid()).child("date").setValue(event.getDate());
+            clearEditText();
+        }
     }
 
     //Delete Event
