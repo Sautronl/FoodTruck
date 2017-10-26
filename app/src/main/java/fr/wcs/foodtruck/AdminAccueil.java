@@ -109,9 +109,6 @@ public class AdminAccueil extends AppCompatActivity {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }
-        else {
-            Toast.makeText(this, "On va se calmer", Toast.LENGTH_SHORT).show();
-        }
     }
 
 }
