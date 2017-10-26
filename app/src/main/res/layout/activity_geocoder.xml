@@ -105,6 +105,7 @@
         android:background="@drawable/button_border_white"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="20dp"
+        android:onClick="onButtonClicked"
         android:paddingRight="20dp"
         android:text="Mettre à jour"
         android:textColor="@android:color/background_light"
