@@ -28,6 +28,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Calendar;
 
 
 public class  AdminMenuDuJour extends AppCompatActivity {
@@ -58,37 +59,43 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mFireMenu = FirebaseDatabase.getInstance();
         mDbRefMenu = mFireMenu.getReference();
 
-        mMenu = (ImageView) findViewById(R.id.imgplus);
+       // mMenu = (ImageView) findViewById(R.id.imgplus);
         mStorage = FirebaseStorage.getInstance().getReference();
         mImgMenu = (ImageView) findViewById(R.id.imgDuPlat);
 
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
 
+
         if (day == 0) {
             mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
             majClick();
+            addMaj();
+
         } else if (day == 1) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMardi");
             majClick();
+            addMaj();
         }
-
         else if (day == 2) {
             mDbRefMenu = mDbRefMenu.child("menu/menuMercredi");
             majClick();
+            addMaj();
         }
         else if (day == 3) {
             mDbRefMenu = mDbRefMenu.child("menu/menuJeudi");
             majClick();
+            addMaj();
         }
         else if (day == 4) {
             mDbRefMenu = mDbRefMenu.child("menu/menuVendredi");
             majClick();
+            addMaj();
         }
     }
 
     protected void majClick(){
-        mMenu.setOnClickListener(new View.OnClickListener() {
+        mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent();
@@ -112,13 +119,35 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
-                            mDescriptionDuPlat.getText().toString(),taskSnapshot.getDownloadUrl().toString());
-                    mDbRefMenu.setValue(maj);
-                    Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
-                    Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
+                    if (mDescriptionDuPlat.getText().toString().isEmpty() || mNomPlatDuJour.getText().toString().isEmpty()) {
+                        Toast.makeText(AdminMenuDuJour.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+                    }
+                        else{
+                        MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
+                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                        mDbRefMenu.setValue(maj);
+                        Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
+                        Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
+                    }
                 }
             });
         }
+    }
+
+    protected void addMaj(){
+        mDbRefMenu.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                MajPlatDuJour majText = dataSnapshot.getValue(MajPlatDuJour.class);
+                mNomPlatDuJour.setText(majText.getNomPlat());
+                mDescriptionDuPlat.setText(majText.getDescPlat());
+                Glide.with(AdminMenuDuJour.this).load(majText.getUrlImg()).into(mImgMenu);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
@@ -54,9 +55,13 @@ public class ReservationAdminActivity extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabaseReference.child("Réservation").removeValue();
-                mListReserve.setAdapter(null);
-                mAdapRes.notifyDataSetChanged();
+                if (mAdapRes == null) {
+                    Toast.makeText(ReservationAdminActivity.this, getResources().getString(R.string.suppListeAdmin), Toast.LENGTH_SHORT).show();
+                } else {
+                    mDatabaseReference.child("Réservation").removeValue();
+                    mListReserve.setAdapter(null);
+                    mAdapRes.notifyDataSetChanged();
+                }
             }
         });
 
@@ -75,6 +80,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 mDatabaseReference.child("Réservation").child(reserv.getId()).removeValue();
+                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
                                 mListReserve.setAdapter(mAdapRes);
                                 mAdapRes.notifyDataSetChanged();
                             }

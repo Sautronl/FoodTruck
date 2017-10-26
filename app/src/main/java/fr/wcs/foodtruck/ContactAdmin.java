@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
@@ -63,9 +64,13 @@ public class ContactAdmin extends AppCompatActivity {
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mDatabaseReference.child("contact").removeValue();
-                mListViewContactAdmin.setAdapter(null);
-                mAdapterContact.notifyDataSetChanged();
+                if (mAdapterContact == null) {
+                    Toast.makeText(ContactAdmin.this, getResources().getString(R.string.suppListeAdmin), Toast.LENGTH_SHORT).show();
+                } else {
+                    mDatabaseReference.child("contact").removeValue();
+                    mListViewContactAdmin.setAdapter(null);
+                    mAdapterContact.notifyDataSetChanged();
+                }
             }
         });
 
