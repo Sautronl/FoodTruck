@@ -51,19 +51,20 @@
             android:id="@+id/nomDuPlat"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginTop="20dp"
             android:layout_gravity="left"
+            android:background="@color/blanc"
             android:hint="Nom du plat"
             android:textColor="@android:color/black"
-            android:background="@color/blanc"
             android:textSize="20sp"
             android:textStyle="italic" />
 
         <EditText
             android:id="@+id/descriPlat"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="left"
+            android:layout_height="80dp"
+            android:layout_marginTop="7dp"
+            android:gravity="top"
             android:hint="Description du plat"
             android:textColor="@color/black"
             android:background="@color/blanc"
@@ -74,15 +75,14 @@
             android:id="@+id/reserverMenu"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button_border_white"
             android:fontFamily="sans-serif-condensed"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="@string/maj"
+            android:text="Charger une image et mettre à jour"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold" />
 
 
