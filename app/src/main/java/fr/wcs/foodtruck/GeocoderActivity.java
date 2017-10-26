@@ -143,8 +143,6 @@ public class GeocoderActivity extends AppCompatActivity {
                     public void run() {
                         progressBar.setVisibility(View.GONE);
                         infoText.setVisibility(View.VISIBLE);
-                        infoTextLat.setVisibility(View.VISIBLE);
-                        infoTextLong.setVisibility(View.VISIBLE);
                         lat = address.getLatitude();
                         lon = address.getLongitude();
                         adrs = addressEdit.getText().toString();
@@ -180,8 +178,6 @@ public class GeocoderActivity extends AppCompatActivity {
                     public void run() {
                         progressBar.setVisibility(View.GONE );
                         infoText.setVisibility(View.VISIBLE);
-                        infoTextLat.setVisibility(View.VISIBLE);
-                        infoTextLong.setVisibility(View.VISIBLE);
                         infoText.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
                         infoTextLong.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
                         infoTextLat.setText(resultData.getString(ConstantsAdminGeocoder.RESULT_DATA_KEY));
