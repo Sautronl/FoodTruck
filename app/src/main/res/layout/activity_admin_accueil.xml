@@ -74,8 +74,6 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="@+id/cadre_admin"
-        app:layout_constraintRight_toRightOf="@+id/cadre_admin"
         app:layout_constraintHorizontal_bias="0.636"
         android:layout_below="@+id/contact"
         android:layout_centerHorizontal="true"
