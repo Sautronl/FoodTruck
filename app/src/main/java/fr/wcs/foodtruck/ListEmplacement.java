@@ -64,6 +64,7 @@ public class ListEmplacement extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         addAdrs();
     }
 

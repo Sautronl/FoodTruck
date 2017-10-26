@@ -141,7 +141,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 MajPlatDuJour majText = dataSnapshot.getValue(MajPlatDuJour.class);
                 mNomPlatDuJour.setText(majText.getNomPlat());
                 mDescriptionDuPlat.setText(majText.getDescPlat());
-                Glide.with(AdminMenuDuJour.this).load(majText.getUrlImg()).into(mImgMenu);
+                Glide.with(getApplicationContext()).load(majText.getUrlImg()).into(mImgMenu);
             }
 
             @Override

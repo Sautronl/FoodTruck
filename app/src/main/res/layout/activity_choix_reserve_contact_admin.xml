@@ -18,10 +18,10 @@
         android:text="@string/choix_res"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:textColor="@color/blanc"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <TextView
@@ -32,12 +32,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="153dp"
         android:background="@drawable/cadre_formule"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
         android:text="@string/choix_contact"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/blanc"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 </RelativeLayout>
