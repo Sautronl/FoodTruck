@@ -16,8 +16,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class GeocoderActivity extends AppCompatActivity {
 
@@ -60,11 +63,6 @@ public class GeocoderActivity extends AppCompatActivity {
         actionButton = (Button) findViewById(R.id.actionButton) ;
 
         mResultReceiver = new AddressResultReceiver(null);
-
-
-
-
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -155,18 +153,23 @@ public class GeocoderActivity extends AppCompatActivity {
                         if (jour == 0){
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("1 Lundi").setValue(coord);
+                            addPreviousAdrs("1 Lundi/adrs");
                         }else if (jour == 1){
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("2 Mardi").setValue(coord);
+                            addPreviousAdrs("2 Mardi/adrs");
                         }else if (jour == 2) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("3 Mercredi").setValue(coord);
+                            addPreviousAdrs("3 Mercredi/adrs");
                         }else if (jour == 3) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("4 Jeudi").setValue(coord);
+                            addPreviousAdrs("4 Jeudi/adrs");
                         }else if (jour == 4) {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("5 Vendredi").setValue(coord);
+                            addPreviousAdrs("5 Vendredi/adrs");
                         }
 
                     }
@@ -186,6 +189,21 @@ public class GeocoderActivity extends AppCompatActivity {
                 });
             }
         }
+    }
+
+    private void addPreviousAdrs(String adrprev){
+        coordonnerRef.child(adrprev).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String adrsprevious = dataSnapshot.getValue(String.class);
+                addressEdit.setText(adrsprevious);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 }

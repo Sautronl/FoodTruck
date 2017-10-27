@@ -45,7 +45,7 @@ public class AdminEvent extends AppCompatActivity {
 
     private List<EventModel> list_events = new ArrayList<>();
 
-    private EventModel selectedEvent; //hold event when we select item in listView
+    private EventModel selectedEvent = null; //hold event when we select item in listView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,9 +163,13 @@ public class AdminEvent extends AppCompatActivity {
         }
         else if(item.getItemId() == R.id.menu_save)
         {
+            if (selectedEvent != null){
+                Toast.makeText(AdminEvent.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
             EventModel event = new EventModel(selectedEvent.getEid(),input_name.getText().toString(),
                     input_details.getText().toString(), input_date.getText().toString());
             updateEvent(event);
+            }
+
         }
         else if(item.getItemId() == R.id.menu_remove)
         {
@@ -206,8 +210,12 @@ public class AdminEvent extends AppCompatActivity {
 
     //Delete Event
     private void deleteEvent(EventModel selectedEvent) {
-        mDatabaseReference.child("events").child(selectedEvent.getEid()).removeValue();
-        clearEditText();
+        if (input_name.getText().toString().isEmpty() || input_details.getText().toString().isEmpty() || input_date.getText().toString().isEmpty()) {
+            Toast.makeText(AdminEvent.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+        } else {
+            mDatabaseReference.child("events").child(selectedEvent.getEid()).removeValue();
+            clearEditText();
+        }
     }
 
     private void clearEditText() {
