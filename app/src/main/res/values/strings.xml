@@ -8,7 +8,7 @@
     <string name="tel">Téléphone</string>
     <string name="sujet">Sujet*</string>
     <string name="message">Votre message*</string>
-    <string name="messToast">Veuillez remplir les champs :o)</string>
+    <string name="messToast">Veuillez remplir les champs</string>
     <string name="messToastValider">Votre message à bien été envoyé</string>
     <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
     <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
