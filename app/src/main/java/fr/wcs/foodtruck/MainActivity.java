@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 // http://stackoverflow.com/a/24547437/1048340
                 uri = Uri.parse("fb://facewebmodal/f?href=" + url);
             }
-        } catch (PackageManager.NameNotFoundException ignored) {
+        } catch (PackageManager.NameNotFoundException ignored) {/home/apprenti/AndroidStudioProjects/AutoBoat
         }
         return new Intent(Intent.ACTION_VIEW, uri);
     }*/
