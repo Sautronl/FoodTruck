@@ -15,8 +15,8 @@ android {
         applicationId "fr.wcs.foodtruck"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.0.3"
+        versionCode 4
+        versionName "1.0.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,4 +51,4 @@ dependencies {
 
 
 
-apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.gms.google-services'fjhskhskfhskhfkshfkshfkshfkshfkshfkshfkshfkshfkshfkshfkshfkkqqqqqqqqqqq
