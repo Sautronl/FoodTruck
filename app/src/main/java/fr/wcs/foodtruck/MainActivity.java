@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
+    private Calendar mCalendar;
     //private PackageManager pm;
 
     @Override
@@ -57,11 +60,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
+        mCalendar = Calendar.getInstance();
+        final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);
+
+
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MenuDuJourActivity.class);
-                startActivity(intent);
+                if (daysatsun == 7 || daysatsun == 1) {
+                    Intent intentClose = new Intent(MainActivity.this, CloseDay.class);
+                    startActivity(intentClose);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, MenuDuJourActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
