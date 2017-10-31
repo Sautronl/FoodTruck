@@ -82,114 +82,48 @@ public class Commande  extends AppCompatActivity {
                 //Si aucune horaires n'est selectionner on affiche un toast
 
                 if (i == 0) {
-                    btReserverCommande.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getApplicationContext(), getResources().getString
-                                    (R.string.toast_spinner_vide), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    txtNomCommande.setEnabled(false);
+                    txtTelCommande.setEnabled(false);
+                }else
+                    {
+                        txtNomCommande.setEnabled(true);
+                        txtTelCommande.setEnabled(true);
+                    }
                 }
-
-                //Si l'horaire est selectionner alors on effectuer les commandes suivante
-
-                else {
-                    btReserverCommande.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-
-                            String telCommande = txtTelCommande.getText().toString();
-                            String nomCommande = txtNomCommande.getText().toString();
-
-                            //Si les champs nom et telephone sont vide alors on affiche un toast et
-                            // le texte s'affiche en rouge avec un logo.
-
-                            if (telCommande.equals("") && (nomCommande.equals(""))) {
-
-                                Toast.makeText(getApplicationContext(), getResources().getString
-                                        (R.string.toast_champ_vide), Toast.LENGTH_SHORT).show();
-                                warningNom.setVisibility(View.VISIBLE);
-                                warningTel.setVisibility(View.VISIBLE);
-                                votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                                votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                            }
-
-                            //Si le champ telephone est vide alors on affiche un toast.
-
-                            else {
-                                if (telCommande.equals("") && !nomCommande.equals("")) {
-
-                                    Toast.makeText(getApplicationContext(), getResources().getString
-                                            (R.string.toast_champ_vide_tel), Toast.LENGTH_SHORT).show();
-                                    warningTel.setVisibility(View.VISIBLE);
-                                    warningNom.setVisibility(View.GONE);
-                                    votreTel.setTextColor(getResources().getColor(R.color.rougeDark));
-                                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
-                                }
-
-                                //Si le champ nom est vide alors on affiche un toastet
-                                // le texte s'affiche en rouge avec un logo.
-
-                                else if (nomCommande.equals("") && !telCommande.equals("")) {
-                                    Toast.makeText(getApplicationContext(), getResources().getString
-                                            (R.string.toast_champ_vide_nom), Toast.LENGTH_SHORT).show();
-                                    warningNom.setVisibility(View.VISIBLE);
-                                    warningTel.setVisibility(View.GONE);
-                                    votreNom.setTextColor(getResources().getColor(R.color.rougeDark));
-                                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
-                                }
-
-                                //Si tout est remplie on va sur la page Remerciement Commande en
-                                // expliquant que la commande a était prise en compte.
-
-                                else {
-                                    warningTel.setVisibility(View.GONE);
-                                    warningNom.setVisibility(View.GONE);
-                                    votreNom.setTextColor(getResources().getColor(R.color.blanc));
-                                    votreTel.setTextColor(getResources().getColor(R.color.blanc));
-
-                                    //on recuperer le nom et l'heure pour l'envoyer sur la page
-                                    // de remerciement.
-
-                                    btReserverCommande.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View view) {
-
-                                        createRes();
-                                        Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                                        intent.putExtra("heure","Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                                                (spinnerCommande.getSelectedItemPosition()).toString());
-                                        intent.putExtra("nom", "Merci "+ txtNomCommande.getText().toString());
-
-                                        Commande.this.startActivity(intent);
-                                        //Le finish permet de ne par revenir sur la page
-                                        // Commande dès que l'on a deja commmander.
-                                        finish();
-                                        }
-                                    });
-
-                                }
-
-                            }
-
-                        }
-                    });
-
-                }
-            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+
+        btReserverCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (txtNomCommande.getText().toString().isEmpty() || txtTelCommande.getText().toString().isEmpty()) {
+                    Toast.makeText(Commande.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+                } else {
+                    createRes();
+                    Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+                    intent.putExtra("heure", "Elle sera prête pour " + spinnerCommande.getItemAtPosition
+                            (spinnerCommande.getSelectedItemPosition()).toString());
+                    intent.putExtra("nom", "Merci " + txtNomCommande.getText().toString());
+
+                    Commande.this.startActivity(intent);
+                    //Le finish permet de ne par revenir sur la page
+                    // Commande dès que l'on a deja commmander.
+                    finish();
+                }
+            }
+        });
     }
 
-    protected void createRes(){
+    protected void createRes() {
         String nomRes = txtNomCommande.getText().toString();
         String telRes = txtTelCommande.getText().toString();
         String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
-        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(),nomRes, telRes, horaireRes);
+        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes);
         mReservRef.child(res.getId()).setValue(res);
     }
 }

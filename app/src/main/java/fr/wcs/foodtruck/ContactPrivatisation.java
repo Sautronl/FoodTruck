@@ -58,7 +58,6 @@ public class ContactPrivatisation extends AppCompatActivity {
          mTel = (EditText) findViewById(R.id.tel);
          mSujet = (EditText) findViewById(R.id.sujet);
          mMessage = (EditText) findViewById(R.id.message);
-         TextView numTel = (TextView) findViewById(R.id.numTel);
          ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
 
@@ -132,29 +131,20 @@ public class ContactPrivatisation extends AppCompatActivity {
          mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditText editPrenomNom = (EditText) findViewById(R.id.prenomNom);
-                EditText editSujet = (EditText)findViewById(R.id.sujet);
-                EditText editMessage = (EditText)findViewById(R.id.message);
-                if(editPrenomNom.getText().toString().isEmpty()
-                        || editSujet.getText().toString().isEmpty()
-                        || editMessage.getText().toString().isEmpty() )
-                {
+                if (mPrenomNom.getText().toString().isEmpty() || mSujet.getText().toString().isEmpty() || mMessage.getText().toString().isEmpty() || mTel.getText().toString().isEmpty()){
 
-                    CharSequence text = getResources().getString(R.string.messToast);
-                    int duration = Toast.LENGTH_SHORT;
-                    Context context = getApplicationContext();
-                    Toast messToast = Toast.makeText(context, text, duration);
-                    messToast.show();
-                }
-                // Message Toast de confirmation d'envoie
-                else {
-                    CharSequence text = getResources().getString(R.string.messToastValider);
-                    int duration = Toast.LENGTH_SHORT;
-                    Context context = getApplicationContext();
-                    Toast messToast = Toast.makeText(context, text, duration);
-                    messToast.show();
-                    ContactAdminModel contact = new ContactAdminModel(UUID.randomUUID().toString(),mPrenomNom.getText().toString(),
-                            mTel.getText().toString(), mSujet.getText().toString(),mMessage.getText().toString());
+                    Toast.makeText(ContactPrivatisation.this,
+                            getResources().getString(R.string.messToast),Toast.LENGTH_SHORT).show();
+                }else{
+
+                    Toast.makeText(ContactPrivatisation.this,
+                           getResources().getString(R.string.messToastValider),Toast.LENGTH_SHORT).show();
+
+                    ContactAdminModel contact = new ContactAdminModel(UUID.randomUUID().toString(),
+                            mPrenomNom.getText().toString(),
+                            mTel.getText().toString(),
+                            mSujet.getText().toString(),
+                            mMessage.getText().toString());
 
                     mref.child("contact").child(contact.getId()).setValue(contact);
                     clearEditText();
