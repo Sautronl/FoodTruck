@@ -72,6 +72,11 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden"/>
         <activity
+            android:name=".CloseDay"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
             android:name=".ContactAdmin"
             android:screenOrientation="portrait"
             android:parentActivityName=".ChoixReserveContactAdmin"/>
