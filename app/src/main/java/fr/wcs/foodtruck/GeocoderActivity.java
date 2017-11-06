@@ -98,7 +98,7 @@ public class GeocoderActivity extends AppCompatActivity {
         intent.putExtra(ConstantsAdminGeocoder.FETCH_TYPE_EXTRA, fetchType);
         if(fetchType == ConstantsAdminGeocoder.USE_ADDRESS_NAME) {
             if(addressEdit.getText().length() == 0) {
-                Toast.makeText(this, "Veillez remplir votre adresse", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Veuillez remplir votre adresse", Toast.LENGTH_LONG).show();
                 return;
             }
             intent.putExtra(ConstantsAdminGeocoder.LOCATION_NAME_DATA_EXTRA, addressEdit.getText().toString());
@@ -106,7 +106,7 @@ public class GeocoderActivity extends AppCompatActivity {
         else {
             if(latitudeEdit.getText().length() == 0 || longitudeEdit.getText().length() == 0) {
                 Toast.makeText(this,
-                        "Veillez Confirmer votre adresse",
+                        "Veuillez Confirmer votre adresse",
                         Toast.LENGTH_LONG).show();
                 return;
             }

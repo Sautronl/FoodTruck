@@ -80,6 +80,7 @@ public class ContactAdmin extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 final ContactAdminModel contact = (ContactAdminModel) adapterView.getItemAtPosition(position);
+                mSelectedContact = contact;
                 mCurrentPosition = position;
                 for (int i = 0; i < mListViewContactAdmin.getChildCount(); i++) {
                     if(position == i ){
@@ -89,9 +90,7 @@ public class ContactAdmin extends AppCompatActivity {
                         supprime.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mDatabaseReference.child("contact").child(contact.getId()).removeValue();
-                                mListViewContactAdmin.setAdapter(mAdapterContact);
-                                mAdapterContact.notifyDataSetChanged();
+                               deleteEvent(mSelectedContact);
                             }
                         });
                     }else{
@@ -145,6 +144,12 @@ public class ContactAdmin extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void deleteEvent(ContactAdminModel mSelectedContact) {
+        mDatabaseReference.child("contact").child(mSelectedContact.getId()).removeValue();
+        mList_contact.remove(mSelectedContact.getId());
+        mAdapterContact.notifyDataSetChanged();
     }
 
 }
