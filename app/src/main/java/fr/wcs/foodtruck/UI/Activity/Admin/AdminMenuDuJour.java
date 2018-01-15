@@ -29,7 +29,7 @@ import fr.wcs.foodtruck.R;
 public class  AdminMenuDuJour extends AppCompatActivity {
 
     private EditText mNomPlatDuJour;
-    private EditText mDescriptionDuPlat;
+    private EditText mDescriptionDuPlat,mPrixDuPlat;
     private Button mMaj;
     private ImageView mMenu;
     private ImageView mImgMenu;
@@ -49,18 +49,17 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         int day;
         mNomPlatDuJour = (EditText) findViewById(R.id.nomDuPlat);
         mDescriptionDuPlat = (EditText) findViewById(R.id.descriPlat);
+        mPrixDuPlat = (EditText) findViewById(R.id.prix);
         mMaj = (Button) findViewById(R.id.reserverMenu);
 
         mFireMenu = FirebaseDatabase.getInstance();
         mDbRefMenu = mFireMenu.getReference();
 
-       // mMenu = (ImageView) findViewById(R.id.imgplus);
         mStorage = FirebaseStorage.getInstance().getReference();
         mImgMenu = (ImageView) findViewById(R.id.imgDuPlat);
 
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
-
 
         if (day == 0) {
             mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
@@ -119,7 +118,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                     }
                         else{
                         MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
-                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString());
+                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString(),mPrixDuPlat.getText().toString());
                         mDbRefMenu.setValue(maj);
                         Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
                         Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
