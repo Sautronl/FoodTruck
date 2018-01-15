@@ -196,7 +196,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                     mDescriptionMenu.setText(maj.getDescPlat());
                 Glide.with(getApplicationContext()).load(maj.getUrlImg()).into(mImgplatMenu);
                 mPrixButton.setText("Prix\n" +maj.getPrix());
-                mPrixButton.setTextColor(getResources().getColor(R.color.black));
+                //mPrixButton.setTextColor(getResources().getColor(R.color.black));
             }
 
             @Override
