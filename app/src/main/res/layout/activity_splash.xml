@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context="fr.wcs.foodtruck.SplashActivity"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.SplashActivity"
     android:background="@drawable/foodtruck_bg_splash">
 
     <pl.droidsonroids.gif.GifTextView

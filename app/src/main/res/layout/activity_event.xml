@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/foodtruck_bg"
-    tools:context="fr.wcs.foodtruck.EventActivity"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.EventActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView

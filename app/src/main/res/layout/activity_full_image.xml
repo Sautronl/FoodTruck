@@ -6,7 +6,7 @@
     android:id="@+id/relativeLayout"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context="fr.wcs.foodtruck.fullImageActivity">
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.fullImageActivity">
 
     <ImageView
         android:id="@+id/fullImg"

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/foodtruck_bg"
     android:padding="20dp"
-    tools:context="fr.wcs.foodtruck.AdminPresentation">
+    tools:context="fr.wcs.foodtruck.UI.Activity.Admin.AdminPresentation">
 
 
     <TextView

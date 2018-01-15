@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/foodtruck_bg"
-    tools:context="fr.wcs.foodtruck.MenuDuJourActivity">
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.MenuDuJourActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

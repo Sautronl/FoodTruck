@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/foodtruck_bg"
     android:orientation="vertical"
-    tools:context="fr.wcs.foodtruck.AdminListeMenuDuJour">
+    tools:context="fr.wcs.foodtruck.UI.Activity.Admin.AdminListeMenuDuJour">
 
     <TextView
         android:id="@+id/MenuSemaine"

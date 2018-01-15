@@ -23,7 +23,7 @@
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
 
         <activity
-            android:name=".SplashActivity"
+            android:name=".UI.Activity.User.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,53 +32,53 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.Activity.User.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".ContactPrivatisation"
+            android:name=".UI.Activity.User.ContactPrivatisation"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".UI.Activity.User.MainActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".EventActivity"
+            android:name=".UI.Activity.User.EventActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity" />
         <activity
-            android:name=".Commande"
+            android:name=".UI.Activity.User.Commande"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MenuDuJourActivity"
+            android:parentActivityName=".UI.Activity.User.MenuDuJourActivity"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".Presentation"
+            android:name=".UI.Activity.User.Presentation"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity" />
         <activity
-            android:name=".fullImageActivity"
+            android:name=".UI.Activity.User.fullImageActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Presentation"
+            android:parentActivityName=".UI.Activity.User.Presentation"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
-            android:name=".MenuDuJourActivity"
+            android:name=".UI.Activity.User.MenuDuJourActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity" />
         <activity
-            android:name=".RemerciementCommande"
+            android:name=".UI.Activity.User.RemerciementCommande"
             android:screenOrientation="portrait"
-            android:parentActivityName=".Commande" />
+            android:parentActivityName=".UI.Activity.User.Commande" />
         <activity
-            android:name=".AdminActivity"
+            android:name=".UI.Activity.Admin.AdminActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".ContactAdmin"
+            android:name=".UI.Activity.Admin.ContactAdmin"
             android:screenOrientation="portrait"
-            android:parentActivityName=".ChoixReserveContactAdmin"/>
+            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"/>
         <activity
-            android:name=".MapsActivity"
+            android:name=".UI.Activity.User.MapsActivity"
             android:label="@string/title_activity_maps"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".UI.Activity.User.MainActivity"/>
         <!--
             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -93,46 +93,46 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".AdminListeMenuDuJour"
+            android:name=".UI.Activity.Admin.AdminListeMenuDuJour"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".AdminMenuDuJour"
+            android:name=".UI.Activity.Admin.AdminMenuDuJour"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
         <activity
-            android:name=".AdminAccueil"
+            android:name=".UI.Activity.Admin.AdminAccueil"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".UI.Activity.User.MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".FormuleActivity"
+            android:name=".UI.Activity.User.FormuleActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".MenuDuJourActivity" />
+            android:parentActivityName=".UI.Activity.User.MenuDuJourActivity" />
         <activity
-            android:name=".AdminEvent"
+            android:name=".UI.Activity.Admin.AdminEvent"
             android:screenOrientation="portrait"
-            android:parentActivityName=".AdminAccueil"
+            android:parentActivityName=".UI.Activity.Admin.AdminAccueil"
             android:windowSoftInputMode="stateHidden"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".GeocoderActivity"
+            android:name=".Geocoder.GeocoderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:windowSoftInputMode="stateHidden"/>
 
         <service
-            android:name=".GeocodeAddressIntentService"
+            android:name=".Geocoder.GeocodeAddressIntentService"
             android:exported="false" />
 
         <activity
-            android:name=".ListLocalisationAdmin"
+            android:name=".UI.Activity.Admin.ListLocalisationAdmin"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".CloseDay"
-            android:parentActivityName=".MainActivity"
+            android:name=".Utils.CloseDay"
+            android:parentActivityName=".UI.Activity.User.MainActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".ListEmplacement"
+            android:name=".UI.Activity.User.ListEmplacement"
             android:screenOrientation="portrait"/>
 
         <!--
@@ -150,15 +150,15 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name=".ChoixReserveContactAdmin"
+            android:name=".UI.Activity.Admin.ChoixReserveContactAdmin"
             android:screenOrientation="portrait"
-            android:parentActivityName=".AdminAccueil"/>
+            android:parentActivityName=".UI.Activity.Admin.AdminAccueil"/>
         <activity
-            android:name=".ReservationAdminActivity"
+            android:name=".UI.Activity.Admin.ReservationAdminActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".ChoixReserveContactAdmin"/>
+            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"/>
         <activity
-            android:name=".AdminPresentation"
+            android:name=".UI.Activity.Admin.AdminPresentation"
             android:screenOrientation="portrait"></activity>
     </application>
 

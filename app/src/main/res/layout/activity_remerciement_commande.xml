@@ -7,7 +7,7 @@
     android:paddingRight="20dp"
     android:paddingLeft="20dp"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.RemerciementCommande"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.RemerciementCommande"
     android:background="@drawable/foodtruck_bg">
 
 
