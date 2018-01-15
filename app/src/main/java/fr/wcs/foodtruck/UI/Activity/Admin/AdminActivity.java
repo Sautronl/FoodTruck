@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class AdminActivity extends BaseActivity implements
     private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
-    private Button mExit;
+    private Button mExit,mMdpforgot;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -59,6 +60,14 @@ public class AdminActivity extends BaseActivity implements
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
+        mMdpforgot = (Button) findViewById(R.id.mdpForgotten);
+
+        mMdpforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AdminActivity.this, ResetActivity.class));
+            }
+        });
        // findViewById(R.id.sign_out_button).setOnClickListener(this);
         //findViewById(R.id.verify_email_button).setOnClickListener(this);
 
@@ -85,7 +94,6 @@ public class AdminActivity extends BaseActivity implements
         mAuth.signOut();
         updateUI(null);
     }
-
 
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);

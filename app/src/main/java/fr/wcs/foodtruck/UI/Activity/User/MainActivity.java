@@ -1,8 +1,10 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -150,13 +152,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(mBackButtonCount > 0) {
+        if (mBackButtonCount > 0) {
             Intent intent = new Intent(Intent.ACTION_MAIN);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-        }else{
-            mBackButtonCount++;
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Quitter Sam'donne faim")
+                    .setMessage("Etes-vous sûr de vouloir quitter l'app?")
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mBackButtonCount++;
+                            onBackPressed();
+                        }
+                    }).setNegativeButton("Non", null).show();
         }
     }
 }

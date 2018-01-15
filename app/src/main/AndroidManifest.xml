@@ -17,11 +17,10 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="Sam' Donne Faim"
+        android:label="Sam&apos; Donne Faim"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-
         <activity
             android:name=".UI.Activity.User.SplashActivity"
             android:screenOrientation="portrait">
@@ -37,48 +36,48 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".UI.Activity.User.ContactPrivatisation"
-            android:screenOrientation="portrait"
             android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.User.EventActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.User.MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.Commande"
-            android:screenOrientation="portrait"
             android:parentActivityName=".UI.Activity.User.MenuDuJourActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.User.Presentation"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.User.MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.fullImageActivity"
-            android:screenOrientation="portrait"
             android:parentActivityName=".UI.Activity.User.Presentation"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.CustomTheme" />
         <activity
             android:name=".UI.Activity.User.MenuDuJourActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.User.MainActivity" />
+            android:parentActivityName=".UI.Activity.User.MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.RemerciementCommande"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.User.Commande" />
+            android:parentActivityName=".UI.Activity.User.Commande"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.AdminActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.Admin.ContactAdmin"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"/>
+            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.MapsActivity"
             android:label="@string/title_activity_maps"
-            android:parentActivityName=".UI.Activity.User.MainActivity"/>
+            android:parentActivityName=".UI.Activity.User.MainActivity" />
         <!--
             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -94,31 +93,31 @@
 
         <activity
             android:name=".UI.Activity.Admin.AdminListeMenuDuJour"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.AdminMenuDuJour"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.Admin.AdminAccueil"
-            android:screenOrientation="portrait"
             android:parentActivityName=".UI.Activity.User.MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".UI.Activity.User.FormuleActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.User.MenuDuJourActivity" />
+            android:parentActivityName=".UI.Activity.User.MenuDuJourActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.AdminEvent"
-            android:screenOrientation="portrait"
             android:parentActivityName=".UI.Activity.Admin.AdminAccueil"
-            android:windowSoftInputMode="stateHidden"
-            android:theme="@style/NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Geocoder.GeocoderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
 
         <service
             android:name=".Geocoder.GeocodeAddressIntentService"
@@ -126,14 +125,14 @@
 
         <activity
             android:name=".UI.Activity.Admin.ListLocalisationAdmin"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Utils.CloseDay"
             android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.ListEmplacement"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -151,15 +150,16 @@
 
         <activity
             android:name=".UI.Activity.Admin.ChoixReserveContactAdmin"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.Admin.AdminAccueil"/>
+            android:parentActivityName=".UI.Activity.Admin.AdminAccueil"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.ReservationAdminActivity"
-            android:screenOrientation="portrait"
-            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"/>
+            android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.AdminPresentation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".UI.Activity.Admin.ResetActivity"></activity>
     </application>
 
 </manifest>
