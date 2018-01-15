@@ -7,63 +7,110 @@
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MainActivity"
     android:background="@drawable/bg_accueil">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/relativeLayout2">
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="180dp"
-            android:layout_height="70dp"
-            app:srcCompat="@drawable/foodtruck_logo"
-            android:layout_alignParentTop="true"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp" />
+            android:layout_centerVertical="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/logosam" />
 
-    <ImageView
-        android:id="@+id/menu"
-        android:layout_width="270dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="26dp"
-        app:srcCompat="@drawable/burger_user"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true" />
+    </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/presentation"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignLeft="@+id/menu"
-        android:layout_alignStart="@+id/menu"
-        android:layout_below="@+id/menu"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@drawable/truck_user" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/relativeLayout2"
+        android:id="@+id/relativeLayout3">
 
-    <ImageView
-        android:id="@+id/lieu"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignEnd="@+id/menu"
-        android:layout_alignRight="@+id/menu"
-        android:layout_alignTop="@+id/presentation"
-        app:srcCompat="@drawable/local_user" />
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="270dp"
+            android:layout_height="130dp"
+            android:layout_below="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="26dp"
+            app:srcCompat="@drawable/burger_user" />
 
-    <ImageView
-        android:id="@+id/contact"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="14dp"
-        app:srcCompat="@drawable/contact_user"
-        android:layout_below="@+id/presentation"
-        android:layout_alignLeft="@+id/presentation"
-        android:layout_alignStart="@+id/presentation" />
+        <ImageView
+            android:id="@+id/presentation"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignLeft="@+id/menu"
+            android:layout_alignStart="@+id/menu"
+            android:layout_below="@+id/menu"
+            android:layout_marginTop="15dp"
+            app:srcCompat="@drawable/truck_user" />
+
+        <ImageView
+            android:id="@+id/lieu"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignEnd="@+id/menu"
+            android:layout_alignRight="@+id/menu"
+            android:layout_alignTop="@+id/presentation"
+            app:srcCompat="@drawable/local_user" />
+
+        <ImageView
+            android:id="@+id/contact"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignLeft="@+id/presentation"
+            android:layout_alignStart="@+id/presentation"
+            android:layout_below="@+id/presentation"
+            android:layout_marginTop="14dp"
+            app:srcCompat="@drawable/contact_user" />
 
 
-    <ImageView
-        android:id="@+id/event"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_alignLeft="@+id/lieu"
-        android:layout_alignStart="@+id/lieu"
-        android:layout_alignTop="@+id/contact"
-        app:srcCompat="@drawable/event_user" />
+        <ImageView
+            android:id="@+id/event"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignLeft="@+id/lieu"
+            android:layout_alignStart="@+id/lieu"
+            android:layout_alignTop="@+id/contact"
+            app:srcCompat="@drawable/event_user" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="26dp"
+            android:layout_marginRight="26dp"
+            android:layout_toLeftOf="@+id/imageView"
+            android:layout_toStartOf="@+id/imageView"
+            android:src="@drawable/like" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="144dp"
+            android:layout_marginRight="144dp"
+            android:src="@drawable/star" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

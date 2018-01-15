@@ -1,4 +1,4 @@
-package fr.wcs.foodtruck.UI.Activity.User;
+package fr.wcs.foodtruck.Model;
 
 /**
  * Created by sam on 12/10/17.

@@ -22,7 +22,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import fr.wcs.foodtruck.UI.Activity.User.MajPlatDuJour;
+import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.R;
 
 

@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
+import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.Utils.CloseDay;
 import fr.wcs.foodtruck.R;
 

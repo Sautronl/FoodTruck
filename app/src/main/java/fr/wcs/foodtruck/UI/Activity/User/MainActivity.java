@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
     private Calendar mCalendar;
-    //private PackageManager pm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
