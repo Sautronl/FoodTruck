@@ -6,6 +6,7 @@
     <color name="rougeDark">#8B0000</color>
     <color name="black">#000000</color>
     <color name="blanc">#ffffff</color>
+    <color name="bleuTurk">#1ec48d</color>
 
     <color name="textEnvoyer">#ffffff</color>
 </resources>

@@ -35,7 +35,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/truck" />
+            app:srcCompat="@drawable/trucksam" />
 
         <Button
             android:id="@+id/buttonPresentation1"

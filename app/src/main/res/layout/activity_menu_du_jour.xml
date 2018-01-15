@@ -69,6 +69,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button_border_white"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/textEnvoyer"

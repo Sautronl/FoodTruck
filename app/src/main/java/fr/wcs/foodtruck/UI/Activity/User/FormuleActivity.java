@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import fr.wcs.foodtruck.R;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class FormuleActivity extends AppCompatActivity {
+
+    PhotoViewAttacher pAttach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,10 @@ public class FormuleActivity extends AppCompatActivity {
         //Fin de la toolbar
 
         Button reserver = (Button) findViewById(R.id.reserver);
+        ImageView samCarte =(ImageView) findViewById(R.id.samCarte);
+
+        pAttach = new PhotoViewAttacher(samCarte);
+        pAttach.update();
 
         final Intent intent = new Intent(FormuleActivity.this, Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
