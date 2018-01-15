@@ -1,6 +1,8 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView presentation = (ImageView) findViewById(R.id.presentation);
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
-        //ImageView facebook = (ImageView) findViewById(R.id.facebookLogo);
+        ImageView like = (ImageView) findViewById(R.id.like);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
 
@@ -52,12 +54,28 @@ public class MainActivity extends AppCompatActivity {
            }
        });
 
-        /*facebook.setOnClickListener(new View.OnClickListener() {
+        like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newFacebookIntent(getPackageManager(),"https://www.facebook.com/sautron.laurent");
+                String FACEBOOK_URL = "https://www.facebook.com/samdonnefaim/";
+                String FACEBOOK_PAGE_ID = "samdonnefaim";
+                String lien;
+                PackageManager packageManager = MainActivity.this.getPackageManager();
+                try {
+                    int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+                    if (versionCode >= 3002850) { //newer versions of fb app
+                        lien = "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+                    } else { //older versions of fb app
+                        lien = "fb://page/" + FACEBOOK_PAGE_ID;
+                    }
+                } catch (PackageManager.NameNotFoundException e) {
+                    lien = FACEBOOK_URL;
+                }
+                Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
+                facebookIntent.setData(Uri.parse(lien));
+                startActivity(facebookIntent);
             }
-        });*/
+        });
 
         mCalendar = Calendar.getInstance();
         final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);

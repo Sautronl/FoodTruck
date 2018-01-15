@@ -34,6 +34,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
     private TextView mAdress;
     private Calendar myCalendar;
     private ImageView mImgplatMenu;
+     Button mPrixButton;
 
 
     @Override
@@ -63,6 +64,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
         mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
         mAdress = (TextView)findViewById(R.id.adress);
         mImgplatMenu = (ImageView) findViewById(R.id.imgDuPlatMenu);
+        mPrixButton =(Button) findViewById(R.id.buttonPrix);
 
         TextView voirFormules = (TextView)findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
@@ -193,6 +195,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                     mNomBurger.setText(maj.getNomPlat());
                     mDescriptionMenu.setText(maj.getDescPlat());
                 Glide.with(getApplicationContext()).load(maj.getUrlImg()).into(mImgplatMenu);
+                mPrixButton.setText("Prix burger\n" +maj.getPrix());
             }
 
             @Override

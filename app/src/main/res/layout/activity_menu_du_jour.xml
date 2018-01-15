@@ -56,27 +56,24 @@
                 android:id="@+id/imgDuPlatMenu"
                 android:layout_width="300dp"
                 android:layout_height="223dp"
-                android:layout_alignTop="@+id/button"
+                android:layout_alignTop="@+id/buttonPrix"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/buttonPrix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:rotation="-20"
-                android:background="@drawable/button_border_white"
-                android:fontFamily="sans-serif-condensed"
-                android:text="@string/price"
-                android:textColor="@color/textEnvoyer"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:background="@drawable/button_border_white"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="@color/textEnvoyer"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
