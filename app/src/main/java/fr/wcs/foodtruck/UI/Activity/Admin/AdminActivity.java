@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import fr.wcs.foodtruck.UI.Activity.User.BaseActivity;
 import fr.wcs.foodtruck.R;
@@ -34,10 +36,12 @@ public class AdminActivity extends BaseActivity implements
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     private EditText mEmailField;
-    private EditText mPasswordField;
-    private Button mExit,mMdpforgot;
+    private EditText mPasswordField,resetEdit;
+    private Button mExit,mMdpforgot,buttonReset;
 
     // [START declare_auth]
+    private FirebaseDatabase mFire;
+    private DatabaseReference mRef;
     private FirebaseAuth mAuth;
     // [END declare_auth]
 
@@ -56,25 +60,33 @@ public class AdminActivity extends BaseActivity implements
         mDetailTextView = (TextView) findViewById(R.id.detail);
         mEmailField =(EditText) findViewById(R.id.field_email);
         mPasswordField =(EditText) findViewById(R.id.field_password);
+        resetEdit = (EditText)findViewById(R.id.resetEdit);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         mMdpforgot = (Button) findViewById(R.id.mdpForgotten);
+        buttonReset = (Button)findViewById(R.id.buttonreset);
 
         mMdpforgot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AdminActivity.this, ResetActivity.class));
+                buttonReset.setVisibility(View.VISIBLE);
+                resetEdit.setVisibility(View.VISIBLE);
             }
         });
-       // findViewById(R.id.sign_out_button).setOnClickListener(this);
-        //findViewById(R.id.verify_email_button).setOnClickListener(this);
 
-        // [START initialize_auth]
+        buttonReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resetPwdUser();
+            }
+        });
+
+        mFire = FirebaseDatabase.getInstance();
+        mRef = mFire.getReference();
+
         mAuth = FirebaseAuth.getInstance();
-        // [END initialize_auth]
-
     }
 
     // [START on_start_check_user]
@@ -93,6 +105,20 @@ public class AdminActivity extends BaseActivity implements
 
         mAuth.signOut();
         updateUI(null);
+    }
+
+    private void resetPwdUser(){
+        String resetPwd = resetEdit.getText().toString();
+        mAuth.sendPasswordResetEmail(resetPwd).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(AdminActivity.this, "Un mail vous a été envoyé à l'adresse renseigné !", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(AdminActivity.this, "Adresse Email incorrect", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void createAccount(String email, String password) {
