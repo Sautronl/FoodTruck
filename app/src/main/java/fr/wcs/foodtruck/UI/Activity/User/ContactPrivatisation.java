@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,8 @@ import java.util.UUID;
 
 import fr.wcs.foodtruck.Model.ContactAdminModel;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * Created by sam on 26/09/17.
@@ -40,6 +44,11 @@ public class ContactPrivatisation extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contactprivatisation);
+
+        ScrollView scrollPrivat = (ScrollView) findViewById(R.id.scrollPrivat);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollPrivat,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

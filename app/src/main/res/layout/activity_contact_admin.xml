@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingRight="10dp"
+    android:id="@+id/layoutContactAdmin"
     android:paddingLeft="10dp"
     android:background="@drawable/foodtruck_bg"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.EventActivity"

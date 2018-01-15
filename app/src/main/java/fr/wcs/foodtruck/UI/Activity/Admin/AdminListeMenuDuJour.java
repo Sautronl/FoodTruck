@@ -2,12 +2,14 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ import java.util.List;
 import fr.wcs.foodtruck.Model.ListeJourModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.AdapterListeJour;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class AdminListeMenuDuJour extends AppCompatActivity {
 
@@ -25,6 +29,11 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_menu_du_jour);
+
+        LinearLayout layoutMenuJourAdmin = (LinearLayout) findViewById(R.id.layoutMenuJourAdmin);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(layoutMenuJourAdmin,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

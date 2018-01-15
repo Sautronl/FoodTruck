@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,8 @@ import java.util.List;
 import fr.wcs.foodtruck.Model.EventModel;
 import fr.wcs.foodtruck.UI.Adapter.ListEventAdapter;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class EventActivity extends AppCompatActivity {
 
@@ -41,6 +46,11 @@ public class EventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+
+        RelativeLayout relativeEventUser = (RelativeLayout) findViewById(R.id.relativeEventUser);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(relativeEventUser,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

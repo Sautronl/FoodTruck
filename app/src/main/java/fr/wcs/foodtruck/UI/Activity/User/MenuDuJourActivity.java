@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +25,8 @@ import java.util.Calendar;
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.Utils.CloseDay;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class MenuDuJourActivity extends AppCompatActivity {
 
@@ -65,6 +69,10 @@ public class MenuDuJourActivity extends AppCompatActivity {
         mAdress = (TextView)findViewById(R.id.adress);
         mImgplatMenu = (ImageView) findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) findViewById(R.id.buttonPrix);
+        ScrollView scrollMenu = (ScrollView) findViewById(R.id.scrollMenu);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollMenu,mainfont);
 
         TextView voirFormules = (TextView)findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");

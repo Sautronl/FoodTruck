@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -24,6 +26,8 @@ import com.google.firebase.storage.UploadTask;
 
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 
 public class  AdminMenuDuJour extends AppCompatActivity {
@@ -45,6 +49,11 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu_du_jour);
+
+        ScrollView scrollMenuAdmin = (ScrollView) findViewById(R.id.scrollMenuAdmin);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollMenuAdmin,mainfont);
 
         int day;
         mNomPlatDuJour = (EditText) findViewById(R.id.nomDuPlat);

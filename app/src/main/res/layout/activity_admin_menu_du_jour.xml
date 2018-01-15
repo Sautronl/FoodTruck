@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
+    android:id="@+id/scrollMenuAdmin"
     android:background="@drawable/foodtruck_bg"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MenuDuJourActivity">
 

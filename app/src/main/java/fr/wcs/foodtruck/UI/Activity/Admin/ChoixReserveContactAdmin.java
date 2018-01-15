@@ -1,14 +1,18 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class ChoixReserveContactAdmin extends AppCompatActivity {
 
@@ -19,6 +23,11 @@ public class ChoixReserveContactAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choix_reserve_contact_admin);
+
+        RelativeLayout layoutReservAdmin = (RelativeLayout) findViewById(R.id.layoutReservAdmin);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(layoutReservAdmin,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

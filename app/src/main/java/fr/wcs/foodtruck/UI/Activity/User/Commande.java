@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +23,8 @@ import java.util.UUID;
 
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Model.ReservationModels;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * Created by apprenti on 27/09/17.
@@ -44,6 +48,11 @@ public class Commande  extends AppCompatActivity {
 
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference("Réservation");
+
+        ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollCommande,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

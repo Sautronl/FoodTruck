@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import fr.wcs.foodtruck.UI.Activity.User.BaseActivity;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class AdminActivity extends BaseActivity implements
         View.OnClickListener {
@@ -40,6 +44,11 @@ public class AdminActivity extends BaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+
+        LinearLayout main_layout = (LinearLayout) findViewById(R.id.main_layout);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(main_layout,mainfont);
 
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);

@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -31,6 +33,8 @@ import java.util.UUID;
 import fr.wcs.foodtruck.Model.EventModel;
 import fr.wcs.foodtruck.UI.Adapter.ListEventAdapter;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class AdminEvent extends AppCompatActivity {
 
@@ -49,6 +53,11 @@ public class AdminEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_event);
+
+        RelativeLayout layoutAdminEvent = (RelativeLayout) findViewById(R.id.layoutAdminEvent);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(layoutAdminEvent,mainfont);
 
         //Add Toolbar
         Toolbar toolbar =(Toolbar)findViewById(R.id.toolbar);

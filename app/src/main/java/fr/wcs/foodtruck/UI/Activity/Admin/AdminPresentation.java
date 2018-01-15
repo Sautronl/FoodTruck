@@ -1,10 +1,13 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class AdminPresentation extends AppCompatActivity {
 
@@ -30,6 +35,11 @@ public class AdminPresentation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_presentation);
+
+        LinearLayout layoutPresentationAdmin = (LinearLayout) findViewById(R.id.layoutPresentationAdmin);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(layoutPresentationAdmin,mainfont);
 
         mFirebase = FirebaseDatabase.getInstance();
         mAproposRef = mFirebase.getReference("ProposMAJ");

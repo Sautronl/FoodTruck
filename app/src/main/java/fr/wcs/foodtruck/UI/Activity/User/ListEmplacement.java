@@ -2,12 +2,14 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -16,12 +18,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.wcs.foodtruck.Model.ListJourEmplacementModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.AdapterListEmplacement;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * Created by apprenti on 15/09/17.
@@ -40,6 +45,11 @@ public class ListEmplacement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_emplacement);
+
+        LinearLayout emplacementLinear = (LinearLayout) findViewById(R.id.emplacementLinear);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(emplacementLinear,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);

@@ -2,13 +2,16 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,8 @@ import fr.wcs.foodtruck.Geocoder.GeocoderActivity;
 import fr.wcs.foodtruck.Model.ListLocalisationModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.AdapterListLocalisation;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * Created by apprenti on 15/09/17.
@@ -31,6 +36,11 @@ public class ListLocalisationAdmin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_list_emplacement);
+
+        LinearLayout listLocalLayout = (LinearLayout) findViewById(R.id.listLocalLayout);
+
+        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(listLocalLayout,mainfont);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
