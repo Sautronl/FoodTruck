@@ -14,10 +14,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:fontFamily="sans-serif-condensed"
         android:text="Event Name"
         android:textAllCaps="true"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="@color/bleuTurk"
         android:textSize="22sp"
         android:textStyle="bold" />
 

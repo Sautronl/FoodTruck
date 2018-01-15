@@ -20,7 +20,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/imgplus"
             android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-condensed"
             android:text="Plat du jour"
             android:layout_gravity="center"
             android:textAlignment="center"

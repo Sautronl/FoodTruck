@@ -10,9 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Lundi"
         android:textAllCaps="true"
-        android:textColor="@android:color/holo_orange_dark"
+        android:textColor="@color/bleuTurk"
         android:textSize="25sp" />
 
     <TextView
