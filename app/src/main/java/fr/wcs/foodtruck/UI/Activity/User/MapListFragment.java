@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +36,14 @@ public class MapListFragment extends Fragment {
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
     private ProgressDialog mDialog;
+    private AdapterListEmplacement mAdapter;
+    private ArrayList<ListJourEmplacementModel> mListJ = new ArrayList<>() ;
+    private String mAdresse;
+    private String[] mDay;
+    private int mI;
 
-    private ListView mListViewResults;
+
+    private RecyclerView mListViewResults;
 
     public MapListFragment() {
         // Required empty public constructor
@@ -56,33 +64,38 @@ public class MapListFragment extends Fragment {
         mDialog.setMessage("En cours de chargement..");
         mDialog.show();
 
-        mListViewResults = (ListView) view.findViewById(R.id.listEmplacement);
+        mListViewResults = (RecyclerView) view.findViewById(R.id.listEmplacement);
 
-        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
-                intent.putExtra("jourMarkeur", i);
-                startActivity(intent);
-            }
-        });
+        mListViewResults.setLayoutManager(new LinearLayoutManager(getContext()));
+
+//        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(getActivity(), MapsActivity.class);
+//                intent.putExtra("jourMarkeur", i);
+//                startActivity(intent);
+//            }
+//        });
         addAdrs();
         return view;
     }
 
     private void addAdrs(){
-        final List<ListJourEmplacementModel> results = new ArrayList<>();
-
+        //final List<ListJourEmplacementModel> results = new ArrayList<>();
+        mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
+        mI = 0;
         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot daySnapshot : dataSnapshot.getChildren()) {
-                    String adresse = (String) daySnapshot.child("adrs").getValue();
-                    results.add(new ListJourEmplacementModel(daySnapshot.getKey(), adresse));
+                    mAdresse = (String) daySnapshot.child("adrs").getValue();
+                    mListJ.add(new ListJourEmplacementModel(mDay[mI],mAdresse));
+                    mDay[mI] = mDay[mI];
+                    mI++;
                 }
-                AdapterListEmplacement adapter = new AdapterListEmplacement(getActivity(), results);
-                mListViewResults.setAdapter(adapter);
+                mAdapter = new AdapterListEmplacement(mListJ,getActivity());
+                mListViewResults.setAdapter(mAdapter);
                 mDialog.dismiss();
             }
 

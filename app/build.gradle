@@ -54,6 +54,9 @@ dependencies {
     //Drawer
     compile 'com.android.support:design:26.0.0-alpha1'
 
+    //cardview
+    compile 'com.android.support:cardview-v7:26.1.0'
+
     //Progress Dialog
     implementation 'com.github.mmoamenn:ProgressWindow_Android:0.0.2'
 

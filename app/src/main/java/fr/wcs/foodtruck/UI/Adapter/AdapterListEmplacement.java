@@ -1,13 +1,15 @@
 package fr.wcs.foodtruck.UI.Adapter;
 
 
-import android.content.Context;
+import android.app.Activity;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.wcs.foodtruck.Model.ListJourEmplacementModel;
@@ -17,38 +19,51 @@ import fr.wcs.foodtruck.R;
  * Code: il faut franchir les maquignons.
  */
 
-public class AdapterListEmplacement extends ArrayAdapter<ListJourEmplacementModel> {
+public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmplacement.ViewHolder> {
 
-    public AdapterListEmplacement(Context context, List<ListJourEmplacementModel> jour) {
-        super(context, 0, jour);
+    private List<ListJourEmplacementModel> mListJour;
+    private Activity activity;
+
+    public AdapterListEmplacement(List<ListJourEmplacementModel> mListJour,Activity activity) {
+        this.mListJour = mListJour;
+        this.activity = activity;
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public AdapterListEmplacement.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.list_emplacement_item, parent, false);
 
-        if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_list_emplacement_item,parent, false);
-        }
+        return new ViewHolder(view);    }
 
-        EmplacementViewHolder viewHolder = (EmplacementViewHolder) convertView.getTag();
-        if(viewHolder == null){
-            viewHolder = new EmplacementViewHolder();
-            viewHolder.jourEmplacement = convertView.findViewById(R.id.jourEmplacement);
-            viewHolder.jourAdresse = convertView.findViewById(R.id.jourAdresse);
-
-            convertView.setTag(viewHolder);
-        }
-
-        ListJourEmplacementModel jour = getItem(position);
-        viewHolder.jourEmplacement.setText(jour.getJour());
-        viewHolder.jourAdresse.setText(jour.getAdresse());
-
-        return convertView;
+    @Override
+    public void onBindViewHolder(AdapterListEmplacement.ViewHolder holder, int position) {
+        holder.display(mListJour.get(position));
     }
 
-    private class EmplacementViewHolder {
-        public TextView jourEmplacement;
-        public TextView jourAdresse;
+    @Override
+    public int getItemCount() {
+        return mListJour.size();
     }
+
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        TextView jourAdresse;
+        TextView jourEmplacement;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            jourAdresse = itemView.findViewById(R.id.jourAdresse);
+            jourEmplacement = itemView.findViewById(R.id.jourEmplacement);
+        }
+        public void display(ListJourEmplacementModel mListJour){
+
+
+
+                jourAdresse.setText(mListJour.getAdresse());
+                jourEmplacement.setText(mListJour.getJour());
+            }
+            //jourEmplacement.setText(mListJour.getJour());
+        }
+
 }
 
