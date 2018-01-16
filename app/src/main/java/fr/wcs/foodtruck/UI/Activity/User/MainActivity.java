@@ -10,18 +10,27 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.glide.slider.library.Animations.DescriptionAnimation;
+import com.glide.slider.library.SliderLayout;
+import com.glide.slider.library.SliderTypes.BaseSliderView;
+import com.glide.slider.library.SliderTypes.TextSliderView;
+import com.glide.slider.library.Tricks.ViewPagerEx;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import fr.wcs.foodtruck.Utils.CloseDay;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Activity.Admin.AdminActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
     private Calendar mCalendar;
+    private SliderLayout mSlide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,27 +43,62 @@ public class MainActivity extends AppCompatActivity {
         ImageView event = (ImageView) findViewById(R.id.event);
         ImageView contact = (ImageView) findViewById(R.id.contact);
         ImageView like = (ImageView) findViewById(R.id.like);
+        mSlide = findViewById(R.id.slider);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
+        ArrayList<String> listUrl = new ArrayList<String>();
+        ArrayList<String> listName = new ArrayList<String>();
 
-       logo.setOnTouchListener(new View.OnTouchListener() {
-           @Override
-           public boolean onTouch(View view, MotionEvent motionEvent) {
-               switch (motionEvent.getAction()) {
-                   case MotionEvent.ACTION_DOWN:
-                       timeElapsed = motionEvent.getDownTime();
-                       break;
-                   case MotionEvent.ACTION_UP:
-                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
-                       if (timeElapsed >= 1000){
-                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
-                           startActivity(admin);
-                       }
-                       break;
-                    }
-               return true;
-           }
-       });
+        listUrl.add("https://www.revive-adserver.com/media/GitHub.jpg");
+        listName.add("JPG - Github");
+
+        listUrl.add("https://tctechcrunch2011.files.wordpress.com/2017/02/android-studio-logo.png");
+        listName.add("PNG - Android Studio");
+
+        listUrl.add("http://static.tumblr.com/7650edd3fb8f7f2287d79a67b5fec211/3mg2skq/3bdn278j2/tumblr_static_idk_what.gif");
+        listName.add("GIF - Disney");
+
+        //listUrl.add("https://upload.wikimedia.org/wikipedia/commons/d/db/Android_robot_2014.svg");
+        //listName.add("SVG - Android");
+
+        for (int i = 0; i < listUrl.size(); i++) {
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(listName.get(i))
+                    .image(listUrl.get(i))
+                    .setOnSliderClickListener(this);
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle().putString("extra", listName.get(i));
+            mSlide.addSlider(textSliderView);
+        }
+        mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
+        mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mSlide.setCustomAnimation(new DescriptionAnimation());
+        mSlide.setDuration(4000);
+        mSlide.addOnPageChangeListener(MainActivity.this);
+
+
+
+//        logo.setOnTouchListener(new View.OnTouchListener() {
+//           @Override
+//           public boolean onTouch(View view, MotionEvent motionEvent) {
+//               switch (motionEvent.getAction()) {
+//                   case MotionEvent.ACTION_DOWN:
+//                       timeElapsed = motionEvent.getDownTime();
+//                       break;
+//                   case MotionEvent.ACTION_UP:
+//                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
+//                       if (timeElapsed >= 1000){
+//                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
+//                           startActivity(admin);
+//                       }
+//                       break;
+//                    }
+//               return true;
+//           }
+//       });
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,5 +213,32 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).setNegativeButton("Non", null).show();
         }
+    }
+
+    @Override
+    protected void onStop() {
+        // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
+        mSlide.stopAutoCycle();
+        super.onStop();
+    }
+
+    @Override
+    public void onSliderClick(BaseSliderView slider) {
+        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
