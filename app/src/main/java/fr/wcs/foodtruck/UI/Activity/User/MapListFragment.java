@@ -68,7 +68,6 @@ public class MapListFragment extends Fragment {
 
         mListViewResults.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        mListViewResults.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 //                Intent intent = new Intent(getActivity(), MapsActivity.class);
@@ -81,7 +80,6 @@ public class MapListFragment extends Fragment {
     }
 
     private void addAdrs(){
-        //final List<ListJourEmplacementModel> results = new ArrayList<>();
         mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
         mI = 0;
         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
@@ -94,7 +92,18 @@ public class MapListFragment extends Fragment {
                     mDay[mI] = mDay[mI];
                     mI++;
                 }
-                mAdapter = new AdapterListEmplacement(mListJ,getActivity());
+                mAdapter = new AdapterListEmplacement(mListJ, getActivity());
+                mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
+                    @Override
+                    public void onItemClick(int index) {
+                        for (int i = 0; i < index+1; i++) {
+                            Intent intent = new Intent(getActivity(), MapsActivity.class);
+                            intent.putExtra("jourMarkeur", index);
+                            startActivity(intent);
+
+                        }
+                    }
+                });
                 mListViewResults.setAdapter(mAdapter);
                 mDialog.dismiss();
             }

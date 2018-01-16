@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.wcs.foodtruck.Model.ListJourEmplacementModel;
@@ -23,6 +23,7 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
 
     private List<ListJourEmplacementModel> mListJour;
     private Activity activity;
+    private OnItemSelected listener;
 
     public AdapterListEmplacement(List<ListJourEmplacementModel> mListJour,Activity activity) {
         this.mListJour = mListJour;
@@ -38,12 +39,16 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
 
     @Override
     public void onBindViewHolder(AdapterListEmplacement.ViewHolder holder, int position) {
-        holder.display(mListJour.get(position));
+        holder.display(mListJour.get(position),listener,position);
     }
 
     @Override
     public int getItemCount() {
         return mListJour.size();
+    }
+
+    public Object getItemAtPosition(int position){
+        return mListJour.get(position);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -55,15 +60,25 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
             jourAdresse = itemView.findViewById(R.id.jourAdresse);
             jourEmplacement = itemView.findViewById(R.id.jourEmplacement);
         }
-        public void display(ListJourEmplacementModel mListJour){
+        public void display(final ListJourEmplacementModel mListJour, final OnItemSelected listener, final int position){
 
-
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onItemClick(position);
+                }
+            });
                 jourAdresse.setText(mListJour.getAdresse());
                 jourEmplacement.setText(mListJour.getJour());
             }
             //jourEmplacement.setText(mListJour.getJour());
         }
+    public void setOnItemClick(OnItemSelected listener){
+        this.listener = listener;
+    }
 
+    public interface OnItemSelected{
+        void onItemClick(int index);
+    }
 }
 
