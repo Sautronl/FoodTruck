@@ -3,6 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/emplacementLinear"
+    android:layout_marginTop="33dp"
     android:background="@drawable/foodtruck_bg">
 
     <TextView
