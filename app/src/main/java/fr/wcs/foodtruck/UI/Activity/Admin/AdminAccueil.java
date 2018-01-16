@@ -9,10 +9,10 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import fr.wcs.foodtruck.UI.Activity.User.MainActivity;
+import fr.wcs.foodtruck.UI.Activity.User.DrawActivity;
 import fr.wcs.foodtruck.R;
 
-public class AdminAccueil extends AppCompatActivity {
+public class AdminAccueil extends AppCompatActivity{
 
     private Button mDeco;
     private FirebaseAuth mAuth;
@@ -35,7 +35,7 @@ public class AdminAccueil extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        final Intent disconnect = new Intent(AdminAccueil.this, MainActivity.class);
+        final Intent disconnect = new Intent(AdminAccueil.this, DrawActivity.class);
         mDeco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
