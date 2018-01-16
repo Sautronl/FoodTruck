@@ -135,6 +135,7 @@
         <activity
             android:name=".UI.Activity.User.DrawActivity"
             android:label="@string/title_activity_draw"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionBar"></activity>
     </application>
 
