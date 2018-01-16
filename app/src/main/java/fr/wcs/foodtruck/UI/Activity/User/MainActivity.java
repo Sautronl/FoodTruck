@@ -25,7 +25,7 @@ import fr.wcs.foodtruck.Utils.CloseDay;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Activity.Admin.AdminActivity;
 
-public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements ViewPagerEx.OnPageChangeListener {
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         mSlide = findViewById(R.id.slider);
         final ImageView logo = (ImageView) findViewById(R.id.logo);
 
-        ArrayList<String> listUrl = new ArrayList<String>();
-        ArrayList<String> listName = new ArrayList<String>();
+        ArrayList<String> listUrl = new ArrayList<>();
+        ArrayList<String> listName = new ArrayList<>();
 
         listUrl.add("https://www.revive-adserver.com/media/GitHub.jpg");
         listName.add("JPG - Github");
@@ -58,47 +58,38 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         listUrl.add("http://static.tumblr.com/7650edd3fb8f7f2287d79a67b5fec211/3mg2skq/3bdn278j2/tumblr_static_idk_what.gif");
         listName.add("GIF - Disney");
 
-        //listUrl.add("https://upload.wikimedia.org/wikipedia/commons/d/db/Android_robot_2014.svg");
-        //listName.add("SVG - Android");
-
         for (int i = 0; i < listUrl.size(); i++) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView
-                    .description(listName.get(i))
-                    .image(listUrl.get(i))
-                    .setOnSliderClickListener(this);
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle().putString("extra", listName.get(i));
+                    .image(listUrl.get(i));
             mSlide.addSlider(textSliderView);
         }
         mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
         mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mSlide.setCustomAnimation(new DescriptionAnimation());
-        mSlide.setDuration(4000);
+        mSlide.setDuration(3000);
         mSlide.addOnPageChangeListener(MainActivity.this);
 
 
 
-//        logo.setOnTouchListener(new View.OnTouchListener() {
-//           @Override
-//           public boolean onTouch(View view, MotionEvent motionEvent) {
-//               switch (motionEvent.getAction()) {
-//                   case MotionEvent.ACTION_DOWN:
-//                       timeElapsed = motionEvent.getDownTime();
-//                       break;
-//                   case MotionEvent.ACTION_UP:
-//                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
-//                       if (timeElapsed >= 1000){
-//                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
-//                           startActivity(admin);
-//                       }
-//                       break;
-//                    }
-//               return true;
-//           }
-//       });
+        menu.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View view, MotionEvent motionEvent) {
+               switch (motionEvent.getAction()) {
+                   case MotionEvent.ACTION_DOWN:
+                       timeElapsed = motionEvent.getDownTime();
+                       break;
+                   case MotionEvent.ACTION_UP:
+                       timeElapsed = motionEvent.getEventTime() - timeElapsed;
+                       if (timeElapsed >= 1000){
+                           Intent admin = new Intent(MainActivity.this, AdminActivity.class);
+                           startActivity(admin);
+                       }
+                       break;
+                    }
+               return true;
+           }
+       });
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,19 +166,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     }
 
-    /*public static Intent newFacebookIntent(PackageManager pm, String url) {
-        Uri uri = Uri.parse(url);
-        try {
-            ApplicationInfo applicationInfo = pm.getApplicationInfo("com.facebook.katana", 0);
-            if (applicationInfo.enabled) {
-                // http://stackoverflow.com/a/24547437/1048340
-                uri = Uri.parse("fb://facewebmodal/f?href=" + url);
-            }
-        } catch (PackageManager.NameNotFoundException ignored) {/home/apprenti/AndroidStudioProjects/AutoBoat
-        }
-        return new Intent(Intent.ACTION_VIEW, uri);
-    }*/
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -220,11 +198,6 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
         // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
         mSlide.stopAutoCycle();
         super.onStop();
-    }
-
-    @Override
-    public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
     }
 
     @Override
