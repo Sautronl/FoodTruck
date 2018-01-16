@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,6 +41,7 @@ public class MenuFragment extends Fragment {
     private TextView mAdress;
     private Calendar myCalendar;
     private ImageView mImgplatMenu;
+    private ProgressDialog mDialog;
     Button mPrixButton;
 
     public MenuFragment() {
@@ -62,7 +64,12 @@ public class MenuFragment extends Fragment {
 //                startActivity(back);
 //            }
 //        });
-        //Fin de la toolbar
+
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setTitle("Plat du jour");
+        mDialog.setCancelable(false);
+        mDialog.setMessage("En cours de chargement..");
+        mDialog.show();
 
         mFire = FirebaseDatabase.getInstance();
         mDbRef = mFire.getReference("menu");
@@ -210,6 +217,7 @@ public class MenuFragment extends Fragment {
                 mDescriptionMenu.setText(maj.getDescPlat());
                 Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
                 mPrixButton.setText("Prix\n" +maj.getPrix());
+                mDialog.dismiss();
                 //mPrixButton.setTextColor(getResources().getColor(R.color.black));
             }
 
@@ -218,5 +226,10 @@ public class MenuFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

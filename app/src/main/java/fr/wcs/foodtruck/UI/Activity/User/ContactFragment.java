@@ -154,4 +154,9 @@ public class ContactFragment extends Fragment {
         mSujet.setText("");
         mMessage.setText("");
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
 }

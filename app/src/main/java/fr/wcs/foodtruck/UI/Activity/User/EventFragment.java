@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -41,6 +42,7 @@ public class EventFragment extends Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ListEventAdapter mAdapter;
+    private ProgressDialog mDialog;
 
     private int mCurrentPosition;
 
@@ -56,6 +58,12 @@ public class EventFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event, container, false);
+
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setTitle("Evénements");
+        mDialog.setCancelable(false);
+        mDialog.setMessage("En cours de chargement..");
+        mDialog.show();
 
 //        RelativeLayout relativeEventUser = (RelativeLayout) view.findViewById(R.id.relativeEventUser);
 
@@ -74,7 +82,7 @@ public class EventFragment extends Fragment {
 //        });
 
         //Control
-        circular_progress = (ProgressBar)view.findViewById(R.id.circular_progress);
+       // circular_progress = (ProgressBar)view.findViewById(R.id.circular_progress);
 
         //Liste d'events
         list_data = (ListView)view.findViewById(R.id.list_data);
@@ -107,7 +115,7 @@ public class EventFragment extends Fragment {
     private void addEventFirebaseListener() {
 
         //Progressing
-        circular_progress.setVisibility(View.VISIBLE);
+       // circular_progress.setVisibility(View.VISIBLE);
         list_data.setVisibility(View.INVISIBLE);
 
         mDatabaseReference.orderByChild("date").addValueEventListener(new ValueEventListener() {
@@ -122,7 +130,8 @@ public class EventFragment extends Fragment {
                 Collections.reverse(list_events);
                 mAdapter = new ListEventAdapter(getActivity(), list_events);
                 list_data.setAdapter(mAdapter);
-                circular_progress.setVisibility(View.INVISIBLE);
+               // circular_progress.setVisibility(View.INVISIBLE);
+                mDialog.dismiss();
                 list_data.setVisibility(View.VISIBLE);
             }
 
@@ -131,5 +140,10 @@ public class EventFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;

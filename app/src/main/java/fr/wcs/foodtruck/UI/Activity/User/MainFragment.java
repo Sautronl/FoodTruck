@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.UI.Activity.Admin.AdminActivity;
 import fr.wcs.foodtruck.Utils.CloseDay;
 
 /**
@@ -52,6 +54,7 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         ImageView event = (ImageView) view.findViewById(R.id.event);
         ImageView contact = (ImageView) view.findViewById(R.id.contact);
         ImageView like = (ImageView) view.findViewById(R.id.like);
+        ImageView star = (ImageView) view.findViewById(R.id.star);
         mSlide = view.findViewById(R.id.slider);
         final ImageView logo = (ImageView) view.findViewById(R.id.logo);
 
@@ -81,24 +84,24 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
 
 
 
-//        menu.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                switch (motionEvent.getAction()) {
-//                    case MotionEvent.ACTION_DOWN:
-//                        timeElapsed = motionEvent.getDownTime();
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        timeElapsed = motionEvent.getEventTime() - timeElapsed;
-//                        if (timeElapsed >= 1000){
-//                            Intent admin = new Intent(MainActivity.this, AdminActivity.class);
-//                            startActivity(admin);
-//                        }
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
+        star.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        timeElapsed = motionEvent.getDownTime();
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        timeElapsed = motionEvent.getEventTime() - timeElapsed;
+                        if (timeElapsed >= 1000){
+                            Intent admin = new Intent(getActivity(), AdminActivity.class);
+                            startActivity(admin);
+                        }
+                        break;
+                }
+                return true;
+            }
+        });
 
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,5 +216,10 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }

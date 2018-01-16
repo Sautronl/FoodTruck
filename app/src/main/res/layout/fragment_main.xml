@@ -101,12 +101,12 @@
             android:layout_alignParentTop="true"
             android:layout_marginEnd="26dp"
             android:layout_marginRight="26dp"
-            android:layout_toLeftOf="@+id/imageView"
-            android:layout_toStartOf="@+id/imageView"
+            android:layout_toLeftOf="@+id/star"
+            android:layout_toStartOf="@+id/star"
             android:src="@drawable/like" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/star"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"

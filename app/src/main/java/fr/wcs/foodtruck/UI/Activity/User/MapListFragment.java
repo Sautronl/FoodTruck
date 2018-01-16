@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,7 @@ public class MapListFragment extends Fragment {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
+    private ProgressDialog mDialog;
 
     private ListView mListViewResults;
 
@@ -43,6 +45,12 @@ public class MapListFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map_list, container, false);
+
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setTitle("Nos Emplacements");
+        mDialog.setCancelable(false);
+        mDialog.setMessage("En cours de chargement..");
+        mDialog.show();
 
         mListViewResults = (ListView) view.findViewById(R.id.listEmplacement);
 
@@ -73,6 +81,7 @@ public class MapListFragment extends Fragment {
                 }
                 AdapterListEmplacement adapter = new AdapterListEmplacement(getActivity(), results);
                 mListViewResults.setAdapter(adapter);
+                mDialog.dismiss();
             }
 
             @Override
@@ -80,5 +89,10 @@ public class MapListFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 }
