@@ -26,7 +26,7 @@
             <com.glide.slider.library.SliderLayout
                 android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="290dp" />
 
             <com.glide.slider.library.Indicators.PagerIndicator
                 android:id="@+id/custom_indicator"

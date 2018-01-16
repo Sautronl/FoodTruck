@@ -65,13 +65,13 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         ArrayList<String> listUrl = new ArrayList<>();
         ArrayList<String> listName = new ArrayList<>();
 
-        listUrl.add("https://www.revive-adserver.com/media/GitHub.jpg");
+        listUrl.add("https://media-cdn.tripadvisor.com/media/photo-s/07/50/f6/d1/john-s-burger.jpg");
         listName.add("JPG - Github");
 
-        listUrl.add("https://tctechcrunch2011.files.wordpress.com/2017/02/android-studio-logo.png");
+        listUrl.add("https://img.20mn.fr/I3MMnj6MTK-2H8zKiq3Xjg/830x532_burger-black-og-vincent-boccara");
         listName.add("PNG - Android Studio");
 
-        listUrl.add("http://static.tumblr.com/7650edd3fb8f7f2287d79a67b5fec211/3mg2skq/3bdn278j2/tumblr_static_idk_what.gif");
+        listUrl.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzS2JniRWr_en1FiRMOO-WUIJih6Px4JEN3YiOq1__iRFk7Ao");
         listName.add("GIF - Disney");
 
         for (int i = 0; i < listUrl.size(); i++) {

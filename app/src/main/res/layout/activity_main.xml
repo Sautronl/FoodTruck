@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.UI.Activity.User.MainActivity"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.MainFragment"
     android:background="@drawable/foodtruck_bg"
     >
 

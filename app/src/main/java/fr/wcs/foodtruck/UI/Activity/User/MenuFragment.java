@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 
+import fr.wcs.foodtruck.Controllers.Singleton;
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Utils.CloseDay;
@@ -46,6 +47,8 @@ public class MenuFragment extends Fragment {
     private ProgressDialog mDialog;
     Button mPrixButton;
 
+    Singleton mSingleton;
+
     public MenuFragment() {
         // Required empty public constructor
     }
@@ -57,6 +60,8 @@ public class MenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         getActivity().setTitle("Nos plats");
+
+        mSingleton =Singleton.getsInstance();
 
         ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
 
@@ -113,7 +118,8 @@ public class MenuFragment extends Fragment {
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (dayD == 2) {
-            majMenu("menuLundi");
+//            majMenu("menuLundi");
+            mSingleton.loadMenu("menuLundi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("1 Lundi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +132,7 @@ public class MenuFragment extends Fragment {
                 });
             }
         }else if (dayD == 3) {
-            majMenu("menuMardi");
+            mSingleton.loadMenu("menuMardi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("2 Mardi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +145,7 @@ public class MenuFragment extends Fragment {
                 });
             }
         }else if (dayD == 4) {
-            majMenu("menuMercredi");
+            mSingleton.loadMenu("menuMercredi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("3 Mercredi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +158,7 @@ public class MenuFragment extends Fragment {
                 });
             }
         }else if (dayD == 5) {
-            majMenu("menuJeudi");
+            mSingleton.loadMenu("menuJeudi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("4 Jeudi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +171,7 @@ public class MenuFragment extends Fragment {
                 });
             }
         }else if (dayD == 6) {
-            majMenu("menuVendredi");
+            mSingleton.loadMenu("menuVendredi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("5 Vendredi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -199,25 +205,25 @@ public class MenuFragment extends Fragment {
         });
     }
 
-    private void majMenu(String jour){
-        mDbRef.child(jour).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
-                mNomBurger.setText(maj.getNomPlat());
-                mDescriptionMenu.setText(maj.getDescPlat());
-                Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
-                mPrixButton.setText("Prix\n" +maj.getPrix());
-                mDialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
+//    private void majMenu(String jour){
+//        mDbRef.child(jour).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
+//                mNomBurger.setText(maj.getNomPlat());
+//                mDescriptionMenu.setText(maj.getDescPlat());
+//                Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
+//                mPrixButton.setText("Prix\n" +maj.getPrix());
+//                mDialog.dismiss();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 
     @Override
     public void onDestroyView() {
