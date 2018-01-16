@@ -8,7 +8,7 @@
     android:id="@+id/relativeEventUser"
     android:orientation="vertical"
     android:background="@drawable/foodtruck_bg"
-    tools:context="fr.wcs.foodtruck.UI.Activity.User.EventActivity"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.EventFragment"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView

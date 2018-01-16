@@ -10,6 +10,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginTop="33dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_height="wrap_content">
 
 
@@ -64,11 +66,11 @@
             android:id="@+id/presentationPage"
             android:layout_width="0dp"
             android:layout_height="75dp"
-            android:layout_marginBottom="33dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginLeft="34dp"
-            android:layout_marginRight="34dp"
-            android:layout_marginStart="34dp"
+            android:layout_marginBottom="13dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="8dp"
             android:gravity="center_vertical|center_horizontal"
             android:text="@string/presentationPage"
@@ -112,7 +114,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
-            android:background="#ffffff"
+            android:background="@drawable/borderwhite"
             android:enabled="true"
             android:hint="@string/prenomNom"
             app:layout_constraintHorizontal_bias="0.0"
@@ -125,10 +127,9 @@
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginLeft="8dp"
-
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:background="#ffffff"
+            android:background="@drawable/borderwhite"
             android:enabled="true"
             android:hint="@string/tel"
             android:inputType="phone"
@@ -148,8 +149,7 @@
             android:layout_marginBottom="165dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-
-            android:background="#ffffff"
+            android:background="@drawable/borderwhite"
             android:enabled="true"
             android:hint="@string/sujet"
             android:textStyle="bold"
@@ -169,9 +169,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
-
             android:layout_marginStart="8dp"
-            android:background="#ffffff"
+            android:background="@drawable/borderwhite"
             android:enabled="true"
             android:gravity="top"
             android:hint="@string/message"

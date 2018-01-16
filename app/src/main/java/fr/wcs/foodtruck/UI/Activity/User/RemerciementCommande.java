@@ -29,19 +29,14 @@ public class RemerciementCommande extends AppCompatActivity {
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(merciLayout,mainfont);
 
-        //Toolbar personnalisée avec bouton retour à la page précédente
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.abs_layout);
-
         Button backButton = (Button)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(RemerciementCommande.this, MainActivity.class);
+                Intent back = new Intent(RemerciementCommande.this, DrawActivity.class);
                 startActivity(back);
             }
         });
-        //Fin de la toolbar
 
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
         final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);

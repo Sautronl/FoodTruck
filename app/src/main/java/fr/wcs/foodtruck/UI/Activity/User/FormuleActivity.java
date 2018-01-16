@@ -37,7 +37,7 @@ public class FormuleActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(FormuleActivity.this, MenuDuJour.class);
+                Intent back = new Intent(FormuleActivity.this, DrawActivity.class);
                 startActivity(back);
             }
         });

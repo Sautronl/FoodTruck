@@ -10,9 +10,10 @@ android:background="@drawable/foodtruck_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:orientation="vertical">
 
 
@@ -21,7 +22,6 @@ android:background="@drawable/foodtruck_bg">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="27dp"
             android:layout_marginBottom="30dp"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/votrecommande"
@@ -71,7 +71,7 @@ android:background="@drawable/foodtruck_bg">
             android:id="@+id/editTextNom"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@android:color/white"
+            android:background="@drawable/borderwhite"
             android:ems="10"
             android:layout_marginBottom="5dp"
             android:focusableInTouchMode="true"
@@ -102,7 +102,7 @@ android:background="@drawable/foodtruck_bg">
             android:id="@+id/editTextTel"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="#ffffff"
+            android:background="@drawable/borderwhite"
             android:ems="10"
             android:layout_marginBottom="5dp"
             android:focusableInTouchMode="true"

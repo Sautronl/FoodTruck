@@ -31,36 +31,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
-        <activity
-            android:name=".UI.Activity.User.ContactPrivatisation"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".UI.Activity.User.EventActivity"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".UI.Activity.User.Commande"
-            android:parentActivityName=".UI.Activity.User.MenuDuJour"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
-        <activity
-            android:name=".UI.Activity.User.Presentation"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.fullImageActivity"
-            android:parentActivityName=".UI.Activity.User.Presentation"
+
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
-        <activity
-            android:name=".UI.Activity.User.MenuDuJour"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.RemerciementCommande"
             android:parentActivityName=".UI.Activity.User.Commande"
@@ -77,7 +55,7 @@
         <activity
             android:name=".UI.Activity.User.MapsActivity"
             android:label="@string/title_activity_maps"
-            android:parentActivityName=".UI.Activity.User.MainActivity" />
+             />
         <!--
             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -100,12 +78,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.Admin.AdminAccueil"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
         <activity
             android:name=".UI.Activity.User.FormuleActivity"
-            android:parentActivityName=".UI.Activity.User.MenuDuJour"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.Admin.AdminEvent"
@@ -128,10 +104,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Utils.CloseDay"
-            android:parentActivityName=".UI.Activity.User.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".UI.Activity.User.ListEmplacement"
             android:screenOrientation="portrait" />
 
         <!--

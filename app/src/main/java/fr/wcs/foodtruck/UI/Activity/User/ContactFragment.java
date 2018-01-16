@@ -62,12 +62,12 @@ public class ContactFragment extends Fragment {
 
                 if (checkbox.isChecked()) {
                     // est coché
-                    String privateOK = editSujet.getResources().getString(R.string.sujet2);
-                    editSujet.setText(privateOK);
+                   // String privateOK = editSujet.getResources().getString(R.string.sujet2);
+                    mSujet.setText(getResources().getString(R.string.sujet2));
 
                 } else {
                     // n'est pas coché
-                    editSujet.setText("");
+                    mSujet.setText("");
                 }
             }
         });
