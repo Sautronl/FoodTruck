@@ -159,7 +159,11 @@
         <activity
             android:name=".UI.Activity.Admin.AdminPresentation"
             android:screenOrientation="portrait" />
-        <activity android:name=".UI.Activity.Admin.ResetActivity"></activity>
+        <activity android:name=".UI.Activity.Admin.ResetActivity" />
+        <activity
+            android:name=".UI.Activity.User.DrawActivity"
+            android:label="@string/title_activity_draw"
+            android:theme="@style/NoActionBar"></activity>
     </application>
 
 </manifest>

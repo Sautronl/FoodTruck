@@ -109,16 +109,20 @@ public class AdminActivity extends BaseActivity implements
 
     private void resetPwdUser(){
         String resetPwd = resetEdit.getText().toString();
-        mAuth.sendPasswordResetEmail(resetPwd).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(AdminActivity.this, "Un mail vous a été envoyé à l'adresse renseigné !", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(AdminActivity.this, "Adresse Email incorrect", Toast.LENGTH_LONG).show();
+        if (resetPwd.isEmpty()){
+            Toast.makeText(this, "champs vide", Toast.LENGTH_SHORT).show();
+        }else{
+            mAuth.sendPasswordResetEmail(resetPwd).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(AdminActivity.this, "Un mail vous a été envoyé à l'adresse renseigné !", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(AdminActivity.this, "Adresse Email incorrect", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void createAccount(String email, String password) {

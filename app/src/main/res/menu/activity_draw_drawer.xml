@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Accueil" />
+        <item
+            android:id="@+id/nav_Menu"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Menu du jour" />
+        <item
+            android:id="@+id/nav_Event"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Evénement" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Map" />
+
+        <item
+            android:id="@+id/nav_histoire"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Qui sommes nous?" />
+    </group>
+
+    <item android:title="Une envie de privatiser?">
+        <menu>
+            <item
+                android:id="@+id/nav_contact"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Contacter nous" />
+        </menu>
+    </item>
+
+    <item android:title="Partager">
+    <menu>
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Recommander l'application" />
+    </menu>
+</item>
+
+</menu>
