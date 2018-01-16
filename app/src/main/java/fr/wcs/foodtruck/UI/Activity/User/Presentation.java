@@ -47,13 +47,13 @@ public class Presentation extends AppCompatActivity {
 //        getSupportActionBar().setCustomView(R.layout.abs_layout);
 
         ImageView backButton = (ImageView) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent back = new Intent(Presentation.this, MainActivity.class);
-                startActivity(back);
-            }
-        });
+//        backButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent back = new Intent(Presentation.this, MainActivity.class);
+//                startActivity(back);
+//            }
+//        });
         //Fin de la toolbar
         mFirebase = FirebaseDatabase.getInstance();
         mAproposRef = mFirebase.getReference("ProposMAJ");

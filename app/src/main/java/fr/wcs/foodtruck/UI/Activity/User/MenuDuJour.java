@@ -28,7 +28,7 @@ import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Utils.Constant;
 import fr.wcs.foodtruck.Utils.SetTypeFace;
 
-public class MenuDuJourActivity extends AppCompatActivity {
+public class MenuDuJour extends AppCompatActivity {
 
     private FirebaseDatabase mFire;
     private DatabaseReference mDbRef;
@@ -54,7 +54,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(MenuDuJourActivity.this, MainActivity.class);
+                Intent back = new Intent(MenuDuJour.this, MainActivity.class);
                 startActivity(back);
             }
         });
@@ -84,7 +84,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
 
         checkDay();
 
-        final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
+        final Intent intent = new Intent(MenuDuJour.this, Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +92,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
             }
         });
 
-        final Intent intent2 = new Intent(MenuDuJourActivity.this, FormuleActivity.class);
+        final Intent intent2 = new Intent(MenuDuJour.this, FormuleActivity.class);
         decouvrez.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +114,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        Intent mapdetail = new Intent(MenuDuJour.this, MapsActivity.class);
                         mapdetail.putExtra("jourMarkeur", 0);
                         startActivity(mapdetail);
                     }
@@ -127,7 +127,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        Intent mapdetail = new Intent(MenuDuJour.this, MapsActivity.class);
                         mapdetail.putExtra("jourMarkeur", 1);
                         startActivity(mapdetail);
                     }
@@ -140,7 +140,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        Intent mapdetail = new Intent(MenuDuJour.this, MapsActivity.class);
                         mapdetail.putExtra("jourMarkeur", 2);
                         startActivity(mapdetail);
                     }
@@ -153,7 +153,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        Intent mapdetail = new Intent(MenuDuJour.this, MapsActivity.class);
                         mapdetail.putExtra("jourMarkeur", 3);
                         startActivity(mapdetail);
                     }
@@ -166,7 +166,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        Intent mapdetail = new Intent(MenuDuJour.this, MapsActivity.class);
                         mapdetail.putExtra("jourMarkeur", 4);
                         startActivity(mapdetail);
                     }
@@ -174,7 +174,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
             }
         }
         else{
-            Intent intentClose = new Intent(MenuDuJourActivity.this, CloseDay.class);
+            Intent intentClose = new Intent(MenuDuJour.this, CloseDay.class);
             startActivity(intentClose);
         }
     }

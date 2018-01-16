@@ -10,11 +10,8 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.glide.slider.library.Animations.DescriptionAnimation;
 import com.glide.slider.library.SliderLayout;
-import com.glide.slider.library.SliderTypes.BaseSliderView;
 import com.glide.slider.library.SliderTypes.TextSliderView;
 import com.glide.slider.library.Tricks.ViewPagerEx;
 
@@ -125,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements ViewPagerEx.OnPag
                     Intent intentClose = new Intent(MainActivity.this, CloseDay.class);
                     startActivity(intentClose);
                 } else {
-                    Intent intent = new Intent(MainActivity.this, MenuDuJourActivity.class);
+                    Intent intent = new Intent(MainActivity.this, MenuDuJour.class);
                     startActivity(intent);
                 }
             }

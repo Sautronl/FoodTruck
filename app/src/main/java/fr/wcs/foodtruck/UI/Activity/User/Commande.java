@@ -62,7 +62,7 @@ public class Commande  extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(Commande.this, MenuDuJourActivity.class);
+                Intent back = new Intent(Commande.this, MenuDuJour.class);
                 startActivity(back);
             }
         });

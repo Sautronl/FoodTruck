@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
-import com.google.android.gms.common.api.Scope;
 
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Utils.Constant;
@@ -40,7 +37,7 @@ public class FormuleActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent back = new Intent(FormuleActivity.this, MenuDuJourActivity.class);
+                Intent back = new Intent(FormuleActivity.this, MenuDuJour.class);
                 startActivity(back);
             }
         });

@@ -62,7 +62,7 @@ public class PresentationFragment extends Fragment {
 //        backButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent back = new Intent(getActivity(), MainActivity.class);
+//                Intent back = new Intent(MenuDuJour(), MainActivity.class);
 //                startActivity(back);
 //            }
 //        });
@@ -75,7 +75,7 @@ public class PresentationFragment extends Fragment {
 //        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent i = new Intent(getActivity(), fullImageActivity.class);
+//                Intent i = new Intent(MenuDuJour(), fullImageActivity.class);
 //                i.putExtra("id", position);
 //                startActivity(i);
 //

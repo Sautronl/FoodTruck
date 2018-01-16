@@ -92,36 +92,6 @@
             android:textSize="17sp"
             android:visibility="gone" />
 
-        <Button
-            android:id="@+id/buttonPresentation3"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_border_white"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/buttonPresentation3"
-            android:textColor="@color/blanc"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <GridView
-            android:id="@+id/gallery"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:columnWidth="100dp"
-            android:gravity="center"
-            android:horizontalSpacing="5dp"
-            android:numColumns="auto_fit"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="5dp"
-            android:visibility="gone" />
-
-
     </LinearLayout>
 </ScrollView>
 

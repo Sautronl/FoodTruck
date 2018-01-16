@@ -7,7 +7,7 @@
     android:paddingRight="20dp"
     android:id="@+id/scrollMenuAdmin"
     android:background="@drawable/foodtruck_bg"
-    tools:context="fr.wcs.foodtruck.UI.Activity.User.MenuDuJourActivity">
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.MenuDuJour">
 
     <LinearLayout
         android:layout_width="match_parent"

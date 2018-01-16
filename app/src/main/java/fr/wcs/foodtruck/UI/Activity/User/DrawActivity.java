@@ -56,14 +56,26 @@ public class DrawActivity extends AppCompatActivity
                 Fragment current = getCurrentFragment();
                 if (current instanceof MainFragment) {
                     navigationView.setCheckedItem(R.id.nav_main);
+                }else if (current instanceof MenuFragment){
+                    navigationView.setCheckedItem(R.id.nav_Menu);
                 } else if (current instanceof PresentationFragment){
                     navigationView.setCheckedItem(R.id.nav_histoire);
+                }else if (current instanceof EventFragment){
+                    navigationView.setCheckedItem(R.id.nav_Event);
+                }else if (current instanceof MapListFragment){
+                    navigationView.setCheckedItem(R.id.nav_map);
+                }else if (current instanceof ContactFragment){
+                    navigationView.setCheckedItem(R.id.nav_contact);
                 }
             }
         });
 
         mNewFragment.add(Fragment.instantiate(this, MainFragment.class.getName()));
+        mNewFragment.add(Fragment.instantiate(this,MenuFragment.class.getName()));
         mNewFragment.add(Fragment.instantiate(this, PresentationFragment.class.getName()));
+        mNewFragment.add(Fragment.instantiate(this,EventFragment.class.getName()));
+        mNewFragment.add(Fragment.instantiate(this, MapListFragment.class.getName()));
+        mNewFragment.add(Fragment.instantiate(this,ContactFragment.class.getName()));
 
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -94,7 +106,19 @@ public class DrawActivity extends AppCompatActivity
                 mFragment = mNewFragment.get(0);
                 break;
             case R.id.nav_histoire:
+                mFragment = mNewFragment.get(2);
+                break;
+            case R.id.nav_Menu:
                 mFragment = mNewFragment.get(1);
+                break;
+            case R.id.nav_Event:
+                mFragment = mNewFragment.get(3);
+                break;
+            case R.id.nav_map:
+                mFragment = mNewFragment.get(4);
+                break;
+            case R.id.nav_contact:
+                mFragment = mNewFragment.get(5);
                 break;
             default:
                 mFragment = mNewFragment.get(0);
