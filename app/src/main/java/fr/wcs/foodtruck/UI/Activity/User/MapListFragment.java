@@ -48,6 +48,8 @@ public class MapListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map_list, container, false);
 
+        getActivity().setTitle("Nos emplacements");
+
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Nos Emplacements");
         mDialog.setCancelable(false);

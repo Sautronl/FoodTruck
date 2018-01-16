@@ -24,6 +24,11 @@ public class RemerciementCommande extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remerciement_commande);
 
+        String nom = getIntent().getStringExtra("nom");
+        String heure = getIntent().getStringExtra("heure");
+
+        RemerciementCommande.this.setTitle(nom);
+
         RelativeLayout merciLayout =(RelativeLayout) findViewById(R.id.merciLayout);
 
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
@@ -41,8 +46,7 @@ public class RemerciementCommande extends AppCompatActivity {
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
         final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);
 
-        String nom = getIntent().getStringExtra("nom");
-        String heure = getIntent().getStringExtra("heure");
+
 
         RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(rem.getNom());

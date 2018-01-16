@@ -24,6 +24,8 @@ public class FormuleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formule);
 
+        FormuleActivity.this.setTitle("A la carte");
+
         ScrollView formuleScroll = (ScrollView) findViewById(R.id.formuleScroll);
 
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);

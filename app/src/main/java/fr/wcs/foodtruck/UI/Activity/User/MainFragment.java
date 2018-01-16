@@ -48,6 +48,8 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        getActivity().setTitle("Accueil");
+
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ImageView menu = (ImageView) view.findViewById(R.id.menu);

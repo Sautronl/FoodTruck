@@ -56,6 +56,7 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        getActivity().setTitle("Nos plats");
 
         ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
 

@@ -46,6 +46,8 @@ public class Commande  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
+        Commande.this.setTitle("Prendre commande");
+
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference("Réservation");
 

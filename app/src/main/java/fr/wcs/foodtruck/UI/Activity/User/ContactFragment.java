@@ -49,6 +49,8 @@ public class ContactFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
+        getActivity().setTitle("Contact");
+
         mPrenomNom = (EditText) view.findViewById(R.id.prenomNom);
         mTel = (EditText) view.findViewById(R.id.tel);
         mSujet = (EditText) view.findViewById(R.id.sujet);

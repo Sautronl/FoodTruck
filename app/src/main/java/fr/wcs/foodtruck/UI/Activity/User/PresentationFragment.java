@@ -51,6 +51,8 @@ public class PresentationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_presentation, container, false);
 
+        getActivity().setTitle("Notre histoire");
+
         mFirebase = FirebaseDatabase.getInstance();
         mAproposRef = mFirebase.getReference("ProposMAJ");
 

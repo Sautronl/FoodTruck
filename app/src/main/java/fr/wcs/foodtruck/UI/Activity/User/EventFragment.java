@@ -61,6 +61,8 @@ public class EventFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_event, container, false);
 
+        getActivity().setTitle("Evénement");
+
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Evénements");
         mDialog.setCancelable(false);
