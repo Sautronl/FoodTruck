@@ -51,7 +51,12 @@ public class PresentationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_presentation, container, false);
 
+        ScrollView scrollPresentation = view.findViewById(R.id.scrollPresentation);
+
         getActivity().setTitle("Notre histoire");
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(),Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollPresentation,mainfont);
 
         mFirebase = FirebaseDatabase.getInstance();
         mAproposRef = mFirebase.getReference("ProposMAJ");

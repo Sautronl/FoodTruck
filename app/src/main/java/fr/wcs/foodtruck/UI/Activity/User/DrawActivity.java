@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,6 +20,8 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class DrawActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -45,6 +48,9 @@ public class DrawActivity extends AppCompatActivity
                 this, mDrawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(mDrawer,mainfont);
 
         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setCheckedItem(R.id.nav_main);

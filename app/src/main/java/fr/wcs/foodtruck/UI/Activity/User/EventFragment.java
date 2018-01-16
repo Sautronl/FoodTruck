@@ -63,6 +63,10 @@ public class EventFragment extends Fragment {
 
         getActivity().setTitle("Evénement");
 
+        RelativeLayout relativeEventUser = view.findViewById(R.id.relativeEventUser);
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(relativeEventUser,mainfont);
+
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Evénements");
         mDialog.setCancelable(false);

@@ -52,6 +52,8 @@ public class Commande  extends AppCompatActivity {
         mReservRef = mFirebase.getReference("Réservation");
 
         ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
+        Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollCommande,mainfont);
 
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);

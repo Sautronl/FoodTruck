@@ -3,13 +3,17 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ScrollView;
 
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +31,11 @@ public class CloseFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_close, container, false);
+
+        ScrollView closeLayout =(ScrollView) view.findViewById(R.id.closeLayout);
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(closeLayout,mainfont);
 
         return view;
     }

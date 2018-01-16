@@ -5,8 +5,10 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
@@ -30,6 +32,8 @@ import fr.wcs.foodtruck.Controllers.Singleton;
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Utils.CloseDay;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +85,9 @@ public class MenuFragment extends Fragment {
         mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
         ScrollView scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollMenu,mainfont);
 
         TextView voirFormules = (TextView)view.findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
@@ -185,8 +192,11 @@ public class MenuFragment extends Fragment {
             }
         }
         else{
-            Intent intentClose = new Intent(getActivity(), CloseDay.class);
-            startActivity(intentClose);
+            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+            Fragment fragment = new CloseFragment();
+            fragmentTransaction.replace(R.id.container,fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 

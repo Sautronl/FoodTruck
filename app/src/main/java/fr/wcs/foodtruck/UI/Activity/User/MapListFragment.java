@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +29,8 @@ import java.util.List;
 import fr.wcs.foodtruck.Model.ListJourEmplacementModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.AdapterListEmplacement;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +62,11 @@ public class MapListFragment extends Fragment {
 
         getActivity().setTitle("Nos emplacements");
 
+        LinearLayout emplacementLinear = view.findViewById(R.id.emplacementLinear);
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(emplacementLinear,mainfont);
+
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Nos Emplacements");
         mDialog.setCancelable(false);
@@ -67,14 +76,6 @@ public class MapListFragment extends Fragment {
         mListViewResults = (RecyclerView) view.findViewById(R.id.listEmplacement);
 
         mListViewResults.setLayoutManager(new LinearLayoutManager(getContext()));
-
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent = new Intent(getActivity(), MapsActivity.class);
-//                intent.putExtra("jourMarkeur", i);
-//                startActivity(intent);
-//            }
-//        });
         addAdrs();
         return view;
     }
@@ -100,7 +101,6 @@ public class MapListFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), MapsActivity.class);
                             intent.putExtra("jourMarkeur", index);
                             startActivity(intent);
-
                         }
                     }
                 });

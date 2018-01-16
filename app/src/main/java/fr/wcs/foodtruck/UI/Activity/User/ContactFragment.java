@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
+import android.widget.Scroller;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +27,8 @@ import java.util.UUID;
 
 import fr.wcs.foodtruck.Model.ContactAdminModel;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,6 +55,11 @@ public class ContactFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_contact, container, false);
 
         getActivity().setTitle("Contact");
+
+        ScrollView scrollPrivat = view.findViewById(R.id.scrollPrivat);
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(scrollPrivat,mainfont);
 
         mPrenomNom = (EditText) view.findViewById(R.id.prenomNom);
         mTel = (EditText) view.findViewById(R.id.tel);
