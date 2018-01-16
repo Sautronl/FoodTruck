@@ -35,17 +35,13 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 public class ContactAdmin extends AppCompatActivity {
 
     private ListView mListViewContactAdmin;
-    //private ProgressBar circular_progress;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private AdapterContactAdmin mAdapterContact;
     private ContactAdminModel mSelectedContact;
     private int mTotal;
-
     private int mCurrentPosition;
-
     private List<ContactAdminModel> mList_contact = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +111,6 @@ public class ContactAdmin extends AppCompatActivity {
         //Firebase
         initFirebase();
         childFirebaseListener();
-        //addEventFirebaseListener();
     }
 
     private void initFirebase() {
@@ -133,7 +128,6 @@ public class ContactAdmin extends AppCompatActivity {
                     mAdapterContact = new AdapterContactAdmin(ContactAdmin.this, mList_contact);
                     mListViewContactAdmin.setAdapter(mAdapterContact);
             }
-
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {

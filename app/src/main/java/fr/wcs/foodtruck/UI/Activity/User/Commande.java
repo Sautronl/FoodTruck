@@ -51,23 +51,6 @@ public class Commande  extends AppCompatActivity {
 
         ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
 
-//        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
-//        SetTypeFace.setAppFont(scrollCommande,mainfont);
-//
-//        //Toolbar personnalisée avec bouton retour à la page précédente
-//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        getSupportActionBar().setCustomView(R.layout.abs_layout);
-
-//        ImageView backButton = (ImageView) findViewById(R.id.backButton);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent back = new Intent(Commande.this, MenuDuJour.class);
-//                startActivity(back);
-//            }
-//        });
-        //Fin de la toolbar
-
         btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);

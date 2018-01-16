@@ -65,25 +65,6 @@ public class EventFragment extends Fragment {
         mDialog.setMessage("En cours de chargement..");
         mDialog.show();
 
-//        RelativeLayout relativeEventUser = (RelativeLayout) view.findViewById(R.id.relativeEventUser);
-
-//        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
-//        SetTypeFace.setAppFont(relativeEventUser,mainfont);
-
-
-
-//        ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent back = new Intent(EventActivity.this, MainActivity.class);
-//                startActivity(back);
-//            }
-//        });
-
-        //Control
-       // circular_progress = (ProgressBar)view.findViewById(R.id.circular_progress);
-
         //Liste d'events
         list_data = (ListView)view.findViewById(R.id.list_data);
         /*list_data.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -113,9 +94,6 @@ public class EventFragment extends Fragment {
     }
 
     private void addEventFirebaseListener() {
-
-        //Progressing
-       // circular_progress.setVisibility(View.VISIBLE);
         list_data.setVisibility(View.INVISIBLE);
 
         mDatabaseReference.orderByChild("date").addValueEventListener(new ValueEventListener() {
@@ -130,7 +108,6 @@ public class EventFragment extends Fragment {
                 Collections.reverse(list_events);
                 mAdapter = new ListEventAdapter(getActivity(), list_events);
                 list_data.setAdapter(mAdapter);
-               // circular_progress.setVisibility(View.INVISIBLE);
                 mDialog.dismiss();
                 list_data.setVisibility(View.VISIBLE);
             }

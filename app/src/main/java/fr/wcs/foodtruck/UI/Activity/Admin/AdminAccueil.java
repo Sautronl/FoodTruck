@@ -17,7 +17,6 @@ public class AdminAccueil extends AppCompatActivity{
     private Button mDeco;
     private FirebaseAuth mAuth;
     private int mBackButtonCount = 0;
-    private Button buttonSend;
     private Button aPropos;
 
 
@@ -44,7 +43,6 @@ public class AdminAccueil extends AppCompatActivity{
             }
         });
 
-
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,14 +67,6 @@ public class AdminAccueil extends AppCompatActivity{
             }
         });
 
-        /*contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdminAccueil.this, ContactPrivatisation.class);
-                startActivity(intent);
-            }
-        });*/
-
         contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,8 +84,6 @@ public class AdminAccueil extends AppCompatActivity{
             }
         });
 
-
-
     }
     @Override
     protected void onResume() {
@@ -112,5 +100,4 @@ public class AdminAccueil extends AppCompatActivity{
             startActivity(intent);
         }
     }
-
 }

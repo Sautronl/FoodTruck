@@ -49,38 +49,8 @@ public class PresentationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_presentation, container, false);
 
-        ScrollView scrollPresentation = (ScrollView) view.findViewById(R.id.scrollPresentation);
-
-//        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
-//        SetTypeFace.setAppFont(scrollPresentation,mainfont);
-
-        //Toolbar personnalisée avec bouton retour à la page précédente
-//        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//        getSupportActionBar().setCustomView(R.layout.abs_layout);
-
-        ImageView backButton = (ImageView) view.findViewById(R.id.backButton);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent back = new Intent(MenuDuJour(), MainActivity.class);
-//                startActivity(back);
-//            }
-//        });
-        //Fin de la toolbar
         mFirebase = FirebaseDatabase.getInstance();
         mAproposRef = mFirebase.getReference("ProposMAJ");
-//        final GridView gridView = (GridView) view.findViewById(R.id.gallery);
-//        gridView.setAdapter(new GalleryAdapter(this));
-//
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent i = new Intent(MenuDuJour(), fullImageActivity.class);
-//                i.putExtra("id", position);
-//                startActivity(i);
-//
-//            }
-//        });
 
         Button button1 = (Button) view.findViewById(R.id.buttonPresentation1);
         Button button2 = (Button) view.findViewById(R.id.buttonPresentation2);
@@ -97,8 +67,6 @@ public class PresentationFragment extends Fragment {
                 } else {
                     mTextViewQsn.setVisibility(VISIBLE);
                     mTextViewNv.setVisibility(View.GONE);
-                    //gridView.setVisibility(View.GONE);
-
                 }
             }
         });
@@ -111,23 +79,9 @@ public class PresentationFragment extends Fragment {
                 } else {
                     mTextViewNv.setVisibility(VISIBLE);
                     mTextViewQsn.setVisibility(View.GONE);
-                   // gridView.setVisibility(View.GONE);
                 }
             }
         });
-
-//        button3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (gridView.getVisibility() == View.VISIBLE) {
-//                    gridView.setVisibility(View.GONE);
-//                } else {
-//                    gridView.setVisibility(VISIBLE);
-//                    mTextViewNv.setVisibility(View.GONE);
-//                    mTextViewQsn.setVisibility(View.GONE);
-//                }
-//            }
-//        });
         ValueAproposListener();
         ValueNosValeursListener();
 

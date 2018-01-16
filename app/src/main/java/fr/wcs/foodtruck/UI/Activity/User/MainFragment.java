@@ -82,8 +82,6 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         mSlide.setDuration(3000);
         mSlide.addOnPageChangeListener(MainFragment.this);
 
-
-
         star.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -129,7 +127,6 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         mCalendar = Calendar.getInstance();
         final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);
 
-
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -150,8 +147,6 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         presentation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(MenuDuJour(), Presentation.class);
-//                startActivity(intent);
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 Fragment fragment = new PresentationFragment();
                 fragmentTransaction.addToBackStack(null);
@@ -192,7 +187,6 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
                 fragmentTransaction.commit();
             }
         });
-
         return view;
     }
 

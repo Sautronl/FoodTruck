@@ -70,7 +70,6 @@ public class ContactPrivatisation extends AppCompatActivity {
          mMessage = (EditText) findViewById(R.id.message);
          ImageButton imageBoutonPhone = (ImageButton) findViewById(R.id.imageBoutonPhone);
 
-
         // checkbox
         final CheckBox checkbox = (CheckBox) findViewById(R.id.checkbox);
         checkbox.setOnClickListener(new View.OnClickListener() {
@@ -98,8 +97,6 @@ public class ContactPrivatisation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        Intent intent = getIntent();
 
         // Message Toast si les champs obligatoires ne sont pas remplis
 

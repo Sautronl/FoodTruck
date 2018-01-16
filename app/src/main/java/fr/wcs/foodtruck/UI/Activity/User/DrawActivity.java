@@ -49,7 +49,6 @@ public class DrawActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.nav_main);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         this.getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
@@ -76,7 +75,6 @@ public class DrawActivity extends AppCompatActivity
         mNewFragment.add(Fragment.instantiate(this,EventFragment.class.getName()));
         mNewFragment.add(Fragment.instantiate(this, MapListFragment.class.getName()));
         mNewFragment.add(Fragment.instantiate(this,ContactFragment.class.getName()));
-
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         mFragment = mNewFragment.get(0);
@@ -123,13 +121,11 @@ public class DrawActivity extends AppCompatActivity
             default:
                 mFragment = mNewFragment.get(0);
         }
-        // Insert the fragment by replacing any existing fragment
         fragmentTransaction.replace(R.id.container, mFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         mDrawer.closeDrawer(GravityCompat.START);
         return true;
-
     }
 }

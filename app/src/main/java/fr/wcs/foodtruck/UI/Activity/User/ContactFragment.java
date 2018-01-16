@@ -53,7 +53,6 @@ public class ContactFragment extends Fragment {
         mMessage = (EditText) view.findViewById(R.id.message);
         ImageButton imageBoutonPhone = (ImageButton) view.findViewById(R.id.imageBoutonPhone);
 
-
         // checkbox
         final CheckBox checkbox = (CheckBox) view.findViewById(R.id.checkbox);
         checkbox.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +80,6 @@ public class ContactFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
-        Intent intent = getActivity().getIntent();
 
         // Message Toast si les champs obligatoires ne sont pas remplis
 
@@ -116,7 +113,6 @@ public class ContactFragment extends Fragment {
 
         });
         createContact(view);
-
         return view;
     }
 

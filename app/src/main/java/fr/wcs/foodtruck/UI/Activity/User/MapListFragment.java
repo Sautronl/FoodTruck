@@ -62,9 +62,7 @@ public class MapListFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         addAdrs();
-
         return view;
     }
 

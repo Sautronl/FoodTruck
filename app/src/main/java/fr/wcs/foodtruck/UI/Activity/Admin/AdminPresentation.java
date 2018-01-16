@@ -25,11 +25,8 @@ public class AdminPresentation extends AppCompatActivity {
     private EditText mQuiSommesNous;
     private EditText mNosValeurs;
     private Button mMaj;
-
-
     private FirebaseDatabase mFirebase;
     private DatabaseReference mAproposRef;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +61,6 @@ public class AdminPresentation extends AppCompatActivity {
     }
 
     protected void sendApropos(){
-
         String presentation = mQuiSommesNous.getText().toString();
         String  valeurs = mNosValeurs.getText().toString();
         mAproposRef.child("QuiSommesNous").setValue(presentation);
@@ -78,7 +74,6 @@ public class AdminPresentation extends AppCompatActivity {
                     String prop = dataSnapshot.getValue(String.class);
                     mQuiSommesNous.setText(prop);
                 }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -94,7 +89,6 @@ public class AdminPresentation extends AppCompatActivity {
                 String val = dataSnapshot.getValue(String.class);
                 mNosValeurs.setText(val);
             }
-
 
             @Override
             public void onCancelled(DatabaseError databaseError) {

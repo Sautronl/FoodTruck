@@ -48,7 +48,6 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,13 +56,6 @@ public class MenuFragment extends Fragment {
 
 
         ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
-//        backButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent back = new Intent(MenuDuJour(), MainActivity.class);
-//                startActivity(back);
-//            }
-//        });
 
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Plat du jour");
@@ -81,9 +73,6 @@ public class MenuFragment extends Fragment {
         mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
         ScrollView scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
-
-//        Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
-//        SetTypeFace.setAppFont(scrollMenu,mainfont);
 
         TextView voirFormules = (TextView)view.findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
@@ -218,7 +207,6 @@ public class MenuFragment extends Fragment {
                 Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
                 mPrixButton.setText("Prix\n" +maj.getPrix());
                 mDialog.dismiss();
-                //mPrixButton.setTextColor(getResources().getColor(R.color.black));
             }
 
             @Override

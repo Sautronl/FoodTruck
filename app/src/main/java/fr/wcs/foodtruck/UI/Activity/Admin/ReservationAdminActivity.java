@@ -106,9 +106,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
                 }
             }
         });
-
         childFirebaseListener();
-
     }
 
     private void initFirebase() {

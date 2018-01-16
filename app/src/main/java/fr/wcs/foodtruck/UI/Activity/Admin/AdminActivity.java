@@ -85,7 +85,6 @@ public class AdminActivity extends BaseActivity implements
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
-
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -203,37 +202,6 @@ public class AdminActivity extends BaseActivity implements
         updateUI(null);
     }
 
-    /*private void sendEmailVerification() {
-        // Disable button
-        findViewById(R.id.verify_email_button).setEnabled(false);
-
-        // Send verification email
-        // [START send_email_verification]
-        final FirebaseUser user = mAuth.getCurrentUser();
-        user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        // Re-enable button
-                        findViewById(R.id.verify_email_button).setEnabled(true);
-
-                        if (task.isSuccessful()) {
-                            Toast.makeText(AdminActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(AdminActivity.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                        // [END_EXCLUDE]
-                    }
-                });
-        // [END send_email_verification]
-    }*/
-
     private boolean validateForm() {
         boolean valid = true;
 
@@ -264,16 +232,13 @@ public class AdminActivity extends BaseActivity implements
 
             findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-            //findViewById(R.id.signed_in_buttons).setVisibility(View.VISIBLE);
 
-            //findViewById(R.id.verify_email_button).setEnabled(!user.isEmailVerified());
         } else {
             mStatusTextView.setText(R.string.signed_out);
             mDetailTextView.setText(null);
 
             findViewById(R.id.email_password_buttons).setVisibility(View.VISIBLE);
             findViewById(R.id.email_password_fields).setVisibility(View.VISIBLE);
-           // findViewById(R.id.signed_in_buttons).setVisibility(View.GONE);
         }
     }
 
@@ -284,11 +249,7 @@ public class AdminActivity extends BaseActivity implements
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } /*else if (i == R.id.sign_out_button) {
-            signOut();
-        } else if (i == R.id.verify_email_button) {
-            sendEmailVerification();
-        }*/
+        }
     }
 }
 
