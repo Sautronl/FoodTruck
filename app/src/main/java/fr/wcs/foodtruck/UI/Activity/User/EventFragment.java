@@ -9,6 +9,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +42,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
  */
 public class EventFragment extends Fragment {
 
-    private ListView list_data;
+    private RecyclerView list_data_v2;
     private ProgressBar circular_progress;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -74,7 +77,9 @@ public class EventFragment extends Fragment {
         mDialog.show();
 
         //Liste d'events
-        list_data = (ListView)view.findViewById(R.id.list_data);
+        list_data_v2 = (RecyclerView) view.findViewById(R.id.list_data_v2);
+        list_data_v2.setLayoutManager(new LinearLayoutManager(getContext()));
+
         /*list_data.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -102,7 +107,7 @@ public class EventFragment extends Fragment {
     }
 
     private void addEventFirebaseListener() {
-        list_data.setVisibility(View.INVISIBLE);
+        //list_data.setVisibility(View.INVISIBLE);
 
         mDatabaseReference.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,9 +120,9 @@ public class EventFragment extends Fragment {
                 }
                 Collections.reverse(list_events);
                 mAdapter = new ListEventAdapter(getActivity(), list_events);
-                list_data.setAdapter(mAdapter);
+                list_data_v2.setAdapter(mAdapter);
                 mDialog.dismiss();
-                list_data.setVisibility(View.VISIBLE);
+              //  list_data.setVisibility(View.VISIBLE);
             }
 
             @Override

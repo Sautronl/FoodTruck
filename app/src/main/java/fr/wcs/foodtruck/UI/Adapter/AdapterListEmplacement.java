@@ -35,7 +35,8 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.list_emplacement_item, parent, false);
 
-        return new ViewHolder(view);    }
+        return new ViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(AdapterListEmplacement.ViewHolder holder, int position) {

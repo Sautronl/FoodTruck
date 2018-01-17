@@ -97,11 +97,9 @@ public class MapListFragment extends Fragment {
                 mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
                     @Override
                     public void onItemClick(int index) {
-                        for (int i = 0; i < index+1; i++) {
-                            Intent intent = new Intent(getActivity(), MapsActivity.class);
-                            intent.putExtra("jourMarkeur", index);
-                            startActivity(intent);
-                        }
+                        Intent intent = new Intent(getActivity(), MapsActivity.class);
+                        intent.putExtra("jourMarkeur", index);
+                        startActivity(intent);
                     }
                 });
                 mListViewResults.setAdapter(mAdapter);

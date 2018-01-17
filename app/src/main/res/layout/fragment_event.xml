@@ -26,14 +26,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <ListView
-        android:id="@+id/list_data"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_data_v2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/EventUser"
         android:layout_marginTop="40dp"
         android:divider="@color/blanc"
-        android:dividerHeight="1dp"></ListView>
+        android:dividerHeight="1dp"></android.support.v7.widget.RecyclerView>
 
     <ProgressBar
         android:id="@+id/circular_progress"
