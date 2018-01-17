@@ -13,12 +13,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/markeur" />
 
         <TextView
             android:id="@+id/jourEmplacement"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:gravity="top"
+            android:gravity="center"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -27,7 +35,7 @@
             android:id="@+id/jourAdresse"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:gravity="center"
             android:text="1 place de la bourse 31000 Toulouse"
             android:textColor="@color/bleuTurk"
