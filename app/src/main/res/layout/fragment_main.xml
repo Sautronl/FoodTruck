@@ -6,7 +6,7 @@
     android:layout_marginTop="39dp"
     android:layout_height="match_parent"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MainFragment"
-    android:background="@drawable/bg_accueil"
+    android:background="@drawable/foodtruck_bg"
     >
 
     <android.support.constraint.ConstraintLayout
