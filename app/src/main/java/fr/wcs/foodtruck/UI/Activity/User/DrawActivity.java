@@ -27,7 +27,6 @@ public class DrawActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawer;
-     NavigationView mNav;
     private Fragment mFragment;
     private ArrayList<Fragment> mNewFragment = new ArrayList<>();
 

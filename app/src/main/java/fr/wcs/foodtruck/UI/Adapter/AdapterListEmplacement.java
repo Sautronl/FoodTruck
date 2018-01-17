@@ -46,11 +46,7 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
     public int getItemCount() {
         return mListJour.size();
     }
-
-    public Object getItemAtPosition(int position){
-        return mListJour.get(position);
-    }
-
+    
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView jourAdresse;
         TextView jourEmplacement;
@@ -71,8 +67,8 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
                 jourAdresse.setText(mListJour.getAdresse());
                 jourEmplacement.setText(mListJour.getJour());
             }
-            //jourEmplacement.setText(mListJour.getJour());
         }
+
     public void setOnItemClick(OnItemSelected listener){
         this.listener = listener;
     }
