@@ -1,6 +1,9 @@
 package fr.wcs.foodtruck.Model;
 
-public class EventModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class EventModel implements Parcelable {
 
     //Attributes
 
@@ -52,4 +55,34 @@ public class EventModel {
 
     public void setDate(String date) { this.date = date; }
 
+    public static final Creator<EventModel> CREATOR = new Creator<EventModel>() {
+        @Override
+        public EventModel createFromParcel(Parcel in) {
+            return new EventModel(in);
+        }
+
+        @Override
+        public EventModel[] newArray(int size) {
+            return new EventModel[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    protected EventModel(Parcel in) {
+        eid = in.readString();
+        name = in.readString();
+        details = in.readString();
+        date = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(eid);
+        parcel.writeString(name);
+        parcel.writeString(details);
+        parcel.writeString(date);
+    }
 }

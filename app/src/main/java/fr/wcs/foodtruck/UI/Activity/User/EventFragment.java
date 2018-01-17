@@ -107,7 +107,6 @@ public class EventFragment extends Fragment {
     }
 
     private void addEventFirebaseListener() {
-        //list_data.setVisibility(View.INVISIBLE);
 
         mDatabaseReference.orderByChild("date").addValueEventListener(new ValueEventListener() {
             @Override
@@ -122,7 +121,6 @@ public class EventFragment extends Fragment {
                 mAdapter = new ListEventAdapter(getActivity(), list_events);
                 list_data_v2.setAdapter(mAdapter);
                 mDialog.dismiss();
-              //  list_data.setVisibility(View.VISIBLE);
             }
 
             @Override

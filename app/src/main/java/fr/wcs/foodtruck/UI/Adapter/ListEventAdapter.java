@@ -2,6 +2,10 @@ package fr.wcs.foodtruck.UI.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +17,13 @@ import java.util.List;
 
 import fr.wcs.foodtruck.Model.EventModel;
 import fr.wcs.foodtruck.R;
+import fr.wcs.foodtruck.UI.Activity.User.DetailEventFragment;
+import fr.wcs.foodtruck.UI.Activity.User.DrawActivity;
 
 public class ListEventAdapter extends RecyclerView.Adapter<ListEventAdapter.ViewHolder> {
     private Activity activity;
     private List<EventModel> lstEvents;
-    private LayoutInflater inflater;
-
+    private OnItemClikSelected listener;
 
     public ListEventAdapter(Activity activity, List<EventModel> lstEvents) {
         this.activity = activity;
@@ -35,7 +40,7 @@ public class ListEventAdapter extends RecyclerView.Adapter<ListEventAdapter.View
 
     @Override
     public void onBindViewHolder(ListEventAdapter.ViewHolder holder, int position) {
-        holder.display(lstEvents.get(position));
+        holder.display(lstEvents.get(position),activity);
     }
 
     @Override
@@ -55,11 +60,36 @@ public class ListEventAdapter extends RecyclerView.Adapter<ListEventAdapter.View
 //            txtDate = itemView.findViewById(R.id.list_date);
         }
 
-        public void display(EventModel eventModel){
+        public void display(final EventModel eventModel, final Activity activity){
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    FragmentManager fragmentManager = ((DrawActivity)activity).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    Fragment fragment = new DetailEventFragment();
+
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("detailEvent",eventModel);
+                    fragment.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.container,fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+
+                }
+            });
             txtName.setText(eventModel.getName());
 //            txtDetail.setText(eventModel.getDetails());
 //            txtDate.setText(eventModel.getDate());
         }
+    }
+
+    public void setOnItemClick(OnItemClikSelected listener){
+        this.listener = listener;
+    }
+
+    public interface OnItemClikSelected{
+        void onItemClick(int index);
     }
 
 }
@@ -84,26 +114,3 @@ public class ListEventAdapter extends RecyclerView.Adapter<ListEventAdapter.View
 //}
 
 
-//<TextView
-//            android:id="@+id/list_date"
-//                    android:layout_width="wrap_content"
-//                    android:layout_height="wrap_content"
-//                    android:textColor="@color/blanc"
-//                    android:layout_marginLeft="20dp"
-//                    android:layout_marginRight="20dp"
-//                    android:text="Date"
-//                    android:layout_below="@+id/list_name"
-//                    android:textStyle="italic"
-//                    android:textSize="18sp" />
-//
-//<TextView
-//            android:id="@+id/list_details"
-//                    android:layout_width="wrap_content"
-//                    android:layout_height="wrap_content"
-//                    android:layout_below="@id/list_date"
-//                    android:layout_marginBottom="10dp"
-//                    android:layout_marginLeft="20dp"
-//                    android:layout_marginRight="20dp"
-//                    android:text="Details"
-//                    android:textColor="@color/blanc"
-//                    android:textSize="18sp" />
