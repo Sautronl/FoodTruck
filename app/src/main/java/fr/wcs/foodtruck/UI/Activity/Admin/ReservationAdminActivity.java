@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,12 +36,12 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class ReservationAdminActivity extends AppCompatActivity {
 
-    private ListView mListReserve;
+    private RecyclerView mListReserve;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private AdapterReservAdmin mAdapRes;
     private List<ReservationModels> mReserve = new ArrayList<>();
-    private int selectedEvent;
+    //private int selectedEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
         });
 
         initFirebase();
+        childFirebaseListener();
 
         final Button remove = (Button)findViewById(R.id.removeReservationAll);
         remove.setOnClickListener(new View.OnClickListener() {
@@ -79,21 +83,22 @@ public class ReservationAdminActivity extends AppCompatActivity {
             }
         });
 
-        mListReserve = (ListView) findViewById(R.id.listeres);
-        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListReserve = (RecyclerView) findViewById(R.id.listeres);
+        mListReserve.setLayoutManager(new LinearLayoutManager(ReservationAdminActivity.this));
+
+        mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this,mReserve);
+        mAdapRes.setOnItemClick(new AdapterReservAdmin.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
-                final ReservationModels reserv = (ReservationModels) adapterView.getItemAtPosition(position);
-                selectedEvent = position;
+            public void onItemClick(final ReservationModels reserve, int index) {
                 for (int i = 0; i < mListReserve.getChildCount(); i++) {
-                    if(position == i ){
+                    if(index == i ){
                         mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
                         Button supprime = (Button)findViewById(R.id.removeSelectRes);
                         supprime.setVisibility(View.VISIBLE);
                         supprime.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mDatabaseReference.child("Réservation").child(reserv.getId()).removeValue();
+                                mDatabaseReference.child("Réservation").child(reserve.getId()).removeValue();
                                 mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
                                 mListReserve.setAdapter(mAdapRes);
                                 mAdapRes.notifyDataSetChanged();
@@ -106,7 +111,32 @@ public class ReservationAdminActivity extends AppCompatActivity {
                 }
             }
         });
-        childFirebaseListener();
+//        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
+//                final ReservationModels reserv = (ReservationModels) adapterView.getItemAtPosition(position);
+//                selectedEvent = position;
+//                for (int i = 0; i < mListReserve.getChildCount(); i++) {
+//                    if(position == i ){
+//                        mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
+//                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
+//                        supprime.setVisibility(View.VISIBLE);
+//                        supprime.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                mDatabaseReference.child("Réservation").child(reserv.getId()).removeValue();
+//                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
+//                                mListReserve.setAdapter(mAdapRes);
+//                                mAdapRes.notifyDataSetChanged();
+//                            }
+//                        });
+//
+//                    }else{
+//                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                    }
+//                }
+//            }
+//        });
     }
 
     private void initFirebase() {
@@ -116,34 +146,53 @@ public class ReservationAdminActivity extends AppCompatActivity {
     }
 
     private void childFirebaseListener() {
-        mDatabaseReference.child("Réservation").addChildEventListener(new ChildEventListener() {
+        mDatabaseReference.child("Réservation").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ReservationModels reservMod = dataSnapshot.getValue(ReservationModels.class);
-                mReserve.add(reservMod);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (mReserve.size()>0){
+                    mReserve.clear();
+                }
+                for (DataSnapshot snap: dataSnapshot.getChildren()) {
+                    ReservationModels reservMod = snap.getValue(ReservationModels.class);
+                    mReserve.add(reservMod);
+                }
                 mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
                 mListReserve.setAdapter(mAdapRes);
             }
 
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+//            @Override
+//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+//                ReservationModels reservMod = dataSnapshot.getValue(ReservationModels.class);
+//                mReserve.add(reservMod);
+//                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
+//                mListReserve.setAdapter(mAdapRes);
+//            }
+//
+//            @Override
+//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 }
