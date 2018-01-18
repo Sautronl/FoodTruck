@@ -40,6 +40,7 @@ public class ReservationAdminActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private AdapterReservAdmin mAdapRes;
+     ReservationModels mReservMdodel;
     private List<ReservationModels> mReserve = new ArrayList<>();
     //private int selectedEvent;
 
@@ -89,27 +90,27 @@ public class ReservationAdminActivity extends AppCompatActivity {
         mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this,mReserve);
         mAdapRes.setOnItemClick(new AdapterReservAdmin.OnItemClickListener() {
             @Override
-            public void onItemClick(final ReservationModels reserve, int index) {
-                for (int i = 0; i < mListReserve.getChildCount(); i++) {
-                    if(index == i ){
-                        mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
+            public void onItemClick(int index) {
+//                for (int i = 0; i < mListReserve.getChildCount(); i++) {
+//                    if(index == i ){
+                        mListReserve.getChildAt(index).setBackgroundColor(Color.BLACK);
                         Button supprime = (Button)findViewById(R.id.removeSelectRes);
                         supprime.setVisibility(View.VISIBLE);
                         supprime.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                mDatabaseReference.child("Réservation").child(reserve.getId()).removeValue();
-                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
-                                mListReserve.setAdapter(mAdapRes);
+                                mDatabaseReference.child("Réservation").child(mReservMdodel.getId()).removeValue();
+//                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
+//                                mListReserve.setAdapter(mAdapRes);
                                 mAdapRes.notifyDataSetChanged();
                             }
                         });
 
-                    }else{
-                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
+//                    }else{
+//                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                    }
                 }
-            }
+
         });
 //        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -153,8 +154,8 @@ public class ReservationAdminActivity extends AppCompatActivity {
                     mReserve.clear();
                 }
                 for (DataSnapshot snap: dataSnapshot.getChildren()) {
-                    ReservationModels reservMod = snap.getValue(ReservationModels.class);
-                    mReserve.add(reservMod);
+                     mReservMdodel = snap.getValue(ReservationModels.class);
+                    mReserve.add(mReservMdodel);
                 }
                 mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
                 mListReserve.setAdapter(mAdapRes);

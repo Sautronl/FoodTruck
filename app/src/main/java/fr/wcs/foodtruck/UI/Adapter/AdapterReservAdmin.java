@@ -22,7 +22,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
 
     private Activity activity;
     private List<ReservationModels> reserve;
-    private OnItemClickListener listener;
+    private OnItemClickListener listener = null;
 
     public AdapterReservAdmin(Activity activity, List<ReservationModels> reserve){
         this.activity = activity;
@@ -64,7 +64,9 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(reserve,index);
+                    if (listener != null){
+                        listener.onItemClick(index);
+                    }
                 }
             });
             nitem.setText(reserve.getNomReserv());
@@ -78,7 +80,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
     }
 
     public interface OnItemClickListener{
-        void onItemClick(ReservationModels reserve,int index);
+        void onItemClick(int index);
     }
 }
 
