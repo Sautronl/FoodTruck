@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -28,13 +30,14 @@ import java.util.List;
 import fr.wcs.foodtruck.Model.ContactAdminModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.AdapterContactAdmin;
+import fr.wcs.foodtruck.UI.Adapter.AdapterListEmplacement;
 import fr.wcs.foodtruck.Utils.Constant;
 import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 
 public class ContactAdmin extends AppCompatActivity {
 
-    private ListView mListViewContactAdmin;
+    private RecyclerView mListViewContactAdmin;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private AdapterContactAdmin mAdapterContact;
@@ -82,30 +85,57 @@ public class ContactAdmin extends AppCompatActivity {
         });
 
         //Liste d'events
-        mListViewContactAdmin = (ListView)findViewById(R.id.listeCon);
-        mListViewContactAdmin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                final ContactAdminModel contact = (ContactAdminModel) adapterView.getItemAtPosition(position);
-                mSelectedContact = contact;
-                mCurrentPosition = position;
-                for (int i = 0; i < mListViewContactAdmin.getChildCount(); i++) {
-                    if(position == i ){
-                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.BLACK);
-                        Button supprime = (Button)findViewById(R.id.removeSelectedButton);
-                        supprime.setVisibility(View.VISIBLE);
-                        supprime.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
+        mListViewContactAdmin = (RecyclerView) findViewById(R.id.listeCon);
+        mListViewContactAdmin.setLayoutManager(new LinearLayoutManager(ContactAdmin.this));
+
+       mAdapterContact = new AdapterContactAdmin(ContactAdmin.this,mList_contact);
+       mAdapterContact.setOnItemClick(new AdapterContactAdmin.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterContactAdmin.ViewHolder viewHolder, ContactAdminModel contact, int index) {
+               int pos = viewHolder.getAdapterPosition();
+               mSelectedContact = contact;
+               mCurrentPosition = index;
+//               for (int i = 0; i < mListViewContactAdmin.getChildCount(); i++) {
+//                   if(index == i ){
+                       mListViewContactAdmin.getChildAt(pos).setBackgroundColor(Color.BLACK);
+                       Button supprime = (Button)findViewById(R.id.removeSelectedButton);
+                       supprime.setVisibility(View.VISIBLE);
+                       supprime.setOnClickListener(new View.OnClickListener() {
+                           @Override
+                           public void onClick(View v) {
                                deleteEvent(mSelectedContact);
-                            }
-                        });
-                    }else{
-                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-                }
-            }
-        });
+                           }
+                       });
+//                   }else{
+//                       mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                   }
+//               }
+           }
+
+       });
+//        mListViewContactAdmin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                final ContactAdminModel contact = (ContactAdminModel) adapterView.getItemAtPosition(position);
+//                mSelectedContact = contact;
+//                mCurrentPosition = position;
+//                for (int i = 0; i < mListViewContactAdmin.getChildCount(); i++) {
+//                    if(position == i ){
+//                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.BLACK);
+//                        Button supprime = (Button)findViewById(R.id.removeSelectedButton);
+//                        supprime.setVisibility(View.VISIBLE);
+//                        supprime.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                               deleteEvent(mSelectedContact);
+//                            }
+//                        });
+//                    }else{
+//                        mListViewContactAdmin.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+//                    }
+//                }
+//            }
+//        });
 
 
         //Firebase

@@ -57,7 +57,7 @@
         android:layout_alignLeft="@+id/contAdmin"
         android:layout_alignStart="@+id/contAdmin" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/listeCon"
         android:layout_width="match_parent"
         android:layout_height="300dp"
@@ -68,7 +68,7 @@
         android:layout_below="@+id/removeSelectedButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/removeButton"></ListView>
+        android:layout_above="@+id/removeButton"></android.support.v7.widget.RecyclerView>
 
     <ProgressBar
         android:id="@+id/circular_progress"
