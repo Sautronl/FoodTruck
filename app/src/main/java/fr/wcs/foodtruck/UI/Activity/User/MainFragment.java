@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.Switch;
 
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.TextSliderView;
@@ -82,9 +83,10 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
                     .image(listUrl.get(i));
             mSlide.addSlider(textSliderView);
         }
+
         mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
         mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mSlide.setDuration(3000);
+        //mSlide.setDuration(3000);
         mSlide.addOnPageChangeListener(MainFragment.this);
 
         star.setOnTouchListener(new View.OnTouchListener() {
@@ -208,8 +210,37 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
     }
 
     @Override
-    public void onPageSelected(int position) {
+    public void onPageSelected(final int position) {
+//        Intent i = new Intent(getActivity(),fullImageActivity.class);
+//        i.putExtra("id",position);
+//        startActivity(i);
 
+        mSlide.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                //int id = mSlide.getCurrentPosition();
+                switch (position){
+                    case  1:
+                        Intent i = new Intent(getActivity(),fullImageActivity.class);
+                        i.putExtra("id",position);
+                        startActivity(i);
+                        break;
+                    case  2:
+                        Intent j = new Intent(getActivity(),fullImageActivity.class);
+                        j.putExtra("id",position);
+                        startActivity(j);
+                        break;
+                    case  3:
+                        Intent k = new Intent(getActivity(),fullImageActivity.class);
+                        k.putExtra("id",position);
+                        startActivity(k);
+                        break;
+                    default:
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override

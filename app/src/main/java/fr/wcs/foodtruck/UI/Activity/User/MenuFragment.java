@@ -99,6 +99,15 @@ public class MenuFragment extends Fragment {
 
         checkDay();
 
+        mImgplatMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),fullImageActivity.class);
+                i.putExtra("id",0);
+                startActivity(i);
+            }
+        });
+
         final Intent intent = new Intent(getActivity(), Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
             @Override
