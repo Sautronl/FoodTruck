@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.glide.slider.library.SliderLayout;
@@ -50,7 +51,7 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
 
         getActivity().setTitle("Accueil");
 
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ImageView menu = (ImageView) view.findViewById(R.id.menu);
         ImageView lieu = (ImageView) view.findViewById(R.id.lieu);
