@@ -66,7 +66,6 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollMenuAdmin,mainfont);
 
-
         mNomPlatDuJour = (EditText) findViewById(R.id.nomDuPlat);
         mDescriptionDuPlat = (EditText) findViewById(R.id.descriPlat);
         mPrixDuPlat = (EditText) findViewById(R.id.prix);
@@ -93,23 +92,18 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         day = jour.getIntExtra("day", 0);
 
         if (day == 0) {
-           // mDbRefMenu = mDbRefMenu.child("menu/menuLundi");
             addMaj("menu/menuLundi/");
 
         } else if (day == 1) {
-            //mDbRefMenu = mDbRefMenu.child("menu/menuMardi");
             addMaj("menu/menuMardi/");
         }
         else if (day == 2) {
-            //mDbRefMenu = mDbRefMenu.child("menu/menuMercredi");
             addMaj("menu/menuMercredi/");
         }
         else if (day == 3) {
-            //mDbRefMenu = mDbRefMenu.child("menu/menuJeudi");
             addMaj("menu/menuJeudi/");
         }
         else if (day == 4) {
-           // mDbRefMenu = mDbRefMenu.child("menu/menuVendredi");
             addMaj("menu/menuVendredi/");
         }
 
@@ -117,29 +111,19 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (day == 0) {
-                    //mDbRefMenu = mDbRefMenu.child("menu/menuLundi/");
                     firebaseInfoMenu("menu/menuLundi/");
-                     //addMaj("menu/menuLundi/");
 
                 } else if (day == 1) {
-                   // mDbRefMenu = mDbRefMenu.child("menu/menuMardi/");
                     firebaseInfoMenu("menu/menuMardi/");
-                    //addMaj("menu/menuMardi/");
                 }
                 else if (day == 2) {
-                    //mDbRefMenu = mDbRefMenu.child("menu/menuMercredi/");
                     firebaseInfoMenu("menu/menuMercredi/");
-                    //addMaj("menu/menuMercredi/");
                 }
                 else if (day == 3) {
-                    //mDbRefMenu = mDbRefMenu.child("menu/menuJeudi/");
                     firebaseInfoMenu("menu/menuJeudi/");
-                    //addMaj("menu/menuJeudi/");
                 }
                 else if (day == 4) {
-                    //mDbRefMenu = mDbRefMenu.child("menu/menuVendredi/");
                     firebaseInfoMenu("menu/menuVendredi/");
-                    //addMaj("menu/menuVendredi/");
                 }
             }
         });
@@ -170,50 +154,6 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             }
         });
     }
-
-    //MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
-//                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString(),mPrixDuPlat.getText().toString());
-//                        mDbRefMenu.setValue(maj);
-//                        Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
-
-//        mMaj.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setType("image/*");
-//                intent.setAction(intent.ACTION_GET_CONTENT);
-//                startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-//            }
-//        });
-
-
-//     @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
-//
-//            imgUri = data.getData();
-//
-//            StorageReference ref = mStorage.child("image/").child(imgUri.getLastPathSegment());
-//            ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                    if (mDescriptionDuPlat.getText().toString().isEmpty() || mNomPlatDuJour.getText().toString().isEmpty()) {
-//                        Toast.makeText(AdminMenuDuJour.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
-//                    }
-//                        else{
-//                        MajPlatDuJour maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
-//                                mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString(),mPrixDuPlat.getText().toString());
-//                        mDbRefMenu.setValue(maj);
-//                        Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
-//                        Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            });
-//        }
-//    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
