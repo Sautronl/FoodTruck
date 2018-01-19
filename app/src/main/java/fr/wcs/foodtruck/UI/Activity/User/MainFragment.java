@@ -64,16 +64,16 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         mSlide = view.findViewById(R.id.slider);
         final ImageView logo = (ImageView) view.findViewById(R.id.logo);
 
-        ArrayList<String> listUrl = new ArrayList<>();
+        ArrayList<Integer> listUrl = new ArrayList<>();
         ArrayList<String> listName = new ArrayList<>();
 
-        listUrl.add("https://media-cdn.tripadvisor.com/media/photo-s/07/50/f6/d1/john-s-burger.jpg");
+        listUrl.add(R.drawable.burger01);
         listName.add("JPG - Github");
 
-        listUrl.add("https://img.20mn.fr/I3MMnj6MTK-2H8zKiq3Xjg/830x532_burger-black-og-vincent-boccara");
+        listUrl.add(R.drawable.burger02);
         listName.add("PNG - Android Studio");
 
-        listUrl.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzS2JniRWr_en1FiRMOO-WUIJih6Px4JEN3YiOq1__iRFk7Ao");
+        listUrl.add(R.drawable.burger03);
         listName.add("GIF - Disney");
 
         for (int i = 0; i < listUrl.size(); i++) {
