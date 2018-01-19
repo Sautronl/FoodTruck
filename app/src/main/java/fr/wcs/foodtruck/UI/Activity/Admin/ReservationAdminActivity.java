@@ -88,30 +88,30 @@ public class ReservationAdminActivity extends AppCompatActivity {
         mListReserve.setLayoutManager(new LinearLayoutManager(ReservationAdminActivity.this));
 
         mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this,mReserve);
-        mAdapRes.setOnItemClick(new AdapterReservAdmin.OnItemClickListener() {
-            @Override
-            public void onItemClick(int index) {
-//                for (int i = 0; i < mListReserve.getChildCount(); i++) {
-//                    if(index == i ){
-                        mListReserve.getChildAt(index).setBackgroundColor(Color.BLACK);
-                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
-                        supprime.setVisibility(View.VISIBLE);
-                        supprime.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mDatabaseReference.child("Réservation").child(mReservMdodel.getId()).removeValue();
-//                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
-//                                mListReserve.setAdapter(mAdapRes);
-                                mAdapRes.notifyDataSetChanged();
-                            }
-                        });
-
-//                    }else{
-//                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-//                    }
-                }
-
-        });
+//        mAdapRes.setOnItemClick(new AdapterReservAdmin.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int index) {
+////                for (int i = 0; i < mListReserve.getChildCount(); i++) {
+////                    if(index == i ){
+//                        mListReserve.getChildAt(index).setBackgroundColor(Color.BLACK);
+//                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
+//                        supprime.setVisibility(View.VISIBLE);
+//                        supprime.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                mDatabaseReference.child("Réservation").child(mReservMdodel.getId()).removeValue();
+////                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
+////                                mListReserve.setAdapter(mAdapRes);
+//                                mAdapRes.notifyDataSetChanged();
+//                            }
+//                        });
+//
+////                    }else{
+////                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+////                    }
+//                }
+//
+//        });
 //        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {

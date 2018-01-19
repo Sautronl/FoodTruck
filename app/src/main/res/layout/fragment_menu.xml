@@ -84,7 +84,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/button_border_white"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/grey"
+                android:textColor="@color/sam"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

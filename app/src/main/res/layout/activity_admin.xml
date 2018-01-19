@@ -97,10 +97,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/button_border_white"
-                android:fontFamily="sans-serif-condensed"
                 android:text="Connexion"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="@color/sam"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
             <Button

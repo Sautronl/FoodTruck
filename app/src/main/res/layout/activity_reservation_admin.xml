@@ -27,26 +27,12 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/removeSelectRes"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:background="@drawable/button_border_white"
-        android:text="Supprimer"
-        android:paddingRight="5dp"
-        android:paddingLeft="5dp"
-        android:textColor="@color/blanc"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/listeres"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:id="@+id/removeReservationAll"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:background="@drawable/button_border_white"
-        android:text="Vider"
-        android:textColor="@color/blanc"
+        android:text="Tout supprimer"
+        android:textColor="@color/sam"
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_alignParentBottom="true"

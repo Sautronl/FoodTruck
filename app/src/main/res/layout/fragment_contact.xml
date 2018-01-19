@@ -192,7 +192,7 @@
             android:layout_weight="1"
             android:background="@drawable/button_border_white"
             android:text="@string/buttonEnvoyer"
-            android:textColor="@color/textEnvoyer"
+            android:textColor="@color/sam"
             android:textSize="20sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
