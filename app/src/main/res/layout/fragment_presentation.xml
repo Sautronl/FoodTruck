@@ -31,14 +31,28 @@
             android:textSize="25sp"
             android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/truck_img"
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
-            android:layout_height="232dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/trucksam" />
+            android:layout_height="220dp"
+            android:layout_marginBottom="34dp"
+            app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.glide.slider.library.SliderLayout
+                android:id="@+id/slider"
+                android:layout_width="match_parent"
+                android:layout_height="290dp" />
+
+            <com.glide.slider.library.Indicators.PagerIndicator
+                android:id="@+id/custom_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center" />
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/buttonPresentation1"

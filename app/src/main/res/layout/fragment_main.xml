@@ -13,28 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:layout_marginBottom="34dp"
-            app:layout_constraintBottom_toTopOf="@+id/relativeLayout3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
 
-            <com.glide.slider.library.SliderLayout
-                android:id="@+id/slider"
-                android:layout_width="match_parent"
-                android:layout_height="290dp" />
-
-            <com.glide.slider.library.Indicators.PagerIndicator
-                android:id="@+id/custom_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center" />
-
-        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/relativeLayout3"
@@ -54,6 +33,7 @@
                 android:id="@+id/menu"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:layout_marginTop="130dp"
                 android:layout_below="@+id/logo"
                 android:layout_centerHorizontal="true"
                 app:srcCompat="@drawable/burger_user" />

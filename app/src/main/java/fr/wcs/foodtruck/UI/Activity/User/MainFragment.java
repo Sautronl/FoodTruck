@@ -29,13 +29,12 @@ import fr.wcs.foodtruck.Utils.CloseDay;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeListener{
+public class MainFragment extends Fragment {
 
 
     private long timeElapsed = 0L;
     private int mBackButtonCount = 0;
     private Calendar mCalendar;
-    private SliderLayout mSlide;
 
     public MainFragment() {
         // Required empty public constructor
@@ -59,32 +58,9 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         ImageView contact = (ImageView) view.findViewById(R.id.contact);
         ImageView like = (ImageView) view.findViewById(R.id.like);
         ImageView star = (ImageView) view.findViewById(R.id.star);
-        mSlide = view.findViewById(R.id.slider);
         final ImageView logo = (ImageView) view.findViewById(R.id.logo);
 
-        ArrayList<String> listUrl = new ArrayList<>();
-        ArrayList<String> listName = new ArrayList<>();
 
-        listUrl.add("https://media-cdn.tripadvisor.com/media/photo-s/07/50/f6/d1/john-s-burger.jpg");
-        listName.add("JPG - Github");
-
-        listUrl.add("https://img.20mn.fr/I3MMnj6MTK-2H8zKiq3Xjg/830x532_burger-black-og-vincent-boccara");
-        listName.add("PNG - Android Studio");
-
-        listUrl.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzS2JniRWr_en1FiRMOO-WUIJih6Px4JEN3YiOq1__iRFk7Ao");
-        listName.add("GIF - Disney");
-
-        for (int i = 0; i < listUrl.size(); i++) {
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            // initialize a SliderLayout
-            textSliderView
-                    .image(listUrl.get(i));
-            mSlide.addSlider(textSliderView);
-        }
-        mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
-        mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mSlide.setDuration(3000);
-        mSlide.addOnPageChangeListener(MainFragment.this);
 
         star.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -194,27 +170,6 @@ public class MainFragment extends Fragment implements ViewPagerEx.OnPageChangeLi
         return view;
     }
 
-    @Override
-    public void onStop() {
-        // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
-        mSlide.stopAutoCycle();
-        super.onStop();
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
-    }
 
     @Override
     public void onDestroyView() {
