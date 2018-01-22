@@ -224,26 +224,6 @@ public class MenuFragment extends Fragment {
         });
     }
 
-//    private void majMenu(String jour){
-//        mDbRef.child(jour).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
-//                mNomBurger.setText(maj.getNomPlat());
-//                mDescriptionMenu.setText(maj.getDescPlat());
-//                Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
-//                mPrixButton.setText("Prix\n" +maj.getPrix());
-//                mDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();

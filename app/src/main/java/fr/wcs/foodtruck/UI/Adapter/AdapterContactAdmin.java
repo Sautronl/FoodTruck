@@ -7,7 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -17,7 +24,8 @@ import fr.wcs.foodtruck.R;
 public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmin.ViewHolder> {
      private Activity activity;
      private List<ContactAdminModel> listCont;
-     private OnItemClickListener listener = null;
+     private FirebaseDatabase mFire;
+     private DatabaseReference mRef;
 
     public AdapterContactAdmin(Activity activity, List<ContactAdminModel> listCont) {
         this.activity = activity;
@@ -34,10 +42,8 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
 
     @Override
     public void onBindViewHolder(AdapterContactAdmin.ViewHolder holder, int position) {
-        holder.display(holder,listCont.get(position),position,listener);
+        holder.display(holder,listCont.get(position),position);
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -50,6 +56,7 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
         TextView textViewTel;
         TextView textViewSujet;
         TextView textViewMessage;
+        Button removeButtonContactAdm;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -58,17 +65,25 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
              textViewTel = itemView.findViewById(R.id.lvTelContactAdmin);
              textViewSujet = itemView.findViewById(R.id.lvSujetContactAdmin);
              textViewMessage = itemView.findViewById(R.id.lvMessageContactAdmin);
+             removeButtonContactAdm = itemView.findViewById(R.id.removeButtonContactAdm);
         }
 
-        public void display(final AdapterContactAdmin.ViewHolder holder, final ContactAdminModel contact,final int index,final OnItemClickListener listener){
+        public void display(final AdapterContactAdmin.ViewHolder holder, final ContactAdminModel contact,final int index){
+
+            mFire = FirebaseDatabase.getInstance();
+            mRef = mFire.getReference("contact/");
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (listener != null){
-                        listener.onItemClick(holder,contact,index);
-                        getAdapterPosition();
-                    }
+                    removeButtonContactAdm.setVisibility(View.VISIBLE);
+                    removeButtonContactAdm.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mRef.child(contact.getId()).removeValue();
+                            notifyDataSetChanged();
+                        }
+                    });
                 }
             });
             textViewNom.setText(contact.getNom());
@@ -77,46 +92,4 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
             textViewMessage.setText(contact.getMessage());
         }
     }
-
-    public void setOnItemClick(OnItemClickListener listener){
-        this.listener = listener;
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(ViewHolder viewHolder,ContactAdminModel contact,int index);
-    }
-
-//    @Override
-//    public int getCount() {
-//        return listCont.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return listCont.get(position);
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return position;
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//        inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View itemView = inflater.inflate(R.layout.activity_admin_contact_item,null);
-//
-//        TextView textViewNom = (TextView) itemView.findViewById(R.id.lvNomContactAdmin);
-//        TextView textViewTel = (TextView) itemView.findViewById(R.id.lvTelContactAdmin);
-//        TextView textViewSujet = (TextView) itemView.findViewById(R.id.lvSujetContactAdmin);
-//        TextView textViewMessage = (TextView) itemView.findViewById(R.id.lvMessageContactAdmin);
-//
-//        textViewNom.setText(listCont.get(position).getNom());
-//        textViewTel.setText(listCont.get(position).getTel());
-//        textViewSujet.setText(listCont.get(position).getSujet());
-//        textViewMessage.setText(listCont.get(position).getMessage());
-//
-//        return itemView;
-//    }
 }

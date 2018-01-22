@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,9 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -130,6 +134,14 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     private void firebaseInfoMenu(String child){
+
+        ProgressDialog dialog = new ProgressDialog(AdminMenuDuJour.this);
+        dialog.setTitle("Mise à jour du plat");
+        dialog.setMessage("veuillez patienter");
+        dialog.setCancelable(false);
+        dialog.setIndeterminate(true);
+        dialog.show();
+
         mMajPlatDuJour.setNomPlat(mNomPlatDuJour.getText().toString());
         mMajPlatDuJour.setDescPlat(mDescriptionDuPlat.getText().toString());
         mMajPlatDuJour.setPrix(mPrixDuPlat.getText().toString());
@@ -150,7 +162,13 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
                 mMajPlatDuJour.setUrlImg(downloadUrl.toString());
-                mDbRefMenu.child(child).setValue(mMajPlatDuJour);
+                mDbRefMenu.child(child).setValue(mMajPlatDuJour).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(AdminMenuDuJour.this, "Maj terminé !", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
             }
         });
     }

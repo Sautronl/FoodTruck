@@ -55,4 +55,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:id="@+id/removeButtonContactAdm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border_white"
+        android:text="Vider"
+        android:visibility="gone"
+        android:textColor="@color/sam"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/lvMessageContactAdmin"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
