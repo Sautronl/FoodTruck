@@ -6,7 +6,8 @@
     android:layout_marginTop="25dp"
     android:layout_marginRight="25dp"
     android:layout_marginLeft="25dp"
-    app:cardBackgroundColor="@android:color/background_light"
+    android:background="@color/blanc"
+    app:cardBackgroundColor="@color/blanc"
     app:cardCornerRadius="15dp"
     app:cardElevation="20dp">
 
@@ -40,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:gravity="center"
-            android:textColor="@color/bleuTurk"
+            android:textColor="@color/black"
             android:textSize="16sp"
             />
 

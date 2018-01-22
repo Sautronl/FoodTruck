@@ -63,7 +63,7 @@
                 android:layout_width="300dp"
                 android:layout_height="223dp"
                 android:scaleType="centerCrop"
-                app:civ_border_color="#FFFF00"
+                app:civ_border_color="@color/bleuTurk"
                 app:civ_border_overlay="true"
                 app:civ_border_width="2dp"
                 android:src="@drawable/burger_user"
@@ -84,7 +84,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_jade_black"
                 android:fontFamily="sans-serif-condensed"
-                android:textColor="@color/sam"
+                android:textColor="@color/blanc"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -122,7 +122,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="@string/reserver"
-            android:textColor="@color/grey"
+            android:textColor="@color/blanc"
             android:textSize="20sp"
             android:textStyle="bold" />
 
