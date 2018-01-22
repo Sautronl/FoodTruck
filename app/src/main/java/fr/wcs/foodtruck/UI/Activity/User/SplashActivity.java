@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.os.Bundle;
 
 import fr.wcs.foodtruck.R;
+import pl.droidsonroids.gif.GifImageView;
 
 
 public class SplashActivity extends Activity {
@@ -18,6 +19,8 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        GifImageView splashGif = findViewById(R.id.splash_animation);
 
         handler.postDelayed(new Runnable() {
             @Override
