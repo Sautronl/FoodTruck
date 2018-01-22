@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import fr.wcs.foodtruck.R;
+import pl.droidsonroids.gif.GifImageView;
 
 
 public class SplashActivity extends Activity {
@@ -21,6 +22,8 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.activity_splash);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        GifImageView splashGif = findViewById(R.id.splash_animation);
 
         handler.postDelayed(new Runnable() {
             @Override
