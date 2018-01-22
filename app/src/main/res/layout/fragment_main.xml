@@ -108,9 +108,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginBottom="6dp"
-
             android:layout_marginStart="128dp"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="12dp"
             android:padding="5dp"
             android:src="@drawable/like"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -123,6 +122,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="123dp"
+            android:layout_marginTop="12dp"
             android:padding="5dp"
             android:src="@drawable/star"
             app:layout_constraintBottom_toBottomOf="parent"

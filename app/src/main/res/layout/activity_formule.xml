@@ -43,7 +43,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button_border_white"
+            android:background="@drawable/border_jade_black"
             android:fontFamily="sans-serif-condensed"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"

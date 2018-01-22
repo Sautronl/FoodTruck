@@ -66,7 +66,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:background="@drawable/button_border_white"
+        android:background="@drawable/border_jade_black"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
