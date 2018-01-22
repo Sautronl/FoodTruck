@@ -80,20 +80,6 @@ public class EventFragment extends Fragment {
         list_data_v2 = (RecyclerView) view.findViewById(R.id.list_data_v2);
         list_data_v2.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        /*list_data.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                EventModel event = (EventModel)adapterView.getItemAtPosition(position);
-                mCurrentPosition = position;
-                for (int i = 0; i < list_data.getChildCount(); i++) {
-                    if(position == i ){
-                        list_data.getChildAt(i).setBackgroundColor(Color.BLACK);
-                    }else{
-                        list_data.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-                }
-            }
-        });*/
         //Firebase
         initFirebase();
         addEventFirebaseListener();

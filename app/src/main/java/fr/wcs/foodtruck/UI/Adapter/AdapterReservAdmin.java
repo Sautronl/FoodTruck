@@ -2,12 +2,17 @@ package fr.wcs.foodtruck.UI.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -22,7 +27,9 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
 
     private Activity activity;
     private List<ReservationModels> reserve;
-    private OnItemClickListener listener = null;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
+    //private OnItemClickListener listener = null;
 
     public AdapterReservAdmin(Activity activity, List<ReservationModels> reserve){
         this.activity = activity;
@@ -39,7 +46,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
 
     @Override
     public void onBindViewHolder(AdapterReservAdmin.ViewHolder holder, int position) {
-        holder.display(reserve.get(position),position,listener);
+        holder.display(reserve.get(position),position);
     }
 
     @Override
@@ -51,22 +58,30 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
         TextView nitem;
         TextView titem;
         TextView heureItem;
+        Button removeSelectRes;
 
         public ViewHolder(View itemView) {
             super(itemView);
             nitem = itemView.findViewById(R.id.nItem);
             titem = itemView.findViewById(R.id.tItem);
             heureItem = itemView.findViewById(R.id.heureItem);
+            removeSelectRes = itemView.findViewById(R.id.removeSelectRes);
         }
 
-        public void display(final ReservationModels reserve, final int index, final OnItemClickListener listener){
+        public void display(final ReservationModels reserve, final int index ){
 
+            mFirebaseDatabase = FirebaseDatabase.getInstance();
+            mDatabaseReference = mFirebaseDatabase.getReference("Réservation/");
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (listener != null){
-                        listener.onItemClick(index);
-                    }
+                    removeSelectRes.setVisibility(View.VISIBLE);
+                    removeSelectRes.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mDatabaseReference.child(reserve.getId()).removeValue();
+                        }
+                    });
                 }
             });
             nitem.setText(reserve.getNomReserv());
@@ -75,13 +90,13 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
         }
     }
 
-    public void setOnItemClick(OnItemClickListener listener){
-        this.listener = listener;
-    }
-
-    public interface OnItemClickListener{
-        void onItemClick(int index);
-    }
+//    public void setOnItemClick(OnItemClickListener listener){
+//        this.listener = listener;
+//    }
+//
+//    public interface OnItemClickListener{
+//        void onItemClick(int index);
+//    }
 }
 
 

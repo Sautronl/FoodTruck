@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--
@@ -39,6 +40,7 @@
 
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
         <activity
             android:name=".UI.Activity.User.RemerciementCommande"
             android:parentActivityName=".UI.Activity.User.Commande"

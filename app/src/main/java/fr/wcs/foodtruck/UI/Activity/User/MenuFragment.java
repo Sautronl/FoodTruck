@@ -99,6 +99,15 @@ public class MenuFragment extends Fragment {
 
         checkDay();
 
+        mImgplatMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(),fullImageActivity.class);
+                i.putExtra("id",0);
+                startActivity(i);
+            }
+        });
+
         final Intent intent = new Intent(getActivity(), Commande.class);
         reserver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -214,26 +223,6 @@ public class MenuFragment extends Fragment {
             }
         });
     }
-
-//    private void majMenu(String jour){
-//        mDbRef.child(jour).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
-//                mNomBurger.setText(maj.getNomPlat());
-//                mDescriptionMenu.setText(maj.getDescPlat());
-//                Glide.with(getContext()).load(maj.getUrlImg()).into(mImgplatMenu);
-//                mPrixButton.setText("Prix\n" +maj.getPrix());
-//                mDialog.dismiss();
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
 
     @Override
     public void onDestroyView() {

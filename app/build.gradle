@@ -26,6 +26,10 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -66,24 +70,16 @@ dependencies {
     //slider
     implementation 'com.github.firdausmaulan:GlideSlider:1.2.0'
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //CropImage
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.5.+'
+
     //zoom
     compile 'com.commit451:PhotoView:1.2.4'
     testCompile 'junit:junit:4.12'
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 apply plugin: 'com.google.gms.google-services'

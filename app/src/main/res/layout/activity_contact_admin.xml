@@ -33,7 +33,7 @@
         android:layout_height="25dp"
         android:background="@drawable/border_jade_black"
         android:text="Vider"
-        android:textColor="@color/blanc"
+        android:textColor="@color/sam"
         android:textSize="15sp"
         android:textStyle="bold"
         android:layout_marginBottom="28dp"

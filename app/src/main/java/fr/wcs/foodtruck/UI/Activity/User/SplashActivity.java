@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import fr.wcs.foodtruck.R;
 
@@ -18,6 +19,8 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         handler.postDelayed(new Runnable() {
             @Override

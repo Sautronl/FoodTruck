@@ -64,7 +64,7 @@
             android:background="@drawable/border_jade_black"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/buttonPresentation1"
-            android:textColor="@color/blanc"
+            android:textColor="@color/sam"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -91,7 +91,7 @@
             android:background="@drawable/border_jade_black"
             android:fontFamily="sans-serif-condensed"
             android:text="@string/buttonPresentation2"
-            android:textColor="@color/blanc"
+            android:textColor="@color/sam"
             android:textSize="20sp"
             android:textStyle="bold" />
 

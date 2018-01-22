@@ -88,56 +88,6 @@ public class ReservationAdminActivity extends AppCompatActivity {
         mListReserve.setLayoutManager(new LinearLayoutManager(ReservationAdminActivity.this));
 
         mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this,mReserve);
-        mAdapRes.setOnItemClick(new AdapterReservAdmin.OnItemClickListener() {
-            @Override
-            public void onItemClick(int index) {
-//                for (int i = 0; i < mListReserve.getChildCount(); i++) {
-//                    if(index == i ){
-                        mListReserve.getChildAt(index).setBackgroundColor(Color.BLACK);
-                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
-                        supprime.setVisibility(View.VISIBLE);
-                        supprime.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                mDatabaseReference.child("Réservation").child(mReservMdodel.getId()).removeValue();
-//                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
-//                                mListReserve.setAdapter(mAdapRes);
-                                mAdapRes.notifyDataSetChanged();
-                            }
-                        });
-
-//                    }else{
-//                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-//                    }
-                }
-
-        });
-//        mListReserve.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, final int position, long l) {
-//                final ReservationModels reserv = (ReservationModels) adapterView.getItemAtPosition(position);
-//                selectedEvent = position;
-//                for (int i = 0; i < mListReserve.getChildCount(); i++) {
-//                    if(position == i ){
-//                        mListReserve.getChildAt(i).setBackgroundColor(Color.BLACK);
-//                        Button supprime = (Button)findViewById(R.id.removeSelectRes);
-//                        supprime.setVisibility(View.VISIBLE);
-//                        supprime.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                mDatabaseReference.child("Réservation").child(reserv.getId()).removeValue();
-//                                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
-//                                mListReserve.setAdapter(mAdapRes);
-//                                mAdapRes.notifyDataSetChanged();
-//                            }
-//                        });
-//
-//                    }else{
-//                        mListReserve.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-//                    }
-//                }
-//            }
-//        });
     }
 
     private void initFirebase() {
@@ -167,33 +117,5 @@ public class ReservationAdminActivity extends AppCompatActivity {
 
             }
         });
-//            @Override
-//            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-//                ReservationModels reservMod = dataSnapshot.getValue(ReservationModels.class);
-//                mReserve.add(reservMod);
-//                mAdapRes = new AdapterReservAdmin(ReservationAdminActivity.this, mReserve);
-//                mListReserve.setAdapter(mAdapRes);
-//            }
-//
-//            @Override
-//            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onChildRemoved(DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 }

@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -25,6 +26,8 @@ public class FormuleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_formule);
 
         FormuleActivity.this.setTitle("A la carte");
+
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ScrollView formuleScroll = (ScrollView) findViewById(R.id.formuleScroll);
 
