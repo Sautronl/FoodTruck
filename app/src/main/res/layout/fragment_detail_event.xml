@@ -97,16 +97,14 @@
         android:textColor="@color/blanc"
         android:textSize="17sp" />
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:textColor="@color/bleuTurk"
-        android:text="SAM' donne faim !"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
-        android:src="@drawable/titre_acceuil"
+        android:src="@drawable/logosam2"
         android:id="@+id/imageView2" />
 
 </RelativeLayout>

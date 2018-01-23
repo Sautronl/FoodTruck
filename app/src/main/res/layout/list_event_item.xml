@@ -6,13 +6,14 @@
     android:layout_marginRight="25dp"
     android:layout_marginBottom="25dp"
     android:layout_marginLeft="25dp"
-    app:cardBackgroundColor="@android:color/background_light"
+    android:background="@drawable/border_jade_black"
     app:cardCornerRadius="15dp"
     app:cardElevation="20dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:background="@drawable/border_jade_black"
         android:orientation="horizontal">
 
         <TextView
@@ -22,11 +23,11 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            android:background="@color/blanc"
+            android:background="@drawable/border_jade_black"
             android:text="Event Name"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/bleuTurk"
+            android:textColor="@color/blanc"
             android:textSize="22sp"
             android:textStyle="bold" />
 
