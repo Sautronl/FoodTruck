@@ -14,7 +14,7 @@ import pl.droidsonroids.gif.GifImageView;
 public class SplashActivity extends Activity {
 
     private Handler handler = new Handler();
-    private static int SPLASH_TIME_OUT = 3500;
+    private static int SPLASH_TIME_OUT = 2000;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

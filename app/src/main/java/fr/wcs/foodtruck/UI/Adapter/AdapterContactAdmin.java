@@ -42,7 +42,7 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
 
     @Override
     public void onBindViewHolder(AdapterContactAdmin.ViewHolder holder, int position) {
-        holder.display(holder,listCont.get(position),position);
+        holder.display(listCont.get(position));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
              removeButtonContactAdm = itemView.findViewById(R.id.removeButtonContactAdm);
         }
 
-        public void display(final AdapterContactAdmin.ViewHolder holder, final ContactAdminModel contact,final int index){
+        public void display(final ContactAdminModel contact){
 
             mFire = FirebaseDatabase.getInstance();
             mRef = mFire.getReference("contact/");

@@ -34,7 +34,7 @@
             android:layout_below="@+id/today"
             android:layout_marginTop="10dp"
             android:scaleType="fitXY"
-            android:src="@drawable/samcarte" />
+             />
 
         <Button
             android:id="@+id/reserver"
@@ -53,9 +53,6 @@
             android:layout_marginBottom="20dp"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-
-
 
     </RelativeLayout>
 

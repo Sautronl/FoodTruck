@@ -39,7 +39,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class ContactAdmin extends AppCompatActivity {
 
-    private RecyclerView mListViewContactAdmin;
+    RecyclerView mListViewContactAdmin;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private AdapterContactAdmin mAdapterContact;
