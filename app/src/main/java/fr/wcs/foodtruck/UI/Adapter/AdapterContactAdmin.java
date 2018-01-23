@@ -84,6 +84,13 @@ public class AdapterContactAdmin extends RecyclerView.Adapter<AdapterContactAdmi
                             notifyDataSetChanged();
                         }
                     });
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            removeButtonContactAdm.setVisibility(View.GONE);
+                            display(contact);
+                        }
+                    });
                 }
             });
             textViewNom.setText(contact.getNom());

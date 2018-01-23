@@ -46,7 +46,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
 
     @Override
     public void onBindViewHolder(AdapterReservAdmin.ViewHolder holder, int position) {
-        holder.display(reserve.get(position),position);
+        holder.display(reserve.get(position));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
             removeSelectRes = itemView.findViewById(R.id.removeSelectRes);
         }
 
-        public void display(final ReservationModels reserve, final int index ){
+        public void display(final ReservationModels reserve ){
 
             mFirebaseDatabase = FirebaseDatabase.getInstance();
             mDatabaseReference = mFirebaseDatabase.getReference("Réservation/");
@@ -80,6 +80,13 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
                         @Override
                         public void onClick(View view) {
                             mDatabaseReference.child(reserve.getId()).removeValue();
+                        }
+                    });
+                    itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            removeSelectRes.setVisibility(View.GONE);
+                            display(reserve);
                         }
                     });
                 }
