@@ -29,14 +29,7 @@
             android:textSize="25sp"
             android:textStyle="bold"/>
 
-        <ImageView
-            android:id="@+id/truck_img"
-            android:layout_width="match_parent"
-            android:layout_height="232dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:srcCompat="@drawable/trucksam" />
+
 
         <Button
             android:id="@+id/buttonPresentation1"

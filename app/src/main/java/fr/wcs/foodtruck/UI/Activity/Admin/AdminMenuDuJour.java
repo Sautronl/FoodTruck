@@ -74,6 +74,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mDescriptionDuPlat = (EditText) findViewById(R.id.descriPlat);
         mPrixDuPlat = (EditText) findViewById(R.id.prix);
         mMaj = (Button) findViewById(R.id.reserverMenu);
+        ImageView editImg = findViewById(R.id.editImg);
 
         mFireMenu = FirebaseDatabase.getInstance();
         mDbRefMenu = mFireMenu.getReference();
@@ -81,6 +82,16 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mStorage = FirebaseStorage.getInstance().getReference();
         mImgMenu = (ImageView) findViewById(R.id.imgDuPlat);
 
+        editImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CropImage.activity()
+                        .setCropShape(CropImageView.CropShape.OVAL)
+                        .setAspectRatio(1, 1)
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .start(AdminMenuDuJour.this);
+            }
+        });
         mImgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
