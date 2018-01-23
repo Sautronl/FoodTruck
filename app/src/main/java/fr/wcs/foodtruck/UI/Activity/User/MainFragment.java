@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.TextSliderView;
@@ -27,6 +29,8 @@ import java.util.Calendar;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Activity.Admin.AdminActivity;
 import fr.wcs.foodtruck.Utils.CloseDay;
+import fr.wcs.foodtruck.Utils.Constant;
+import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +55,10 @@ public class MainFragment extends Fragment {
 
         getActivity().setTitle("Accueil");
 
+        ScrollView mainUserLayout = view.findViewById(R.id.mainUserLayout);
+
+        Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
+        SetTypeFace.setAppFont(mainUserLayout,mainfont);
 //        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ImageView menu = (ImageView) view.findViewById(R.id.menu);
