@@ -89,7 +89,7 @@
         android:background="@drawable/border_jade_black"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/maj"
-        android:textColor="@color/sam"
+        android:textColor="@color/blanc"
         android:textSize="20sp"
         android:textStyle="bold"
         />
