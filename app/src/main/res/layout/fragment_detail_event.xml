@@ -24,6 +24,18 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:id="@+id/separate_upper_bar"
+        android:layout_width="150dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/titre_event_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@color/bleuTurk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
 
     <TextView
         android:id="@+id/list_date_detail"
@@ -48,6 +60,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="9dp"
          />
+
+    <ImageView
+        android:id="@+id/separate_upper_bar_date"
+        android:layout_width="150dp"
+        android:layout_height="1dp"
+        android:layout_below="@+id/date_detail"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:src="@color/bleuTurk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/list_desc_detail"
@@ -75,12 +98,13 @@
         android:textSize="17sp" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
-        android:src="@drawable/logosdf" />
+        android:src="@drawable/titre_acceuil"
+        android:id="@+id/imageView2" />
 
 </RelativeLayout>
 

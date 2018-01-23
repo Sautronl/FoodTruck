@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,7 +35,7 @@ public class MainFragment extends Fragment {
 
 
     private long timeElapsed = 0L;
-    private int mBackButtonCount = 0;
+    private int backButtonCount = 0;
     private Calendar mCalendar;
 
     public MainFragment() {
@@ -169,7 +171,6 @@ public class MainFragment extends Fragment {
         });
         return view;
     }
-
 
     @Override
     public void onDestroyView() {

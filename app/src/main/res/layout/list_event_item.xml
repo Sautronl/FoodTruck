@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:layout_marginTop="25dp"
     android:layout_marginRight="25dp"
+    android:layout_marginBottom="25dp"
     android:layout_marginLeft="25dp"
     app:cardBackgroundColor="@android:color/background_light"
     app:cardCornerRadius="15dp"
@@ -16,15 +17,16 @@
 
         <TextView
             android:id="@+id/list_name"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:gravity="center"
+            android:background="@color/blanc"
             android:text="Event Name"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/sam"
+            android:textColor="@color/bleuTurk"
             android:textSize="22sp"
             android:textStyle="bold" />
 
