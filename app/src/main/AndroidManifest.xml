@@ -94,6 +94,7 @@
         <activity
             android:name=".Geocoder.GeocoderActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
             android:windowSoftInputMode="stateHidden" />
 

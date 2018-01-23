@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/reservAdminLayout"
     android:background="@drawable/foodtruck_bg"
-    tools:context="fr.wcs.foodtruck.UI.Activity.User.EventActivity"
+    tools:context="fr.wcs.foodtruck.UI.Activity.Admin.ReservationAdminActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
@@ -31,6 +31,7 @@
         android:layout_height="25dp"
         android:background="@drawable/border_jade_black"
         android:text="Supprimer"
+        android:visibility="gone"
         android:paddingRight="5dp"
         android:paddingLeft="5dp"
         android:textColor="@color/blanc"

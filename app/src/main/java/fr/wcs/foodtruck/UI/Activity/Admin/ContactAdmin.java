@@ -42,8 +42,8 @@ public class ContactAdmin extends AppCompatActivity {
     RecyclerView mListViewContactAdmin;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    private AdapterContactAdmin mAdapterContact;
-    private ContactAdminModel mSelectedContact;
+    private AdapterContactAdmin mAdapterContact = null;
+    private ContactAdminModel mSelectedContact = null;
     private List<ContactAdminModel> mList_contact = new ArrayList<>();
 
     @Override
@@ -60,6 +60,8 @@ public class ContactAdmin extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
 
+        mListViewContactAdmin = findViewById(R.id.listeCon);
+        mListViewContactAdmin.setLayoutManager(new LinearLayoutManager(ContactAdmin.this));
         ImageView backButton = (ImageView)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -98,23 +98,23 @@
                 android:layout_weight="2.12"
                 android:onClick="onRadioButtonClicked"
                 android:text="@string/use_address"
-                android:textColor="@android:color/holo_orange_dark" />
+                android:textColor="@color/bleuTurk" />
 
         </RadioGroup>
 
     <Button
         android:id="@+id/actionButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_border_white"
+        android:background="@drawable/border_jade_black"
         android:fontFamily="sans-serif-condensed"
         android:paddingLeft="20dp"
         android:onClick="onButtonClicked"
         android:paddingRight="20dp"
         android:text="Mettre à jour"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/blanc"
         android:textColorLink="@color/colorPrimary"
         android:textSize="20sp"
         android:textStyle="bold"
