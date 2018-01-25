@@ -72,17 +72,17 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center" />
 
-            <Button
+            <ImageView
                 android:id="@+id/buttonPrix"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/border_jade_black"
+                android:background="@drawable/icons8_tableware_50"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/blanc"
                 android:textSize="18sp"

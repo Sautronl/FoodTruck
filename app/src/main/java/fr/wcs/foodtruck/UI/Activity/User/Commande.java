@@ -85,8 +85,8 @@ public class Commande  extends AppCompatActivity {
                     txtTelCommande.setEnabled(false);
                 }else
                     {
-                        txtNomCommande.setEnabled(true);
-                        txtTelCommande.setEnabled(true);
+                    txtNomCommande.setEnabled(true);
+                    txtTelCommande.setEnabled(true);
                     }
                 }
 
