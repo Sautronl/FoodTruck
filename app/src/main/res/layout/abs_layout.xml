@@ -14,9 +14,9 @@
     <ImageView
         android:id="@+id/logoToolbar"
         android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_height="18dp"
         android:layout_gravity="center"
         android:layout_weight="0.80"
-        app:srcCompat="@drawable/logosdf"
+        app:srcCompat="@drawable/titre_acceuil"
         />
 </LinearLayout>

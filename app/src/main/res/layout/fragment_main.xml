@@ -34,7 +34,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="91dp"
-                app:srcCompat="@drawable/burger_usertest" />
+                app:srcCompat="@drawable/burger_user" />
 
             <ImageView
                 android:id="@+id/presentation"
