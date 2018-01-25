@@ -17,6 +17,6 @@
         android:layout_height="18dp"
         android:layout_gravity="center"
         android:layout_weight="0.80"
-        app:srcCompat="@drawable/titre_acceuil"
+        app:srcCompat="@drawable/sdf_vert_blanc"
         />
 </LinearLayout>

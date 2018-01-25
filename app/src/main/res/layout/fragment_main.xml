@@ -76,12 +76,11 @@
                 android:layout_alignTop="@+id/contact"
                 app:srcCompat="@drawable/event_user" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SAM' donne faim !"
-                android:textSize="30sp"
-                android:textColor="@color/bleuTurk"
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:background="@drawable/sdf_vert_blanc"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="29dp"

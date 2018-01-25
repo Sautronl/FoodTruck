@@ -45,6 +45,7 @@
             android:id="@+id/name"
             android:hint="Nom de l'évènement"
             android:maxLines="1"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -64,6 +65,7 @@
             android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:hint="Description de l'évènement"
             android:maxLines="1" />
 
@@ -83,6 +85,7 @@
             android:id="@+id/date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:hint="Date de l'évènement"
             android:inputType="date"
             android:maxLines="1" />

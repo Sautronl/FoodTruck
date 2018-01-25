@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/blanc"
-        android:text="1 place de la bourse 31000 Toulouse"
         android:textSize="18sp"/>
 
 </LinearLayout>
