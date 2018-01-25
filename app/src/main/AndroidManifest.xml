@@ -133,10 +133,6 @@
             android:name=".ListLocalisationAdmin"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".CloseDay"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".ListEmplacement"
             android:screenOrientation="portrait"/>
 
@@ -164,7 +160,9 @@
             android:parentActivityName=".ChoixReserveContactAdmin"/>
         <activity
             android:name=".AdminPresentation"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+
+        </activity>
     </application>
 
 </manifest>
