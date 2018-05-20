@@ -36,7 +36,6 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.User.fullImageActivity"
-
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
         <activity
@@ -47,15 +46,14 @@
             android:name=".UI.Activity.Admin.AdminActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
-            android:windowSoftInputMode="stateHidden" />
+        android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.Admin.ContactAdmin"
             android:parentActivityName=".UI.Activity.Admin.ChoixReserveContactAdmin"
             android:screenOrientation="portrait" />
         <activity
             android:name=".UI.Activity.User.MapsActivity"
-            android:label="@string/title_activity_maps"
-             />
+            android:label="@string/title_activity_maps" />
         <!--
             The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -88,13 +86,12 @@
             android:parentActivityName=".UI.Activity.Admin.AdminAccueil"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
-            android:windowSoftInputMode="stateHidden" />
+        android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Geocoder.GeocoderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen" />
-            android:windowSoftInputMode="stateHidden" />
-
+        android:windowSoftInputMode="stateHidden" />
         <service
             android:name=".Geocoder.GeocodeAddressIntentService"
             android:exported="false" />
@@ -136,7 +133,8 @@
             android:name=".UI.Activity.User.DrawActivity"
             android:label="@string/title_activity_draw"
             android:screenOrientation="portrait"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar" />
+        <activity android:name=".UI.Activity.Admin.SliderConfActivity"></activity>
     </application>
 
 </manifest>
