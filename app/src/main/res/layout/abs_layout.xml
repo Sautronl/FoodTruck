@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/backButton"
-        android:layout_width="18dp"
+        android:layout_width="48dp"
         android:layout_height="25dp"
         app:srcCompat="@drawable/back" />
 

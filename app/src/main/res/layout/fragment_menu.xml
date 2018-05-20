@@ -42,8 +42,9 @@
             android:textSize="20sp"/>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="15dp"
+
+            android:layout_height="15dp" />
 
         <TextView
             android:id="@+id/adress"
@@ -56,7 +57,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imgDuPlatMenu"
@@ -83,60 +84,72 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_jade_black"
-                android:fontFamily="sans-serif-condensed"
                 android:textColor="@color/blanc"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
 
-        <TextView
-            android:id="@+id/burger"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/blanc"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:layout_height="200dp">
 
-        <TextView
-            android:id="@+id/descriPlat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textAlignment="center"
-            android:textColor="@color/textEnvoyer"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/burger"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="14dp"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/blanc"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/reserver"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/border_jade_black"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/reserver"
-            android:textColor="@color/blanc"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/descriPlat"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/burger"
+                android:textAlignment="center"
+                android:textColor="@color/textEnvoyer"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/totheformules"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/decouvrez"
-            android:textAlignment="center"
-            android:textColor="@color/blanc"
-            android:textSize="20sp" />
+            <Button
+                android:id="@+id/reserver"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:background="@drawable/border_jade_black"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/reserver"
+                android:textColor="@color/blanc"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/totheformules"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="17dp"
+                android:text="@string/decouvrez"
+                android:textAlignment="center"
+                android:textColor="@color/blanc"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

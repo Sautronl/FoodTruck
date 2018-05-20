@@ -80,7 +80,7 @@
                 android:layout_width="230dp"
                 android:layout_height="20dp"
                 android:scaleType="fitXY"
-                android:background="@drawable/sdf_vert_blanc"
+                android:background="@drawable/samsam2"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="29dp"

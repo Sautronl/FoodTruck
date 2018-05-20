@@ -42,6 +42,9 @@ public class ContactFragment extends Fragment {
     private EditText mSujet;
     private EditText mMessage;
     private Button mBoutonValider;
+    private CheckBox checkbox;
+    private String mPrenomMail,mTelMail,mSujetMail,mMessageMail;
+    public static String EMAILCONTACT = "samdonnefaim@outlook.fr";
 
     public ContactFragment() {
         // Required empty public constructor
@@ -68,7 +71,7 @@ public class ContactFragment extends Fragment {
         ImageButton imageBoutonPhone = (ImageButton) view.findViewById(R.id.imageBoutonPhone);
 
         // checkbox
-        final CheckBox checkbox = (CheckBox) view.findViewById(R.id.checkbox);
+        checkbox = (CheckBox) view.findViewById(R.id.checkbox);
         checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,6 +120,7 @@ public class ContactFragment extends Fragment {
                 }
                 // Message Toast de confirmation d'envoie
                 else {
+                    createContact(view);
                     CharSequence text = getResources().getString(R.string.messToastValider);
                     int duration = Toast.LENGTH_SHORT;
                     Context context = getContext();
@@ -125,7 +129,6 @@ public class ContactFragment extends Fragment {
             }
 
         });
-        createContact(view);
         return view;
     }
 
@@ -135,6 +138,10 @@ public class ContactFragment extends Fragment {
         mBoutonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mPrenomMail =  mPrenomNom.getText().toString();
+                mMessageMail = mMessage.getText().toString();
+                mSujetMail = mSujet.getText().toString();
+                mTelMail = mTel.getText().toString();
                 if (mPrenomNom.getText().toString().isEmpty() || mSujet.getText().toString().isEmpty() || mMessage.getText().toString().isEmpty() || mTel.getText().toString().isEmpty()){
 
                     Toast.makeText(getActivity(),
@@ -151,8 +158,31 @@ public class ContactFragment extends Fragment {
                             mMessage.getText().toString());
 
                     mref.child("contact").child(contact.getId()).setValue(contact);
+
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setData(Uri.parse("mailto:"));
+//                    i.setType("text/plain");
+                    i.setType("message/rfc822");
+                    i.putExtra(Intent.EXTRA_EMAIL, new String[] {EMAILCONTACT});
+
+                    String subject = "";
+                    if (!mSujetMail.equals("")) {
+                        subject = mSujetMail;
+                    }
+                    i.putExtra(Intent.EXTRA_SUBJECT, subject);
+
+                    if (!mPrenomMail.equals("") && !mTelMail.equals("") && !mMessageMail.equals("")) {
+                        i.putExtra(Intent.EXTRA_TEXT, mPrenomMail+"\n"+mTelMail+"\n"+mMessageMail);
+                    }
+
+                    try {
+                        startActivity(Intent.createChooser(i, getResources().getString(R.string.messToastValider)));
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Toast.makeText(getContext(), getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+                    }
                     clearEditText();
                 }
+
             }
         });
     }

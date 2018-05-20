@@ -76,9 +76,8 @@
         <item>13h30</item>
         <item>13h45</item>
         <item>14h00</item>
-
-
     </string-array>
+
     <string name="title_activity_maps">Map</string>
     <string name="admin_title">Administrateur</string>
     <string name="deconnexion">Déconnexion</string>
