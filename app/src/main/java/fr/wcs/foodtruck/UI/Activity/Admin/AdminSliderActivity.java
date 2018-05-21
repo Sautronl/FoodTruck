@@ -42,7 +42,7 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
     private DatabaseReference mRef;
     private StorageReference mStorage;
     private Button mValideSlider;
-    SliderModel sliderModel = null;
+    SliderModel mSliderModel = null;
     private Bitmap mBitmap;
     private final static int REQUEST_CODE = 111;
     int x;
@@ -68,14 +68,14 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         addImgSlider(2);
         addImgSlider(3);
 
-        mValideSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validation(1);
-                validation(2);
-                validation(3);
-            }
-        });
+//        mValideSlider.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                validation(1);
+//                validation(2);
+//                validation(3);
+//            }
+//        });
     }
 
 
@@ -163,10 +163,13 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
                 Uri sliderUri = result.getUri();
                 if (x==1){
                     mSlide1.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
+                    validation(1);
                 }else if (x==2){
                     mSlide2.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
+                    validation(2);
                 }else{
                     mSlide3.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
+                    validation(3);
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception exception = result.getError();
@@ -225,8 +228,8 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                sliderModel.setSliderUrl(downloadUrl.toString());
-                mRef.child("Slider/Slide" + x + "/").setValue(sliderModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                mSliderModel.setSliderUrl(downloadUrl.toString());
+                mRef.child("Slider/Slide" + x + "/").setValue(mSliderModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AdminSliderActivity.this, "Maj terminé !", Toast.LENGTH_SHORT).show();
