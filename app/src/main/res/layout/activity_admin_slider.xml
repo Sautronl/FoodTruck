@@ -20,31 +20,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/slide1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="33dp"
-            />
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/bleuTurk"
+            app:civ_border_overlay="true"
+            app:civ_border_width="2dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/slide2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="185dp"
-             />
+            android:layout_gravity="center"
+            android:layout_marginTop="181dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/bleuTurk"
+            app:civ_border_overlay="true"
+            app:civ_border_width="2dp" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/slide3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="34dp"
-            />
+            android:layout_gravity="center"
+            android:layout_marginBottom="32dp"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/bleuTurk"
+            app:civ_border_overlay="true"
+            app:civ_border_width="2dp" />
+
+        <Button
+            android:id="@+id/valideSlider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="Valider" />
+
+
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

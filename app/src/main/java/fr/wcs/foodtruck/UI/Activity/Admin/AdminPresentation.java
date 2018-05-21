@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +25,7 @@ public class AdminPresentation extends AppCompatActivity {
 
     private EditText mQuiSommesNous;
     private EditText mNosValeurs;
-    private Button mMaj;
+    private Button mMaj,mSliderOpt;
     private FirebaseDatabase mFirebase;
     private DatabaseReference mAproposRef;
 
@@ -44,6 +45,14 @@ public class AdminPresentation extends AppCompatActivity {
         mQuiSommesNous = (EditText) findViewById(R.id.editTextQsn);
         mNosValeurs = (EditText) findViewById(R.id.editTextNosValeurs);
         mMaj = (Button) findViewById(R.id.buttonMaj);
+        mSliderOpt = (Button) findViewById(R.id.sliderOPT);
+
+        mSliderOpt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminPresentation.this, AdminSliderActivity.class));
+            }
+        });
 
         mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
