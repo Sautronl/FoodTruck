@@ -46,7 +46,8 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
     private TextView mTextViewQsn;
     private TextView mTextViewNv;
     private SliderLayout mSlide;
-    private ArrayList<SliderModel> slideArray = new ArrayList<>();
+    SliderModel mSlideMod;
+    private ArrayList<String> slideArray = new ArrayList<>();
 
     public PresentationFragment() {
         // Required empty public constructor
@@ -81,8 +82,9 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap: dataSnapshot.getChildren()){
-                    SliderModel slideMod = snap.getValue(SliderModel.class);
-                    slideArray.add(slideMod);
+                    mSlideMod = snap.getValue(SliderModel.class);
+                    String conv = String.valueOf(mSlideMod);
+                    slideArray.add(conv);
                 }
                 getSlider();
             }
@@ -151,7 +153,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
-                    .image(String.valueOf(slideArray.get(i)));
+                    .image(slideArray.get(i));
             mSlide.addSlider(textSliderView);
         }
         mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
