@@ -42,7 +42,6 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
     private DatabaseReference mRef;
     private StorageReference mStorage;
     private Button mValideSlider;
-    SliderModel mSliderModel = null;
     private Bitmap mBitmap;
     private final static int REQUEST_CODE = 111;
     int x;
@@ -68,16 +67,15 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         addImgSlider(2);
         addImgSlider(3);
 
-//        mValideSlider.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                validation(1);
-//                validation(2);
-//                validation(3);
-//            }
-//        });
+        mValideSlider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validation(1);
+                validation(2);
+                validation(3);
+            }
+        });
     }
-
 
     @Override
     public void onClick(View v) {
@@ -111,65 +109,20 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void addImgSlider(final int x) {
-        mRef.child("Slider/Slide" + x + "/").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                SliderModel slideM = dataSnapshot.getValue(SliderModel.class);
-                if (x == 1){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide1);
-                }else if (x == 2){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide2);
-                }else{
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide3);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-//        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
-//
-//            Uri sliderUri = data.getData();
-//
-//            StorageReference refStorage = mStorage.child("Slider" + x + "/").child(sliderUri.getLastPathSegment());
-//            refStorage.putFile(sliderUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                    SliderModel slideMod = new SliderModel(taskSnapshot.getDownloadUrl().toString());
-//                    mRef.child("Slider/Slide" + x + "/").setValue(slideMod);
-//                    if (x == 1){
-//                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide1);
-//                    }else if (x == 2){
-//                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide2);
-//                    }else{
-//                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide3);
-//                    }
-//                    Toast.makeText(AdminSliderActivity.this, "Upload", Toast.LENGTH_LONG).show();
-//                }
-//            });
-//        }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri sliderUri = result.getUri();
                 if (x==1){
                     mSlide1.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
-                    validation(1);
-                }else if (x==2){
+                    }else if (x==2){
                     mSlide2.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
-                    validation(2);
                 }else{
                     mSlide3.setImageDrawable(Drawable.createFromPath(sliderUri.getPath()));
-                    validation(3);
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception exception = result.getError();
@@ -186,10 +139,6 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         dialog.setCancelable(false);
         dialog.setIndeterminate(true);
         dialog.show();
-//
-//        mMajPlatDuJour.setNomPlat(mNomPlatDuJour.getText().toString());
-//        mMajPlatDuJour.setDescPlat(mDescriptionDuPlat.getText().toString());
-//        mMajPlatDuJour.setPrix(mPrixDuPlat.getText().toString());
 
         if (x==1){
             mSlide1.setDrawingCacheEnabled(true);
@@ -213,12 +162,7 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
 
             mBitmap = mSlide3.getDrawingCache();
         }
-//        mSlide1.setDrawingCacheEnabled(true);
-//        mSlide1.buildDrawingCache();
-//        FirebaseStorage storage = FirebaseStorage.getInstance();
-//        mStorage = storage.getReference("PlatDuJour/");
-//
-//        Bitmap bitmap = mSlide1.getDrawingCache();
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         mBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
         byte[] data = baos.toByteArray();
@@ -227,9 +171,8 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         uploadTask.addOnFailureListener(exception -> Log.d(TAG, "onFailure: " + exception.getLocalizedMessage())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                mSliderModel.setSliderUrl(downloadUrl.toString());
-                mRef.child("Slider/Slide" + x + "/").setValue(mSliderModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                SliderModel slideMod = new SliderModel(taskSnapshot.getDownloadUrl().toString());
+                    mRef.child("Slider/Slide" + x + "/").setValue(slideMod).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(AdminSliderActivity.this, "Maj terminé !", Toast.LENGTH_SHORT).show();
@@ -239,7 +182,25 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
+
+    private void addImgSlider(final int x) {
+        mRef.child("Slider/Slide" + x + "/").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                SliderModel slideM = dataSnapshot.getValue(SliderModel.class);
+                if (x == 1){
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide1);
+                }else if (x == 2){
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide2);
+                }else{
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide3);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
-
-
-
