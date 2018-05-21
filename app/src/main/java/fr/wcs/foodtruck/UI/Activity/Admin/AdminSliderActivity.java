@@ -11,8 +11,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -45,6 +48,9 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         mSlide1.setOnClickListener(this);
         mSlide2.setOnClickListener(this);
         mSlide3.setOnClickListener(this);
+        addImgSlider(1);
+        addImgSlider(2);
+        addImgSlider(3);
     }
 
 
@@ -75,6 +81,27 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
                 startActivityForResult(Intent.createChooser(k, "Selectionner une image"), REQUEST_CODE);
                 break;
         }
+    }
+
+    private void addImgSlider(final int x) {
+        mRef.child("Slider/Slide" + x + "/").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                SliderModel slideM = dataSnapshot.getValue(SliderModel.class);
+                if (x == 1){
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide1);
+                }else if (x == 2){
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide2);
+                }else{
+                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide3);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
