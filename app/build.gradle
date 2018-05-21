@@ -10,7 +10,7 @@ android {
         }
     }
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "fr.wcs.foodtruck"
         minSdkVersion 15
@@ -30,60 +30,46 @@ android {
 
 dependencies {
     implementation 'com.android.support:support-v4:26.1.0'
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    implementation 'com.android.support:appcompat-v7:26.0.0-alpha1'
 
     //gif
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
 
     //layout
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
     //google service
-    compile 'com.google.android.gms:play-services-maps:10.0.0'
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 
     //firebase
-    compile 'com.google.firebase:firebase-database:10.0.0'
-    compile 'com.google.firebase:firebase-core:10.0.0'
-    compile 'com.google.firebase:firebase-auth:10.0.0'
-    compile 'com.google.firebase:firebase-storage:10.0.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-storage:11.8.0'
 
     //Drawer
-    compile 'com.android.support:design:26.0.0-alpha1'
+    implementation 'com.android.support:design:26.0.0-alpha1'
 
     //cardview
-    compile 'com.android.support:cardview-v7:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
 
     //Progress Dialog
     implementation 'com.github.mmoamenn:ProgressWindow_Android:0.0.2'
 
     //photo
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 
     //slider
     implementation 'com.github.firdausmaulan:GlideSlider:1.2.0'
 
     //zoom
-    compile 'com.commit451:PhotoView:1.2.4'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.commit451:PhotoView:1.2.4'
+    testImplementation 'junit:junit:4.12'
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 apply plugin: 'com.google.gms.google-services'
