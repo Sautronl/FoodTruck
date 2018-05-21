@@ -103,7 +103,7 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),fullImageActivity.class);
-                i.putExtra("id",0);
+               // i.putExtra("id",0);
                 startActivity(i);
             }
         });
