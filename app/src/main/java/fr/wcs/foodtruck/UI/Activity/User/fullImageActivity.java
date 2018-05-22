@@ -44,24 +44,19 @@ public class fullImageActivity extends AppCompatActivity {
 
         switch (dayD){
             case 2:
-                mRef = mRef.child("menu/menuLundi/");
-                getFullImg();
+                getFullImg("menu/menuLundi/");
                 break;
             case 3:
-                mRef = mRef.child("menu/menuMardi/");
-                getFullImg();
+                getFullImg("menu/menuMardi/");
                 break;
             case 4:
-                mRef = mRef.child("menu/menuMercredi/");
-                getFullImg();
+                getFullImg("menu/menuMercredi/");
                 break;
             case 5:
-                mRef = mRef.child("menu/menuJeudi/");
-                getFullImg();
+                getFullImg("menu/menuJeudi/");
                 break;
             case 6:
-                mRef = mRef.child("menu/menuVendredi/");
-                getFullImg();
+                getFullImg("menu/menuVendredi/");
                 break;
         }
 
@@ -72,12 +67,10 @@ public class fullImageActivity extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.9),(int)(height*.6));
-
-
     }
 
-    protected void getFullImg(){
-        mRef.addValueEventListener(new ValueEventListener() {
+    protected void getFullImg(String child){
+        mRef.child(child).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 mImgFull = dataSnapshot.getValue(MajPlatDuJour.class);
