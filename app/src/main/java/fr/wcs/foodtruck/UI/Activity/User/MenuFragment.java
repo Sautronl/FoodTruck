@@ -103,7 +103,6 @@ public class MenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),fullImageActivity.class);
-               // i.putExtra("id",0);
                 startActivity(i);
             }
         });
@@ -134,7 +133,6 @@ public class MenuFragment extends Fragment {
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (dayD == 2) {
-//            majMenu("menuLundi");
             mSingleton.loadMenu("menuLundi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("1 Lundi/adrs");

@@ -63,18 +63,12 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         mSlide1.setOnClickListener(this);
         mSlide2.setOnClickListener(this);
         mSlide3.setOnClickListener(this);
+        mValideSlider.setOnClickListener(this);
+
         addImgSlider(1);
         addImgSlider(2);
         addImgSlider(3);
 
-        mValideSlider.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validation(1);
-                validation(2);
-                validation(3);
-            }
-        });
     }
 
     @Override
@@ -84,27 +78,20 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
 
             case (R.id.slide1):
                 x = 1;
-                CropImage.activity()
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AdminSliderActivity.this);
+                cropImage();
                 break;
             case (R.id.slide2):
                 x = 2;
-                CropImage.activity()
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AdminSliderActivity.this);
+                cropImage();
                 break;
             case (R.id.slide3):
                 x = 3;
-                CropImage.activity()
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AdminSliderActivity.this);
+                cropImage();
+                break;
+            case (R.id.valideSlider):
+                validation(1);
+                validation(2);
+                validation(3);
                 break;
         }
     }
@@ -202,5 +189,13 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
 
             }
         });
+    }
+
+    private void cropImage(){
+        CropImage.activity()
+                .setCropShape(CropImageView.CropShape.OVAL)
+                .setAspectRatio(1, 1)
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .start(AdminSliderActivity.this);
     }
 }
