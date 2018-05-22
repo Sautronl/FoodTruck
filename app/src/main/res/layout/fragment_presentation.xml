@@ -76,7 +76,7 @@
             android:textSize="17sp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <Button
             android:id="@+id/buttonPresentation2"
