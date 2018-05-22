@@ -25,6 +25,7 @@ public class fullImageActivity extends AppCompatActivity {
     private FirebaseDatabase mFire;
     private DatabaseReference mRef;
     private Calendar myCalendar;
+    private ImageView imageView;
      private MajPlatDuJour mImgFull = null;
      private ArrayList<MajPlatDuJour> majFull = new ArrayList<>();
 
@@ -33,7 +34,7 @@ public class fullImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image);
 
-        ImageView imageView = (ImageView)findViewById(R.id.fullImg);
+         imageView = (ImageView)findViewById(R.id.fullImg);
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
@@ -41,23 +42,27 @@ public class fullImageActivity extends AppCompatActivity {
         myCalendar = Calendar.getInstance();
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
 
-        if (dayD == 2){
-            mRef = mRef.child("menu/menuLundi/");
-            mRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    mImgFull = dataSnapshot.getValue(MajPlatDuJour.class);
-                    majFull.add(mImgFull);
-                    if (mImgFull != null) {
-                        Glide.with(fullImageActivity.this).load(mImgFull.getUrlImg()).into(imageView);
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+        switch (dayD){
+            case 2:
+                mRef = mRef.child("menu/menuLundi/");
+                getFullImg();
+                break;
+            case 3:
+                mRef = mRef.child("menu/menuMardi/");
+                getFullImg();
+                break;
+            case 4:
+                mRef = mRef.child("menu/menuMercredi/");
+                getFullImg();
+                break;
+            case 5:
+                mRef = mRef.child("menu/menuJeudi/");
+                getFullImg();
+                break;
+            case 6:
+                mRef = mRef.child("menu/menuVendredi/");
+                getFullImg();
+                break;
         }
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -69,5 +74,23 @@ public class fullImageActivity extends AppCompatActivity {
         getWindow().setLayout((int)(width*.9),(int)(height*.6));
 
 
+    }
+
+    protected void getFullImg(){
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mImgFull = dataSnapshot.getValue(MajPlatDuJour.class);
+                majFull.add(mImgFull);
+                if (mImgFull != null) {
+                    Glide.with(fullImageActivity.this).load(mImgFull.getUrlImg()).into(imageView);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
