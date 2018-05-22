@@ -84,16 +84,16 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void addImgSlider(final int x) {
-        mRef.child("Slider/Slide" + x + "/").addValueEventListener(new ValueEventListener() {
+        mRef.child("Test" + x + "/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                SliderModel slideM = dataSnapshot.getValue(SliderModel.class);
+                String slideM = dataSnapshot.getValue(String.class);
                 if (x == 1){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide1);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide1);
                 }else if (x == 2){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide2);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide2);
                 }else{
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide3);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide3);
                 }
             }
 
@@ -112,18 +112,18 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
 
             Uri sliderUri = data.getData();
 
-            StorageReference refStorage = mStorage.child("Slider" + x + "/").child(sliderUri.getLastPathSegment());
+            StorageReference refStorage = mStorage.child("Test" + x + "/").child(sliderUri.getLastPathSegment());
             refStorage.putFile(sliderUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    SliderModel slideMod = new SliderModel(taskSnapshot.getDownloadUrl().toString());
-                    mRef.child("Slider/Slide" + x + "/").setValue(slideMod);
+                    String slideMod = taskSnapshot.getDownloadUrl().toString();
+                    mRef.child("Test" + x + "/").setValue(slideMod);
                     if (x == 1){
-                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide1);
+                        Glide.with(AdminSliderActivity.this).load(slideMod).into(mSlide1);
                     }else if (x == 2){
-                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide2);
+                        Glide.with(AdminSliderActivity.this).load(slideMod).into(mSlide2);
                     }else{
-                        Glide.with(AdminSliderActivity.this).load(slideMod.getSliderUrl()).into(mSlide3);
+                        Glide.with(AdminSliderActivity.this).load(slideMod).into(mSlide3);
                     }
                     Toast.makeText(AdminSliderActivity.this, "Upload", Toast.LENGTH_LONG).show();
                 }
