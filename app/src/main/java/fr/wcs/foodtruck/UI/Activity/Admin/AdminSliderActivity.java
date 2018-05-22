@@ -171,7 +171,7 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         uploadTask.addOnFailureListener(exception -> Log.d(TAG, "onFailure: " + exception.getLocalizedMessage())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                SliderModel slideMod = new SliderModel(taskSnapshot.getDownloadUrl().toString());
+                String slideMod = taskSnapshot.getDownloadUrl().toString();
                     mRef.child("Slider/Slide" + x + "/").setValue(slideMod).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -187,13 +187,13 @@ public class AdminSliderActivity extends AppCompatActivity implements View.OnCli
         mRef.child("Slider/Slide" + x + "/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                SliderModel slideM = dataSnapshot.getValue(SliderModel.class);
+                String slideM = dataSnapshot.getValue(String .class);
                 if (x == 1){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide1);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide1);
                 }else if (x == 2){
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide2);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide2);
                 }else{
-                    Glide.with(AdminSliderActivity.this).load(slideM.getSliderUrl()).into(mSlide3);
+                    Glide.with(AdminSliderActivity.this).load(slideM).into(mSlide3);
                 }
             }
 

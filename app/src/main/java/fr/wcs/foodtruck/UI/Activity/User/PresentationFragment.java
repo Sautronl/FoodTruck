@@ -42,12 +42,12 @@ import static android.view.View.VISIBLE;
 public class PresentationFragment extends Fragment implements ViewPagerEx.OnPageChangeListener{
 
     private FirebaseDatabase mFirebase;
-    private DatabaseReference mAproposRef;
+    private DatabaseReference mRefAbout;
     private TextView mTextViewQsn;
     private TextView mTextViewNv;
     private SliderLayout mSlide;
      SliderModel mSliderModel;
-    private ArrayList<SliderModel> sliderArray = new ArrayList<>();
+    private ArrayList<String > sliderArray = new ArrayList<>();
 
     public PresentationFragment() {
         // Required empty public constructor
@@ -68,7 +68,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         SetTypeFace.setAppFont(scrollPresentation,mainfont);
 
         mFirebase = FirebaseDatabase.getInstance();
-        mAproposRef = mFirebase.getReference();
+        mRefAbout = mFirebase.getReference();
 
         Button button1 = (Button) view.findViewById(R.id.buttonPresentation1);
         Button button2 = (Button) view.findViewById(R.id.buttonPresentation2);
@@ -77,21 +77,22 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         mTextViewNv = (TextView) view.findViewById(R.id.textViewPresentation2);
         mSlide = view.findViewById(R.id.slider);
 
-        mAproposRef.child("Slider/").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snap: dataSnapshot.getChildren()){
-                    mSliderModel  = snap.getValue(SliderModel.class);
-                    sliderArray.add(mSliderModel);
-                }
-                getSlider();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+        startSlider();
+//        mAproposRef.child("Slider/").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snap: dataSnapshot.getChildren()){
+//                    mSliderModel  = snap.getValue(SliderModel.class);
+//                    sliderArray.add(mSliderModel);
+//                }
+//                getSlider();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
 
 //        ArrayList<String> listUrl = new ArrayList<>();
 //        ArrayList<String> listName = new ArrayList<>();
@@ -147,12 +148,34 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         return view;
     }
 
+    protected void startSlider(){
+        mRefAbout = mRefAbout.child("Slider/");
+        for (int i = 1; i < 4; i++) {
+            mRefAbout.child("Slide"+ i + "/").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String conv = dataSnapshot.getValue(String .class);
+                    sliderArray.add(conv);
+                    if (sliderArray.size()>2){
+                        getSlider();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
+
     protected void getSlider(){
         for (int i = 0; i < sliderArray.size(); i++) {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
-                    .image(mSliderModel.getSliderUrl());
+                    .image(sliderArray.get(i));
             mSlide.addSlider(textSliderView);
         }
         mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
@@ -163,7 +186,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
 
     protected void ValueAproposListener() {
 
-        mAproposRef.child("ProposMAJ/QuiSommesNous").addValueEventListener(new ValueEventListener() {
+        mRefAbout.child("ProposMAJ/QuiSommesNous").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String quiSnous = dataSnapshot.getValue(String.class);
@@ -180,7 +203,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
 
     protected void ValueNosValeursListener() {
 
-        mAproposRef.child("ProposMAJ/NosValeurs").addValueEventListener(new ValueEventListener() {
+        mRefAbout.child("ProposMAJ/NosValeurs").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String nosValeurs = dataSnapshot.getValue(String.class);
