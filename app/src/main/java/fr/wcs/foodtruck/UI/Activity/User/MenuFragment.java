@@ -139,9 +139,7 @@ public class MenuFragment extends Fragment {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-                        mapdetail.putExtra("jourMarkeur", 0);
-                        startActivity(mapdetail);
+                        intent(0);
                     }
                 });
             }
@@ -152,9 +150,7 @@ public class MenuFragment extends Fragment {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-                        mapdetail.putExtra("jourMarkeur", 1);
-                        startActivity(mapdetail);
+                        intent(1);
                     }
                 });
             }
@@ -165,9 +161,7 @@ public class MenuFragment extends Fragment {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-                        mapdetail.putExtra("jourMarkeur", 2);
-                        startActivity(mapdetail);
+                        intent(2);
                     }
                 });
             }
@@ -178,9 +172,7 @@ public class MenuFragment extends Fragment {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-                        mapdetail.putExtra("jourMarkeur", 3);
-                        startActivity(mapdetail);
+                        intent(3);
                     }
                 });
             }
@@ -191,9 +183,7 @@ public class MenuFragment extends Fragment {
                 mAdress.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-                        mapdetail.putExtra("jourMarkeur", 4);
-                        startActivity(mapdetail);
+                        intent(4);
                     }
                 });
             }
@@ -220,6 +210,12 @@ public class MenuFragment extends Fragment {
 
             }
         });
+    }
+
+    private void intent(int x){
+        Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
+        mapdetail.putExtra("jourMarkeur", x);
+        startActivity(mapdetail);
     }
 
     @Override
