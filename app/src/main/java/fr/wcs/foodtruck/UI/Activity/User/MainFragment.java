@@ -35,17 +35,14 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
-
+public class MainFragment extends Fragment implements View.OnClickListener{
 
     private long timeElapsed = 0L;
-    private int backButtonCount = 0;
     private Calendar mCalendar;
 
     public MainFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,10 +53,8 @@ public class MainFragment extends Fragment {
         getActivity().setTitle("Accueil");
 
         ScrollView mainUserLayout = view.findViewById(R.id.mainUserLayout);
-
         Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(mainUserLayout,mainfont);
-//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         ImageView menu = (ImageView) view.findViewById(R.id.menu);
         ImageView lieu = (ImageView) view.findViewById(R.id.lieu);
@@ -70,7 +65,14 @@ public class MainFragment extends Fragment {
         ImageView star = (ImageView) view.findViewById(R.id.star);
         final ImageView logo = (ImageView) view.findViewById(R.id.logo);
 
+        mCalendar = Calendar.getInstance();
 
+        lieu.setOnClickListener(this);
+        presentation.setOnClickListener(this);
+        contact.setOnClickListener(this);
+        menu.setOnClickListener(this);
+        event.setOnClickListener(this);
+        like.setOnClickListener(this);
 
         star.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -91,9 +93,61 @@ public class MainFragment extends Fragment {
             }
         });
 
-        like.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        return view;
+    }
+
+    protected void fragmentTransaction(Fragment fragment){
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.replace(R.id.container,fragment);
+        fragmentTransaction.commit();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser) {
+            Activity a = getActivity();
+            if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);
+        switch (v.getId()){
+            case R.id.menu:
+                if (daysatsun == 7 || daysatsun == 1) {
+                    Intent intentClose = new Intent(getActivity(), CloseDay.class);
+                    startActivity(intentClose);
+                } else {
+                    Fragment fragment = new MenuFragment();
+                    fragmentTransaction(fragment);
+                }
+                break;
+            case R.id.event:
+                Fragment fragment = new EventFragment();
+                fragmentTransaction(fragment);
+                break;
+            case R.id.contact:
+                Fragment frag = new ContactFragment();
+                fragmentTransaction(frag);
+                break;
+            case R.id.lieu:
+                Fragment fr = new MapListFragment();
+                fragmentTransaction(fr);
+                break;
+            case R.id.presentation:
+                Fragment fra = new PresentationFragment();
+                fragmentTransaction(fra);
+                break;
+            case R.id.like:
                 String FACEBOOK_URL = "https://www.facebook.com/samdonnefaim/";
                 String FACEBOOK_PAGE_ID = "samdonnefaim";
                 String lien;
@@ -111,86 +165,6 @@ public class MainFragment extends Fragment {
                 Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
                 facebookIntent.setData(Uri.parse(lien));
                 startActivity(facebookIntent);
-            }
-        });
-
-        mCalendar = Calendar.getInstance();
-        final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);
-
-        menu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (daysatsun == 7 || daysatsun == 1) {
-                    Intent intentClose = new Intent(getActivity(), CloseDay.class);
-                    startActivity(intentClose);
-                } else {
-                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                    Fragment fragment = new MenuFragment();
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.replace(R.id.container,fragment);
-                    fragmentTransaction.commit();
-                }
-            }
-        });
-
-
-        presentation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                Fragment fragment = new PresentationFragment();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.container,fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        event.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                Fragment fragment = new EventFragment();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.container,fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        contact.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                Fragment fragment = new ContactFragment();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.container,fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        lieu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                Fragment fragment = new MapListFragment();
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.replace(R.id.container,fragment);
-                fragmentTransaction.commit();
-            }
-        });
-        return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if(isVisibleToUser) {
-            Activity a = getActivity();
-            if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
     }
 }
