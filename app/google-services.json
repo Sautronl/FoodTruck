@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "613352542975-i6jmb4ae3lbmllfqi16h2c77r5q8bb9u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.foodtruck",
+            "certificate_hash": "fb42f3b281bd33f767a00d69af2dc2f5fac7eeca"
+          }
+        },
+        {
           "client_id": "613352542975-7sgl5958v3meopho8mg2jfggt6ht5ps5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

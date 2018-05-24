@@ -32,9 +32,9 @@ public class SliderConfActivity extends AppCompatActivity {
 
     ImageView mSlide1,mSlide2,mSlide3;
     private int x =0;
-    private Uri slideImg;
+    //private Uri slideImg;
     private ArrayList<Integer> idSlider = new ArrayList<>();
-    StorageReference mStorageSlide;
+    //private StorageReference mStorageSlide;
     private FirebaseDatabase mSlideFire;
     private DatabaseReference mDbRefSlide;
     SliderModel mSliderModel;
@@ -57,7 +57,7 @@ public class SliderConfActivity extends AppCompatActivity {
 
         mSlideFire = FirebaseDatabase.getInstance();
         mDbRefSlide = mSlideFire.getReference();
-        mStorageSlide = FirebaseStorage.getInstance().getReference();
+        //mStorageSlide = FirebaseStorage.getInstance().getReference();
 
         mSlide1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class SliderConfActivity extends AppCompatActivity {
                 intent.setAction(intent.ACTION_GET_CONTENT);
                 intent.putExtra("num",x);
                 startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                addSlide(1);
+                //addSlide(1);
             }
         });
 
@@ -81,7 +81,7 @@ public class SliderConfActivity extends AppCompatActivity {
                 intent.setAction(intent.ACTION_GET_CONTENT);
                 intent.putExtra("num",x);
                 startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                addSlide(2);
+                //addSlide(2);
             }
         });
 
@@ -94,7 +94,7 @@ public class SliderConfActivity extends AppCompatActivity {
                 intent.setAction(intent.ACTION_GET_CONTENT);
                 intent.putExtra("num",x);
                 startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
-                addSlide(3);
+                //addSlide(3);
             }
         });
 
@@ -106,25 +106,27 @@ public class SliderConfActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
-
-            slideImg = data.getData();
+            //mStorageSlide = FirebaseStorage.getInstance().getReference();
             final int i = getIntent().getIntExtra("num",x);
 
-            StorageReference ref  = mStorageSlide.child("Slider/").child(slideImg.getLastPathSegment());
+            Uri slideImg = data.getData();
+
+            StorageReference ref  = FirebaseStorage.getInstance().getReference().child("Slider/");
             ref.putFile(slideImg).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    mSliderModel = new SliderModel(taskSnapshot.getDownloadUrl().toString());
+                    SliderModel slideModel = new SliderModel(taskSnapshot.getDownloadUrl().toString());
                     if (i == 1) {
-                        mDbRefSlide.child("Slider/SlideOne/").setValue(mSliderModel);
-                        Glide.with(SliderConfActivity.this).load(mSliderModel.getSliderOne()).into(mSlide1);
+                        mDbRefSlide.child("Slider/SlideOne/").setValue(slideModel);
+                        Glide.with(SliderConfActivity.this).load(slideModel.getSliderOne()).into(mSlide1);
+
                     } else if (i == 2) {
-                        mDbRefSlide.child("Slider/SlideTwo/").setValue(mSliderModel);
-                        Glide.with(SliderConfActivity.this).load(mSliderModel.getSliderOne()).into(mSlide2);
+                        mDbRefSlide.child("Slider/SlideTwo/").setValue(slideModel);
+                        Glide.with(SliderConfActivity.this).load(slideModel.getSliderOne()).into(mSlide2);
+                        addSlide(i);
                     } else {
-                        mDbRefSlide.child("Slider/SlideThree/").setValue(mSliderModel);
-                        Glide.with(SliderConfActivity.this).load(mSliderModel.getSliderOne()).into(mSlide3);
+                        mDbRefSlide.child("Slider/SlideThree/").setValue(slideModel);
+                        Glide.with(SliderConfActivity.this).load(slideModel.getSliderOne()).into(mSlide3);
                     }
                     Toast.makeText(SliderConfActivity.this, "Upload", Toast.LENGTH_LONG).show();
                 }

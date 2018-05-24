@@ -8,6 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -38,7 +39,7 @@ import static android.view.View.VISIBLE;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PresentationFragment extends Fragment implements ViewPagerEx.OnPageChangeListener{
+public class PresentationFragment extends Fragment implements ViewPagerEx.OnPageChangeListener,View.OnClickListener{
 
     private FirebaseDatabase mFirebase;
     private DatabaseReference mAproposRef;
@@ -97,6 +98,8 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
         mSlide.setDuration(3000);
         mSlide.addOnPageChangeListener(PresentationFragment.this);
+
+        mSlide.setOnClickListener(this);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,6 +197,30 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         if(isVisibleToUser) {
             Activity a = getActivity();
             if(a != null) a.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+
+            case 0:
+                Intent i = new Intent(getActivity(), fullImageActivity.class);
+                i.putExtra("pic",0);
+                startActivity(i);
+                //((Activity) getActivity()).overridePendingTransition(0,0);
+                break;
+            case 1:
+                Intent j= new Intent(getActivity(), fullImageActivity.class);
+                j.putExtra("pic",1);
+                startActivity(j);
+                break;
+            case 2:
+                Intent k = new Intent(getActivity(), fullImageActivity.class);
+                k.putExtra("pic",2);
+                startActivity(k);
+                break;
         }
     }
 }

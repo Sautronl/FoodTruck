@@ -6,23 +6,23 @@ package fr.wcs.foodtruck.Model;
 
 public class SliderModel {
 
-    private String sliderOne;
+    private String slider;
 
     public SliderModel(){
 
     }
 
     public SliderModel(String sliderOne){
-        this.sliderOne = sliderOne;
+        this.slider = sliderOne;
     }
 
 
     public String getSliderOne() {
-        return sliderOne;
+        return slider;
     }
 
     public void setSliderOne(String sliderOne) {
-        this.sliderOne = sliderOne;
+        this.slider = sliderOne;
     }
 
 }

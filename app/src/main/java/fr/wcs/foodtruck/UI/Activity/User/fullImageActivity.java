@@ -17,11 +17,11 @@ public class fullImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_image);
 
         Intent i = getIntent();
-        int position = i.getExtras().getInt("id");
-        GalleryAdapter adapter = new GalleryAdapter(this);
+        int position = i.getExtras().getInt("pic");
+        GalleryAdapter adapter = new GalleryAdapter(this,position);
 
         ImageView imageView = (ImageView)findViewById(R.id.fullImg);
-        imageView.setImageResource(adapter.images[position]);
+        imageView.setImageResource(position);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

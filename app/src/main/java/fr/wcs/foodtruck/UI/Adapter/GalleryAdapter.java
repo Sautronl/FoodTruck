@@ -12,24 +12,26 @@ import fr.wcs.foodtruck.R;
 public class GalleryAdapter extends BaseAdapter {
 
     private Context context;
+    public int i;
 
-    public Integer[] images = {
-            R.drawable.burger01, R.drawable.burger02,
-            R.drawable.burger03, R.drawable.burger04,
-            R.drawable.burger05 };
+//    public Integer[] images = {
+//            R.drawable.burger01, R.drawable.burger02,
+//            R.drawable.burger03, R.drawable.burger04,
+//            R.drawable.burger05 };
 
-    public GalleryAdapter(Context c) {
-        context = c;
+    public GalleryAdapter(Context c,int i) {
+        this.context = c;
+        this.i = i;
     }
 
     @Override
     public int getCount() {
-        return images.length;
+        return i;
     }
 
     @Override
     public Object getItem(int i) {
-        return images[i];
+        return i;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class GalleryAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ImageView imageView = new ImageView(context);
-        imageView.setImageResource(images[i]);
+        imageView.setImageResource(i);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setLayoutParams(new GridView.LayoutParams(220, 220));
         return imageView;
