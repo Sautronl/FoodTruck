@@ -32,6 +32,14 @@
         android:text="Slider OPT"
         />
 
+    <Button
+        android:id="@+id/sliderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="sliderOPT"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
     <TextView
         android:id="@+id/qsn"
         android:layout_width="match_parent"

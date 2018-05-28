@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import fr.wcs.foodtruck.Model.SliderModel;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.UI.Adapter.GalleryAdapter;
 import fr.wcs.foodtruck.Utils.Constant;
@@ -46,6 +47,8 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
     private TextView mTextViewQsn;
     private TextView mTextViewNv;
     private SliderLayout mSlide;
+    SliderModel mSlideMod;
+    private ArrayList<String> slideArray = new ArrayList<>();
 
     public PresentationFragment() {
         // Required empty public constructor
@@ -66,7 +69,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         SetTypeFace.setAppFont(scrollPresentation,mainfont);
 
         mFirebase = FirebaseDatabase.getInstance();
-        mAproposRef = mFirebase.getReference("ProposMAJ");
+        mAproposRef = mFirebase.getReference();
 
         Button button1 = (Button) view.findViewById(R.id.buttonPresentation1);
         Button button2 = (Button) view.findViewById(R.id.buttonPresentation2);
@@ -75,29 +78,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         mTextViewNv = (TextView) view.findViewById(R.id.textViewPresentation2);
         mSlide = view.findViewById(R.id.slider);
 
-        ArrayList<String> listUrl = new ArrayList<>();
-        ArrayList<String> listName = new ArrayList<>();
-
-        listUrl.add("https://media-cdn.tripadvisor.com/media/photo-s/07/50/f6/d1/john-s-burger.jpg");
-        listName.add("JPG - Github");
-
-        listUrl.add("https://img.20mn.fr/I3MMnj6MTK-2H8zKiq3Xjg/830x532_burger-black-og-vincent-boccara");
-        listName.add("PNG - Android Studio");
-
-        listUrl.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzS2JniRWr_en1FiRMOO-WUIJih6Px4JEN3YiOq1__iRFk7Ao");
-        listName.add("GIF - Disney");
-
-        for (int i = 0; i < listUrl.size(); i++) {
-            TextSliderView textSliderView = new TextSliderView(getActivity());
-            // initialize a SliderLayout
-            textSliderView
-                    .image(listUrl.get(i));
-            mSlide.addSlider(textSliderView);
-        }
-        mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
-        mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mSlide.setDuration(3000);
-        mSlide.addOnPageChangeListener(PresentationFragment.this);
+        startSlider();
 
         mSlide.setOnClickListener(this);
 
@@ -131,9 +112,45 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         return view;
     }
 
+    protected void startSlider(){
+
+        for (int i = 1; i < 4; i++) {
+            mAproposRef.child("Test"+ i + "/").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String conv = dataSnapshot.getValue(String .class);
+                    slideArray.add(conv);
+                    if (slideArray.size()>2){
+                        getSlider();
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
+
+    protected void getSlider(){
+        for (int i = 0; i < slideArray.size(); i++) {
+            TextSliderView textSliderView = new TextSliderView(getActivity());
+            // initialize a SliderLayout
+            textSliderView
+                    .image(slideArray.get(i));
+            mSlide.addSlider(textSliderView);
+        }
+        mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
+        mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mSlide.setDuration(3000);
+        mSlide.addOnPageChangeListener(PresentationFragment.this);
+    }
+
     protected void ValueAproposListener() {
 
-        mAproposRef.child("QuiSommesNous").addValueEventListener(new ValueEventListener() {
+        mAproposRef.child("ProposMAJ/QuiSommesNous").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String quiSnous = dataSnapshot.getValue(String.class);
@@ -150,7 +167,7 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
 
     protected void ValueNosValeursListener() {
 
-        mAproposRef.child("NosValeurs").addValueEventListener(new ValueEventListener() {
+        mAproposRef.child("ProposMAJ/NosValeurs").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String nosValeurs = dataSnapshot.getValue(String.class);
@@ -224,3 +241,44 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         }
     }
 }
+
+
+//        mAproposRef.child("Slider/Test"+ i + "/").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snap: dataSnapshot.getChildren()){
+//                   // mSlideMod = snap.getValue(SliderModel.class);
+//                    String conv = snap.getValue(String .class);
+//                    slideArray.add(conv);
+//                }
+//                getSlider();
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//        ArrayList<String> listUrl = new ArrayList<>();
+//        ArrayList<String> listName = new ArrayList<>();
+//
+//        listUrl.add("https://media-cdn.tripadvisor.com/media/photo-s/07/50/f6/d1/john-s-burger.jpg");
+//        listName.add("JPG - Github");
+//
+//        listUrl.add("https://img.20mn.fr/I3MMnj6MTK-2H8zKiq3Xjg/830x532_burger-black-og-vincent-boccara");
+//        listName.add("PNG - Android Studio");
+//
+//        listUrl.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpzS2JniRWr_en1FiRMOO-WUIJih6Px4JEN3YiOq1__iRFk7Ao");
+//        listName.add("GIF - Disney");
+
+//        for (int i = 0; i < slideArray.size(); i++) {
+//            TextSliderView textSliderView = new TextSliderView(getActivity());
+//            // initialize a SliderLayout
+//            textSliderView
+//                    .image(slideArray.indexOf(i));
+//            mSlide.addSlider(textSliderView);
+//        }
+//        mSlide.setPresetTransformer(SliderLayout.Transformer.Default);
+//        mSlide.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+//        mSlide.setDuration(3000);
+//        mSlide.addOnPageChangeListener(PresentationFragment.this);

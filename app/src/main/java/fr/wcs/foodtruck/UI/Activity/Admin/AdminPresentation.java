@@ -25,7 +25,7 @@ public class AdminPresentation extends AppCompatActivity {
 
     private EditText mQuiSommesNous;
     private EditText mNosValeurs;
-    private Button mMaj, mSlideBtn;
+    private Button mMaj,mSliderButton;
     private FirebaseDatabase mFirebase;
     private DatabaseReference mAproposRef;
 
@@ -45,12 +45,12 @@ public class AdminPresentation extends AppCompatActivity {
         mQuiSommesNous = (EditText) findViewById(R.id.editTextQsn);
         mNosValeurs = (EditText) findViewById(R.id.editTextNosValeurs);
         mMaj = (Button) findViewById(R.id.buttonMaj);
-        mSlideBtn = (Button) findViewById(R.id.slideOpt);
+        mSliderButton = (Button)findViewById(R.id.sliderButton);
 
-        mSlideBtn.setOnClickListener(new View.OnClickListener() {
+        mSliderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AdminPresentation.this, SliderConfActivity.class));
+                startActivity(new Intent(AdminPresentation.this, AdminSliderActivity.class));
             }
         });
 
