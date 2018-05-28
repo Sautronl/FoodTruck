@@ -3,6 +3,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -50,7 +51,7 @@ public class Commande  extends AppCompatActivity {
     Spinner spinnerCommande;
     RadioGroup radioGroup;
     RadioButton menuOk,menuNope;
-    RelativeLayout nomHide,timeHide,numeroHide;
+    ConstraintLayout firstPart,partTwo;
     RecyclerView menuListe;
     AdapterMenuListe adapterMenu;
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
@@ -88,9 +89,9 @@ public class Commande  extends AppCompatActivity {
         menuNope = (RadioButton) findViewById(R.id.menuNope);
         menuListe = (RecyclerView) findViewById(R.id.menuListe);
         menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        nomHide = (RelativeLayout) findViewById(R.id.nomHide);
-        timeHide = (RelativeLayout) findViewById(R.id.timehide);
-        numeroHide = (RelativeLayout) findViewById(R.id.numberhide);
+        firstPart = (ConstraintLayout) findViewById(R.id.firstPart);
+        partTwo = (ConstraintLayout) findViewById(R.id.partTwo);
+//        numeroHide = (ConstraintLayout) findViewById(R.id.numberhide);
 
 
         // On crée l'adapter pour le spinner.
@@ -128,9 +129,8 @@ public class Commande  extends AppCompatActivity {
                     radioGroup.setVisibility(View.GONE);
 
                 }else{
-                    timeHide.setVisibility(View.GONE);
-                    nomHide.setVisibility(View.GONE);
-                    numeroHide.setVisibility(View.GONE);
+                    firstPart.setVisibility(View.GONE);
+                    partTwo.setVisibility(View.VISIBLE);
                     radioGroup.setVisibility(View.VISIBLE);
                     radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
