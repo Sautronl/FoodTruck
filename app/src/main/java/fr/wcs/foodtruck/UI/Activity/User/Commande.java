@@ -65,9 +65,7 @@ public class Commande  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
-//        Commande.this.setTitle("Prendre commande");
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
 
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference();
@@ -79,10 +77,6 @@ public class Commande  extends AppCompatActivity {
         btReserverCommande = (Button) findViewById(R.id.btReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
-//        final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
-//        final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
-//        final TextView votreNom = (TextView) findViewById(R.id.votreNom);
-//        final TextView votreTel = (TextView) findViewById(R.id.votreTel);
         spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         menuOk = (RadioButton) findViewById(R.id.menuOk);
@@ -91,8 +85,6 @@ public class Commande  extends AppCompatActivity {
         menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         firstPart = (ConstraintLayout) findViewById(R.id.firstPart);
         partTwo = (ConstraintLayout) findViewById(R.id.partTwo);
-//        numeroHide = (ConstraintLayout) findViewById(R.id.numberhide);
-
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -106,7 +98,6 @@ public class Commande  extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 //Si aucune horaires n'est selectionner on affiche un toast
-
                 if (i == 0) {
                     txtNomCommande.setEnabled(false);
                     txtTelCommande.setEnabled(false);
