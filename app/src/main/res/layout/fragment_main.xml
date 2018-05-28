@@ -6,7 +6,7 @@
     android:id="@+id/mainUserLayout"
     android:layout_height="match_parent"
     android:layout_marginTop="39dp"
-    android:background="@drawable/bg_accueil"
+    android:background="@drawable/vector_abstract_metal_background"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MainFragment">
 
     <android.support.constraint.ConstraintLayout
@@ -81,6 +81,7 @@
                 android:layout_height="wrap_content"
                 android:text="SAM' donne faim !"
                 android:textSize="30sp"
+                android:visibility="gone"
                 android:textColor="@color/bleuTurk"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"

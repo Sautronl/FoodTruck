@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MainFragment"
-    android:background="@drawable/foodtruck_bg"
+    android:background="@drawable/bg_accueil"
     >
 
     <RelativeLayout
