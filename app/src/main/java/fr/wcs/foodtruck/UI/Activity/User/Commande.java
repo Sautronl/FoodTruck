@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -63,7 +64,9 @@ public class Commande  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commande);
 
-        Commande.this.setTitle("Prendre commande");
+//        Commande.this.setTitle("Prendre commande");
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference();
@@ -72,7 +75,7 @@ public class Commande  extends AppCompatActivity {
         Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollCommande,mainfont);
 
-//        btReserverCommande = (Button) findViewById(R.id.buttonReserver);
+        btReserverCommande = (Button) findViewById(R.id.btReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
 //        final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
@@ -118,36 +121,49 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        btReserverCommande.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onClick(View v) {
+                if (txtNomCommande.getText().toString().isEmpty() || txtTelCommande.getText().toString().isEmpty()){
+                    radioGroup.setVisibility(View.GONE);
 
-                    if (checkedId == R.id.menuOk){
-                    menuListe.setVisibility(View.VISIBLE);
+                }else{
                     timeHide.setVisibility(View.GONE);
                     nomHide.setVisibility(View.GONE);
                     numeroHide.setVisibility(View.GONE);
-                    mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+                    radioGroup.setVisibility(View.VISIBLE);
+                    radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if (menuDisplay.size()> 0) menuDisplay.clear();
-                            for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                                MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
-                                menuDisplay.add(majPlatDuJour);
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                            if (checkedId == R.id.menuOk){
+                                menuListe.setVisibility(View.VISIBLE);
+
+                                mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        if (menuDisplay.size()> 0) menuDisplay.clear();
+                                        for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                                            MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
+                                            menuDisplay.add(majPlatDuJour);
+                                        }
+                                        adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
+                                        menuListe.setAdapter(adapterMenu);
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
                             }
-                            adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
-                            menuListe.setAdapter(adapterMenu);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
                         }
                     });
                 }
             }
         });
+
+
 
 //        btReserverCommande.setOnClickListener(new View.OnClickListener() {
 //            @Override

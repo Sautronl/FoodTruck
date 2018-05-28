@@ -33,6 +33,7 @@
         <activity
             android:name=".UI.Activity.User.Commande"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".UI.Activity.User.fullImageActivity"

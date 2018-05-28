@@ -5,6 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollCommande"
 android:layout_width="match_parent"
+    android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen"
 android:layout_height="match_parent"
 android:background="@drawable/foodtruck_bg">
 
@@ -24,69 +25,22 @@ android:background="@drawable/foodtruck_bg">
            android:layout_height="wrap_content">
 
            <TextView
-               android:id="@+id/lol"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:text="Votre commande"
+               android:layout_marginBottom="10dp"
                android:textAlignment="center"
                android:textColor="@color/blanc" />
 
        </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/nomHide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="28dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/blanc"
-                android:text="Votre Nom" />
-
-            <EditText
-                android:id="@+id/editTextNom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="28dp" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/numberhide"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="115dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/blanc"
-                android:text="Votre Numero" />
-
-            <EditText
-                android:id="@+id/editTextTel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="28dp" />
-        </RelativeLayout>
-
-        <RelativeLayout
             android:id="@+id/timehide"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true">
+            android:layout_below="@+id/topCommande">
 
             <TextView
                 android:id="@+id/choixHeure"
@@ -107,16 +61,62 @@ android:background="@drawable/foodtruck_bg">
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/nomHide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="130dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Votre Nom"
+                android:textColor="@color/blanc" />
+
+            <EditText
+                android:id="@+id/editTextNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="28dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/numberhide"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Votre Numero"
+                android:textColor="@color/blanc" />
+
+            <EditText
+                android:id="@+id/editTextTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp" />
+        </RelativeLayout>
+
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="152dp">
 
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <RadioButton
                     android:id="@+id/menuOk"
@@ -137,13 +137,27 @@ android:background="@drawable/foodtruck_bg">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/menuListe"
-
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
             </android.support.v7.widget.RecyclerView>
 
-        </RelativeLayout>
+            <Button
+                android:id="@+id/btReserver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Valider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
 
     </RelativeLayout>
 
