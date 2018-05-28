@@ -11,6 +11,8 @@ public class ReservationModels {
     private String nomReserv;
     private String numTelReserv;
     private String horaire;
+    private String nomBurger;
+    private String prixBurger;
 
     public ReservationModels() {
 
@@ -55,4 +57,21 @@ public class ReservationModels {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getNomBurger() {
+        return nomBurger;
+    }
+
+    public void setNomBurger(String nomBurger) {
+        this.nomBurger = nomBurger;
+    }
+
+    public String getPrixBurger() {
+        return prixBurger;
+    }
+
+    public void setPrixBurger(String prixBurger) {
+        this.prixBurger = prixBurger;
+    }
+
 }

@@ -8,122 +8,144 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/foodtruck_bg">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_height="500dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:orientation="vertical">
 
+       <LinearLayout
+           android:id="@+id/topCommande"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:gravity="center"
+           android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textViewCommande"
-            android:layout_width="wrap_content"
+           <TextView
+               android:id="@+id/lol"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:text="Votre commande"
+               android:textAlignment="center"
+               android:textColor="@color/blanc" />
+
+       </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/nomHide"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="sans-serif-condensed"
-            android:text="@string/votrecommande"
-            android:textAllCaps="true"
-            android:textColor="@android:color/background_light"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="28dp">
 
-        <TextView
-            android:id="@+id/choixHeure"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blanc"
+                android:text="Votre Nom" />
+
+            <EditText
+                android:id="@+id/editTextNom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="28dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/numberhide"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="115dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blanc"
+                android:text="Votre Numero" />
+
+            <EditText
+                android:id="@+id/editTextTel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="28dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/timehide"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/choixHeure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/choix_creneau"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spinnerCommande"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="#ffffff" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/choix_creneau"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true">
 
-        <Spinner
-            android:id="@+id/spinnerCommande"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:background="#ffffff" />
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <RadioButton
+                    android:id="@+id/menuOk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Menu"
+                    android:textColor="@color/blanc" />
 
-        <TextView
-            android:id="@+id/votreNom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/votre_nom"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/textEnvoyer"
-            android:textSize="16sp" />
+                <RadioButton
+                    android:id="@+id/menuNope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="A l'unité"
+                    android:textColor="@color/blanc" />
+            </RadioGroup>
 
-        <ImageView
-            android:id="@+id/warningNom"
-            android:layout_width="39dp"
-            android:layout_height="20dp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/point_exclamation" />
-        </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/menuListe"
 
-        <EditText
-            android:id="@+id/editTextNom"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/borderwhite"
-            android:ems="10"
-            android:layout_marginBottom="5dp"
-            android:focusableInTouchMode="true"
-            android:hint="@string/edit_text_nom"
-            android:inputType="textPersonName" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/votreTel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/votre_tel"
-            android:layout_marginBottom="5dp"
-            android:textColor="#ffffff"
-            android:textSize="16sp" />
+            </android.support.v7.widget.RecyclerView>
 
-        <ImageView
-            android:id="@+id/warningTel"
-            android:layout_width="39dp"
-            android:layout_height="20dp"
-            android:visibility="gone"
-            app:srcCompat="@drawable/point_exclamation" />
-        </LinearLayout>
+        </RelativeLayout>
 
-        <EditText
-            android:id="@+id/editTextTel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/borderwhite"
-            android:ems="10"
-            android:layout_marginBottom="5dp"
-            android:focusableInTouchMode="true"
-            android:hint="@string/edit_text_tel"
-            android:inputType="phone"
-            android:maxLength="10" />
+    </RelativeLayout>
 
-        <Button
-            android:id="@+id/buttonReserver"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/border_jade_black"
-            android:fontFamily="sans-serif-condensed"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Réserver mon burger"
-            android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            android:textStyle="bold" />
 
-    </LinearLayout>
 </ScrollView>

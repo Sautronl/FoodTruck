@@ -5,24 +5,35 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
+import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Model.ReservationModels;
+import fr.wcs.foodtruck.UI.Adapter.AdapterMenuListe;
 import fr.wcs.foodtruck.Utils.Constant;
 import fr.wcs.foodtruck.Utils.SetTypeFace;
 
@@ -36,6 +47,12 @@ public class Commande  extends AppCompatActivity {
     EditText txtNomCommande;
     EditText txtTelCommande;
     Spinner spinnerCommande;
+    RadioGroup radioGroup;
+    RadioButton menuOk,menuNope;
+    RelativeLayout nomHide,timeHide,numeroHide;
+    RecyclerView menuListe;
+    AdapterMenuListe adapterMenu;
+    ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
@@ -49,20 +66,29 @@ public class Commande  extends AppCompatActivity {
         Commande.this.setTitle("Prendre commande");
 
         mFirebase = FirebaseDatabase.getInstance();
-        mReservRef = mFirebase.getReference("Réservation");
+        mReservRef = mFirebase.getReference();
 
         ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
         Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollCommande,mainfont);
 
-        btReserverCommande = (Button) findViewById(R.id.buttonReserver);
+//        btReserverCommande = (Button) findViewById(R.id.buttonReserver);
         txtNomCommande = (EditText) findViewById(R.id.editTextNom);
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
-        final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
-        final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
-        final TextView votreNom = (TextView) findViewById(R.id.votreNom);
-        final TextView votreTel = (TextView) findViewById(R.id.votreTel);
+//        final ImageView warningNom = (ImageView) findViewById(R.id.warningNom);
+//        final ImageView warningTel = (ImageView) findViewById(R.id.warningTel);
+//        final TextView votreNom = (TextView) findViewById(R.id.votreNom);
+//        final TextView votreTel = (TextView) findViewById(R.id.votreTel);
         spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        menuOk = (RadioButton) findViewById(R.id.menuOk);
+        menuNope = (RadioButton) findViewById(R.id.menuNope);
+        menuListe = (RecyclerView) findViewById(R.id.menuListe);
+        menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        nomHide = (RelativeLayout) findViewById(R.id.nomHide);
+        timeHide = (RelativeLayout) findViewById(R.id.timehide);
+        numeroHide = (RelativeLayout) findViewById(R.id.numberhide);
+
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -93,26 +119,56 @@ public class Commande  extends AppCompatActivity {
             }
         });
 
-        btReserverCommande.setOnClickListener(new View.OnClickListener() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
-                if (txtNomCommande.getText().toString().isEmpty() || txtTelCommande.getText().toString().isEmpty()) {
-                    Toast.makeText(Commande.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
-                } else {
-                    createRes();
-                    Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-                    intent.putExtra("heure", "Elle sera prête pour " + spinnerCommande.getItemAtPosition
-                            (spinnerCommande.getSelectedItemPosition()).toString());
-                    intent.putExtra("nom", "Merci " + txtNomCommande.getText().toString());
+                    if (checkedId == R.id.menuOk){
+                    menuListe.setVisibility(View.VISIBLE);
+                    timeHide.setVisibility(View.GONE);
+                    nomHide.setVisibility(View.GONE);
+                    numeroHide.setVisibility(View.GONE);
+                    mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (menuDisplay.size()> 0) menuDisplay.clear();
+                            for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                                MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
+                                menuDisplay.add(majPlatDuJour);
+                            }
+                            adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
+                            menuListe.setAdapter(adapterMenu);
+                        }
 
-                    Commande.this.startActivity(intent);
-                    //Le finish permet de ne par revenir sur la page
-                    // Commande dès que l'on a deja commmander.
-                    finish();
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
         });
+
+//        btReserverCommande.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if (txtNomCommande.getText().toString().isEmpty() || txtTelCommande.getText().toString().isEmpty()) {
+//                    Toast.makeText(Commande.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+//                } else {
+//                    createRes();
+//                    Intent intent = new Intent(Commande.this, RemerciementCommande.class);
+//                    intent.putExtra("heure", "Elle sera prête pour " + spinnerCommande.getItemAtPosition
+//                            (spinnerCommande.getSelectedItemPosition()).toString());
+//                    intent.putExtra("nom", "Merci " + txtNomCommande.getText().toString());
+//
+//                    Commande.this.startActivity(intent);
+//                    //Le finish permet de ne par revenir sur la page
+//                    // Commande dès que l'on a deja commmander.
+//                    finish();
+//                }
+//            }
+//        });
     }
 
     protected void createRes() {
@@ -120,6 +176,26 @@ public class Commande  extends AppCompatActivity {
         String telRes = txtTelCommande.getText().toString();
         String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
         ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes);
-        mReservRef.child(res.getId()).setValue(res);
+        mReservRef.child("Réservation/" + res.getId()).setValue(res);
+    }
+
+    protected void menuCheck(){
+        mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (menuDisplay.size()> 0) menuDisplay.clear();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
+                    menuDisplay.add(majPlatDuJour);
+                }
+                adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
+                menuListe.setAdapter(adapterMenu);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

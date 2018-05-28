@@ -68,7 +68,7 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
                 jourAdresse.setText(mListJour.getAdresse());
                 jourEmplacement.setText(mListJour.getJour());
             }
-        }
+    }
 
     public void setOnItemClick(OnItemSelected listener){
         this.listener = listener;

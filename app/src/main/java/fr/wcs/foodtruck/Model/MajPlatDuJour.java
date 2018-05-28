@@ -1,10 +1,13 @@
 package fr.wcs.foodtruck.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by sam on 12/10/17.
  */
 
-public class MajPlatDuJour {
+public class MajPlatDuJour implements Parcelable{
 
     private String nomPlat;
     private String descPlat;
@@ -21,6 +24,8 @@ public class MajPlatDuJour {
         this.urlImg = urlImg;
         this.prix = prix;
     }
+
+
 
     public String getNomPlat() {
         return nomPlat;
@@ -52,5 +57,37 @@ public class MajPlatDuJour {
 
     public void setPrix(String prix) {
         this.prix = prix;
+    }
+
+
+    public static final Creator<MajPlatDuJour> CREATOR = new Creator<MajPlatDuJour>() {
+        @Override
+        public MajPlatDuJour createFromParcel(Parcel in) {
+            return new MajPlatDuJour(in);
+        }
+
+        @Override
+        public MajPlatDuJour[] newArray(int size) {
+            return new MajPlatDuJour[size];
+        }
+    };
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    protected MajPlatDuJour(Parcel in) {
+        nomPlat = in.readString();
+        descPlat = in.readString();
+        urlImg = in.readString();
+        prix = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(nomPlat);
+        dest.writeString(descPlat);
+        dest.writeString(urlImg);
+        dest.writeString(prix);
     }
 }

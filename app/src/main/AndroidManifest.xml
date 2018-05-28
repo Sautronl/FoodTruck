@@ -134,7 +134,8 @@
             android:label="@string/title_activity_draw"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
-        <activity android:name=".UI.Activity.Admin.SliderConfActivity"></activity>
+        <activity android:name=".UI.Activity.Admin.SliderConfActivity" />
+        <activity android:name=".UI.Activity.User.ResumeActivity"></activity>
     </application>
 
 </manifest>
