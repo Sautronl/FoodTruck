@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen"
     android:layout_height="match_parent"
-    android:background="@drawable/foodtruck_bg">
+    android:background="@drawable/vector_abstract_metal_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -120,6 +120,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="15dp"
+
                 android:text="Valider"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/editTextTel"
@@ -218,11 +219,27 @@
                 android:layout_marginTop="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:layout_constraintVertical_bias="0.0">
 
 
             </android.support.v7.widget.RecyclerView>
+
+            <Button
+                android:id="@+id/menuValiderCommande"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="valider"
+                app:layout_constraintEnd_toEndOf="@+id/menuListe"
+                app:layout_constraintStart_toStartOf="@+id/menuListe"
+                app:layout_constraintTop_toBottomOf="@+id/menuListe" />
         </android.support.constraint.ConstraintLayout>
 
     </RelativeLayout>

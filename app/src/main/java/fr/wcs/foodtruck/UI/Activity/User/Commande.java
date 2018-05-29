@@ -1,5 +1,6 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -44,7 +46,8 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class Commande  extends AppCompatActivity {
 
-    Button btReserverCommande;
+    Button btReserverCommande,menuValiderCommande;
+    String nomRes, telRes, horaireRes,nomBurg,prixBurg;
     EditText txtNomCommande;
     EditText txtTelCommande;
     Spinner spinnerCommande;
@@ -56,6 +59,7 @@ public class Commande  extends AppCompatActivity {
     TextView textInfo;
     AdapterMenuListe adapterMenu;
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
+    ArrayList<ReservationModels> reservationCommande = new ArrayList<>();
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
@@ -88,6 +92,7 @@ public class Commande  extends AppCompatActivity {
         partTwo = (ConstraintLayout) findViewById(R.id.partTwo);
         editInfo = (ImageView) findViewById(R.id.editInfo);
         textInfo = (TextView) findViewById(R.id.infoModifText);
+        menuValiderCommande = (Button) findViewById(R.id.menuValiderCommande);
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -143,6 +148,29 @@ public class Commande  extends AppCompatActivity {
                                         }
                                         adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
                                         menuListe.setAdapter(adapterMenu);
+                                        adapterMenu.setOnItemClickListener(new AdapterMenuListe.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(int position, MajPlatDuJour majPlatDuJour, Context context, CheckBox checkBoxCommande) {
+                                                switch (position){
+                                                    case 0:
+                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
+                                                        break;
+                                                    case 1:
+                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
+                                                        break;
+                                                    case 2:
+                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
+                                                        break;
+                                                    case 3:
+                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
+                                                        break;
+                                                    case 4:
+                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
+                                                        break;
+
+                                                }
+                                            }
+                                        });
                                     }
 
                                     @Override
@@ -172,6 +200,7 @@ public class Commande  extends AppCompatActivity {
         });
 
 
+
 //        btReserverCommande.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -194,31 +223,96 @@ public class Commande  extends AppCompatActivity {
 //        });
     }
 
-    protected void createRes() {
-        String nomRes = txtNomCommande.getText().toString();
-        String telRes = txtTelCommande.getText().toString();
-        String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
-        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes);
-        mReservRef.child("Réservation/" + res.getId()).setValue(res);
-    }
+    private void Reservation(String child,CheckBox checkBoxCommande,MajPlatDuJour majPlatDuJour){
+             checkBoxCommande.isChecked();
+             nomRes = txtNomCommande.getText().toString();
+             telRes = txtTelCommande.getText().toString();
+             horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
+             prixBurg = majPlatDuJour.getPrix();
+             nomBurg = majPlatDuJour.getNomPlat();
+             valid(child);
+        }
 
-    protected void menuCheck(){
-        mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+
+
+    private void valid(String lol){
+        menuValiderCommande.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (menuDisplay.size()> 0) menuDisplay.clear();
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
-                    menuDisplay.add(majPlatDuJour);
-                }
-                adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
-                menuListe.setAdapter(adapterMenu);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
+            public void onClick(View v) {
+                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
+                mReservRef.child(lol + res.getId()).setValue(res);
             }
         });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    protected void createRes() {
+//        String nomRes = txtNomCommande.getText().toString();
+//        String telRes = txtTelCommande.getText().toString();
+//        String horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
+//
+//        ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes);
+//        mReservRef.child("Réservation/" + res.getId()).setValue(res);
+//    }
+
+//    protected void menuCheck(){
+//        mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (menuDisplay.size()> 0) menuDisplay.clear();
+//                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+//                    MajPlatDuJour majPlatDuJour = snapshot.getValue(MajPlatDuJour.class);
+//                    menuDisplay.add(majPlatDuJour);
+//                }
+//                adapterMenu = new AdapterMenuListe(getApplicationContext(),menuDisplay);
+//                menuListe.setAdapter(adapterMenu);
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }

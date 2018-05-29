@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class AdapterMenuListe extends RecyclerView.Adapter<AdapterMenuListe.View
 
     private Context context;
     private ArrayList<MajPlatDuJour> menuDisplay;
+    private OnItemClickListener listener = null;
 
     public AdapterMenuListe(Context context, ArrayList<MajPlatDuJour> menuDisplay) {
         this.context = context;
@@ -36,7 +38,7 @@ public class AdapterMenuListe extends RecyclerView.Adapter<AdapterMenuListe.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.display(menuDisplay.get(position),context);
+        holder.display(menuDisplay.get(position),context,listener,position);
     }
 
     @Override
@@ -47,6 +49,7 @@ public class AdapterMenuListe extends RecyclerView.Adapter<AdapterMenuListe.View
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgMenuReserve;
         TextView prixReserve,nomReserve,descriptionReserve;
+        CheckBox checkBox;
         ArrayList<ReservationModels> panier = new ArrayList<>();
 
         public ViewHolder(View itemView) {
@@ -56,15 +59,22 @@ public class AdapterMenuListe extends RecyclerView.Adapter<AdapterMenuListe.View
             prixReserve = (TextView) itemView.findViewById(R.id.menu_prix_reserve);
             nomReserve = (TextView) itemView.findViewById(R.id.nom_burger_reserve);
             descriptionReserve = (TextView) itemView.findViewById(R.id.menu_description_reserve);
+            checkBox = (CheckBox) itemView.findViewById(R.id.checkBoxCommande);
 
         }
 
-        public void display(final MajPlatDuJour menu, final Context context){
+        public void display(final MajPlatDuJour menu, final Context context,OnItemClickListener listener,int position){
+
+            if (checkBox.isChecked()){
+
+            }
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    if (listener != null){
+                        listener.onItemClick(position,menu,context,checkBox);
+                    }
 //                    menu = new MajPlatDuJour(menu.getNomPlat(),menu.getDescPlat(),menu.getUrlImg(),menu.getPrix());
 //                    FragmentManager fragmentManager = ((DrawActivity)activity).getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -97,5 +107,13 @@ public class AdapterMenuListe extends RecyclerView.Adapter<AdapterMenuListe.View
             nomReserve.setText(menu.getNomPlat());
             descriptionReserve.setText(menu.getDescPlat());
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener{
+         void onItemClick(int position,MajPlatDuJour majPlatDuJour,Context context,CheckBox checkBoxCommande);
     }
 }
