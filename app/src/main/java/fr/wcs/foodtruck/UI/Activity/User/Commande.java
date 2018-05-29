@@ -255,7 +255,12 @@ public class Commande  extends AppCompatActivity {
                 menuValiderCommande.setVisibility(View.GONE);
             }
         });
+        radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
 
+            }
+        });
 
     }
 }
