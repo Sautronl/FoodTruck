@@ -46,14 +46,14 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class Commande  extends AppCompatActivity {
 
-    Button btReserverCommande,menuValiderCommande;
+    Button btReserverCommande,menuValiderCommande,finCommande;
     String nomRes, telRes, horaireRes,nomBurg,prixBurg;
     EditText txtNomCommande;
     EditText txtTelCommande;
     Spinner spinnerCommande;
-    RadioGroup radioGroup;
-    RadioButton menuOk,menuNope;
-    ConstraintLayout firstPart,partTwo;
+    RadioGroup radioGroup,radioGroupBoissonTwo,radioGroupBoissonOne,radioGroupDessert;
+    RadioButton menuOk,menuNope,boissonPepsi,boissonEau,boissonCola,boissonAdel,boissonSprite,boissonLipton;
+    ConstraintLayout firstPart,partTwo,partThree;
     RecyclerView menuListe;
     ImageView editInfo;
     TextView textInfo;
@@ -84,15 +84,26 @@ public class Commande  extends AppCompatActivity {
         txtTelCommande = (EditText) findViewById(R.id.editTextTel);
         spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroupBoissonOne = (RadioGroup) findViewById(R.id.radioGroupBoissonOne);
+        radioGroupBoissonTwo = (RadioGroup) findViewById(R.id.radioGroupBoissonTwo);
+        radioGroupDessert = (RadioGroup) findViewById(R.id.radioGroupDessert);
         menuOk = (RadioButton) findViewById(R.id.menuOk);
         menuNope = (RadioButton) findViewById(R.id.menuNope);
+        boissonAdel = (RadioButton) findViewById(R.id.boissonAdelscott);
+        boissonCola = (RadioButton) findViewById(R.id.boissonCola);
+        boissonEau = (RadioButton) findViewById(R.id.boissonEau);
+        boissonLipton = (RadioButton) findViewById(R.id.boissonLipton);
+        boissonSprite = (RadioButton) findViewById(R.id.boissonsprite);
+        boissonPepsi = (RadioButton) findViewById(R.id.boissonPepsi);
         menuListe = (RecyclerView) findViewById(R.id.menuListe);
         menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         firstPart = (ConstraintLayout) findViewById(R.id.firstPart);
         partTwo = (ConstraintLayout) findViewById(R.id.partTwo);
+        partThree = (ConstraintLayout) findViewById(R.id.partThree);
         editInfo = (ImageView) findViewById(R.id.editInfo);
         textInfo = (TextView) findViewById(R.id.infoModifText);
         menuValiderCommande = (Button) findViewById(R.id.menuValiderCommande);
+        finCommande = (Button) findViewById(R.id.finCommande);
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -239,10 +250,13 @@ public class Commande  extends AppCompatActivity {
         menuValiderCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
-                mReservRef.child(lol + res.getId()).setValue(res);
+                partTwo.setVisibility(View.GONE);
+                partThree.setVisibility(View.VISIBLE);
+                menuValiderCommande.setVisibility(View.GONE);
             }
         });
+
+
     }
 }
 
@@ -253,7 +267,8 @@ public class Commande  extends AppCompatActivity {
 
 
 
-
+//    ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
+//                mReservRef.child(lol + res.getId()).setValue(res);
 
 
 

@@ -242,6 +242,170 @@
                 app:layout_constraintTop_toBottomOf="@+id/menuListe" />
         </android.support.constraint.ConstraintLayout>
 
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/partThree"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Quelle boisson souhaitez vous?"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupBoissonOne"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/textView"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
+
+                <RadioButton
+                    android:id="@+id/boissonPepsi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Pepsi"
+                    android:textColor="@color/blanc" />
+
+                <RadioButton
+
+                    android:id="@+id/boissonCola"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Coca Cola"
+                    android:textColor="@color/blanc" />
+
+                <RadioButton
+                    android:id="@+id/boissonEau"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cilaos"
+                    android:textColor="@color/blanc" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupBoissonTwo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupBoissonOne">
+
+                <RadioButton
+                    android:id="@+id/boissonsprite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sprite"
+                    android:textColor="@color/blanc" />
+
+
+                <RadioButton
+
+                    android:id="@+id/boissonAdelscott"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Adelscott"
+                    android:textColor="@color/blanc" />
+
+                <RadioButton
+                    android:id="@+id/boissonLipton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lipton"
+                    android:textColor="@color/blanc" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="40dp"
+                android:text="Quel dessert souhaitez vous?"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroupBoissonTwo"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupBoissonTwo"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupBoissonTwo" />
+
+            <RadioGroup
+                android:layout_marginTop="30dp"
+                android:id="@+id/radioGroupDessert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+                <RadioButton
+                    android:id="@+id/dessertOreo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Oreo"
+                    android:textColor="@color/blanc" />
+
+                <RadioButton
+
+                    android:id="@+id/dessertMilk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="MilkShake"
+                    android:textColor="@color/blanc" />
+
+                <RadioButton
+                    android:id="@+id/dessertCookie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cookie"
+                    android:textColor="@color/blanc" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/finCommande"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                android:text="Finaliser la commande"
+                app:layout_constraintEnd_toEndOf="@+id/radioGroupDessert"
+                app:layout_constraintStart_toStartOf="@+id/radioGroupDessert"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroupDessert" />
+
+        </android.support.constraint.ConstraintLayout>
+
     </RelativeLayout>
 
 
