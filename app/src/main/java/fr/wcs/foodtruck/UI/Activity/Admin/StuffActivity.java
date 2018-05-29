@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import fr.wcs.foodtruck.R;
 
-public class StuffActivity extends AppCompatActivity implements View.OnClickListener{
+public class StuffActivity extends AppCompatActivity {
 
     EditText nbBoisson,editText;
     Button createET, boissonOK;
@@ -46,11 +46,22 @@ public class StuffActivity extends AppCompatActivity implements View.OnClickList
                 nb = Integer.valueOf(nbBoisson.getText().toString());
                 boissonOK.setVisibility(View.VISIBLE);
                 displayEditText(nb);
-                editText.setOnClickListener(this);
+                //editText.setOnClickListener(this);
 
             }
         });
-
+        boissonOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i <linearLayoutStuff.getChildCount() ; i++) {
+                    if (!linearLayoutStuff.getChildAt(i).toString().isEmpty()){
+//                        String FireBoisson = linearLayoutStuff.getChildAt(i).getTag().toString();
+                        String gg = editText.getText().toString();
+                        mRef.child("menu/stuff"+i).setValue(gg);
+                    }
+                }
+            }
+        });
         }
 //    }
 
@@ -62,7 +73,7 @@ public class StuffActivity extends AppCompatActivity implements View.OnClickList
             lp.setMargins(0,20,0,0);
             editText.setLayoutParams(lp);
             editText.setPadding(20, 20, 20, 20);
-            editText.setId(i+123456789);
+            editText.setTag("editT" + i);
 
             // Add EditText to LinearLayout
             if (linearLayoutStuff != null) {
@@ -71,25 +82,25 @@ public class StuffActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    @Override
-    public void onClick(View v) {
-        int stat = 123456789;
-        int id = v.getId();
-        int number = id -stat;
+//    @Override
+//    public void onClick(View v) {
+//        int stat = 123456789;
+//        String  id = (String) v.getTag();
+//        int number = id -stat;
 //        val(number);
-
-        if (v.getId()==1+123456789) {
-            String FireBoisson = editText.getText().toString();
-            val(1, FireBoisson);
-
-        }else if(v.getId()==2+123456789){
-            String ff = editText.getText().toString();
-            val(2,ff);
-        }else if(v.getId()==3+123456789){
-            String ff = editText.getText().toString();
-            val(3,ff);
-        }
-
+//
+//        if (id.equals()) {
+//            String FireBoisson = editText.getText().toString();
+//            val(1, FireBoisson);
+//
+//        }else if(v.getId()==2+123456789){
+//            String ff = editText.getText().toString();
+//            val(2,ff);
+//        }else if(v.getId()==3+123456789){
+//            String ff = editText.getText().toString();
+//            val(3,ff);
+//        }
+//
 
 //            case 4+123456789:
 //                String kk = editText.getText().toString();
@@ -116,7 +127,7 @@ public class StuffActivity extends AppCompatActivity implements View.OnClickList
 //            case 10+123456789:
 //                val(10);
 //                break;
-        }
+
 
 
     private void val(int j,String boi){
