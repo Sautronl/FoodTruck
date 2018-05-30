@@ -11,8 +11,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import fr.wcs.foodtruck.R;
 
@@ -46,6 +49,7 @@ public class StuffActivity extends AppCompatActivity {
                 if (linearLayoutStuff.getChildCount()>0){
                     linearLayoutStuff.removeAllViews();
                 }
+                mRef.child("menu/Boisson/").removeValue();
                 nb = Integer.valueOf(nbBoisson.getText().toString());
                 boissonOK.setVisibility(View.VISIBLE);
                 displayEditText(nb);
@@ -60,7 +64,7 @@ public class StuffActivity extends AppCompatActivity {
                         int index = (Integer) linearLayoutStuff.getChildAt(i).getTag();
                         String value = edit[index].getText().toString();
                         if(value != null) {
-                            mRef.child("menu/Stuff/Boisson"+i).setValue(value);
+                            mRef.child("menu/Boisson/Boisson"+i).setValue(value);
                         }
                     }
                 }
