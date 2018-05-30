@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +23,8 @@ import fr.wcs.foodtruck.R;
 public class StuffActivity extends AppCompatActivity {
 
     EditText nbBoisson,editText;
-    Button createET, boissonOK;
+    TextView cbboides;
+    Button createET, boissonOK,createDrink,createDessert;
     EditText[] edit;
     Integer[] tagStr;
     LinearLayout linearLayoutStuff;
@@ -39,20 +41,52 @@ public class StuffActivity extends AppCompatActivity {
         linearLayoutStuff = (LinearLayout) findViewById(R.id.linearLayoutStuff);
         createET = (Button) findViewById(R.id.createET);
         boissonOK = (Button) findViewById(R.id.boissonOK);
+        createDrink = (Button) findViewById(R.id.createDrink);
+        createDessert = (Button) findViewById(R.id.createDessert);
+        cbboides = (TextView) findViewById(R.id.cbboides);
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
 
+        createDrink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createDessert.setVisibility(View.GONE);
+                createDrink.setVisibility(View.GONE);
+                cbboides.setVisibility(View.VISIBLE);
+                cbboides.setText(getResources().getString(R.string.cb_boisson));
+                nbBoisson.setVisibility(View.VISIBLE);
+                createET.setVisibility(View.VISIBLE);
+            }
+        });
+
+        createDessert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createDessert.setVisibility(View.GONE);
+                createDrink.setVisibility(View.GONE);
+                cbboides.setVisibility(View.VISIBLE);
+                cbboides.setText(getResources().getString(R.string.cb_dessert));
+                nbBoisson.setVisibility(View.VISIBLE);
+                createET.setVisibility(View.VISIBLE);
+            }
+        });
+
         createET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (linearLayoutStuff.getChildCount()>0){
                     linearLayoutStuff.removeAllViews();
                 }
-                mRef.child("menu/Boisson/").removeValue();
-                nb = Integer.valueOf(nbBoisson.getText().toString());
-                boissonOK.setVisibility(View.VISIBLE);
-                displayEditText(nb);
+                if (nbBoisson.getText().toString().isEmpty()){
+                    Toast.makeText(StuffActivity.this, "Veuillez remplir le champ", Toast.LENGTH_SHORT).show();
+                }else{
+                    mRef.child("menu/Boisson/").removeValue();
+                    nb = Integer.valueOf(nbBoisson.getText().toString());
+                    boissonOK.setVisibility(View.VISIBLE);
+                    displayEditText(nb);
+                }
             }
         });
 

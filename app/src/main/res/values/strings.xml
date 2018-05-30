@@ -16,6 +16,9 @@
 
     <string name="platdujour">Plat\ndu jour</string>
 
+    <string name="cb_boisson">De combien de boisson disposez vous?</string>
+    <string name="cb_dessert">De combien de dessert disposez vous?</string>
+
 
     <string name="votrecommande">Votre Commande</string>
     <string name="buttonRetour">Retour</string>
