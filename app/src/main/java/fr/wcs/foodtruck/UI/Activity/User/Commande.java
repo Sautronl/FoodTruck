@@ -1,12 +1,12 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +23,6 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,7 +63,6 @@ public class Commande  extends AppCompatActivity {
 
     private DatabaseReference mReservRef;
     private FirebaseDatabase mFirebase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,8 +211,6 @@ public class Commande  extends AppCompatActivity {
             valid(child);
         }
 
-
-
     private void valid(String lol){
         menuValiderCommande.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -232,7 +228,19 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmation")
+                .setMessage("Vous etes sur le point d'annuler la commande")
+                .setPositiveButton("Confirmer", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setNegativeButton("Nope", null).show();
     }
 }
 

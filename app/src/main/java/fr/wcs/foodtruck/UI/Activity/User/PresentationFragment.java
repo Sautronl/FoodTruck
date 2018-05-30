@@ -79,7 +79,6 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (mTextViewQsn.getVisibility() == View.VISIBLE) {
                     mTextViewQsn.setVisibility(View.GONE);
                 } else {
@@ -100,7 +99,6 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
                 }
             }
         });
-
 
         return view;
     }
@@ -123,7 +121,6 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
                 }
             });
         }
-
     }
 
     protected void getSlider(){
@@ -154,7 +151,6 @@ public class PresentationFragment extends Fragment implements ViewPagerEx.OnPage
             }
         });
     }
-
 
     protected void ValueNosValeursListener(String child) {
         mRefAbout.child(child).addValueEventListener(new ValueEventListener() {
