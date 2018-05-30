@@ -27,7 +27,7 @@ public class StuffActivity extends AppCompatActivity {
 
     EditText nbBoisson,editText;
     TextView cbboides,questionStuff;
-    Button createET, boissonOK,createDrink,createDessert;
+    Button createET, boissonOK,createDrink,createDessert,checkStuff;
     EditText[] edit;
     Integer[] tagStr;
     ConstraintLayout constrainteStuff;
@@ -47,12 +47,24 @@ public class StuffActivity extends AppCompatActivity {
         boissonOK = (Button) findViewById(R.id.boissonOK);
         createDrink = (Button) findViewById(R.id.createDrink);
         createDessert = (Button) findViewById(R.id.createDessert);
+        checkStuff = (Button) findViewById(R.id.checkStuff);
         cbboides = (TextView) findViewById(R.id.cbboides);
         questionStuff = (TextView) findViewById(R.id.questionStuff);
         constrainteStuff = (ConstraintLayout) findViewById(R.id.constrainteStuff);
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
+
+        checkStuff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cbboides.getText().equals(getString(R.string.cb_boisson))){
+                    displayCheck("menu/Boisson/","boisson");
+                }else{
+                    displayCheck("menu/Dessert/","dessert");
+                }
+            }
+        });
 
         createDrink.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +75,7 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_boisson));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                checkStuff.setVisibility(View.VISIBLE);
                 constrainteStuff.setBackgroundResource(R.drawable.background_boisson);
                 questionStuff.setTextColor(getResources().getColor(R.color.blanc));
                 nbBoisson.setBackgroundColor(getResources().getColor(R.color.blanc));
@@ -83,6 +96,7 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_dessert));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                checkStuff.setVisibility(View.VISIBLE);
                 constrainteStuff.setBackgroundResource(R.drawable.background_dessert);
                 questionStuff.setTextColor(getResources().getColor(R.color.black));
                 nbBoisson.setBackgroundColor(getResources().getColor(R.color.blanc));
@@ -93,6 +107,35 @@ public class StuffActivity extends AppCompatActivity {
                 displayChoice("menu/Dessert/","dessert");
             }
         });
+    }
+
+    private void displayCheck(String child,String stuffChoix) {
+        if(mRef.child(child) != null){
+            mRef.child(child).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    linearLayoutStuff.removeAllViews();
+                    long countChild = dataSnapshot.getChildrenCount();
+                    int conv = Integer.parseInt(String.valueOf(countChild));
+//                    if (conv > 0){
+                        displayEditText(conv,stuffChoix);
+                        for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                            String edi = snapshot.getValue(String .class);
+                            conv--;
+                            edit[conv].setText(edi);
+                        }
+                        linearLayoutStuff.setVisibility(View.VISIBLE);
+//                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }else{
+            Toast.makeText(this, "Aucun element d'enregistre", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void displayChoice(String child,String choix){
@@ -128,6 +171,9 @@ public class StuffActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(StuffActivity.this, "Mise a jour effectue avec succes", Toast.LENGTH_SHORT).show();
+                                    constrainteStuff.setBackgroundColor(getResources().getColor(R.color.blanc));
+                                    questionStuff.setTextColor(getResources().getColor(R.color.black));
+                                    checkStuff.setVisibility(View.GONE);
                                 }
                             });
                         }

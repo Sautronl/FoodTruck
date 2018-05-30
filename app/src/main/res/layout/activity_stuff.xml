@@ -123,4 +123,21 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayoutStuff"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutStuff" />
 
+    <Button
+        android:id="@+id/checkStuff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="checkStuff"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/createDessert"
+        app:layout_constraintStart_toStartOf="@+id/createDrink"
+        app:layout_constraintTop_toBottomOf="@+id/createDrink" />
+
 </android.support.constraint.ConstraintLayout>
