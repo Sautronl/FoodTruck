@@ -57,6 +57,7 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_boisson));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                displayChoice("menu/Boisson/","boisson");
             }
         });
 
@@ -69,9 +70,12 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_dessert));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                displayChoice("menu/Dessert/","dessert");
             }
         });
+    }
 
+    private void displayChoice(String child,String choix){
         createET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,10 +86,12 @@ public class StuffActivity extends AppCompatActivity {
                 if (nbBoisson.getText().toString().isEmpty()){
                     Toast.makeText(StuffActivity.this, "Veuillez remplir le champ", Toast.LENGTH_SHORT).show();
                 }else{
-                    mRef.child("menu/Boisson/").removeValue();
+                    if (mRef.child(child)!= null){
+                        mRef.child(child).removeValue();
+                    }
                     nb = Integer.valueOf(nbBoisson.getText().toString());
                     boissonOK.setVisibility(View.VISIBLE);
-                    displayEditText(nb);
+                    displayEditText(nb,choix);
                 }
             }
         });
@@ -98,7 +104,7 @@ public class StuffActivity extends AppCompatActivity {
                         int index = (Integer) linearLayoutStuff.getChildAt(i).getTag();
                         String value = edit[index].getText().toString();
                         if(value != null && !value.isEmpty()) {
-                            mRef.child("menu/Boisson/Boisson"+i).setValue(value);
+                            mRef.child(child+choix+i).setValue(value);
                         }
                     }
                 }
@@ -106,14 +112,14 @@ public class StuffActivity extends AppCompatActivity {
         });
     }
 
-    private void displayEditText(int nombre){
+    private void displayEditText(int nombre,String choix){
         edit = new EditText[nombre];
         tagStr = new Integer[nombre];
 
         for (int i = 0; i < nombre; i++) {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             editText = new EditText(this);
-            editText.setHint("boisson N"+ i);
+            editText.setHint(choix+" N"+ i);
             lp.setMargins(0,20,0,0);
             editText.setLayoutParams(lp);
             editText.setPadding(20, 20, 20, 20);
