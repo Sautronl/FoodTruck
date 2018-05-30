@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
@@ -162,24 +163,14 @@ public class Commande  extends AppCompatActivity {
                                         adapterMenu.setOnItemClickListener(new AdapterMenuListe.OnItemClickListener() {
                                             @Override
                                             public void onItemClick(int position, MajPlatDuJour majPlatDuJour, Context context, CheckBox checkBoxCommande) {
-                                                switch (position){
-                                                    case 0:
-                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
-                                                        break;
-                                                    case 1:
-                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
-                                                        break;
-                                                    case 2:
-                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
-                                                        break;
-                                                    case 3:
-                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
-                                                        break;
-                                                    case 4:
-                                                        Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
-                                                        break;
-
+                                                for (int i = 0; i <menuListe.getChildCount() ; i++) {
+                                                    if (position == i){
+                                                        menuListe.getChildAt(i).setBackgroundColor(Color.YELLOW);
+                                                    }else {
+                                                        menuListe.getChildAt(i).setBackgroundColor(Color.WHITE);
+                                                    }
                                                 }
+                                                Reservation("Réservation/",checkBoxCommande,majPlatDuJour);
                                             }
                                         });
                                     }
@@ -209,39 +200,17 @@ public class Commande  extends AppCompatActivity {
                 partTwo.setVisibility(View.GONE);
             }
         });
-
-
-
-//        btReserverCommande.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if (txtNomCommande.getText().toString().isEmpty() || txtTelCommande.getText().toString().isEmpty()) {
-//                    Toast.makeText(Commande.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
-//                } else {
-//                    createRes();
-//                    Intent intent = new Intent(Commande.this, RemerciementCommande.class);
-//                    intent.putExtra("heure", "Elle sera prête pour " + spinnerCommande.getItemAtPosition
-//                            (spinnerCommande.getSelectedItemPosition()).toString());
-//                    intent.putExtra("nom", "Merci " + txtNomCommande.getText().toString());
-//
-//                    Commande.this.startActivity(intent);
-//                    //Le finish permet de ne par revenir sur la page
-//                    // Commande dès que l'on a deja commmander.
-//                    finish();
-//                }
-//            }
-//        });
     }
 
     private void Reservation(String child,CheckBox checkBoxCommande,MajPlatDuJour majPlatDuJour){
              checkBoxCommande.isChecked();
+             checkBoxCommande.setVisibility(View.GONE);
              nomRes = txtNomCommande.getText().toString();
              telRes = txtTelCommande.getText().toString();
              horaireRes = spinnerCommande.getItemAtPosition(spinnerCommande.getSelectedItemPosition()).toString();
              prixBurg = majPlatDuJour.getPrix();
              nomBurg = majPlatDuJour.getNomPlat();
-             valid(child);
+            valid(child);
         }
 
 
@@ -250,6 +219,8 @@ public class Commande  extends AppCompatActivity {
         menuValiderCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
+                mReservRef.child(lol + res.getId()).setValue(res);
                 partTwo.setVisibility(View.GONE);
                 partThree.setVisibility(View.VISIBLE);
                 menuValiderCommande.setVisibility(View.GONE);
@@ -272,8 +243,7 @@ public class Commande  extends AppCompatActivity {
 
 
 
-//    ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
-//                mReservRef.child(lol + res.getId()).setValue(res);
+
 
 
 

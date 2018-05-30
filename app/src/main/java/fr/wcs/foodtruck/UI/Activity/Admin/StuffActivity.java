@@ -63,7 +63,7 @@ public class StuffActivity extends AppCompatActivity {
                     if (linearLayoutStuff.getChildAt(i) instanceof EditText){
                         int index = (Integer) linearLayoutStuff.getChildAt(i).getTag();
                         String value = edit[index].getText().toString();
-                        if(value != null) {
+                        if(value != null && !value.isEmpty()) {
                             mRef.child("menu/Boisson/Boisson"+i).setValue(value);
                         }
                     }
