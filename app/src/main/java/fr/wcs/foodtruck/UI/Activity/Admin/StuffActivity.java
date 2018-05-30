@@ -26,10 +26,11 @@ import fr.wcs.foodtruck.R;
 public class StuffActivity extends AppCompatActivity {
 
     EditText nbBoisson,editText;
-    TextView cbboides;
+    TextView cbboides,questionStuff;
     Button createET, boissonOK,createDrink,createDessert;
     EditText[] edit;
     Integer[] tagStr;
+    ConstraintLayout constrainteStuff;
     LinearLayout linearLayoutStuff;
     int nb;
     private FirebaseDatabase mFire;
@@ -47,6 +48,8 @@ public class StuffActivity extends AppCompatActivity {
         createDrink = (Button) findViewById(R.id.createDrink);
         createDessert = (Button) findViewById(R.id.createDessert);
         cbboides = (TextView) findViewById(R.id.cbboides);
+        questionStuff = (TextView) findViewById(R.id.questionStuff);
+        constrainteStuff = (ConstraintLayout) findViewById(R.id.constrainteStuff);
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
@@ -60,6 +63,10 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_boisson));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                constrainteStuff.setBackgroundResource(R.drawable.background_boisson);
+                questionStuff.setTextColor(getResources().getColor(R.color.blanc));
+                nbBoisson.setBackgroundColor(getResources().getColor(R.color.blanc));
+                cbboides.setTextColor(getResources().getColor(R.color.blanc));
                 if (!nbBoisson.getText().toString().isEmpty()){
                     nbBoisson.setText("");
                 }
@@ -76,6 +83,10 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_dessert));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                constrainteStuff.setBackgroundResource(R.drawable.background_dessert);
+                questionStuff.setTextColor(getResources().getColor(R.color.black));
+                nbBoisson.setBackgroundColor(getResources().getColor(R.color.blanc));
+                cbboides.setTextColor(getResources().getColor(R.color.black));
                 if (!nbBoisson.getText().toString().isEmpty()){
                     nbBoisson.setText("");
                 }
@@ -116,7 +127,7 @@ public class StuffActivity extends AppCompatActivity {
                             mRef.child(child+choix+i).setValue(value).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(StuffActivity.this, "Mise a jour avec succes", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(StuffActivity.this, "Mise a jour effectue avec succes", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
@@ -145,6 +156,8 @@ public class StuffActivity extends AppCompatActivity {
             editText.setLayoutParams(lp);
             editText.setPadding(20, 20, 20, 20);
             editText.setTag(i);
+            editText.setTextColor(getResources().getColor(R.color.black));
+            editText.setBackgroundResource(R.color.blanc);
 
             // Add EditText to LinearLayout
             if (linearLayoutStuff != null) {
