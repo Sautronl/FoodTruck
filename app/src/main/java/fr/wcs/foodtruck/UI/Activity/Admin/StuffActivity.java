@@ -1,6 +1,7 @@
 package fr.wcs.foodtruck.UI.Activity.Admin;
 
 import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -57,6 +60,9 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_boisson));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                if (!nbBoisson.getText().toString().isEmpty()){
+                    nbBoisson.setText("");
+                }
                 displayChoice("menu/Boisson/","boisson");
             }
         });
@@ -70,6 +76,9 @@ public class StuffActivity extends AppCompatActivity {
                 cbboides.setText(getResources().getString(R.string.cb_dessert));
                 nbBoisson.setVisibility(View.VISIBLE);
                 createET.setVisibility(View.VISIBLE);
+                if (!nbBoisson.getText().toString().isEmpty()){
+                    nbBoisson.setText("");
+                }
                 displayChoice("menu/Dessert/","dessert");
             }
         });
@@ -79,7 +88,7 @@ public class StuffActivity extends AppCompatActivity {
         createET.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                linearLayoutStuff.setVisibility(View.VISIBLE);
                 if (linearLayoutStuff.getChildCount()>0){
                     linearLayoutStuff.removeAllViews();
                 }
@@ -104,10 +113,22 @@ public class StuffActivity extends AppCompatActivity {
                         int index = (Integer) linearLayoutStuff.getChildAt(i).getTag();
                         String value = edit[index].getText().toString();
                         if(value != null && !value.isEmpty()) {
-                            mRef.child(child+choix+i).setValue(value);
+                            mRef.child(child+choix+i).setValue(value).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(StuffActivity.this, "Mise a jour avec succes", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     }
                 }
+                boissonOK.setVisibility(View.GONE);
+                linearLayoutStuff.setVisibility(View.GONE);
+                createET.setVisibility(View.GONE);
+                cbboides.setVisibility(View.GONE);
+                nbBoisson.setVisibility(View.GONE);
+                createDrink.setVisibility(View.VISIBLE);
+                createDessert.setVisibility(View.VISIBLE);
             }
         });
     }
