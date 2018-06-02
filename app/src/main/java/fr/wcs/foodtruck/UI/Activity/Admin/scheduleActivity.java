@@ -66,9 +66,9 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
 
         day = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
         checkTab = new CheckedTextView[]{lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche};
-
+        j=0;
         for (int i = 0; i < day.length; i++) {
-            mRef.child("Avaible/" +day[i]).addListenerForSingleValueEvent(new ValueEventListener() {
+            mRef.child("Avaible/" +day[i]).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Boolean jobDispo = dataSnapshot.getValue(Boolean.class);
@@ -86,7 +86,6 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
                 }
             });
         }
-        j=0;
     }
 
     @Override

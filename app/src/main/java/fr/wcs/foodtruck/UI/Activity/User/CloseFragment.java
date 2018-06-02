@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
@@ -10,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
@@ -39,6 +41,19 @@ public class CloseFragment extends Fragment {
 
         Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(closeLayout,mainfont);
+
+        Button backMenu = (Button) view.findViewById(R.id.backMenu);
+
+        backMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.support.v4.app.FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                Fragment fragment = new MainFragment();
+                fragmentTransaction.replace(R.id.container,fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
         return view;
     }

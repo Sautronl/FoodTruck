@@ -93,6 +93,12 @@ public class MenuFragment extends Fragment {
         Button reserver = (Button) view.findViewById(R.id.reserver);
         TextView decouvrez = (TextView) view.findViewById(R.id.totheformules);
 
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setTitle("Plat du jour");
+        mDialog.setCancelable(false);
+        mDialog.setMessage("En cours de chargement..");
+        mDialog.show();
+
         checkDay();
 
         mImgplatMenu.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +124,6 @@ public class MenuFragment extends Fragment {
                 startActivity(intent2);
             }
         });
-
         return view;
     }
 
@@ -161,7 +166,6 @@ public class MenuFragment extends Fragment {
                 Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
                 isOpen = isOpen2;
                 if (isOpen!= null && isOpen) {
-                    progressD();
                     mSingleton.loadMenu(menuDay, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
                     if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDay);
@@ -173,6 +177,7 @@ public class MenuFragment extends Fragment {
                         });
                     }
                 }else{
+                    mDialog.dismiss();
                     fragTransact();
                 }
             }
@@ -192,7 +197,6 @@ public class MenuFragment extends Fragment {
                 Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
                 isOpen = isOpen2;
                 if (isOpen!= null && isOpen) {
-                    progressD();
                     mSingleton.loadMenu(menuDayWeekend, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
                     if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDayWeekend);
@@ -204,6 +208,7 @@ public class MenuFragment extends Fragment {
                         });
                     }
                 }else{
+                    mDialog.dismiss();
                     fragTransact();
                 }
             }
@@ -228,14 +233,6 @@ public class MenuFragment extends Fragment {
 
             }
         });
-    }
-
-    private void progressD(){
-        mDialog = new ProgressDialog(getActivity());
-        mDialog.setTitle("Plat du jour");
-        mDialog.setCancelable(false);
-        mDialog.setMessage("En cours de chargement..");
-        mDialog.show();
     }
 
     private void intent(int x){

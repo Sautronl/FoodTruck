@@ -12,13 +12,22 @@
         android:id="@+id/closed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="227dp"
         android:text="Désolé, nous sommes fermés !"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="@color/blanc"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="121dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/backMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="180dp"
+        android:text="Revenir Accueil" />
 </RelativeLayout>
