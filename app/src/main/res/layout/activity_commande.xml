@@ -300,23 +300,37 @@
                 app:layout_constraintStart_toStartOf="@+id/contentRl"
                 app:layout_constraintTop_toBottomOf="@+id/contentRl" />
 
-            <RadioGroup
+            <RelativeLayout
                 android:layout_marginTop="20dp"
-                android:id="@+id/radioGroupDessert"
+                android:id="@+id/containerDessert"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8">
 
-            </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/radioGroupDessert"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
+                    >
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
 
             <Button
+                android:layout_marginTop="20dp"
                 android:id="@+id/finCommande"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -324,11 +338,10 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
                 android:text="Finaliser la commande"
-                app:layout_constraintEnd_toEndOf="@+id/radioGroupDessert"
-                app:layout_constraintStart_toStartOf="@+id/radioGroupDessert"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroupDessert" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/containerDessert" />
 
         </android.support.constraint.ConstraintLayout>
 
