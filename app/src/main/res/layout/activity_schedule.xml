@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UI.Activity.Admin.scheduleActivity">
+
+
+    <TextView
+        android:id="@+id/SelectDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Veuillez selectionner vos dispo :"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+         />
+
+    <CheckedTextView
+        android:id="@+id/lundiDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        android:text="Lundi"
+        app:layout_constraintEnd_toEndOf="@+id/SelectDispo"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/SelectDispo"
+        app:layout_constraintTop_toBottomOf="@+id/SelectDispo" />
+
+    <CheckedTextView
+        android:id="@+id/mardiDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Mardi"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/lundiDispo"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="@+id/lundiDispo"
+        app:layout_constraintTop_toBottomOf="@+id/lundiDispo" />
+
+    <CheckedTextView
+        android:id="@+id/mercrediDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Mercredi"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/mardiDispo"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="@+id/mardiDispo"
+        app:layout_constraintTop_toBottomOf="@+id/mardiDispo" />
+
+    <CheckedTextView
+        android:id="@+id/jeudiDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:text="Jeudi"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/mercrediDispo"
+        app:layout_constraintStart_toStartOf="@+id/mercrediDispo"
+        app:layout_constraintTop_toBottomOf="@+id/mercrediDispo" />
+
+    <CheckedTextView
+        android:id="@+id/vendrediDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Vendredi"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/jeudiDispo"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="@+id/jeudiDispo"
+        app:layout_constraintTop_toBottomOf="@+id/jeudiDispo" />
+
+    <CheckedTextView
+        android:id="@+id/samediDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Samedi"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/vendrediDispo"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/vendrediDispo"
+        app:layout_constraintTop_toBottomOf="@+id/vendrediDispo" />
+
+    <CheckedTextView
+        android:id="@+id/dimancheDispo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Dimanche"
+        android:checkMark="?android:attr/listChoiceIndicatorMultiple"
+        android:checked="false"
+        app:layout_constraintEnd_toEndOf="@+id/samediDispo"
+        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintStart_toStartOf="@+id/samediDispo"
+        app:layout_constraintTop_toBottomOf="@+id/samediDispo" />
+
+    <Button
+        android:id="@+id/checkJobDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="CheckDay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dimancheDispo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/editJob"
+        android:layout_width="wrap_content"
+        android:layout_height="71dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Modifier"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/checkJobDay"
+        app:layout_constraintStart_toStartOf="@+id/checkJobDay"
+        app:layout_constraintTop_toBottomOf="@+id/checkJobDay" />
+
+
+</android.support.constraint.ConstraintLayout>

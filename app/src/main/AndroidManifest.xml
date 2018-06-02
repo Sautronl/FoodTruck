@@ -138,7 +138,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
         <activity android:name=".UI.Activity.Admin.AdminSliderActivity" />
-        <activity android:name=".UI.Activity.Admin.StuffActivity"></activity>
+        <activity android:name=".UI.Activity.Admin.StuffActivity" />
+        <activity android:name=".UI.Activity.Admin.scheduleActivity"></activity>
     </application>
 
 </manifest>
