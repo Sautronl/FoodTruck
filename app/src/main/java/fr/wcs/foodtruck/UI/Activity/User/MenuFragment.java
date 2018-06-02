@@ -41,7 +41,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 public class MenuFragment extends Fragment {
 
     private FirebaseDatabase mFire;
-    private DatabaseReference mDbRef;
+    private DatabaseReference mDbRef,mRefJob;
     private DatabaseReference mDbRefCoor;
     private TextView mNomBurger;
     private TextView mDescriptionMenu;
@@ -49,6 +49,8 @@ public class MenuFragment extends Fragment {
     private Calendar myCalendar;
     private ImageView mImgplatMenu;
     private ProgressDialog mDialog;
+
+    Boolean isOpen;
     Button mPrixButton;
 
     Singleton mSingleton;
@@ -68,12 +70,6 @@ public class MenuFragment extends Fragment {
         mSingleton =Singleton.getsInstance();
 
         ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
-
-        mDialog = new ProgressDialog(getActivity());
-        mDialog.setTitle("Plat du jour");
-        mDialog.setCancelable(false);
-        mDialog.setMessage("En cours de chargement..");
-        mDialog.show();
 
         mFire = FirebaseDatabase.getInstance();
         mDbRef = mFire.getReference("menu");
@@ -133,90 +129,90 @@ public class MenuFragment extends Fragment {
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (dayD == 2) {
-            mSingleton.loadMenu("menuLundi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("1 Lundi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(0);
-                    }
-                });
-            }
+            checkIsOpen("Lundi","menuLundi","1 Lundi/adrs");
         } else if (dayD == 3) {
-            mSingleton.loadMenu("menuMardi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("2 Mardi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(1);
-                    }
-                });
-            }
+            checkIsOpen("Mardi","menuMardi","2 Mardi/adrs");
         } else if (dayD == 4) {
-            mSingleton.loadMenu("menuMercredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("3 Mercredi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(2);
-                    }
-                });
-            }
+            checkIsOpen("Mercredi","menuMercredi","3 Mercredi/adrs");
         } else if (dayD == 5) {
-            mSingleton.loadMenu("menuJeudi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("4 Jeudi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(3);
-                    }
-                });
-            }
+            checkIsOpen("Jeudi","menuJeudi","4 Jeudi/adrs");
         } else if (dayD == 6) {
-            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("5 Vendredi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(4);
-                    }
-                });
-            }
+            checkIsOpen("Vendredi","menuVendredi","5 Vendredi/adrs");
         } else if (dayD == 7) {
-            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("5 Vendredi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(4);
-                    }
-                });
-            }
+            checkIsOpenWeekendBeta("Samedi","menuVendredi","5 Vendredi/adrs");
         }else if (dayD == 1) {
-            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
-            if (mDbRefCoor != mDbRef) {
-                majEmplacement("5 Vendredi/adrs");
-                mAdress.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        intent(4);
-                    }
-                });
-            }
-//            else {
-//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                Fragment fragment = new CloseFragment();
-//                fragmentTransaction.replace(R.id.container, fragment);
-//                fragmentTransaction.addToBackStack(null);
-//                fragmentTransaction.commit();
-//            }
+            checkIsOpenWeekendBeta("Dimanche","menuVendredi","5 Vendredi/adrs");
         }
+    }
+
+    private void fragTransact(){
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Fragment fragment = new CloseFragment();
+        fragmentTransaction.replace(R.id.container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private void checkIsOpen(String dayJob,String menuDay,String AdrsDay){
+        mRefJob = mFire.getReference("Avaible/");
+        mRefJob.child(dayJob).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
+                isOpen = isOpen2;
+                if (isOpen!= null && isOpen) {
+                    progressD();
+                    mSingleton.loadMenu(menuDay, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+                    if (mDbRefCoor != mDbRef) {
+                        majEmplacement(AdrsDay);
+                        mAdress.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                intent(4);
+                            }
+                        });
+                    }
+                }else{
+                    fragTransact();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void checkIsOpenWeekendBeta(String dayJobWeekend,String menuDayWeekend,String AdrsDayWeekend){
+        mRefJob = mFire.getReference("Avaible/");
+        mRefJob.child(dayJobWeekend).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
+                isOpen = isOpen2;
+                if (isOpen!= null && isOpen) {
+                    progressD();
+                    mSingleton.loadMenu(menuDayWeekend, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+                    if (mDbRefCoor != mDbRef) {
+                        majEmplacement(AdrsDayWeekend);
+                        mAdress.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                intent(4);
+                            }
+                        });
+                    }
+                }else{
+                    fragTransact();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     protected void majEmplacement(String emp){
@@ -232,6 +228,14 @@ public class MenuFragment extends Fragment {
 
             }
         });
+    }
+
+    private void progressD(){
+        mDialog = new ProgressDialog(getActivity());
+        mDialog.setTitle("Plat du jour");
+        mDialog.setCancelable(false);
+        mDialog.setMessage("En cours de chargement..");
+        mDialog.show();
     }
 
     private void intent(int x){

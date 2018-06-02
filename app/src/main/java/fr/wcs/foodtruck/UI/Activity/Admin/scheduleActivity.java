@@ -59,6 +59,7 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
         checkJobDay.setOnClickListener(this);
         editJob.setOnClickListener(this);
 
+        displayCheckText();
     }
 
     private void displayCheckText() {

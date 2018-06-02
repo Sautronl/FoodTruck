@@ -143,6 +143,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="CheckDay"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +158,6 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Modifier"
-        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/checkJobDay"
         app:layout_constraintStart_toStartOf="@+id/checkJobDay"
         app:layout_constraintTop_toBottomOf="@+id/checkJobDay" />
