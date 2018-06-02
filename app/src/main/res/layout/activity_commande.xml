@@ -250,7 +250,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/wishdrink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -263,57 +263,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <RadioGroup
-                android:id="@+id/radioGroupBoissonOne"
+            <RelativeLayout
+                android:id="@+id/contentRl"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="@+id/textView"
-                app:layout_constraintStart_toStartOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView">
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wishdrink">
 
 
+                <RadioGroup
+                    android:id="@+id/radioGroupBoissonOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                </RadioGroup>
 
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/radioGroupBoissonTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroupBoissonOne">
-
-                <RadioButton
-                    android:id="@+id/boissonsprite"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Sprite"
-                    android:textColor="@color/blanc" />
-
-
-                <RadioButton
-
-                    android:id="@+id/boissonAdelscott"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Adelscott"
-                    android:textColor="@color/blanc" />
-
-                <RadioButton
-                    android:id="@+id/boissonLipton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Lipton"
-                    android:textColor="@color/blanc" />
-
-            </RadioGroup>
+            </RelativeLayout>
 
             <TextView
+                android:layout_marginTop="20dp"
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -321,17 +295,16 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
                 android:text="Quel dessert souhaitez vous?"
-                app:layout_constraintEnd_toEndOf="@+id/radioGroupBoissonTwo"
-                app:layout_constraintStart_toStartOf="@+id/radioGroupBoissonTwo"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroupBoissonTwo" />
+                app:layout_constraintEnd_toEndOf="@+id/contentRl"
+                app:layout_constraintStart_toStartOf="@+id/contentRl"
+                app:layout_constraintTop_toBottomOf="@+id/contentRl" />
 
             <RadioGroup
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:id="@+id/radioGroupDessert"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -340,31 +313,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-                <RadioButton
-                    android:id="@+id/dessertOreo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Oreo"
-                    android:textColor="@color/blanc" />
-
-                <RadioButton
-
-                    android:id="@+id/dessertMilk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="MilkShake"
-                    android:textColor="@color/blanc" />
-
-                <RadioButton
-                    android:id="@+id/dessertCookie"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cookie"
-                    android:textColor="@color/blanc" />
 
             </RadioGroup>
 
@@ -376,7 +324,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="20dp"
                 android:text="Finaliser la commande"
                 app:layout_constraintEnd_toEndOf="@+id/radioGroupDessert"
                 app:layout_constraintStart_toStartOf="@+id/radioGroupDessert"

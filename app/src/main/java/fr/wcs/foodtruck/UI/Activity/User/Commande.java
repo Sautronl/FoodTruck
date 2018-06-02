@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -86,15 +87,15 @@ public class Commande  extends AppCompatActivity {
         spinnerCommande = (Spinner) findViewById(R.id.spinnerCommande);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioGroupBoissonOne = (RadioGroup) findViewById(R.id.radioGroupBoissonOne);
-        radioGroupBoissonTwo = (RadioGroup) findViewById(R.id.radioGroupBoissonTwo);
+//        radioGroupBoissonTwo = (RadioGroup) findViewById(R.id.radioGroupBoissonTwo);
         radioGroupDessert = (RadioGroup) findViewById(R.id.radioGroupDessert);
         menuOk = (RadioButton) findViewById(R.id.menuOk);
         menuNope = (RadioButton) findViewById(R.id.menuNope);
-        boissonAdel = (RadioButton) findViewById(R.id.boissonAdelscott);
+//        boissonAdel = (RadioButton) findViewById(R.id.boissonAdelscott);
        // boissonCola = (RadioButton) findViewById(R.id.boissonCola);
        // boissonEau = (RadioButton) findViewById(R.id.boissonEau);
-        boissonLipton = (RadioButton) findViewById(R.id.boissonLipton);
-        boissonSprite = (RadioButton) findViewById(R.id.boissonsprite);
+//        boissonLipton = (RadioButton) findViewById(R.id.boissonLipton);
+//        boissonSprite = (RadioButton) findViewById(R.id.boissonsprite);
        // boissonPepsi = (RadioButton) findViewById(R.id.boissonPepsi);
         menuListe = (RecyclerView) findViewById(R.id.menuListe);
         menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -231,11 +232,9 @@ public class Commande  extends AppCompatActivity {
 //            }
 //        });
 
-        //Create a new instance of RadioGroup.
         radioGroupBoissonOne= new RadioGroup(getApplicationContext());
         radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
 
-        //Create buttons!
         mRefStuff.child("menu/Boisson/").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -248,14 +247,12 @@ public class Commande  extends AppCompatActivity {
                 }
                 for (int i = 0; i < convButRadio; i++) {
                     RadioButton rbn = new RadioButton(Commande.this);
-//                        rbn.setId(1 + 1000);
+                    rbn.setTextColor(getResources().getColor(R.color.blanc));
                     rbn.setText(drinknbr.get(i));
-                    //Attach button to RadioGroup.
                     radioGroupBoissonOne.addView(rbn);
                 }
-                ConstraintLayout viewGroup = (ConstraintLayout) (Commande.this.findViewById(R.id.partThree));
+                RelativeLayout viewGroup = (RelativeLayout) (Commande.this.findViewById(R.id.contentRl));
                 viewGroup.addView(radioGroupBoissonOne);
-
             }
 
             @Override
