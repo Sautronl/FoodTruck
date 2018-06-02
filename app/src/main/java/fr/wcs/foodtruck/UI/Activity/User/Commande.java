@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -61,7 +62,7 @@ public class Commande  extends AppCompatActivity {
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
     ArrayList<ReservationModels> reservationCommande = new ArrayList<>();
 
-    private DatabaseReference mReservRef;
+    private DatabaseReference mReservRef,mRefStuff;
     private FirebaseDatabase mFirebase;
 
     @Override
@@ -73,6 +74,7 @@ public class Commande  extends AppCompatActivity {
 
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference();
+        mRefStuff = mFirebase.getReference();
 
         ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
         Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
@@ -89,11 +91,11 @@ public class Commande  extends AppCompatActivity {
         menuOk = (RadioButton) findViewById(R.id.menuOk);
         menuNope = (RadioButton) findViewById(R.id.menuNope);
         boissonAdel = (RadioButton) findViewById(R.id.boissonAdelscott);
-        boissonCola = (RadioButton) findViewById(R.id.boissonCola);
-        boissonEau = (RadioButton) findViewById(R.id.boissonEau);
+       // boissonCola = (RadioButton) findViewById(R.id.boissonCola);
+       // boissonEau = (RadioButton) findViewById(R.id.boissonEau);
         boissonLipton = (RadioButton) findViewById(R.id.boissonLipton);
         boissonSprite = (RadioButton) findViewById(R.id.boissonsprite);
-        boissonPepsi = (RadioButton) findViewById(R.id.boissonPepsi);
+       // boissonPepsi = (RadioButton) findViewById(R.id.boissonPepsi);
         menuListe = (RecyclerView) findViewById(R.id.menuListe);
         menuListe.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         firstPart = (ConstraintLayout) findViewById(R.id.firstPart);
@@ -222,12 +224,57 @@ public class Commande  extends AppCompatActivity {
                 menuValiderCommande.setVisibility(View.GONE);
             }
         });
-        radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//        radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//
+//            }
+//        });
+
+        //Create a new instance of RadioGroup.
+        radioGroupBoissonOne= new RadioGroup(getApplicationContext());
+        radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
+
+        //Create buttons!
+        mRefStuff.child("menu/Boisson/").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String > drinknbr = new ArrayList<>();
+                long buttonRadio = dataSnapshot.getChildrenCount();
+                int convButRadio = Integer.parseInt(String.valueOf(buttonRadio));
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    String boisNb = snapshot.getValue(String.class);
+                    drinknbr.add(boisNb);
+                }
+                for (int i = 0; i < convButRadio; i++) {
+                    RadioButton rbn = new RadioButton(Commande.this);
+//                        rbn.setId(1 + 1000);
+                    rbn.setText(drinknbr.get(i));
+                    //Attach button to RadioGroup.
+                    radioGroupBoissonOne.addView(rbn);
+                }
+                ConstraintLayout viewGroup = (ConstraintLayout) (Commande.this.findViewById(R.id.partThree));
+                viewGroup.addView(radioGroupBoissonOne);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
+//        for (int i = 1; i <= buttons; i++) {
+//            RadioButton rbn = new RadioButton(this);
+//            rbn.setId(1 + 1000);
+//            rbn.setText("RadioButton" + i);
+//            //Attach button to RadioGroup.
+//            rgp.addView(rbn);
+//        }
+
+        //Get the root view.
+//        ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this
+//                .findViewById(android.R.id.content)).getChildAt(0);
+//        viewGroup.addView(rgp);
     }
 
     @Override

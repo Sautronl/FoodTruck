@@ -273,30 +273,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView"
                 app:layout_constraintTop_toBottomOf="@+id/textView">
 
-                <RadioButton
-                    android:id="@+id/boissonPepsi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Pepsi"
-                    android:textColor="@color/blanc" />
 
-                <RadioButton
-
-                    android:id="@+id/boissonCola"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Coca Cola"
-                    android:textColor="@color/blanc" />
-
-                <RadioButton
-                    android:id="@+id/boissonEau"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cilaos"
-                    android:textColor="@color/blanc" />
 
             </RadioGroup>
 
