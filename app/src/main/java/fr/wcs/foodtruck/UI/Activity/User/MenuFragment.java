@@ -133,7 +133,7 @@ public class MenuFragment extends Fragment {
         int dayD = myCalendar.get(Calendar.DAY_OF_WEEK);
 
         if (dayD == 2) {
-            mSingleton.loadMenu("menuLundi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
+            mSingleton.loadMenu("menuLundi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("1 Lundi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +143,8 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        }else if (dayD == 3) {
-            mSingleton.loadMenu("menuMardi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
+        } else if (dayD == 3) {
+            mSingleton.loadMenu("menuMardi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("2 Mardi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -154,8 +154,8 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        }else if (dayD == 4) {
-            mSingleton.loadMenu("menuMercredi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
+        } else if (dayD == 4) {
+            mSingleton.loadMenu("menuMercredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("3 Mercredi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -165,8 +165,8 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        }else if (dayD == 5) {
-            mSingleton.loadMenu("menuJeudi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
+        } else if (dayD == 5) {
+            mSingleton.loadMenu("menuJeudi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("4 Jeudi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -176,8 +176,8 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        }else if (dayD == 6) {
-            mSingleton.loadMenu("menuVendredi",mNomBurger,mDescriptionMenu,mPrixButton,mImgplatMenu,getActivity(),mDialog);
+        } else if (dayD == 6) {
+            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
             if (mDbRefCoor != mDbRef) {
                 majEmplacement("5 Vendredi/adrs");
                 mAdress.setOnClickListener(new View.OnClickListener() {
@@ -187,13 +187,35 @@ public class MenuFragment extends Fragment {
                     }
                 });
             }
-        }
-        else{
-            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            Fragment fragment = new CloseFragment();
-            fragmentTransaction.replace(R.id.container,fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+        } else if (dayD == 7) {
+            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+            if (mDbRefCoor != mDbRef) {
+                majEmplacement("5 Vendredi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent(4);
+                    }
+                });
+            }
+        }else if (dayD == 1) {
+            mSingleton.loadMenu("menuVendredi", mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+            if (mDbRefCoor != mDbRef) {
+                majEmplacement("5 Vendredi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        intent(4);
+                    }
+                });
+            }
+//            else {
+//                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                Fragment fragment = new CloseFragment();
+//                fragmentTransaction.replace(R.id.container, fragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+//            }
         }
     }
 

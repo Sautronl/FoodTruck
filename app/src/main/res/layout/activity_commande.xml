@@ -105,6 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="55dp"
                 android:textAlignment="center"
+                android:inputType="phone"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/textView5"
                 app:layout_constraintStart_toStartOf="@+id/textView5"

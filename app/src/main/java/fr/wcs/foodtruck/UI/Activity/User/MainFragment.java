@@ -123,17 +123,17 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         final int daysatsun = mCalendar.get(Calendar.DAY_OF_WEEK);
         switch (v.getId()){
             case R.id.menu:
-                if (daysatsun == 7 || daysatsun == 1) {
-                    Intent intentClose = new Intent(getActivity(), CloseDay.class);
-                    startActivity(intentClose);
-                } else {
+//                if (daysatsun == 7 || daysatsun == 1) {
+//                    Intent intentClose = new Intent(getActivity(), CloseDay.class);
+//                    startActivity(intentClose);
+//                } else {
                     Fragment fragment = new MenuFragment();
                     fragmentTransaction(fragment);
-                }
+//                }
                 break;
             case R.id.event:
-                Fragment fragment = new EventFragment();
-                fragmentTransaction(fragment);
+                Fragment fragmentBis = new EventFragment();
+                fragmentTransaction(fragmentBis);
                 break;
             case R.id.contact:
                 Fragment frag = new ContactFragment();
