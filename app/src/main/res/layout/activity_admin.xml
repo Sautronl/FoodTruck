@@ -121,6 +121,13 @@
                 android:textColor="@color/blanc"
                 android:background="@drawable/border_jade_black"
                 android:text="mdp oublié?" />
+
+            <CheckBox
+                android:id="@+id/checkBoxRemember"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CheckBox" />
         </LinearLayout>
 
 

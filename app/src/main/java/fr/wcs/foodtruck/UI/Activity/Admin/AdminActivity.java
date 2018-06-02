@@ -2,7 +2,9 @@ package fr.wcs.foodtruck.UI.Activity.Admin;
 
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +39,7 @@ public class AdminActivity extends BaseActivity implements
     private TextView mStatusTextView;
     private TextView mDetailTextView;
     private EditText mEmailField;
+    private CheckBox checkBoxRemember;
     private EditText mPasswordField,resetEdit;
     private Button mExit,mMdpforgot,buttonReset;
 
@@ -61,6 +65,7 @@ public class AdminActivity extends BaseActivity implements
         mEmailField =(EditText) findViewById(R.id.field_email);
         mPasswordField =(EditText) findViewById(R.id.field_password);
         resetEdit = (EditText)findViewById(R.id.resetEdit);
+        checkBoxRemember = (CheckBox) findViewById(R.id.checkBoxRemember);
 
         // Buttons
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
@@ -83,6 +88,8 @@ public class AdminActivity extends BaseActivity implements
             }
         });
 
+
+
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();
         mAuth = FirebaseAuth.getInstance();
@@ -93,9 +100,14 @@ public class AdminActivity extends BaseActivity implements
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update fr.wcs.foodtruck.UI accordingly.
-
+        SharedPreferences sharedPreferencesGet = getSharedPreferences("Remember", MODE_PRIVATE);
+        String rememberEmail = sharedPreferencesGet.getString("mailUser","");
+        String rememberMdp = sharedPreferencesGet.getString("mdpUser","");
+        mEmailField.setText(rememberEmail);
+        mPasswordField.setText(rememberMdp);
         FirebaseUser currentUser = mAuth.getCurrentUser();
         updateUI(currentUser);
+
     }
     // [END on_start_check_user]
 
@@ -205,6 +217,15 @@ public class AdminActivity extends BaseActivity implements
     private boolean validateForm() {
         boolean valid = true;
 
+
+        if(checkBoxRemember.isChecked()){
+            SharedPreferences sharedPreferences = getSharedPreferences("Remember", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("mailUser",mEmailField.getText().toString());
+            editor.putString("mdpUser",mPasswordField.getText().toString());
+            //editor.commit();
+            editor.apply();
+        }
         String email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
             mEmailField.setError("Required.");
