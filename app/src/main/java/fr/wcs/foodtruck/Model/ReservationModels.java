@@ -16,17 +16,19 @@ public class ReservationModels {
     private String choixBoisson;
     private String choixDessert;
 
-    public ReservationModels(String s, String nomRes, String telRes, String horaireRes, String nomBurg, String prixBurg, String choixBoisson, String choixDessert) {
+    public ReservationModels() {
 
     }
 
-    public ReservationModels(String id, String nomReserv, String numTelReserv, String horaire,String nomBurger,String prixBurger) {
+    public ReservationModels(String id, String nomReserv, String numTelReserv, String horaire,String nomBurger,String prixBurger, String choixBoisson, String choixDessert) {
         this.id = id;
         this.nomReserv = nomReserv;
         this.numTelReserv = numTelReserv;
         this.horaire = horaire;
         this.nomBurger = nomBurger;
         this.prixBurger = prixBurger;
+        this.choixBoisson = choixBoisson;
+        this.choixDessert = choixDessert;
     }
 
     public String getNomReserv() {

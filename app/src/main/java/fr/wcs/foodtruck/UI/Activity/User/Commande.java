@@ -63,6 +63,7 @@ public class Commande  extends AppCompatActivity {
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
     ArrayList<ReservationModels> reservationCommande = new ArrayList<>();
     RadioButton[] rbutton;
+    RadioButton[] rbuttonDessert;
     Integer[] tagRadio;
     RelativeLayout RlBoisson,RlDessert;
 
@@ -218,61 +219,51 @@ public class Commande  extends AppCompatActivity {
                 partTwo.setVisibility(View.GONE);
                 partThree.setVisibility(View.VISIBLE);
                 menuValiderCommande.setVisibility(View.GONE);
+                radioGroupBoissonOne= new RadioGroup(getApplicationContext());
+                radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
+                radioGroupDessert= new RadioGroup(getApplicationContext());
+                radioGroupDessert.setOrientation(RadioGroup.VERTICAL);
+                displayRadioButBoisson("menu/Boisson/",radioGroupBoissonOne);
+                displayRadioButDessert("menu/Dessert/",radioGroupDessert);
             }
         });
-        radioGroupBoissonOne= new RadioGroup(getApplicationContext());
-        radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
-        radioGroupDessert= new RadioGroup(getApplicationContext());
-        radioGroupDessert.setOrientation(RadioGroup.VERTICAL);
-        displayRadioBut("menu/Boisson/",radioGroupBoissonOne);
-        displayRadioBut("menu/Dessert",radioGroupDessert);
+
     }
 
-    private void displayRadioBut(String child,RadioGroup group) {
-
+    private void displayRadioButDessert(String child, RadioGroup group) {
 
         mRefStuff.child(child).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                ArrayList<String > drinknbr = new ArrayList<>();
+                ArrayList<String> dessertnbr = new ArrayList<>();
                 long buttonRadio = dataSnapshot.getChildrenCount();
                 int convButRadio = Integer.parseInt(String.valueOf(buttonRadio));
-                rbutton = new RadioButton[convButRadio];
+                rbuttonDessert = new RadioButton[convButRadio];
                 tagRadio = new Integer[convButRadio];
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    String boisNb = snapshot.getValue(String.class);
-                    drinknbr.add(boisNb);
+                    String dessnb = snapshot.getValue(String.class);
+                    dessertnbr.add(dessnb);
                 }
                 for (int i = 0; i < convButRadio; i++) {
-                    RadioButton rbn = new RadioButton(Commande.this);
-                    rbn.setTextColor(getResources().getColor(R.color.blanc));
-                    rbn.setText(drinknbr.get(i));
-                    rbn.setTag(i+154875541);
-                    group.addView(rbn);
-                    rbutton[i] = rbn;
-                    tagRadio[i] = (Integer) rbn.getTag();
+                    RadioButton rbn2 = new RadioButton(Commande.this);
+                    rbn2.setTextColor(getResources().getColor(R.color.blanc));
+                    rbn2.setText(dessertnbr.get(i));
+                    rbn2.setTag(i+1548);
+                    rbn2.setId(i+125486);
+                    group.addView(rbn2);
+                    rbuttonDessert[i] = rbn2;
+                    tagRadio[i] = (Integer) rbn2.getTag();
                 }
-                if (child.equals("menu/Boisson/")){
-                     RlBoisson = (RelativeLayout) (Commande.this.findViewById(R.id.contentRl));
-                    RlBoisson.addView(group);
-                    radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId) {
-                            int indexRa = radioGroupBoissonOne.getCheckedRadioButtonId();
-                            checkRadioGr(checkedId,tagRadio,rbutton,"boisson",RlBoisson,indexRa);
-                        }
-                    });
-                }else{
-                     RlDessert = (RelativeLayout) (Commande.this.findViewById(R.id.containerDessert));
-                    RlDessert.addView(group);
-                    radioGroupDessert.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup group, int checkedId) {
-                            int indexRad = radioGroupDessert.getCheckedRadioButtonId();
-                            checkRadioGr(checkedId,tagRadio,rbutton,"dessert",RlDessert,indexRad);
-                        }
-                    });
-                }
+                RlDessert = (RelativeLayout) (Commande.this.findViewById(R.id.containerDessert));
+                RlDessert.addView(group);
+                radioGroupDessert.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        int indexRadDessert = radioGroupDessert.getCheckedRadioButtonId();
+                        RadioButton radDess = (RadioButton) findViewById(indexRadDessert);
+                        choixDessert = radDess.getText().toString();
+                    }
+                });
             }
 
             @Override
@@ -280,52 +271,58 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-//        radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                checkRadioGr(checkedId,tagRadio,rbutton,"boisson",RlBoisson);
-//            }
-//        });
-//
-//        radioGroupDessert.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                checkRadioGr(checkedId,tagRadio,rbutton,"dessert",RlDessert);
-//            }
-//        });
     }
 
-    private void checkRadioGr(int checkID,Integer[] tag,RadioButton[] butRad,String choix,RelativeLayout rlChoix,int indexRad) {
-//        if (checkID == tag[i]){
+    private void displayRadioButBoisson(String child,RadioGroup group) {
 
-//        for (int i = 0; i < rlChoix.getChildCount(); i++) {
-//            if (rlChoix.getChildAt(i) instanceof RadioGroup) {
-//                int index = (Integer) rlChoix.getChildAt(i).getTag();
-        if (choix.equals("boisson")){
-            if(checkID == indexRad) {
-                choixBoisson = butRad[indexRad].getText().toString();
+        mRefStuff.child(child).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                ArrayList<String> drinknbr = new ArrayList<>();
+                long buttonRadio = dataSnapshot.getChildrenCount();
+                int convButRadio = Integer.parseInt(String.valueOf(buttonRadio));
+                    rbutton = new RadioButton[convButRadio];
+                    tagRadio = new Integer[convButRadio];
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        String boisNb = snapshot.getValue(String.class);
+                        drinknbr.add(boisNb);
+                    }
+                    for (int i = 0; i < convButRadio; i++) {
+                        RadioButton rbn = new RadioButton(Commande.this);
+                        rbn.setTextColor(getResources().getColor(R.color.blanc));
+                        rbn.setText(drinknbr.get(i));
+                        rbn.setTag(i + 154875541);
+                        rbn.setId(i);
+                        group.addView(rbn);
+                        rbutton[i] = rbn;
+                        tagRadio[i] = (Integer) rbn.getTag();
+                    }
+                    RlBoisson = (RelativeLayout) (Commande.this.findViewById(R.id.contentRl));
+                    RlBoisson.addView(group);
+                    radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            int indexRaBoisson = radioGroupBoissonOne.getCheckedRadioButtonId();
+                            RadioButton radBois = (RadioButton) findViewById(indexRaBoisson);
+                            choixBoisson = radBois.getText().toString();
+                            }
+                    });
+                }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
-        }else{
-            choixDessert = butRad[indexRad-3].getText().toString();
-            }
+        });
 
-
-
-//        for (int i = 0; i < butRad.length; i++) {
-//            if (checkID == tag[i]){
-//                if(choix.equals("boisson")){
-//                    choixBoisson = butRad[i].getText().toString();
-//                }else{
-//                    choixDessert = butRad[i].getText().toString();
-//                }
-//            }
-//        }
         finCommande.setVisibility(View.VISIBLE);
         finCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert);
                 mRefFinal.child("Réservation/"+res.getId()).setValue(res);
+//                radioGroupBoissonOne.clearCheck();
+//                radioGroupDessert.clearCheck();
             }
         });
     }
