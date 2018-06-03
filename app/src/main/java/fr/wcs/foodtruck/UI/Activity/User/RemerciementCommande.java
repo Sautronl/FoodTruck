@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import fr.wcs.foodtruck.Model.ReservationModels;
 import fr.wcs.foodtruck.R;
 import fr.wcs.foodtruck.Model.RemerciementModel;
 import fr.wcs.foodtruck.Utils.Constant;
@@ -27,10 +28,13 @@ public class RemerciementCommande extends AppCompatActivity {
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        String nom = getIntent().getStringExtra("nom");
-        String heure = getIntent().getStringExtra("heure");
+        Bundle bundle = getIntent().getExtras();
 
-        RemerciementCommande.this.setTitle(nom);
+
+        ReservationModels reservDetail = bundle.getParcelable("detailReservation");
+//        String heure = getIntent().getStringExtra("heure");
+
+//        RemerciementCommande.this.setTitle(nom);
 
         RelativeLayout merciLayout =(RelativeLayout) findViewById(R.id.merciLayout);
 
@@ -51,8 +55,8 @@ public class RemerciementCommande extends AppCompatActivity {
 
 
 
-        RemerciementModel rem = new RemerciementModel(nom,heure);
-        tvRemerciementN.setText(rem.getNom());
-        tvHeure.setText(rem.getHeure());
+//        RemerciementModel rem = new RemerciementModel(nom,heure);
+        tvRemerciementN.setText(reservDetail.getNomReserv());
+        tvHeure.setText(reservDetail.getHoraire());
     }
 }

@@ -40,6 +40,7 @@ public class AdminAccueil extends AppCompatActivity{
             public void onClick(View view) {
                 mAuth.signOut();
                 startActivity(disconnect);
+                finish();
             }
         });
 

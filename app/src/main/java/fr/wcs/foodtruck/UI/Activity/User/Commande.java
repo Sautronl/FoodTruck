@@ -2,6 +2,7 @@ package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -70,7 +71,7 @@ public class Commande  extends AppCompatActivity {
     RadioButton[] rbuttonDessert;
     Integer[] tagRadio;
     RelativeLayout RlBoisson,RlDessert;
-
+    ReservationModels res = null;
     private DatabaseReference mReservRef,mRefStuff,mRefFinal;
     private FirebaseDatabase mFirebase;
 
@@ -323,11 +324,18 @@ public class Commande  extends AppCompatActivity {
         finCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert);
+                 res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert);
                 mRefFinal.child("Réservation/"+res.getId()).setValue(res).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(Commande.this, "Commande prise en compte !!!", Toast.LENGTH_SHORT).show();
+                        if(res != null){
+                            Intent i = new Intent(Commande.this, RemerciementCommande.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelable("detailReservation", res);
+                            i.putExtras(bundle);
+                            startActivity(i);
+                        }
                     }
                 });
 //                radioGroupBoissonOne.clearCheck();
