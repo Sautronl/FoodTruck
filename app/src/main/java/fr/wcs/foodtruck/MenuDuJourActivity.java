@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.github.florent37.arclayout.ArcLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +36,8 @@ public class MenuDuJourActivity extends AppCompatActivity {
     private Calendar myCalendar;
     private ImageView mImgplatMenu;
 
+    ArcLayout arcLayout;
+    KenBurnsView kbvImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,33 +65,35 @@ public class MenuDuJourActivity extends AppCompatActivity {
         mNomBurger = (TextView) findViewById(R.id.burger);
         mDescriptionMenu = (TextView) findViewById(R.id.descriPlat);
         mAdress = (TextView)findViewById(R.id.adress);
-        mImgplatMenu = (ImageView) findViewById(R.id.imgDuPlatMenu);
+//        mImgplatMenu = (ImageView) findViewById(R.id.imgDuPlatMenu);
+        arcLayout = (ArcLayout) findViewById(R.id.diagonalLayout);
+        kbvImg = (KenBurnsView) findViewById(R.id.imgPlatMenu);
 
-        TextView voirFormules = (TextView)findViewById(R.id.totheformules);
+       // TextView voirFormules = (TextView)findViewById(R.id.totheformules);
         SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
         formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
-        voirFormules.setText(formuleSS);
+        //voirFormules.setText(formuleSS);
 
-        Button reserver = (Button) findViewById(R.id.reserver);
-        TextView decouvrez = (TextView) findViewById(R.id.totheformules);
+       // Button reserver = (Button) findViewById(R.id.reserver);
+        //TextView decouvrez = (TextView) findViewById(R.id.totheformules);
 
         checkDay();
 
-        final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
-        reserver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
-
-        final Intent intent2 = new Intent(MenuDuJourActivity.this, FormuleActivity.class);
-        decouvrez.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent2);
-            }
-        });
+//        final Intent intent = new Intent(MenuDuJourActivity.this, Commande.class);
+//        reserver.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(intent);
+//            }
+//        });
+//
+//        final Intent intent2 = new Intent(MenuDuJourActivity.this, FormuleActivity.class);
+//        decouvrez.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(intent2);
+//            }
+//        });
 
     }
 
@@ -162,9 +168,19 @@ public class MenuDuJourActivity extends AppCompatActivity {
                 });
             }
         }
-        else{
-            Intent intentClose = new Intent(MenuDuJourActivity.this, CloseDay.class);
-            startActivity(intentClose);
+        else if (dayD == 1) {
+            majMenu("menuVendredi");
+            if (mDbRefCoor != mDbRef) {
+                majEmplacement("5 Vendredi/adrs");
+                mAdress.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent mapdetail = new Intent(MenuDuJourActivity.this, MapsActivity.class);
+                        mapdetail.putExtra("jourMarkeur", 4);
+                        startActivity(mapdetail);
+                    }
+                });
+            }
         }
     }
 
@@ -191,7 +207,7 @@ public class MenuDuJourActivity extends AppCompatActivity {
                     MajPlatDuJour maj = dataSnapshot.getValue(MajPlatDuJour.class);
                     mNomBurger.setText(maj.getNomPlat());
                     mDescriptionMenu.setText(maj.getDescPlat());
-                Glide.with(getApplicationContext()).load(maj.getUrlImg()).into(mImgplatMenu);
+                Glide.with(getApplicationContext()).load(maj.getUrlImg()).into(kbvImg);
             }
 
             @Override
