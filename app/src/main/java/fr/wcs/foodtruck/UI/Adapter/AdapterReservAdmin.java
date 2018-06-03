@@ -29,7 +29,6 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
     private List<ReservationModels> reserve;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
-    //private OnItemClickListener listener = null;
 
     public AdapterReservAdmin(Activity activity, List<ReservationModels> reserve){
         this.activity = activity;
@@ -55,9 +54,7 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nitem;
-        TextView titem;
-        TextView heureItem;
+        TextView nomItem,boissonItem,dessertItem,nitem,titem,heureItem;
         Button removeSelectRes;
 
         public ViewHolder(View itemView) {
@@ -65,6 +62,9 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
             nitem = itemView.findViewById(R.id.nItem);
             titem = itemView.findViewById(R.id.tItem);
             heureItem = itemView.findViewById(R.id.heureItem);
+            nomItem = itemView.findViewById(R.id.nomBurgerItem);
+            boissonItem = itemView.findViewById(R.id.boissonItem);
+            dessertItem = itemView.findViewById(R.id.dessertItem);
             removeSelectRes = itemView.findViewById(R.id.removeSelectRes);
         }
 
@@ -94,47 +94,9 @@ public class AdapterReservAdmin extends RecyclerView.Adapter<AdapterReservAdmin.
             nitem.setText(reserve.getNomReserv());
             titem.setText(reserve.getNumTelReserv());
             heureItem.setText(reserve.getHoraire());
+            nomItem.setText(reserve.getNomBurger());
+            boissonItem.setText(reserve.getChoixBoisson());
+            dessertItem.setText(reserve.getChoixDessert());
         }
     }
-
-//    public void setOnItemClick(OnItemClickListener listener){
-//        this.listener = listener;
-//    }
-//
-//    public interface OnItemClickListener{
-//        void onItemClick(int index);
-//    }
 }
-
-
-//    @Override
-//    public int getCount() {
-//        return reserve.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int i) {
-//        return reserve.get(i);
-//    }
-//
-//    @Override
-//    public long getItemId(int i) {
-//        return i;
-//    }
-//
-//    @Override
-//    public View getView(int i, View convertView, ViewGroup viewGroup) {
-//
-//        inflater = (LayoutInflater)activity.getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View item = inflater.inflate(R.layout.activity_admin_reservation_item,null);
-//
-//        TextView nitem = (TextView)item.findViewById(R.id.nItem);
-//        TextView titem = (TextView)item.findViewById(R.id.tItem);
-//        TextView heureItem = (TextView)item.findViewById(R.id.heureItem);
-//
-//        nitem.setText(reserve.get(i).getNomReserv());
-//        titem.setText(reserve.get(i).getNumTelReserv());
-//        heureItem.setText(reserve.get(i).getHoraire());
-//
-//        return item;
-//    }
