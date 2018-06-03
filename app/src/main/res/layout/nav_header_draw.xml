@@ -14,20 +14,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="135dp"
-        android:layout_height="135dp"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
         android:layout_gravity="center"
         android:layout_marginBottom="1dp"
         android:scaleType="fitXY"
         android:src="@drawable/logosam" />
 
-
-    <ImageView
-        android:id="@+id/slogan"
-        android:layout_width="150dp"
-        android:layout_gravity="center"
-        android:layout_height="17dp"
-        android:src="@drawable/titre_acceuil"
-        />
 
 </LinearLayout>

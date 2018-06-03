@@ -75,7 +75,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         if (count == 0){
             for (int i = 0; i < id.length; i++) {
                 YoYo.with(Techniques.RollIn)
-                        .duration(3000)
+                        .duration(2000)
                         .playOn(view.findViewById(id[i]));
             }
             count++;

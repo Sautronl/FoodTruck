@@ -51,7 +51,7 @@ public class MenuFragment extends Fragment {
     private Calendar myCalendar;
    // private ImageView mImgplatMenu;
     private ProgressDialog mDialog;
-
+    ScrollView scrollMenu;
     Boolean isOpen;
     Button mPrixButton;
     ArcLayout arcLayout;
@@ -84,7 +84,7 @@ public class MenuFragment extends Fragment {
         mAdress = (TextView)view.findViewById(R.id.adress);
        // mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
-        ScrollView scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
+         scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
         arcLayout = (ArcLayout) view.findViewById(R.id.diagonalLayout);
         kbvImg = (KenBurnsView) view.findViewById(R.id.imgPlatMenuXXL);
 
@@ -96,6 +96,7 @@ public class MenuFragment extends Fragment {
 //        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
         //voirFormules.setText(formuleSS);
 
+        scrollMenu.setVisibility(View.GONE);
         Button reserver = (Button) view.findViewById(R.id.reserver);
 //        TextView decouvrez = (TextView) view.findViewById(R.id.totheformules);
 
@@ -213,6 +214,7 @@ public class MenuFragment extends Fragment {
                             Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
                             mPrixButton.setText("Prix\n" + majP.getPrix());
                             mDialog.dismiss();
+                            scrollMenu.setVisibility(View.VISIBLE);
                         }
 
                         @Override

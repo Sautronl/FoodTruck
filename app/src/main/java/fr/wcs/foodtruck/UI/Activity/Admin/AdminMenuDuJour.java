@@ -105,21 +105,21 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
 
-//        if (day == 0) {
-//            addMaj("menu/menuLundi/");
-//
-//        } else if (day == 1) {
-//            addMaj("menu/menuMardi/");
-//        }
-//        else if (day == 2) {
-//            addMaj("menu/menuMercredi/");
-//        }
-//        else if (day == 3) {
-//            addMaj("menu/menuJeudi/");
-//        }
-//        else if (day == 4) {
-//            addMaj("menu/menuVendredi/");
-//        }
+        if (day == 0) {
+            addMaj("menu/menuLundi/");
+
+        } else if (day == 1) {
+            addMaj("menu/menuMardi/");
+        }
+        else if (day == 2) {
+            addMaj("menu/menuMercredi/");
+        }
+        else if (day == 3) {
+            addMaj("menu/menuJeudi/");
+        }
+        else if (day == 4) {
+            addMaj("menu/menuVendredi/");
+        }
 
         mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
