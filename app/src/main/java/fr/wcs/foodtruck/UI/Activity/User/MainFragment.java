@@ -19,6 +19,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.glide.slider.library.SliderLayout;
 import com.glide.slider.library.SliderTypes.TextSliderView;
 import com.glide.slider.library.Tricks.ViewPagerEx;
@@ -39,6 +41,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     private long timeElapsed = 0L;
     private Calendar mCalendar;
+
+    Integer[] id;
+    int count;
 
     public MainFragment() {
         // Required empty public constructor
@@ -64,6 +69,17 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         ImageView like = (ImageView) view.findViewById(R.id.like);
         ImageView star = (ImageView) view.findViewById(R.id.star);
         final ImageView logo = (ImageView) view.findViewById(R.id.logo);
+
+        id = new Integer[]{R.id.menu,R.id.lieu,R.id.presentation,R.id.event,R.id.contact,R.id.like,R.id.star};
+
+        if (count == 0){
+            for (int i = 0; i < id.length; i++) {
+                YoYo.with(Techniques.RollIn)
+                        .duration(3000)
+                        .playOn(view.findViewById(id[i]));
+            }
+            count++;
+        }
 
         mCalendar = Calendar.getInstance();
 
