@@ -32,12 +32,7 @@ public class RemerciementCommande extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Bundle bundle = getIntent().getExtras();
-
-
         ReservationModels reservDetail = bundle.getParcelable("detailReservation");
-//        String heure = getIntent().getStringExtra("heure");
-
-//        RemerciementCommande.this.setTitle(nom);
 
         ScrollView merciLayout =(ScrollView) findViewById(R.id.scrollThanks);
 
@@ -60,9 +55,6 @@ public class RemerciementCommande extends AppCompatActivity {
         boissonThanks = (TextView) findViewById(R.id.boissonThanks);
         dessertThanks = (TextView) findViewById(R.id.dessertThanks);
 
-
-
-//        RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(reservDetail.getNomReserv());
         tvHeure.setText(reservDetail.getHoraire());
         burgerThanks.setText(reservDetail.getNomBurger());

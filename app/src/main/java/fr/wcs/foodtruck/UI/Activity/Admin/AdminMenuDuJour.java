@@ -174,6 +174,39 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
+            imgUri = data.getData();
+        }else{
+            Toast.makeText(this, "Un probleme est survenu, Veuillez reessayer ulterieurement", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected void addMaj(String day){
+        mDbRefMenu.child(day).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mMajPlatDuJour = dataSnapshot.getValue(MajPlatDuJour.class);
+                mNomPlatDuJour.setText(mMajPlatDuJour.getNomPlat());
+                mDescriptionDuPlat.setText(mMajPlatDuJour.getDescPlat());
+                mPrixDuPlat.setText(mMajPlatDuJour.getPrix());
+                Glide.with(getApplicationContext()).load(mMajPlatDuJour.getUrlImg()).into(mImgMenu);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+}
+
+
 
 //
 //        ProgressDialog dialog = new ProgressDialog(AdminMenuDuJour.this);
@@ -227,34 +260,3 @@ public class  AdminMenuDuJour extends AppCompatActivity {
 //                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
 //            }
 //        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
-            imgUri = data.getData();
-        }else{
-            Toast.makeText(this, "Un probleme est survenu, Veuillez reessayer ulterieurement", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    protected void addMaj(String day){
-        mDbRefMenu.child(day).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                mMajPlatDuJour = dataSnapshot.getValue(MajPlatDuJour.class);
-                mNomPlatDuJour.setText(mMajPlatDuJour.getNomPlat());
-                mDescriptionDuPlat.setText(mMajPlatDuJour.getDescPlat());
-                mPrixDuPlat.setText(mMajPlatDuJour.getPrix());
-                Glide.with(getApplicationContext()).load(mMajPlatDuJour.getUrlImg()).into(mImgMenu);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-}

@@ -335,11 +335,10 @@ public class Commande  extends AppCompatActivity {
                             bundle.putParcelable("detailReservation", res);
                             i.putExtras(bundle);
                             startActivity(i);
+                            finish();
                         }
                     }
                 });
-//                radioGroupBoissonOne.clearCheck();
-//                radioGroupDessert.clearCheck();
             }
         });
     }
