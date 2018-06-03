@@ -49,7 +49,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 public class Commande  extends AppCompatActivity {
 
     Button btReserverCommande,menuValiderCommande,finCommande;
-    String nomRes, telRes, horaireRes,nomBurg,prixBurg;
+    String nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert;
     EditText txtNomCommande;
     EditText txtTelCommande;
     Spinner spinnerCommande;
@@ -62,8 +62,11 @@ public class Commande  extends AppCompatActivity {
     AdapterMenuListe adapterMenu;
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
     ArrayList<ReservationModels> reservationCommande = new ArrayList<>();
+    RadioButton[] rbutton;
+    Integer[] tagRadio;
+    RelativeLayout RlBoisson,RlDessert;
 
-    private DatabaseReference mReservRef,mRefStuff;
+    private DatabaseReference mReservRef,mRefStuff,mRefFinal;
     private FirebaseDatabase mFirebase;
 
     @Override
@@ -76,6 +79,7 @@ public class Commande  extends AppCompatActivity {
         mFirebase = FirebaseDatabase.getInstance();
         mReservRef = mFirebase.getReference();
         mRefStuff = mFirebase.getReference();
+        mRefFinal = mFirebase.getReference();
 
         ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
         Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
@@ -211,8 +215,6 @@ public class Commande  extends AppCompatActivity {
         menuValiderCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg);
-                mReservRef.child(lol + res.getId()).setValue(res);
                 partTwo.setVisibility(View.GONE);
                 partThree.setVisibility(View.VISIBLE);
                 menuValiderCommande.setVisibility(View.GONE);
@@ -235,6 +237,8 @@ public class Commande  extends AppCompatActivity {
                 ArrayList<String > drinknbr = new ArrayList<>();
                 long buttonRadio = dataSnapshot.getChildrenCount();
                 int convButRadio = Integer.parseInt(String.valueOf(buttonRadio));
+                rbutton = new RadioButton[convButRadio];
+                tagRadio = new Integer[convButRadio];
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
                     String boisNb = snapshot.getValue(String.class);
                     drinknbr.add(boisNb);
@@ -243,20 +247,85 @@ public class Commande  extends AppCompatActivity {
                     RadioButton rbn = new RadioButton(Commande.this);
                     rbn.setTextColor(getResources().getColor(R.color.blanc));
                     rbn.setText(drinknbr.get(i));
+                    rbn.setTag(i+154875541);
                     group.addView(rbn);
+                    rbutton[i] = rbn;
+                    tagRadio[i] = (Integer) rbn.getTag();
                 }
                 if (child.equals("menu/Boisson/")){
-                    RelativeLayout viewGroup = (RelativeLayout) (Commande.this.findViewById(R.id.contentRl));
-                    viewGroup.addView(group);
+                     RlBoisson = (RelativeLayout) (Commande.this.findViewById(R.id.contentRl));
+                    RlBoisson.addView(group);
+                    radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            int indexRa = radioGroupBoissonOne.getCheckedRadioButtonId();
+                            checkRadioGr(checkedId,tagRadio,rbutton,"boisson",RlBoisson,indexRa);
+                        }
+                    });
                 }else{
-                    RelativeLayout viewGroup = (RelativeLayout) (Commande.this.findViewById(R.id.containerDessert));
-                    viewGroup.addView(group);
+                     RlDessert = (RelativeLayout) (Commande.this.findViewById(R.id.containerDessert));
+                    RlDessert.addView(group);
+                    radioGroupDessert.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(RadioGroup group, int checkedId) {
+                            int indexRad = radioGroupDessert.getCheckedRadioButtonId();
+                            checkRadioGr(checkedId,tagRadio,rbutton,"dessert",RlDessert,indexRad);
+                        }
+                    });
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+//        radioGroupBoissonOne.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                checkRadioGr(checkedId,tagRadio,rbutton,"boisson",RlBoisson);
+//            }
+//        });
+//
+//        radioGroupDessert.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                checkRadioGr(checkedId,tagRadio,rbutton,"dessert",RlDessert);
+//            }
+//        });
+    }
+
+    private void checkRadioGr(int checkID,Integer[] tag,RadioButton[] butRad,String choix,RelativeLayout rlChoix,int indexRad) {
+//        if (checkID == tag[i]){
+
+//        for (int i = 0; i < rlChoix.getChildCount(); i++) {
+//            if (rlChoix.getChildAt(i) instanceof RadioGroup) {
+//                int index = (Integer) rlChoix.getChildAt(i).getTag();
+        if (choix.equals("boisson")){
+            if(checkID == indexRad) {
+                choixBoisson = butRad[indexRad].getText().toString();
+            }
+        }else{
+            choixDessert = butRad[indexRad-3].getText().toString();
+            }
+
+
+
+//        for (int i = 0; i < butRad.length; i++) {
+//            if (checkID == tag[i]){
+//                if(choix.equals("boisson")){
+//                    choixBoisson = butRad[i].getText().toString();
+//                }else{
+//                    choixDessert = butRad[i].getText().toString();
+//                }
+//            }
+//        }
+        finCommande.setVisibility(View.VISIBLE);
+        finCommande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ReservationModels res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert);
+                mRefFinal.child("Réservation/"+res.getId()).setValue(res);
             }
         });
     }

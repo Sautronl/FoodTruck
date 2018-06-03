@@ -13,8 +13,10 @@ public class ReservationModels {
     private String horaire;
     private String nomBurger;
     private String prixBurger;
+    private String choixBoisson;
+    private String choixDessert;
 
-    public ReservationModels() {
+    public ReservationModels(String s, String nomRes, String telRes, String horaireRes, String nomBurg, String prixBurg, String choixBoisson, String choixDessert) {
 
     }
 
@@ -74,6 +76,22 @@ public class ReservationModels {
 
     public void setPrixBurger(String prixBurger) {
         this.prixBurger = prixBurger;
+    }
+
+    public String getChoixBoisson() {
+        return choixBoisson;
+    }
+
+    public void setChoixBoisson(String choixBoisson) {
+        this.choixBoisson = choixBoisson;
+    }
+
+    public String getChoixDessert() {
+        return choixDessert;
+    }
+
+    public void setChoixDessert(String choixDessert) {
+        this.choixDessert = choixDessert;
     }
 
 }
