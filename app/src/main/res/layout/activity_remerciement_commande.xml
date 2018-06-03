@@ -1,79 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:paddingRight="20dp"
-    android:paddingLeft="20dp"
-    android:id="@+id/merciLayout"
-    android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.UI.Activity.User.RemerciementCommande"
-    android:background="@drawable/foodtruck_bg">
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollThanks"
+    android:layout_marginTop="33dp"
+    android:background="@color/blanc"
+    tools:context="fr.wcs.foodtruck.UI.Activity.User.PresentationFragment">
 
-
-    <TextView
-        android:id="@+id/tvRemerciementNom"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_alignTop="@+id/cadre_merci"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="21dp"
-        android:textAlignment="center"
-        android:textColor="@color/blanc"
-        android:textSize="25sp"
-        tools:text="Nom" />
+        android:id="@+id/constrainteThanks"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/remerciementCommandeValider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/commande_prise_en_compte"
-        android:textAlignment="center"
-        android:textColor="@color/textEnvoyer"
-        android:textSize="25sp"
-        android:layout_below="@+id/tvRemerciementNom"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"/>
+        <TextView
+            android:id="@+id/tvRemerciementNom"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="#3A3A3A"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Nom" />
 
-    <TextView
-        android:id="@+id/remerciementHeure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="left"
-        android:text="@string/commande_prete_vers"
-        android:textColor="@color/textEnvoyer"
-        android:textSize="20sp"
-        tools:text="12h00"
-        android:layout_marginBottom="54dp"
-        android:layout_alignBottom="@+id/cadre_merci"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:textColor="#3A3A3A"
+            android:id="@+id/remerciementCommandeValider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/commande_prise_en_compte"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRemerciementNom" />
 
-    <ImageView
-        android:id="@+id/cadre_merci"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:srcCompat="@drawable/cadre_formule"
-        android:layout_marginTop="50dp"/>
+        <TextView
+            android:textColor="#3A3A3A"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:id="@+id/remerciementHeure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:gravity="left"
+            android:text="@string/commande_prete_vers"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="@+id/remerciementCommandeValider"
+            app:layout_constraintStart_toStartOf="@+id/remerciementCommandeValider"
+            app:layout_constraintTop_toBottomOf="@+id/remerciementCommandeValider"
+            tools:text="12h00" />
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_below="@+id/remerciementHeure"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/border_jade_black"
-        android:fontFamily="sans-serif-condensed"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="Retour Accueil"
-        android:textColor="@android:color/background_light"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Recapitulatif de votre commande"
+            android:textColor="#3A3A3A"
+            app:layout_constraintEnd_toEndOf="@+id/remerciementHeure"
+            app:layout_constraintStart_toStartOf="@+id/remerciementHeure"
+            app:layout_constraintTop_toBottomOf="@+id/remerciementHeure" />
+
+        <TextView
+            android:textColor="#3A3A3A"
+            android:textStyle="bold"
+            android:id="@+id/burgerThanks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/separate_burger"
+            android:layout_marginTop="20dp"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@color/sam"
+            app:layout_constraintEnd_toEndOf="@+id/burgerThanks"
+            app:layout_constraintStart_toStartOf="@+id/burgerThanks"
+            app:layout_constraintTop_toBottomOf="@+id/burgerThanks" />
+
+        <TextView
+            android:textColor="#3A3A3A"
+            android:textStyle="bold"
+            android:id="@+id/boissonThanks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/separate_burger"
+            app:layout_constraintHorizontal_bias="0.576"
+            app:layout_constraintStart_toStartOf="@+id/separate_burger"
+            app:layout_constraintTop_toBottomOf="@+id/separate_burger" />
+
+        <ImageView
+            android:id="@+id/separate_boisson"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@color/sam"
+            app:layout_constraintEnd_toEndOf="@+id/separate_burger"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/separate_burger"
+            app:layout_constraintTop_toBottomOf="@+id/boissonThanks" />
+
+        <TextView
+            android:textColor="#3A3A3A"
+            android:textStyle="bold"
+            android:id="@+id/dessertThanks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/separate_boisson"
+            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintStart_toStartOf="@+id/separate_boisson"
+            app:layout_constraintTop_toBottomOf="@+id/separate_boisson" />
+
+        <ImageView
+            android:id="@+id/separate_dessert"
+            android:layout_marginTop="20dp"
+            android:layout_width="150dp"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@color/sam"
+            app:layout_constraintEnd_toEndOf="@+id/separate_boisson"
+            app:layout_constraintStart_toStartOf="@+id/separate_boisson"
+            app:layout_constraintTop_toBottomOf="@+id/dessertThanks" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Toute l'equipe de Sam'donne faim \n\n vous remercie de votre commande.\n\n A tres bientot"
+            android:textColor="#3A3A3A"
+            app:layout_constraintEnd_toEndOf="@+id/separate_dessert"
+            app:layout_constraintHorizontal_bias="0.439"
+            app:layout_constraintStart_toStartOf="@+id/separate_dessert"
+            app:layout_constraintTop_toBottomOf="@+id/separate_dessert" />
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border_jade_black"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Retour Accueil"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView10"
+            app:layout_constraintStart_toStartOf="@+id/textView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <ImageView
+            android:id="@+id/logoThanks"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/logosam"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
+            app:layout_constraintTop_toTopOf="@+id/textView10"
+            app:layout_constraintVertical_bias="0.211" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
-</RelativeLayout>
+
+</ScrollView>

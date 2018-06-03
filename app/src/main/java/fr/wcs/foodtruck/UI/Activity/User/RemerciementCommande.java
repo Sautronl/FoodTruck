@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import fr.wcs.foodtruck.Model.ReservationModels;
@@ -19,6 +20,8 @@ import fr.wcs.foodtruck.Utils.Constant;
 import fr.wcs.foodtruck.Utils.SetTypeFace;
 
 public class RemerciementCommande extends AppCompatActivity {
+
+    TextView burgerThanks,boissonThanks,dessertThanks;
 
     @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -36,7 +39,7 @@ public class RemerciementCommande extends AppCompatActivity {
 
 //        RemerciementCommande.this.setTitle(nom);
 
-        RelativeLayout merciLayout =(RelativeLayout) findViewById(R.id.merciLayout);
+        ScrollView merciLayout =(ScrollView) findViewById(R.id.scrollThanks);
 
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(merciLayout,mainfont);
@@ -47,16 +50,23 @@ public class RemerciementCommande extends AppCompatActivity {
             public void onClick(View view) {
                 Intent back = new Intent(RemerciementCommande.this, DrawActivity.class);
                 startActivity(back);
+                finish();
             }
         });
 
         final TextView tvRemerciementN = (TextView) findViewById(R.id.tvRemerciementNom);
         final TextView tvHeure = (TextView) findViewById(R.id.remerciementHeure);
+        burgerThanks = (TextView) findViewById(R.id.burgerThanks);
+        boissonThanks = (TextView) findViewById(R.id.boissonThanks);
+        dessertThanks = (TextView) findViewById(R.id.dessertThanks);
 
 
 
 //        RemerciementModel rem = new RemerciementModel(nom,heure);
         tvRemerciementN.setText(reservDetail.getNomReserv());
         tvHeure.setText(reservDetail.getHoraire());
+        burgerThanks.setText(reservDetail.getNomBurger());
+        boissonThanks.setText(reservDetail.getChoixBoisson());
+        dessertThanks.setText(reservDetail.getChoixDessert());
     }
 }

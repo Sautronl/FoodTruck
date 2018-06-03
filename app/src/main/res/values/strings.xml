@@ -35,7 +35,7 @@
     <string name="toast_spinner_vide">Veillez selectionner un créneau horaire </string>
     <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
     <string name="merci_string">Merci</string>
-    <string name="commande_prise_en_compte">Votre commande a été prise en compte</string>
+    <string name="commande_prise_en_compte">Votre commande a été prise en compte pour</string>
     <string name="commande_prete_vers">Votre commande sera prête vers</string>
     <string name="emplacement">EMPLACEMENTS</string>
     <string name="lundi">LUNDI</string>
