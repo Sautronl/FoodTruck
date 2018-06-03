@@ -66,6 +66,12 @@ dependencies {
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'
 
+    //ArcLayout
+    implementation 'com.github.florent37:arclayout:1.0.3'
+
+    //kenView
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+
     //Progress Dialog
     implementation 'com.github.mmoamenn:ProgressWindow_Android:0.0.2'
 

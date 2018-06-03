@@ -20,6 +20,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.github.florent37.arclayout.ArcLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,11 +49,13 @@ public class MenuFragment extends Fragment {
     private TextView mDescriptionMenu;
     private TextView mAdress;
     private Calendar myCalendar;
-    private ImageView mImgplatMenu;
+   // private ImageView mImgplatMenu;
     private ProgressDialog mDialog;
 
     Boolean isOpen;
     Button mPrixButton;
+    ArcLayout arcLayout;
+    KenBurnsView kbvImg;
 
     Singleton mSingleton;
 
@@ -69,29 +73,31 @@ public class MenuFragment extends Fragment {
 
         mSingleton =Singleton.getsInstance();
 
-        ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
+      // ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
 
         mFire = FirebaseDatabase.getInstance();
-        mDbRef = mFire.getReference("menu");
+        mDbRef = mFire.getReference("menu/");
         mDbRefCoor = mFire.getReference("Coordonner");
 
         mNomBurger = (TextView) view.findViewById(R.id.burger);
         mDescriptionMenu = (TextView) view.findViewById(R.id.descriPlat);
         mAdress = (TextView)view.findViewById(R.id.adress);
-        mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
+       // mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
         ScrollView scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
+        arcLayout = (ArcLayout) view.findViewById(R.id.diagonalLayout);
+        kbvImg = (KenBurnsView) view.findViewById(R.id.imgPlatMenuXXL);
 
         Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollMenu,mainfont);
 
-        TextView voirFormules = (TextView)view.findViewById(R.id.totheformules);
-        SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
-        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
-        voirFormules.setText(formuleSS);
+        //TextView voirFormules = (TextView)view.findViewById(R.id.totheformules);
+//        SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
+//        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
+        //voirFormules.setText(formuleSS);
 
-        Button reserver = (Button) view.findViewById(R.id.reserver);
-        TextView decouvrez = (TextView) view.findViewById(R.id.totheformules);
+//        Button reserver = (Button) view.findViewById(R.id.reserver);
+//        TextView decouvrez = (TextView) view.findViewById(R.id.totheformules);
 
         mDialog = new ProgressDialog(getActivity());
         mDialog.setTitle("Plat du jour");
@@ -101,7 +107,7 @@ public class MenuFragment extends Fragment {
 
         checkDay();
 
-        mImgplatMenu.setOnClickListener(new View.OnClickListener() {
+        kbvImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(),fullImageActivity.class);
@@ -109,21 +115,21 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        final Intent intent = new Intent(getActivity(), Commande.class);
-        reserver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
-
-        final Intent intent2 = new Intent(getActivity(), FormuleActivity.class);
-        decouvrez.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent2);
-            }
-        });
+//        final Intent intent = new Intent(getActivity(), Commande.class);
+//        reserver.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(intent);
+//            }
+//        });
+//
+//        final Intent intent2 = new Intent(getActivity(), FormuleActivity.class);
+//        decouvrez.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(intent2);
+//            }
+//        });
         return view;
     }
 
@@ -158,7 +164,7 @@ public class MenuFragment extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private void checkIsOpen(String dayJob,String menuDay,String AdrsDay){
+    private void checkIsOpen(String dayJob, final String menuDay, final String AdrsDay){
         mRefJob = mFire.getReference("Avaible/");
         mRefJob.child(dayJob).addValueEventListener(new ValueEventListener() {
             @Override
@@ -166,7 +172,7 @@ public class MenuFragment extends Fragment {
                 Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
                 isOpen = isOpen2;
                 if (isOpen!= null && isOpen) {
-                    mSingleton.loadMenu(menuDay, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+                    mSingleton.loadMenu(menuDay, mNomBurger, mDescriptionMenu, mPrixButton, kbvImg, getActivity(), mDialog);
                     if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDay);
                         mAdress.setOnClickListener(new View.OnClickListener() {
@@ -189,7 +195,7 @@ public class MenuFragment extends Fragment {
         });
     }
 
-    private void checkIsOpenWeekendBeta(String dayJobWeekend,String menuDayWeekend,String AdrsDayWeekend){
+    private void checkIsOpenWeekendBeta(String dayJobWeekend, final String menuDayWeekend, final String AdrsDayWeekend){
         mRefJob = mFire.getReference("Avaible/");
         mRefJob.child(dayJobWeekend).addValueEventListener(new ValueEventListener() {
             @Override
@@ -197,7 +203,23 @@ public class MenuFragment extends Fragment {
                 Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
                 isOpen = isOpen2;
                 if (isOpen!= null && isOpen) {
-                    mSingleton.loadMenu(menuDayWeekend, mNomBurger, mDescriptionMenu, mPrixButton, mImgplatMenu, getActivity(), mDialog);
+                    mDbRef.child(menuDayWeekend+"/").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            MajPlatDuJour majP = dataSnapshot.getValue(MajPlatDuJour.class);
+                            mNomBurger.setText(majP.getNomPlat());
+                            mDescriptionMenu.setText(majP.getDescPlat());
+                            Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
+                            mPrixButton.setText("Prix\n" + majP.getPrix());
+                            mDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                     if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDayWeekend);
                         mAdress.setOnClickListener(new View.OnClickListener() {
