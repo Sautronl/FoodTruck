@@ -87,6 +87,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             public void onClick(View view) {
                 CropImage.activity()
                         .setCropShape(CropImageView.CropShape.OVAL)
+                        .setBackgroundColor(getResources().getColor(R.color.blanc))
                         .setAspectRatio(1, 1)
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .start(AdminMenuDuJour.this);
@@ -97,6 +98,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
             public void onClick(View v) {
                 CropImage.activity()
                         .setCropShape(CropImageView.CropShape.OVAL)
+                        .setBackgroundColor(getResources().getColor(R.color.blanc))
                         .setAspectRatio(1, 1)
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .start(AdminMenuDuJour.this);

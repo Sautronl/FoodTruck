@@ -7,7 +7,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     android:id="@+id/scrollMenuAdmin"
-    android:background="@drawable/foodtruck_bg"
+    android:background="@color/blanc"
     tools:context="fr.wcs.foodtruck.UI.Activity.User.MenuDuJour">
 
     <LinearLayout
@@ -50,11 +50,11 @@
                 android:id="@+id/imgDuPlat"
                 android:layout_width="match_parent"
                 android:layout_height="223dp"
+                android:background="@color/blanc"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                app:civ_border_color="@color/bleuTurk"
+                app:civ_border_color="@color/black"
                 app:civ_border_overlay="true"
-                app:civ_border_width="2dp"
                 android:src="@drawable/burger_user"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
