@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@drawable/foodtruck_bg"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/formules"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/formule1_picto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/formule1"
+            android:layout_below="@+id/cadreFormule1"
+            android:layout_alignTop="@+id/cadreFormule1"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/cadreFormule1"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/cadre_formule"
+            android:layout_below="@+id/today" />
+
+        <ImageView
+            android:id="@+id/formule2_picto"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/formule2"
+            android:layout_below="@+id/cadreFormule2"
+            android:layout_alignTop="@+id/cadreFormule2"
+            android:layout_centerHorizontal="true" />
+
+
+
+        <ImageView
+            android:id="@+id/cadreFormule2"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/cadre_formule"
+            android:layout_below="@+id/cadreFormule1"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:id="@+id/boissons_picto"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/boisson"
+            android:layout_alignTop="@+id/boissons"
+            android:layout_alignRight="@+id/dessert_picto"
+            android:layout_alignEnd="@+id/dessert_picto"
+            android:layout_above="@+id/desserts" />
+
+        <TextView
+            android:id="@+id/boissons_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eau, CocaCola,\nIce Tea, Orangina,\nSprite, ..."
+            android:textColor="@color/blanc"
+            android:textSize="18sp"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_alignTop="@+id/boissons"
+            android:layout_alignRight="@+id/formule1_picto"
+            android:layout_alignEnd="@+id/formule1_picto"
+            android:layout_marginTop="10dp" />
+
+
+        <ImageView
+            android:id="@+id/boissons"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/cadre_formule"
+            android:layout_below="@+id/cadreFormule2"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <ImageView
+            android:id="@+id/dessert_picto"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/dessert"
+            android:layout_above="@+id/reserver"
+            android:layout_alignLeft="@+id/formule1_picto"
+            android:layout_alignStart="@+id/formule1_picto"
+            android:layout_marginLeft="23dp"
+            android:layout_marginStart="23dp"
+            android:layout_alignTop="@+id/desserts" />
+
+        <TextView
+            android:id="@+id/desserts_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tiramisu\nMousse au chocolat\nCrème Brulée,..."
+            android:textColor="@color/blanc"
+            android:textSize="18sp"
+            android:layout_marginTop="9dp"
+            android:layout_alignTop="@+id/desserts"
+            android:layout_alignLeft="@+id/boissons_txt"
+            android:layout_alignStart="@+id/boissons_txt" />
+
+
+        <ImageView
+            android:id="@+id/desserts"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:srcCompat="@drawable/cadre_formule"
+            android:layout_below="@+id/boissons"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:id="@+id/reserver"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_border_white"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/reserver"
+            android:textColor="@android:color/background_light"
+            android:layout_below="@id/desserts"
+            android:layout_marginBottom="20dp"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,3 +1,124 @@
 <resources>
     <string name="app_name">FoodTruck</string>
+    <string name="titrePage">Contact &amp; Privatisation</string>
+    <string name="buttonEnvoyer">Envoyer</string>
+    <string name="numTel">06.74.66.07.20</string>
+    <string name="checkbox">Je souhaite privatiser le Food Truck</string>
+    <string name="prenomNom">Nom Prénom*</string>
+    <string name="tel">Téléphone</string>
+    <string name="sujet">Sujet*</string>
+    <string name="message">Votre message*</string>
+    <string name="messToast">Veuillez remplir les champs</string>
+    <string name="messToastValider">Votre message à bien été envoyé</string>
+    <string name="sujet2">"Je souhaite privatiser votre Food Truck !"</string>
+    <string name="presentationPage">Cocktails, inaugurations, évènements sportifs, anniversaires...Devis personnalisés, n\'hésitez pas à nous contacter !!</string>
+
+
+    <string name="platdujour">Plat\ndu jour</string>
+
+
+    <string name="votrecommande">Votre Commande</string>
+    <string name="buttonRetour">Retour</string>
+    <string name="buttonReserver">RESERVER</string>
+    <string name="edit_text_nom"> Nom</string>
+    <string name="edit_text_tel"> Téléphone</string>
+    <string name="checkbox_text">Je souhaite réserver le plat du jour</string>
+    <string name="choix_creneau">Choisissez votre créneau</string>
+    <string name="votre_nom">Votre Nom</string>
+    <string name="toast_champ_vide_tel">Veillez renseigner votre numero de téléphone</string>
+    <string name="toast_champ_vide_nom">Veillez renseigner votre nom</string>
+    <string name="votre_tel">Votre n° de telephone</string>
+    <string name="toast_champ_vide">Veillez reseigner votre nom et n° de telephone</string>
+    <string name="toast_spinner_vide">Veillez selectionner un créneau horaire </string>
+    <string name="toast_champ_remplis">Votre commande est prise en compte !</string>
+    <string name="merci_string">Merci</string>
+    <string name="commande_prise_en_compte">Votre commande a été prise en compte</string>
+    <string name="commande_prete_vers">Votre commande sera prête vers</string>
+    <string name="emplacement">EMPLACEMENTS</string>
+    <string name="lundi">LUNDI</string>
+    <string name="adresseLundi">1 Place de la Bourse\n31000 Toulouse</string>
+    <string name="mardi">MARDI</string>
+    <string name="adresseMardi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="mercredi">MERCREDI</string>
+    <string name="adresseMercredi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="jeudi">JEUDI</string>
+    <string name="adresseJeudi">1 Place de la Bourse \n 31000 Toulouse</string>
+    <string name="vendredi">VENDREDI</string>
+    <string name="adresseVendredi">1 Place de la Bourse \n 31000 Toulouse</string>
+
+    <string name="loading">Loading…</string>
+    <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="signed_out">Signed Out</string>
+
+    <string name="suppListeAdmin">Rien à supprimer</string>
+
+    <string name="fermeture">FERMETURE : SAMEDI ET DIMANCHE</string>
+    <string name="a_propos">A Propos</string>
+
+    <string name="adminEmail">Email</string>
+    <string name="adminPassword">Mot de passe</string>
+    <string name="adminConnex">Se connecter</string>
+    <string name="auth_failed">Echec authentification</string>
+
+    <string name="maj">Mettre à jour</string>
+
+
+    <string-array name="model_array">
+        <item>Sélectionnez un créneau horaire ...</item>
+        <item>12h00</item>
+        <item>12h15</item>
+        <item>12h30</item>
+        <item>12h45</item>
+        <item>13h00</item>
+        <item>13h15</item>
+        <item>13h30</item>
+        <item>13h45</item>
+        <item>14h00</item>
+
+
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+    <string name="admin_title">Administrateur</string>
+    <string name="deconnexion">Déconnexion</string>
+    <string name="nomplatdujour">nomPlatduJour</string>
+    <string name="nom_du_plat_du_jour">NOM DU PLAT DU JOUR</string>
+    <string name="description_du_plat">DESCRIPTION DU PLAT</string>
+    <string name="prix">PRIX</string>
+    <string name="objet_contact_admin">Objet</string>
+    <string name="nom_contact_admin">Nom</string>
+    <string name="title_activity_admin_event">AdminEvent</string>
+    <string name="latitude_admin_lieu">Latitude</string>
+    <string name="adresse_admin_lieu">Adresse</string>
+    <string name="longitude_admin_lieu">Longitude</string>
+    <string name="lundi_admin_list_lieu">LUNDI</string>
+    <string name="mardi_admin_list_lieu">MARDI</string>
+    <string name="mercredi_admin_list_lieu">MERCREDI</string>
+    <string name="jeudi_admin_list_lieu">JEUDI</string>
+    <string name="vendredi_admin_list_lieu">VENDREDI</string>
+    <string name="lundi_admin_lieu">LUNDI</string>
+    <string name="mardi_admin_lieu">MARDI</string>
+    <string name="mercredi_admin_lieu">MERCREDI</string>
+    <string name="jeudi_admin_lieu">JEUDI</string>
+    <string name="vendredi_admin_lieu">VENDREDI</string>
+
+
+    <string name="pause">Pause Location Updates</string>
+    <string name="resume">Resume Location Updates</string>
+
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="adresse">N°voie, Adresse, Code Postal, Ville</string>
+    <string name="use_address">Confirmer l\'adresse</string>
+    <string name="use_location">Use Latitude/Longitude</string>
+    <string name="get_address">Get Address</string>
+    <string name="string_changer">Changer</string>
+    <string name="notifs">Notifs</string>
+    <string name="title_activity_tacos">Map</string>
+    <string name="title_activity_maps2">Map</string>
+    <string name="choix_res">Réservation</string>
+    <string name="choix_contact">Contact</string>
+
+
 </resources>

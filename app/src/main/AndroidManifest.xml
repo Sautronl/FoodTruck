@@ -2,20 +2,165 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.wcs.foodtruck">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Truck2Food"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".ContactPrivatisation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".EventActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Commande"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MenuDuJourActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".Presentation"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".fullImageActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Presentation"
+            android:theme="@style/AppTheme.CustomTheme" />
+        <activity
+            android:name=".MenuDuJourActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RemerciementCommande"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Commande" />
+        <activity
+            android:name=".AdminActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".CloseDay"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".ContactAdmin"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ChoixReserveContactAdmin"/>
+        <activity
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps"
+            android:parentActivityName=".MainActivity"/>
+        <!--
+            The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen> You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.AIzaSyACRlVeCe07xwZ2KdRn61XbF4XgQ9vrjH8"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".AdminListeMenuDuJour"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AdminMenuDuJour"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity
+            android:name=".AdminAccueil"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".FormuleActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MenuDuJourActivity" />
+        <activity
+            android:name=".AdminEvent"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AdminAccueil"
+            android:windowSoftInputMode="stateHidden"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".GeocoderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateHidden"/>
+
+        <service
+            android:name=".GeocodeAddressIntentService"
+            android:exported="false" />
+
+        <activity
+            android:name=".ListLocalisationAdmin"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ListEmplacement"
+            android:screenOrientation="portrait"/>
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity
+            android:name=".ChoixReserveContactAdmin"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".AdminAccueil"/>
+        <activity
+            android:name=".ReservationAdminActivity"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".ChoixReserveContactAdmin"/>
+        <activity
+            android:name=".AdminPresentation"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

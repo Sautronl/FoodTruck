@@ -1,18 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.wcs.foodtruck.MainActivity">
+    tools:context="fr.wcs.foodtruck.MainActivity"
+    android:background="@drawable/bg_accueil">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="180dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/foodtruck_logo"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp" />
+
+    <ImageView
+        android:id="@+id/menu"
+        android:layout_width="270dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="26dp"
+        app:srcCompat="@drawable/burger_user"
+        android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/presentation"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignLeft="@+id/menu"
+        android:layout_alignStart="@+id/menu"
+        android:layout_below="@+id/menu"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/truck_user" />
+
+    <ImageView
+        android:id="@+id/lieu"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignEnd="@+id/menu"
+        android:layout_alignRight="@+id/menu"
+        android:layout_alignTop="@+id/presentation"
+        app:srcCompat="@drawable/local_user" />
+
+    <ImageView
+        android:id="@+id/contact"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="14dp"
+        app:srcCompat="@drawable/contact_user"
+        android:layout_below="@+id/presentation"
+        android:layout_alignLeft="@+id/presentation"
+        android:layout_alignStart="@+id/presentation" />
+
+
+    <ImageView
+        android:id="@+id/event"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignLeft="@+id/lieu"
+        android:layout_alignStart="@+id/lieu"
+        android:layout_alignTop="@+id/contact"
+        app:srcCompat="@drawable/event_user" />
+
+
+</RelativeLayout>

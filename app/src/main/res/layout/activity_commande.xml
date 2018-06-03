@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/foodtruck_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textViewCommande"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/votrecommande"
+            android:textAllCaps="true"
+            android:textColor="@android:color/background_light"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/choixHeure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/choix_creneau"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spinnerCommande"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:background="#ffffff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/votreNom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/votre_nom"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/textEnvoyer"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/warningNom"
+            android:layout_width="39dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/point_exclamation" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextNom"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@android:color/white"
+            android:ems="10"
+            android:layout_marginBottom="5dp"
+            android:focusableInTouchMode="true"
+            android:hint="@string/edit_text_nom"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/votreTel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/votre_tel"
+            android:layout_marginBottom="5dp"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/warningTel"
+            android:layout_width="39dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/point_exclamation" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editTextTel"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ffffff"
+            android:ems="10"
+            android:layout_marginBottom="5dp"
+            android:focusableInTouchMode="true"
+            android:hint="@string/edit_text_tel"
+            android:inputType="phone"
+            android:maxLength="10" />
+
+        <Button
+            android:id="@+id/buttonReserver"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/button_border_white"
+            android:fontFamily="sans-serif-condensed"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Réserver mon burger"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
