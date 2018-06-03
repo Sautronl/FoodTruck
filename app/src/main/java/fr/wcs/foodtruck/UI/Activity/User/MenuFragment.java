@@ -96,7 +96,7 @@ public class MenuFragment extends Fragment {
 //        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
         //voirFormules.setText(formuleSS);
 
-//        Button reserver = (Button) view.findViewById(R.id.reserver);
+        Button reserver = (Button) view.findViewById(R.id.reserver);
 //        TextView decouvrez = (TextView) view.findViewById(R.id.totheformules);
 
         mDialog = new ProgressDialog(getActivity());
@@ -115,13 +115,13 @@ public class MenuFragment extends Fragment {
             }
         });
 
-//        final Intent intent = new Intent(getActivity(), Commande.class);
-//        reserver.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(intent);
-//            }
-//        });
+        final Intent intent = new Intent(getActivity(), Commande.class);
+        reserver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
+            }
+        });
 //
 //        final Intent intent2 = new Intent(getActivity(), FormuleActivity.class);
 //        decouvrez.setOnClickListener(new View.OnClickListener() {

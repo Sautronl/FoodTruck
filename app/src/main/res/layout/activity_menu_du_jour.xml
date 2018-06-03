@@ -26,7 +26,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:elevation="10dip"
-            app:arc_cropDirection="cropInside"
+            app:arc_cropDirection="cropOutside"
             app:arc_height="45dp"
             >
 
@@ -35,7 +35,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:id="@+id/imgPlatMenuXXL"
-                android:src="@drawable/burger_user"
                 />
 
         </com.github.florent37.arclayout.ArcLayout>
@@ -76,6 +75,8 @@
 
             <TextView
                 android:id="@+id/descriPlat"
+                android:gravity="center"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="18dp"
@@ -85,6 +86,7 @@
                 />
 
             <TextView
+                android:textAlignment="center"
                 android:id="@+id/adress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
