@@ -46,15 +46,11 @@
                 android:layout_marginRight="29dp"
                 android:src="@android:drawable/ic_menu_edit" />
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/imgDuPlat"
                 android:layout_width="match_parent"
                 android:layout_height="223dp"
-                android:background="@color/blanc"
                 android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                app:civ_border_color="@color/black"
-                app:civ_border_overlay="true"
                 android:src="@drawable/burger_user"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"

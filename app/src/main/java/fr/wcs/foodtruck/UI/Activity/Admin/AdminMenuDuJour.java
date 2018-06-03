@@ -50,6 +50,7 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     private ImageView mMenu;
     private ImageView mImgMenu;
     private StorageReference mStorage;
+    MajPlatDuJour maj = null;
     private static final int REQUEST_CODE = 20;
     int day;
     private Uri imgUri;
@@ -85,44 +86,40 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         editImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CropImage.activity()
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .setBackgroundColor(getResources().getColor(R.color.blanc))
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AdminMenuDuJour.this);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
             }
         });
         mImgMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .setBackgroundColor(getResources().getColor(R.color.blanc))
-                        .setAspectRatio(1, 1)
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .start(AdminMenuDuJour.this);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Selectionner une image"), REQUEST_CODE);
             }
         });
 
         Intent jour = getIntent();
         day = jour.getIntExtra("day", 0);
 
-        if (day == 0) {
-            addMaj("menu/menuLundi/");
-
-        } else if (day == 1) {
-            addMaj("menu/menuMardi/");
-        }
-        else if (day == 2) {
-            addMaj("menu/menuMercredi/");
-        }
-        else if (day == 3) {
-            addMaj("menu/menuJeudi/");
-        }
-        else if (day == 4) {
-            addMaj("menu/menuVendredi/");
-        }
+//        if (day == 0) {
+//            addMaj("menu/menuLundi/");
+//
+//        } else if (day == 1) {
+//            addMaj("menu/menuMardi/");
+//        }
+//        else if (day == 2) {
+//            addMaj("menu/menuMercredi/");
+//        }
+//        else if (day == 3) {
+//            addMaj("menu/menuJeudi/");
+//        }
+//        else if (day == 4) {
+//            addMaj("menu/menuVendredi/");
+//        }
 
         mMaj.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,7 +144,6 @@ public class  AdminMenuDuJour extends AppCompatActivity {
     }
 
     private void firebaseInfoMenu(String child){
-
         ProgressDialog dialog = new ProgressDialog(AdminMenuDuJour.this);
         dialog.setTitle("Mise à jour du plat");
         dialog.setMessage("veuillez patienter");
@@ -155,49 +151,92 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         dialog.setIndeterminate(true);
         dialog.show();
 
-        mMajPlatDuJour.setNomPlat(mNomPlatDuJour.getText().toString());
-        mMajPlatDuJour.setDescPlat(mDescriptionDuPlat.getText().toString());
-        mMajPlatDuJour.setPrix(mPrixDuPlat.getText().toString());
-
-        mImgMenu.setDrawingCacheEnabled(true);
-        mImgMenu.buildDrawingCache();
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        mStorage = storage.getReference("PlatDuJour/");
-
-        Bitmap bitmap = mImgMenu.getDrawingCache();
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = mStorage.putBytes(data);
-        uploadTask.addOnFailureListener(exception -> Log.d(TAG, "onFailure: " + exception.getLocalizedMessage())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+        StorageReference ref = mStorage.child("image/").child(imgUri.getLastPathSegment());
+        ref.putFile(imgUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Uri downloadUrl = taskSnapshot.getDownloadUrl();
-                mMajPlatDuJour.setUrlImg(downloadUrl.toString());
-                mDbRefMenu.child(child).setValue(mMajPlatDuJour).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(AdminMenuDuJour.this, "Maj terminé !", Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
-                    }
-                });
+
+                if (mDescriptionDuPlat.getText().toString().isEmpty() || mNomPlatDuJour.getText().toString().isEmpty()) {
+                    Toast.makeText(AdminMenuDuJour.this, getResources().getString(R.string.messToast), Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    maj = new MajPlatDuJour(mNomPlatDuJour.getText().toString(),
+                            mDescriptionDuPlat.getText().toString(), taskSnapshot.getDownloadUrl().toString(),mPrixDuPlat.getText().toString());
+                     mDbRefMenu.child(child).setValue(maj).addOnCompleteListener(new OnCompleteListener<Void>() {
+                         @Override
+                         public void onComplete(@NonNull Task<Void> task) {
+                             Toast.makeText(AdminMenuDuJour.this, "Mise a jour terminee", Toast.LENGTH_SHORT).show();
+                             dialog.dismiss();
+                         }
+                     });
+                    Glide.with(AdminMenuDuJour.this).load(maj.getUrlImg()).into(mImgMenu);
+                    Toast.makeText(AdminMenuDuJour.this, "Upload", Toast.LENGTH_LONG).show();
+                }
             }
         });
+
+//
+//        ProgressDialog dialog = new ProgressDialog(AdminMenuDuJour.this);
+//        dialog.setTitle("Mise à jour du plat");
+//        dialog.setMessage("veuillez patienter");
+//        dialog.setCancelable(false);
+//        dialog.setIndeterminate(true);
+//        dialog.show();
+//
+//        mMajPlatDuJour.setNomPlat(mNomPlatDuJour.getText().toString());
+//        mMajPlatDuJour.setDescPlat(mDescriptionDuPlat.getText().toString());
+//        mMajPlatDuJour.setPrix(mPrixDuPlat.getText().toString());
+//
+//        mImgMenu.setDrawingCacheEnabled(true);
+//        mImgMenu.buildDrawingCache();
+//        FirebaseStorage storage = FirebaseStorage.getInstance();
+//        mStorage = storage.getReference("PlatDuJour/");
+//
+//        Bitmap bitmap = mImgMenu.getDrawingCache();
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//        byte[] data = baos.toByteArray();
+//
+//        UploadTask uploadTask = mStorage.putBytes(data);
+//        uploadTask.addOnFailureListener(exception -> Log.d(TAG, "onFailure: " + exception.getLocalizedMessage())).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//            @Override
+//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                Uri downloadUrl = taskSnapshot.getDownloadUrl();
+//                mMajPlatDuJour.setUrlImg(downloadUrl.toString());
+//                mDbRefMenu.child(child).setValue(mMajPlatDuJour).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        Toast.makeText(AdminMenuDuJour.this, "Maj terminé !", Toast.LENGTH_SHORT).show();
+//                        dialog.dismiss();
+//                    }
+//                });
+//            }
+//        });
+//    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+//            if (resultCode == RESULT_OK) {
+//                imgUri = result.getUri();
+//                mImgMenu.setImageDrawable(Drawable.createFromPath(imgUri.getPath()));
+//
+//            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+//                Exception exception = result.getError();
+//                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+//            }
+//        }
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                imgUri = result.getUri();
-                mImgMenu.setImageDrawable(Drawable.createFromPath(imgUri.getPath()));
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception exception = result.getError();
-                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
-            }
+        if ((requestCode == REQUEST_CODE && resultCode == RESULT_OK) && data != null && data.getData() != null) {
+            imgUri = data.getData();
+        }else{
+            Toast.makeText(this, "Un probleme est survenu, Veuillez reessayer ulterieurement", Toast.LENGTH_SHORT).show();
         }
     }
 
