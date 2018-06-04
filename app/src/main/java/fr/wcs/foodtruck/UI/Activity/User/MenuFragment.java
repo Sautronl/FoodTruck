@@ -46,7 +46,7 @@ public class MenuFragment extends Fragment {
     private FirebaseDatabase mFire;
     private DatabaseReference mDbRef,mRefJob;
     private DatabaseReference mDbRefCoor;
-    private TextView mNomBurger;
+    private TextView mNomBurger,textViewPrixMenu;
     private TextView mDescriptionMenu,adressMenuUser;
     private TextView mAdress;
     private Calendar myCalendar;
@@ -54,7 +54,7 @@ public class MenuFragment extends Fragment {
     private ProgressDialog mDialog;
     ScrollView scrollMenu;
     Boolean isOpen;
-    Button mPrixButton;
+    ImageView mPrixButton;
     ArcLayout arcLayout;
     KenBurnsView kbvImg;
 
@@ -82,9 +82,10 @@ public class MenuFragment extends Fragment {
 
         mNomBurger = (TextView) view.findViewById(R.id.burger);
         mDescriptionMenu = (TextView) view.findViewById(R.id.descriPlat);
+        textViewPrixMenu = (TextView) view.findViewById(R.id.textViewPrixMenu);
         //mAdress = (TextView)view.findViewById(R.id.adress);
        // mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
-        mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
+        mPrixButton =(ImageView) view.findViewById(R.id.buttonPrix);
          scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
         arcLayout = (ArcLayout) view.findViewById(R.id.diagonalLayout);
         kbvImg = (KenBurnsView) view.findViewById(R.id.imgPlatMenuXXL);
@@ -185,7 +186,7 @@ public class MenuFragment extends Fragment {
                             mNomBurger.setText(majP.getNomPlat());
                             mDescriptionMenu.setText(majP.getDescPlat());
                             Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
-                            mPrixButton.setText("Prix\n" + majP.getPrix());
+                            textViewPrixMenu.setText("Prix\n" + majP.getPrix());
                             mDialog.dismiss();
                             scrollMenu.setVisibility(View.VISIBLE);
                         }
@@ -232,7 +233,7 @@ public class MenuFragment extends Fragment {
                             mNomBurger.setText(majP.getNomPlat());
                             mDescriptionMenu.setText(majP.getDescPlat());
                             Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
-                            mPrixButton.setText("Prix\n" + majP.getPrix());
+                            textViewPrixMenu.setText("Prix\n" + majP.getPrix());
                             mDialog.dismiss();
                             scrollMenu.setVisibility(View.VISIBLE);
                         }
