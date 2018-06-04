@@ -19,6 +19,7 @@ import java.util.Calendar;
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
 import fr.wcs.foodtruck.UI.Adapter.GalleryAdapter;
 import fr.wcs.foodtruck.R;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class fullImageActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class fullImageActivity extends AppCompatActivity {
     private ImageView imageView;
      private MajPlatDuJour mImgFull = null;
      private ArrayList<MajPlatDuJour> majFull = new ArrayList<>();
+     PhotoViewAttacher pAttach;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,9 @@ public class fullImageActivity extends AppCompatActivity {
         int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*.9),(int)(height*.6));
+
+        pAttach = new PhotoViewAttacher(imageView);
+        pAttach.update();
     }
 
     protected void getFullImg(String child){

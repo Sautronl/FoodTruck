@@ -173,8 +173,24 @@ public class MenuFragment extends Fragment {
                 Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
                 isOpen = isOpen2;
                 if (isOpen!= null && isOpen) {
-                    mSingleton.loadMenu(menuDay, mNomBurger, mDescriptionMenu, mPrixButton, kbvImg, getActivity(), mDialog);
-                    if (mDbRefCoor != mDbRef) {
+                    mDbRef.child(menuDay+"/").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            MajPlatDuJour majP = dataSnapshot.getValue(MajPlatDuJour.class);
+                            mNomBurger.setText(majP.getNomPlat());
+                            mDescriptionMenu.setText(majP.getDescPlat());
+                            Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
+                            mPrixButton.setText("Prix\n" + majP.getPrix());
+                            mDialog.dismiss();
+                            scrollMenu.setVisibility(View.VISIBLE);
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });                    if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDay);
                         mAdress.setOnClickListener(new View.OnClickListener() {
                             @Override
