@@ -213,7 +213,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void addMark(){
         LatLng bourse = new LatLng(mLat, mLon);
-        mMap.addMarker(new MarkerOptions().position(bourse).title("SAM'donne faim ! | 12h00 - 14h00").icon(BitmapDescriptorFactory.fromResource(R.drawable.sammarkeur)));
+        mMap.addMarker(new MarkerOptions().position(bourse).title("SAM'donne faim ! | 12h00 - 14h00").icon(BitmapDescriptorFactory.fromResource(R.drawable.sammarkv2)));
         float zoomLevel = 16.0f;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bourse, zoomLevel));
 
