@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
@@ -46,7 +47,7 @@ public class MenuFragment extends Fragment {
     private DatabaseReference mDbRef,mRefJob;
     private DatabaseReference mDbRefCoor;
     private TextView mNomBurger;
-    private TextView mDescriptionMenu;
+    private TextView mDescriptionMenu,adressMenuUser;
     private TextView mAdress;
     private Calendar myCalendar;
    // private ImageView mImgplatMenu;
@@ -81,20 +82,23 @@ public class MenuFragment extends Fragment {
 
         mNomBurger = (TextView) view.findViewById(R.id.burger);
         mDescriptionMenu = (TextView) view.findViewById(R.id.descriPlat);
-        mAdress = (TextView)view.findViewById(R.id.adress);
+        //mAdress = (TextView)view.findViewById(R.id.adress);
        // mImgplatMenu = (ImageView) view.findViewById(R.id.imgDuPlatMenu);
         mPrixButton =(Button) view.findViewById(R.id.buttonPrix);
          scrollMenu = (ScrollView) view.findViewById(R.id.scrollMenu);
         arcLayout = (ArcLayout) view.findViewById(R.id.diagonalLayout);
         kbvImg = (KenBurnsView) view.findViewById(R.id.imgPlatMenuXXL);
+        adressMenuUser = (TextView)view.findViewById(R.id.adressMenuUser);
 
         Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollMenu,mainfont);
 
+
+
         //TextView voirFormules = (TextView)view.findViewById(R.id.totheformules);
 //        SpannableString formuleSS = new SpannableString("Découvrez nos formules >");
 //        formuleSS.setSpan(new UnderlineSpan(), 0, formuleSS.length(), 0);
-        //voirFormules.setText(formuleSS);
+//        voirFormules.setText(formuleSS);
 
         scrollMenu.setVisibility(View.GONE);
         Button reserver = (Button) view.findViewById(R.id.reserver);
@@ -191,8 +195,8 @@ public class MenuFragment extends Fragment {
 
                         }
                     });                    if (mDbRefCoor != mDbRef) {
-                        majEmplacement(AdrsDay);
-                        mAdress.setOnClickListener(new View.OnClickListener() {
+                        majEmplacement(AdrsDay,getView());
+                        adressMenuUser.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 intent(4);
@@ -239,8 +243,8 @@ public class MenuFragment extends Fragment {
                         }
                     });
                     if (mDbRefCoor != mDbRef) {
-                        majEmplacement(AdrsDayWeekend);
-                        mAdress.setOnClickListener(new View.OnClickListener() {
+                        majEmplacement(AdrsDayWeekend,getView());
+                        adressMenuUser.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 intent(4);
@@ -260,13 +264,15 @@ public class MenuFragment extends Fragment {
         });
     }
 
-    protected void majEmplacement(String emp){
+    protected void majEmplacement(String emp,View view){
+        adressMenuUser = (TextView)view.findViewById(R.id.adressMenuUser);
         mDbRefCoor.child(emp).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String ad = dataSnapshot.getValue(String.class);
-                mAdress.setText(ad);
-            }
+                SpannableString adrsMenu = new SpannableString(ad);
+                adrsMenu.setSpan(new UnderlineSpan(), 0, adrsMenu.length(), 0);
+                adressMenuUser.setText(adrsMenu);            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
