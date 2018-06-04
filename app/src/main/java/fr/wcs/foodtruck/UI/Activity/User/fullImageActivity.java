@@ -68,7 +68,7 @@ public class fullImageActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.9),(int)(height*.6));
+        getWindow().setLayout((int)(width),(int)(height));
 
         pAttach = new PhotoViewAttacher(imageView);
         pAttach.update();
