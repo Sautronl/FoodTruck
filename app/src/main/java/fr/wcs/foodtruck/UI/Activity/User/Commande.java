@@ -56,7 +56,7 @@ public class Commande  extends AppCompatActivity {
     Button btReserverCommande,menuValiderCommande,finCommande;
     String nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert;
     EditText txtNomCommande;
-    EditText txtTelCommande;
+    EditText txtTelCommande,CommCommande;
     Spinner spinnerCommande;
     RadioGroup radioGroup,radioGroupBoissonOne,radioGroupDessert;
     RadioButton menuOk,menuNope;
@@ -109,6 +109,7 @@ public class Commande  extends AppCompatActivity {
         textInfo = (TextView) findViewById(R.id.infoModifText);
         menuValiderCommande = (Button) findViewById(R.id.menuValiderCommande);
         finCommande = (Button) findViewById(R.id.finCommande);
+        CommCommande = (EditText) findViewById(R.id.CommCommande);
 
         // On crée l'adapter pour le spinner.
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -319,27 +320,31 @@ public class Commande  extends AppCompatActivity {
 
             }
         });
-
         finCommande.setVisibility(View.VISIBLE);
         finCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert);
-                mRefFinal.child("Réservation/"+res.getId()).setValue(res).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(Commande.this, "Commande prise en compte !!!", Toast.LENGTH_SHORT).show();
-                        if(res != null){
-                            Intent i = new Intent(Commande.this, RemerciementCommande.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putParcelable("detailReservation", res);
-                            i.putExtras(bundle);
-                            startActivity(i);
-                            finish();
+                String comGetText = CommCommande.getText().toString();
+                if (comGetText.isEmpty()) {
+                    res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes, nomBurg, prixBurg, choixBoisson, choixDessert, null);
+                }else{
+                    res = new ReservationModels(UUID.randomUUID().toString(), nomRes, telRes, horaireRes, nomBurg, prixBurg, choixBoisson, choixDessert, comGetText);
+                }
+                    mRefFinal.child("Réservation/"+res.getId()).setValue(res).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(Commande.this, "Commande prise en compte !!!", Toast.LENGTH_SHORT).show();
+                            if(res != null){
+                                Intent i = new Intent(Commande.this, RemerciementCommande.class);
+                                Bundle bundle = new Bundle();
+                                bundle.putParcelable("detailReservation", res);
+                                i.putExtras(bundle);
+                                startActivity(i);
+                                finish();
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
         });
     }
 

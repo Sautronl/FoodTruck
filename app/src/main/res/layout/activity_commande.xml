@@ -328,21 +328,41 @@
 
             </RelativeLayout>
 
-
-            <Button
-                android:layout_marginTop="20dp"
-                android:id="@+id/finCommande"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <EditText
+                android:id="@+id/CommCommande"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:visibility="gone"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:gravity="left"
+                android:textStyle="normal"
+                android:textSize="13sp"
+                android:hint="Laissez un commentaire.."
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="@+id/containerDessert"
+                app:layout_constraintStart_toStartOf="@+id/containerDessert"
+                app:layout_constraintTop_toBottomOf="@+id/containerDessert" />
+
+            <Button
+                android:id="@+id/finCommande"
+                android:layout_width="wrap_content"
+                android:layout_height="49dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:visibility="gone"
                 android:text="Finaliser la commande"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/containerDessert" />
+                app:layout_constraintTop_toBottomOf="@+id/CommCommande" />
 
         </android.support.constraint.ConstraintLayout>
 

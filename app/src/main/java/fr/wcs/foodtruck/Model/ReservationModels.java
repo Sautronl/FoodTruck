@@ -17,12 +17,13 @@ public class ReservationModels implements Parcelable{
     private String prixBurger;
     private String choixBoisson;
     private String choixDessert;
+    private String commentaire;
 
     public ReservationModels() {
 
     }
 
-    public ReservationModels(String id, String nomReserv, String numTelReserv, String horaire,String nomBurger,String prixBurger, String choixBoisson, String choixDessert) {
+    public ReservationModels(String id, String nomReserv, String numTelReserv, String horaire,String nomBurger,String prixBurger, String choixBoisson, String choixDessert,String commentaire) {
         this.id = id;
         this.nomReserv = nomReserv;
         this.numTelReserv = numTelReserv;
@@ -31,6 +32,7 @@ public class ReservationModels implements Parcelable{
         this.prixBurger = prixBurger;
         this.choixBoisson = choixBoisson;
         this.choixDessert = choixDessert;
+        this.commentaire = commentaire;
     }
 
     public String getNomReserv() {
@@ -97,6 +99,14 @@ public class ReservationModels implements Parcelable{
     public void setChoixDessert(String choixDessert) {
         this.choixDessert = choixDessert;
     }
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
+
 
     public static final Creator<ReservationModels> CREATOR = new Creator<ReservationModels>() {
         @Override
@@ -125,6 +135,7 @@ public class ReservationModels implements Parcelable{
         dest.writeString(prixBurger);
         dest.writeString(choixBoisson);
         dest.writeString(choixDessert);
+        dest.writeString(commentaire);
     }
 
     protected ReservationModels(Parcel in) {
@@ -136,5 +147,6 @@ public class ReservationModels implements Parcelable{
         prixBurger = in.readString();
         choixBoisson = in.readString();
         choixDessert = in.readString();
+        commentaire = in.readString();
     }
 }
