@@ -22,6 +22,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 public class RemerciementCommande extends AppCompatActivity {
 
     TextView burgerThanks,boissonThanks,dessertThanks;
+    RelativeLayout relativeLayoutTY;
 
     @android.support.annotation.RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -35,6 +36,11 @@ public class RemerciementCommande extends AppCompatActivity {
         ReservationModels reservDetail = bundle.getParcelable("detailReservation");
 
         ScrollView merciLayout =(ScrollView) findViewById(R.id.scrollThanks);
+        relativeLayoutTY = (RelativeLayout) findViewById(R.id.logoSamTY);
+
+        //opacity
+        //INT ranges from 0 (fully transparent) to 255 (fully opaque)
+        relativeLayoutTY.getBackground().setAlpha(50);
 
         Typeface mainfont = Typeface.createFromAsset(getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(merciLayout,mainfont);
