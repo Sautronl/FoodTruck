@@ -229,8 +229,8 @@ public class Commande  extends AppCompatActivity {
                 radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
                 radioGroupDessert= new RadioGroup(getApplicationContext());
                 radioGroupDessert.setOrientation(RadioGroup.VERTICAL);
-                displayRadioButBoisson("menu/Boisson/",radioGroupBoissonOne);
-                displayRadioButDessert("menu/Dessert/",radioGroupDessert);
+                displayRadioButBoisson("Stuff/Boisson/",radioGroupBoissonOne);
+                displayRadioButDessert("Stuff/Dessert/",radioGroupDessert);
             }
         });
 

@@ -59,9 +59,9 @@ public class StuffActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(cbboides.getText().equals(getString(R.string.cb_boisson))){
-                    displayCheck("menu/Boisson/","boisson");
+                    displayCheck("Stuff/Boisson/","boisson");
                 }else{
-                    displayCheck("menu/Dessert/","dessert");
+                    displayCheck("Stuff/Dessert/","dessert");
                 }
             }
         });
@@ -83,7 +83,7 @@ public class StuffActivity extends AppCompatActivity {
                 if (!nbBoisson.getText().toString().isEmpty()){
                     nbBoisson.setText("");
                 }
-                displayChoice("menu/Boisson/","boisson");
+                displayChoice("Stuff/Boisson/","boisson");
             }
         });
 
@@ -104,7 +104,7 @@ public class StuffActivity extends AppCompatActivity {
                 if (!nbBoisson.getText().toString().isEmpty()){
                     nbBoisson.setText("");
                 }
-                displayChoice("menu/Dessert/","dessert");
+                displayChoice("Stuff/Dessert/","dessert");
             }
         });
     }
