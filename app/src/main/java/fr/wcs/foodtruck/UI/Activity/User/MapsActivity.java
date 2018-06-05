@@ -53,8 +53,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     final DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
     private GoogleMap mMap;
-    //private Double latitude = 43.6013671;
-    //private Double longitude = 1.4420031;
      Double mLat;
      Double mLon;
 
@@ -69,198 +67,54 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-
         mJourMarkeur = getIntent().getIntExtra("jourMarkeur", 0);
 
         if (mJourMarkeur == 3) {
-            coordonnerRef.child("4 Jeudi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latJeudi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latJeudi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("4 Jeudi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonJeudi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonJeudi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
-
+            getCoord("4 Jeudi/lat","4 Jeudi/lon");
         } else if (mJourMarkeur == 0) {
-            coordonnerRef.child("1 Lundi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latLundi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latLundi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("1 Lundi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonLundi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonLundi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("1 Lundi/lat","1 Lundi/lon");
         } else if (mJourMarkeur == 1) {
-            coordonnerRef.child("2 Mardi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latMardi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latMardi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("2 Mardi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonMardi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonMardi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("2 Mardi/lat","2 Mardi/lon");
         } else if (mJourMarkeur == 2) {
-            coordonnerRef.child("3 Mercredi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latMercredi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latMercredi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("3 Mercredi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonMercredi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonMercredi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("3 Mercredi/lat","3 Mercredi/lon");
         } else if (mJourMarkeur == 4) {
-            coordonnerRef.child("5 Vendredi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latVendredi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latVendredi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("5 Vendredi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonVendredi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonVendredi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("5 Vendredi/lat","5 Vendredi/lon");
         }else if (mJourMarkeur == 5) {
-            coordonnerRef.child("6 Samedi/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latSamedi = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latSamedi;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("6 Samedi/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonSamedi = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonSamedi;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("6 Samedi/lat","6 Samedi/lon");
         }else if (mJourMarkeur == 6) {
-            coordonnerRef.child("7 Dimanche/lat").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    Double latDimanche = (Double) dataSnapshot.getValue(Double.class);
-                    mLat = latDimanche;
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-            coordonnerRef.child("7 Dimanche/lon").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    Double lonDimanche = (Double) dataSnapshot.getValue(Double.class);
-                    mLon = lonDimanche;
-                    addMark();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            });
+            getCoord("7 Dimanche/lat","7 Dimanche/lon");
         }
+    }
+
+    private void getCoord(String childLat, String childLon) {
+        coordonnerRef.child(childLat).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Double latMap = (Double) dataSnapshot.getValue(Double.class);
+                mLat = latMap;
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        coordonnerRef.child(childLon).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Double lonMap = (Double) dataSnapshot.getValue(Double.class);
+                mLon = lonMap;
+                addMark();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
     private void addMark(){
