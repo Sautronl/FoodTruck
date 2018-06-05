@@ -172,6 +172,14 @@ public class GeocoderActivity extends AppCompatActivity {
                             GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
                             coordonnerRef.child("5 Vendredi").setValue(coord);
                             addPreviousAdrs("5 Vendredi/adrs");
+                        }else if (jour == 5) {
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("6 Samedi").setValue(coord);
+                            addPreviousAdrs("6 Samedi/adrs");
+                        }else if (jour == 6) {
+                            GeocoderModel coord = new GeocoderModel(lat, lon, adrs);
+                            coordonnerRef.child("7 Dimanche").setValue(coord);
+                            addPreviousAdrs("7 Dimanche/adrs");
                         }
 
                     }
@@ -197,8 +205,10 @@ public class GeocoderActivity extends AppCompatActivity {
         coordonnerRef.child(adrprev).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String adrsprevious = dataSnapshot.getValue(String.class);
-                addressEdit.setText(adrsprevious);
+                if (addressEdit!= null){
+                    String adrsprevious = dataSnapshot.getValue(String.class);
+                    addressEdit.setText(adrsprevious);
+                }
             }
 
             @Override

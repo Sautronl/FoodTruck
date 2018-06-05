@@ -77,6 +77,8 @@ public class ListLocalisationAdmin extends AppCompatActivity {
         results.add(new ListLocalisationModel("Mercredi"));
         results.add(new ListLocalisationModel("Jeudi"));
         results.add(new ListLocalisationModel("Vendredi"));
+        results.add(new ListLocalisationModel("Samedi"));
+        results.add(new ListLocalisationModel("Dimanche"));
         return results;
     }
 
