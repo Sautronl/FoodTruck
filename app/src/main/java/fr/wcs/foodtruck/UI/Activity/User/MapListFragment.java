@@ -86,6 +86,7 @@ public class MapListFragment extends Fragment {
 
     private void addAdrs(){
         mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+        int dayTotal = mDay.length-1;
 
         mRefStatus.child("Avaible/"+mDay[mI]).addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,15 +94,19 @@ public class MapListFragment extends Fragment {
                 Boolean stat = dataSnapshot.getValue(Boolean.class);
                 if (stat) {
                     mDispo.add(mDay[mI]);
-                    if (mI == mDay.length-1) {
+                    if (mI == dayTotal) {
                         checkD(mDispo);
                     } else {
                         mI++;
                         addAdrs();
                     }
                 }else{
-                    mI++;
-                    addAdrs();
+                    if (mI == dayTotal) {
+                        checkD(mDispo);
+                    }else{
+                        mI++;
+                        addAdrs();
+                    }
                 }
             }
 
@@ -115,6 +120,7 @@ public class MapListFragment extends Fragment {
 
     private void checkD(ArrayList<String> mDispo) {
         mJ = 0;
+        int tailleDispo = mDispo.size()-1;
          coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
              @Override
              public void onDataChange(DataSnapshot dataSnapshot) {
@@ -122,20 +128,23 @@ public class MapListFragment extends Fragment {
                      if (daySnapshot.getKey().contains(mDispo.get(mJ))){
                          String ad = (String) daySnapshot.child("adrs").getValue();
                          mListJ.add(new ListJourEmplacementModel(mDispo.get(mJ),ad));
-                         mJ++;
+                         if (mJ == tailleDispo){
+                             mAdapter = new AdapterListEmplacement(mListJ, getActivity());
+                             mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
+                                 @Override
+                                 public void onItemClick(int index, String jourD) {
+                                     Intent intent = new Intent(getActivity(), MapsActivity.class);
+                                     intent.putExtra("jourMarkeur", jourD);
+                                     startActivity(intent);
+                                 }
+                             });
+                             mListViewResults.setAdapter(mAdapter);
+                             mDialog.dismiss();
+                         }else{
+                             mJ++;
+                         }
                      }
                  }
-                 mAdapter = new AdapterListEmplacement(mListJ, getActivity());
-                 mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
-                     @Override
-                     public void onItemClick(int index, String jourD) {
-                         Intent intent = new Intent(getActivity(), MapsActivity.class);
-                         intent.putExtra("jourMarkeur", jourD);
-                         startActivity(intent);
-                     }
-                 });
-                 mListViewResults.setAdapter(mAdapter);
-                 mDialog.dismiss();
              }
 
              @Override

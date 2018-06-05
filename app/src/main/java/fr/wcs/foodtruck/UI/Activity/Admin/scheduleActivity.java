@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 import fr.wcs.foodtruck.R;
 
 public class scheduleActivity extends AppCompatActivity implements View.OnClickListener{
@@ -29,6 +31,7 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
     int j = 0;
     int count = 0;
     CheckedTextView[] checkTab;
+//    ArrayList<CheckedTextView> checkTab = new ArrayList<CheckedTextView>();
     Button checkJobDay,editJob;
 
     @Override
@@ -59,25 +62,31 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
         checkJobDay.setOnClickListener(this);
         editJob.setOnClickListener(this);
 
+        day = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+        checkTab = new CheckedTextView[]{lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche};
+
         displayCheckText();
     }
 
     private void displayCheckText() {
 
-        day = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
-        checkTab = new CheckedTextView[]{lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche};
-        j=0;
+        j= 0;
         for (int i = 0; i < day.length; i++) {
             mRef.child("Avaible/" +day[i]).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Boolean jobDispo = dataSnapshot.getValue(Boolean.class);
-                    if (jobDispo == true){
-                        checkTab[j].setChecked(true);
+                    if (jobDispo){
+                        if (j<=checkTab.length-1){
+                            checkTab[j].setChecked(true);
+                            checkTab[j].setEnabled(false);
+                            j++;
+                        }
+                    }else{
                         checkTab[j].setEnabled(false);
+                        checkTab[j].setChecked(false);
+                        j++;
                     }
-                    checkTab[j].setEnabled(false);
-                    j++;
                 }
 
                 @Override
