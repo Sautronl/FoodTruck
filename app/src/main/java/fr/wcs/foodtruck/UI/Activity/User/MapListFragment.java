@@ -86,7 +86,6 @@ public class MapListFragment extends Fragment {
 
     private void addAdrs(){
         mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
-       // mI = 0;
 
         mRefStatus.child("Avaible/"+mDay[mI]).addValueEventListener(new ValueEventListener() {
             @Override

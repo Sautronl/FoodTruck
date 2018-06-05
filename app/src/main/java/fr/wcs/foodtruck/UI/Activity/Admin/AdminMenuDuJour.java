@@ -199,14 +199,14 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mDbRefMenu.child(day).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (mMajPlatDuJour!=null){
+//                if (mMajPlatDuJour!=null){
                     mMajPlatDuJour = dataSnapshot.getValue(MajPlatDuJour.class);
                     mNomPlatDuJour.setText(mMajPlatDuJour.getNomPlat());
                     mDescriptionDuPlat.setText(mMajPlatDuJour.getDescPlat());
                     mPrixDuPlat.setText(mMajPlatDuJour.getPrix());
                     Glide.with(getApplicationContext()).load(mMajPlatDuJour.getUrlImg()).into(mImgMenu);
                 }
-            }
+//            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
