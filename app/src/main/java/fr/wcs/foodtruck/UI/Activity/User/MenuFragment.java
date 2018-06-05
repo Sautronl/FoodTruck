@@ -73,9 +73,6 @@ public class MenuFragment extends Fragment {
         getActivity().setTitle("Nos plats");
 
         mSingleton =Singleton.getsInstance();
-
-      // ImageView backButton = (ImageView)view.findViewById(R.id.backButton);
-
         mFire = FirebaseDatabase.getInstance();
         mDbRef = mFire.getReference("menu/");
         mDbRefCoor = mFire.getReference("Coordonner");
@@ -156,9 +153,9 @@ public class MenuFragment extends Fragment {
         } else if (dayD == 6) {
             checkIsOpen("Vendredi","menuVendredi","5 Vendredi/adrs");
         } else if (dayD == 7) {
-            checkIsOpenWeekendBeta("Samedi","menuSamedi","5 Vendredi/adrs");
+            checkIsOpen("Samedi","menuSamedi","6 Samedi/adrs");
         }else if (dayD == 1) {
-            checkIsOpenWeekendBeta("Dimanche","menuDimanche","5 Vendredi/adrs");
+            checkIsOpen("Dimanche","menuDimanche","7 Dimanche/adrs");
         }
     }
 
@@ -195,60 +192,13 @@ public class MenuFragment extends Fragment {
                         public void onCancelled(DatabaseError databaseError) {
 
                         }
-                    });                    if (mDbRefCoor != mDbRef) {
+                    });
+                    if (mDbRefCoor != mDbRef) {
                         majEmplacement(AdrsDay,getView());
                         adressMenuUser.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                intent(4);
-                            }
-                        });
-                    }
-                }else{
-                    mDialog.dismiss();
-                    fragTransact();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    private void checkIsOpenWeekendBeta(String dayJobWeekend, final String menuDayWeekend, final String AdrsDayWeekend){
-        mRefJob = mFire.getReference("Avaible/");
-        mRefJob.child(dayJobWeekend).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Boolean isOpen2 = dataSnapshot.getValue(Boolean.class);
-                isOpen = isOpen2;
-                if (isOpen!= null && isOpen) {
-                    mDbRef.child(menuDayWeekend+"/").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-
-                            MajPlatDuJour majP = dataSnapshot.getValue(MajPlatDuJour.class);
-                            mNomBurger.setText(majP.getNomPlat());
-                            mDescriptionMenu.setText(majP.getDescPlat());
-                            Glide.with(getActivity()).load(majP.getUrlImg()).into(kbvImg);
-                            textViewPrixMenu.setText("Prix\n" + majP.getPrix());
-                            mDialog.dismiss();
-                            scrollMenu.setVisibility(View.VISIBLE);
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    if (mDbRefCoor != mDbRef) {
-                        majEmplacement(AdrsDayWeekend,getView());
-                        adressMenuUser.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                intent(4);
+                                intent(dayJob);
                             }
                         });
                     }
@@ -282,9 +232,9 @@ public class MenuFragment extends Fragment {
         });
     }
 
-    private void intent(int x){
+    private void intent(String dayM){
         Intent mapdetail = new Intent(getActivity(), MapsActivity.class);
-        mapdetail.putExtra("jourMarkeur", x);
+        mapdetail.putExtra("jourMarkeur", dayM);
         startActivity(mapdetail);
     }
 

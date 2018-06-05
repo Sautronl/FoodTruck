@@ -1,12 +1,17 @@
 package fr.wcs.foodtruck.UI.Activity.User;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +31,7 @@ public class fullImageActivity extends AppCompatActivity {
     private FirebaseDatabase mFire;
     private DatabaseReference mRef;
     private Calendar myCalendar;
+    private TextView zoomIn;
     private ImageView imageView;
      private MajPlatDuJour mImgFull = null;
      private ArrayList<MajPlatDuJour> majFull = new ArrayList<>();
@@ -37,6 +43,10 @@ public class fullImageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_image);
 
          imageView = (ImageView)findViewById(R.id.fullImg);
+
+        YoYo.with(Techniques.ZoomIn)
+                .duration(2000)
+                .playOn(findViewById(R.id.fullImg));
 
         mFire = FirebaseDatabase.getInstance();
         mRef = mFire.getReference();

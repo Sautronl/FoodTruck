@@ -10,8 +10,11 @@
 
     <ImageView
         android:id="@+id/fullImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:layout_height="400dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
+
+
 </RelativeLayout>
