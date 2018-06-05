@@ -71,21 +71,25 @@ public class scheduleActivity extends AppCompatActivity implements View.OnClickL
     private void displayCheckText() {
 
         j= 0;
+        int taillecheckTab = checkTab.length-1;
+
         for (int i = 0; i < day.length; i++) {
             mRef.child("Avaible/" +day[i]).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Boolean jobDispo = dataSnapshot.getValue(Boolean.class);
                     if (jobDispo){
-                        if (j<=checkTab.length-1){
+                        if (j<=taillecheckTab){
                             checkTab[j].setChecked(true);
                             checkTab[j].setEnabled(false);
                             j++;
                         }
                     }else{
-                        checkTab[j].setEnabled(false);
-                        checkTab[j].setChecked(false);
-                        j++;
+                        if (j<=taillecheckTab){
+                            checkTab[j].setEnabled(false);
+                            checkTab[j].setChecked(false);
+                            j++;
+                        }
                     }
                 }
 
