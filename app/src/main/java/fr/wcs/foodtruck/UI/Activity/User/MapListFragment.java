@@ -81,7 +81,7 @@ public class MapListFragment extends Fragment {
     }
 
     private void addAdrs(){
-        mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi"};
+        mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
         mI = 0;
         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
 

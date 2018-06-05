@@ -208,6 +208,58 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 public void onCancelled(DatabaseError databaseError) {
                 }
             });
+        }else if (mJourMarkeur == 5) {
+            coordonnerRef.child("6 Samedi/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latSamedi = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latSamedi;
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("6 Samedi/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonSamedi = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonSamedi;
+                    addMark();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }else if (mJourMarkeur == 6) {
+            coordonnerRef.child("7 Dimanche/lat").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Double latDimanche = (Double) dataSnapshot.getValue(Double.class);
+                    mLat = latDimanche;
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            coordonnerRef.child("7 Dimanche/lon").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    Double lonDimanche = (Double) dataSnapshot.getValue(Double.class);
+                    mLon = lonDimanche;
+                    addMark();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
         }
     }
 
