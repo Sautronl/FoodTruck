@@ -62,7 +62,7 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(position);
+                    listener.onItemClick(position,mListJour.getJour());
                 }
             });
                 jourAdresse.setText(mListJour.getAdresse());
@@ -75,7 +75,7 @@ public class AdapterListEmplacement extends RecyclerView.Adapter<AdapterListEmpl
     }
 
     public interface OnItemSelected{
-        void onItemClick(int index);
+        void onItemClick(int index,String jourD);
     }
 }
 

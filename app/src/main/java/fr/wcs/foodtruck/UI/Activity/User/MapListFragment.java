@@ -39,12 +39,14 @@ public class MapListFragment extends Fragment {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference coordonnerRef = database.getReference("Coordonner");
+    DatabaseReference mRefStatus;
     private ProgressDialog mDialog;
     private AdapterListEmplacement mAdapter;
     private ArrayList<ListJourEmplacementModel> mListJ = new ArrayList<>() ;
-    private String mAdresse;
     private String[] mDay;
-    private int mI;
+    private int mI = 0;
+    private int mJ = 0;
+    private ArrayList<String> mDispo = new ArrayList<>();
 
 
     private RecyclerView mListViewResults;
@@ -64,6 +66,8 @@ public class MapListFragment extends Fragment {
 
         LinearLayout emplacementLinear = view.findViewById(R.id.emplacementLinear);
 
+        mRefStatus = database.getReference();
+
         Typeface mainfont = Typeface.createFromAsset(getActivity().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(emplacementLinear,mainfont);
 
@@ -82,28 +86,24 @@ public class MapListFragment extends Fragment {
 
     private void addAdrs(){
         mDay = new String[]{"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
-        mI = 0;
-        coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
+       // mI = 0;
 
+        mRefStatus.child("Avaible/"+mDay[mI]).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot daySnapshot : dataSnapshot.getChildren()) {
-                    mAdresse = (String) daySnapshot.child("adrs").getValue();
-                    mListJ.add(new ListJourEmplacementModel(mDay[mI],mAdresse));
-                    mDay[mI] = mDay[mI];
-                    mI++;
-                }
-                mAdapter = new AdapterListEmplacement(mListJ, getActivity());
-                mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
-                    @Override
-                    public void onItemClick(int index) {
-                        Intent intent = new Intent(getActivity(), MapsActivity.class);
-                        intent.putExtra("jourMarkeur", index);
-                        startActivity(intent);
+                Boolean stat = dataSnapshot.getValue(Boolean.class);
+                if (stat) {
+                    mDispo.add(mDay[mI]);
+                    if (mI == mDay.length-1) {
+                        checkD(mDispo);
+                    } else {
+                        mI++;
+                        addAdrs();
                     }
-                });
-                mListViewResults.setAdapter(mAdapter);
-                mDialog.dismiss();
+                }else{
+                    mI++;
+                    addAdrs();
+                }
             }
 
             @Override
@@ -111,6 +111,39 @@ public class MapListFragment extends Fragment {
 
             }
         });
+
+    }
+
+    private void checkD(ArrayList<String> mDispo) {
+        mJ = 0;
+         coordonnerRef.orderByKey().addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                 for (DataSnapshot daySnapshot : dataSnapshot.getChildren()) {
+                     if (daySnapshot.getKey().contains(mDispo.get(mJ))){
+                         String ad = (String) daySnapshot.child("adrs").getValue();
+                         mListJ.add(new ListJourEmplacementModel(mDispo.get(mJ),ad));
+                         mJ++;
+                     }
+                 }
+                 mAdapter = new AdapterListEmplacement(mListJ, getActivity());
+                 mAdapter.setOnItemClick(new AdapterListEmplacement.OnItemSelected() {
+                     @Override
+                     public void onItemClick(int index, String jourD) {
+                         Intent intent = new Intent(getActivity(), MapsActivity.class);
+                         intent.putExtra("jourMarkeur", jourD);
+                         startActivity(intent);
+                     }
+                 });
+                 mListViewResults.setAdapter(mAdapter);
+                 mDialog.dismiss();
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+         });
     }
 
     @Override

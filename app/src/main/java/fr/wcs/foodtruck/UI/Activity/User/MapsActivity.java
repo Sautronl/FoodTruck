@@ -48,7 +48,7 @@ import fr.wcs.foodtruck.R;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    int mJourMarkeur;
+    String mJourMarkeur;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference coordonnerRef = database.getReference("Coordonner");
 
@@ -70,21 +70,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mJourMarkeur = getIntent().getIntExtra("jourMarkeur", 0);
+        mJourMarkeur = getIntent().getStringExtra("jourMarkeur");
 
-        if (mJourMarkeur == 3) {
+        if (mJourMarkeur.equals("Jeudi")) {
             getCoord("4 Jeudi/lat","4 Jeudi/lon");
-        } else if (mJourMarkeur == 0) {
+        } else if (mJourMarkeur.equals("Lundi")) {
             getCoord("1 Lundi/lat","1 Lundi/lon");
-        } else if (mJourMarkeur == 1) {
+        } else if (mJourMarkeur.equals("Mardi")) {
             getCoord("2 Mardi/lat","2 Mardi/lon");
-        } else if (mJourMarkeur == 2) {
+        } else if (mJourMarkeur.equals("Mercredi")) {
             getCoord("3 Mercredi/lat","3 Mercredi/lon");
-        } else if (mJourMarkeur == 4) {
+        } else if (mJourMarkeur.equals("Vendredi")) {
             getCoord("5 Vendredi/lat","5 Vendredi/lon");
-        }else if (mJourMarkeur == 5) {
+        }else if (mJourMarkeur.equals("Samedi")) {
             getCoord("6 Samedi/lat","6 Samedi/lon");
-        }else if (mJourMarkeur == 6) {
+        }else if (mJourMarkeur.equals("Dimanche")) {
             getCoord("7 Dimanche/lat","7 Dimanche/lon");
         }
     }
@@ -105,7 +105,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         coordonnerRef.child(childLon).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 Double lonMap = (Double) dataSnapshot.getValue(Double.class);
                 mLon = lonMap;
                 addMark();
