@@ -156,9 +156,9 @@ public class MenuFragment extends Fragment {
         } else if (dayD == 6) {
             checkIsOpen("Vendredi","menuVendredi","5 Vendredi/adrs");
         } else if (dayD == 7) {
-            checkIsOpenWeekendBeta("Samedi","menuVendredi","5 Vendredi/adrs");
+            checkIsOpenWeekendBeta("Samedi","menuSamedi","5 Vendredi/adrs");
         }else if (dayD == 1) {
-            checkIsOpenWeekendBeta("Dimanche","menuVendredi","5 Vendredi/adrs");
+            checkIsOpenWeekendBeta("Dimanche","menuDimanche","5 Vendredi/adrs");
         }
     }
 

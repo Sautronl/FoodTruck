@@ -119,6 +119,10 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         }
         else if (day == 4) {
             addMaj("menu/menuVendredi/");
+        }else if (day == 5) {
+            addMaj("menu/menuSamedi/");
+        }else if (day == 6) {
+            addMaj("menu/menuDimanche/");
         }
 
         mMaj.setOnClickListener(new View.OnClickListener() {
@@ -138,6 +142,10 @@ public class  AdminMenuDuJour extends AppCompatActivity {
                 }
                 else if (day == 4) {
                     firebaseInfoMenu("menu/menuVendredi/");
+                }else if (day == 5) {
+                    firebaseInfoMenu("menu/menuSamedi/");
+                }else if (day == 6) {
+                    firebaseInfoMenu("menu/menuDimanche/");
                 }
             }
         });
@@ -191,11 +199,13 @@ public class  AdminMenuDuJour extends AppCompatActivity {
         mDbRefMenu.child(day).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                mMajPlatDuJour = dataSnapshot.getValue(MajPlatDuJour.class);
-                mNomPlatDuJour.setText(mMajPlatDuJour.getNomPlat());
-                mDescriptionDuPlat.setText(mMajPlatDuJour.getDescPlat());
-                mPrixDuPlat.setText(mMajPlatDuJour.getPrix());
-                Glide.with(getApplicationContext()).load(mMajPlatDuJour.getUrlImg()).into(mImgMenu);
+                if (mMajPlatDuJour!=null){
+                    mMajPlatDuJour = dataSnapshot.getValue(MajPlatDuJour.class);
+                    mNomPlatDuJour.setText(mMajPlatDuJour.getNomPlat());
+                    mDescriptionDuPlat.setText(mMajPlatDuJour.getDescPlat());
+                    mPrixDuPlat.setText(mMajPlatDuJour.getPrix());
+                    Glide.with(getApplicationContext()).load(mMajPlatDuJour.getUrlImg()).into(mImgMenu);
+                }
             }
 
             @Override
