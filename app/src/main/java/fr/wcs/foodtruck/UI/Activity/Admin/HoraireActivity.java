@@ -6,6 +6,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -33,11 +34,14 @@ public class HoraireActivity extends AppCompatActivity {
     private RadioGroup radioGroupDay, radioGroupIntervalle;
     private RadioButton radioSemaine, radioJour, radioHorsWE, radioQuinze, radioTrente;
     private Spinner spinnerJour;
-    private EditText EditTDebut,EditTFin,EditTDebutMidi,EditTFinMidi,EditTDebutSoir,EditTFinSoir;
-    private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin,relativePlageMidi,relativePlageSoir;
-    private Button horaireValide,ValidCheckHoraire;
-    private CheckBox checkMatin,checkMidi,checkSoir;
+    private EditText EditTDebut, EditTFin, EditTDebutMidi, EditTFinMidi, EditTDebutSoir, EditTFinSoir;
+    private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin, relativePlageMidi, relativePlageSoir;
+    private Button horaireValide, ValidCheckHoraire;
+    private CheckBox checkMatin, checkMidi, checkSoir;
     int intervalle, getCheckedRadio, nbrHours;
+    String getDay;
+
+
     private ArrayList<String> matinQuinze = new ArrayList<>();
     private ArrayList<String> hours = new ArrayList<>();
     private FirebaseDatabase mFire;
@@ -58,22 +62,101 @@ public class HoraireActivity extends AppCompatActivity {
         EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
         EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
         spinnerJour = (Spinner) findViewById(R.id.spinnerJour);
-        radioSemaine =(RadioButton) findViewById(R.id.radioSemaine);
-        radioJour =(RadioButton) findViewById(R.id.radioJour);
-        radioHorsWE =(RadioButton) findViewById(R.id.radioHorsWE);
-        radioQuinze =(RadioButton) findViewById(R.id.radioQuinze);
-        radioTrente =(RadioButton) findViewById(R.id.radioTrente);
+        radioSemaine = (RadioButton) findViewById(R.id.radioSemaine);
+        radioJour = (RadioButton) findViewById(R.id.radioJour);
+        radioHorsWE = (RadioButton) findViewById(R.id.radioHorsWE);
+        radioQuinze = (RadioButton) findViewById(R.id.radioQuinze);
+        radioTrente = (RadioButton) findViewById(R.id.radioTrente);
         relativeInter = (RelativeLayout) findViewById(R.id.relativeInter);
-        relativeSpinner = (RelativeLayout)findViewById(R.id.relativeSpinner);
-        relativeCheckD = (RelativeLayout)findViewById(R.id.relativeCheckD);
-        relativePlageMatin = (RelativeLayout)findViewById(R.id.relativePlageMatin);
-        relativePlageMidi = (RelativeLayout)findViewById(R.id.relativePlageMidi);
-        relativePlageSoir = (RelativeLayout)findViewById(R.id.relativePlageSoir);
+        relativeSpinner = (RelativeLayout) findViewById(R.id.relativeSpinner);
+        relativeCheckD = (RelativeLayout) findViewById(R.id.relativeCheckD);
+        relativePlageMatin = (RelativeLayout) findViewById(R.id.relativePlageMatin);
+        relativePlageMidi = (RelativeLayout) findViewById(R.id.relativePlageMidi);
+        relativePlageSoir = (RelativeLayout) findViewById(R.id.relativePlageSoir);
         horaireValide = (Button) findViewById(R.id.horaireValide);
         ValidCheckHoraire = (Button) findViewById(R.id.ValidCheckHoraire);
         checkMatin = (CheckBox) findViewById(R.id.checkMatin);
         checkMidi = (CheckBox) findViewById(R.id.checkMidi);
         checkSoir = (CheckBox) findViewById(R.id.checkSoir);
+
+        radioGroupDay.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioSemaine:
+                        //
+                        break;
+                    case R.id.radioJour:
+                        relativeSpinner.setVisibility(View.VISIBLE);
+                        afficherJour();
+                        break;
+                    case R.id.radioHorsWE:
+                        //
+                        break;
+                }
+            }
+        });
+    }
+
+    private void afficherJour(){
+        ArrayList<String> day = new ArrayList<>();
+        day.add("Selectionner");
+        day.add("Lundi");
+        day.add("Mardi");
+        day.add("Mercredi");
+        day.add("Jeudi");
+        day.add("Vendredi");
+        day.add("Samedi");
+        day.add("Dimanche");
+
+        ArrayAdapter<String> dayAdapter = new ArrayAdapter<String>(HoraireActivity.this, android.R.layout.simple_spinner_item, day);
+        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerJour.setAdapter(dayAdapter);
+
+        spinnerJour.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 1:
+                        getDay = "Lundi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        getDay = "Mardi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 3:
+                        getDay = "Mercredi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 4:
+                        getDay = "Jeudi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 5:
+                        getDay = "Vendredi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 6:
+                        getDay = "Samedi";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case 7:
+                        getDay = "Dimanche";
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+}
+
 //
 //        mFire = FirebaseDatabase.getInstance();
 //        mRefHoraire = mFire.getReference();
@@ -235,5 +318,3 @@ public class HoraireActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-    }
-}
