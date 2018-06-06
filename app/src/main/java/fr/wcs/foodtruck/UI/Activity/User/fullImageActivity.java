@@ -70,6 +70,12 @@ public class fullImageActivity extends AppCompatActivity {
             case 6:
                 getFullImg("menu/menuVendredi/");
                 break;
+            case 7:
+                getFullImg("menu/menuSamedi/");
+                break;
+            case 1:
+                getFullImg("menu/menuDimanche/");
+                break;
         }
 
         DisplayMetrics dm = new DisplayMetrics();
