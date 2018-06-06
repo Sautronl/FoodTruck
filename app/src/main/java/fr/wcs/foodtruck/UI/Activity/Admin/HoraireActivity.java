@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -29,12 +30,13 @@ import fr.wcs.foodtruck.R;
 
 public class HoraireActivity extends AppCompatActivity {
 
-    private RadioGroup radioGroupHoraire, radioGroupIntervalle, radioGroupDayOrWeek;
-    private RadioButton radioMatin, radioSoir, radioPeinTemps, radioQuinze, radioTrente, radioAllDay, radioOneDay;
-    private Spinner spinnerDebutHoraire, spinnerFinHoraire;
-    private EditText choixJourHoraire;
-    private RelativeLayout RelativeIntervalle, relativeSpinner, RelativeDayWeek, relativeEditDay;
-    private Button horaireValide;
+    private RadioGroup radioGroupDay, radioGroupIntervalle;
+    private RadioButton radioSemaine, radioJour, radioHorsWE, radioQuinze, radioTrente;
+    private Spinner spinnerJour;
+    private EditText EditTDebut,EditTFin,EditTDebutMidi,EditTFinMidi,EditTDebutSoir,EditTFinSoir;
+    private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin,relativePlageMidi,relativePlageSoir;
+    private Button horaireValide,ValidCheckHoraire;
+    private CheckBox checkMatin,checkMidi,checkSoir;
     int intervalle, getCheckedRadio, nbrHours;
     private ArrayList<String> matinQuinze = new ArrayList<>();
     private ArrayList<String> hours = new ArrayList<>();
@@ -45,25 +47,33 @@ public class HoraireActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_horaire);
-//
-//        radioGroupDayOrWeek = (RadioGroup) findViewById(R.id.radioGroupDayOrWeek);
-//        radioGroupHoraire = (RadioGroup) findViewById(R.id.radioGroupHoraire);
-//        radioGroupIntervalle = (RadioGroup) findViewById(R.id.radioGroupIntervalle);
-//        choixJourHoraire = (EditText) findViewById(R.id.choixJourHoraire);
-//        spinnerDebutHoraire = (Spinner) findViewById(R.id.spinnerDebutHoraire);
-//        spinnerFinHoraire = (Spinner) findViewById(R.id.spinnerFinHoraire);
-//        radioMatin =(RadioButton) findViewById(R.id.radioMatin);
-//        radioSoir =(RadioButton) findViewById(R.id.radioSoir);
-//        radioPeinTemps =(RadioButton) findViewById(R.id.radioPleinTemps);
-//        radioQuinze =(RadioButton) findViewById(R.id.radioQuinze);
-//        radioTrente =(RadioButton) findViewById(R.id.radioTrente);
-//        radioAllDay =(RadioButton) findViewById(R.id.radioAllDay);
-//        radioOneDay =(RadioButton) findViewById(R.id.radioOneDay);
-//        RelativeIntervalle = (RelativeLayout) findViewById(R.id.RelativeIntervalle);
-//        relativeSpinner = (RelativeLayout)findViewById(R.id.relativeSpinner);
-//        RelativeDayWeek = (RelativeLayout)findViewById(R.id.RelativeDayWeek);
-//        relativeEditDay = (RelativeLayout)findViewById(R.id.relativeEditDay);
-//        horaireValide = (Button) findViewById(R.id.horaireValide);
+
+
+        radioGroupDay = (RadioGroup) findViewById(R.id.radioGroupDay);
+        radioGroupIntervalle = (RadioGroup) findViewById(R.id.radioGroupIntervalle);
+        EditTDebut = (EditText) findViewById(R.id.EditTDebut);
+        EditTFin = (EditText) findViewById(R.id.EditTFin);
+        EditTFinMidi = (EditText) findViewById(R.id.EditTFinMidi);
+        EditTDebutMidi = (EditText) findViewById(R.id.EditTDebutMidi);
+        EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
+        EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
+        spinnerJour = (Spinner) findViewById(R.id.spinnerJour);
+        radioSemaine =(RadioButton) findViewById(R.id.radioSemaine);
+        radioJour =(RadioButton) findViewById(R.id.radioJour);
+        radioHorsWE =(RadioButton) findViewById(R.id.radioHorsWE);
+        radioQuinze =(RadioButton) findViewById(R.id.radioQuinze);
+        radioTrente =(RadioButton) findViewById(R.id.radioTrente);
+        relativeInter = (RelativeLayout) findViewById(R.id.relativeInter);
+        relativeSpinner = (RelativeLayout)findViewById(R.id.relativeSpinner);
+        relativeCheckD = (RelativeLayout)findViewById(R.id.relativeCheckD);
+        relativePlageMatin = (RelativeLayout)findViewById(R.id.relativePlageMatin);
+        relativePlageMidi = (RelativeLayout)findViewById(R.id.relativePlageMidi);
+        relativePlageSoir = (RelativeLayout)findViewById(R.id.relativePlageSoir);
+        horaireValide = (Button) findViewById(R.id.horaireValide);
+        ValidCheckHoraire = (Button) findViewById(R.id.ValidCheckHoraire);
+        checkMatin = (CheckBox) findViewById(R.id.checkMatin);
+        checkMidi = (CheckBox) findViewById(R.id.checkMidi);
+        checkSoir = (CheckBox) findViewById(R.id.checkSoir);
 //
 //        mFire = FirebaseDatabase.getInstance();
 //        mRefHoraire = mFire.getReference();

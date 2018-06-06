@@ -69,6 +69,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/relativeSpinner"
             android:layout_width="match_parent"
             android:layout_height="90dp"
@@ -107,6 +108,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/relativeCheckD"
             android:layout_below="@+id/relativeSpinner"
             android:layout_width="match_parent"
@@ -185,6 +187,7 @@
             >
 
             <RelativeLayout
+                android:visibility="gone"
                 android:id="@+id/relativePlageMatin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -239,6 +242,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_below="@+id/relativePlageMatin"
                 android:id="@+id/relativePlageMidi"
                 android:layout_width="match_parent"
@@ -294,6 +298,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_below="@+id/relativePlageMidi"
                 android:id="@+id/relativePlageSoir"
                 android:layout_width="match_parent"
@@ -349,6 +354,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_below="@+id/relativePlageSoir"
                 android:id="@+id/relativeInter"
                 android:layout_width="match_parent"
@@ -393,6 +399,7 @@
         </RelativeLayout>
 
         <Button
+            android:visibility="gone"
             android:id="@+id/horaireValide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
