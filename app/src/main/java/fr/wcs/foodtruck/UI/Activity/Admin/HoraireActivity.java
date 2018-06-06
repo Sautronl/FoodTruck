@@ -96,6 +96,29 @@ public class HoraireActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ValidCheckHoraire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkMatin.isChecked()){
+                    relativePlageMatin.setVisibility(View.VISIBLE);
+                }else {
+                    relativePlageMatin.setVisibility(View.GONE);
+                }
+                if (checkMidi.isChecked()){
+                    relativePlageMidi.setVisibility(View.VISIBLE);
+                }else {
+                    relativePlageMidi.setVisibility(View.GONE);
+                }
+                if (checkSoir.isChecked()){
+                    relativePlageSoir.setVisibility(View.VISIBLE);
+                }else {
+                    relativePlageSoir.setVisibility(View.GONE);
+                }if (!checkMatin.isChecked() && !checkMidi.isChecked() && !checkSoir.isChecked()){
+                    Toast.makeText(HoraireActivity.this, "Veuillez cocher une/des propositions", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void afficherJour(){
