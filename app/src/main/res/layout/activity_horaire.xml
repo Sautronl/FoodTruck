@@ -226,16 +226,36 @@
                     android:id="@+id/EditTDebut"
                     android:layout_width="40dp"
                     android:gravity="center"
+                    android:hint="hh"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textVdebut"
                     android:layout_marginStart="46dp" />
 
                 <EditText
-                    android:layout_marginTop="4dp"
                     android:id="@+id/EditTFin"
                     android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="hh"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/textVfin"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/EditTDebutMinute"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="mm"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toEndOf="@+id/textVdebut"
+                    android:gravity="center" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFinMinute"
+                    android:layout_width="40dp"
                     android:gravity="center"
+                    android:hint="mm"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebut"
@@ -283,6 +303,7 @@
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTDebutMidi"
                     android:layout_width="40dp"
+                    android:hint="hh"
                     android:gravity="center"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
@@ -290,10 +311,29 @@
                     android:layout_marginStart="46dp" />
 
                 <EditText
-                    android:layout_marginTop="4dp"
                     android:id="@+id/EditTFinMidi"
                     android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="hh"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/textVfinMidi"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/EditTDebutMidiMinute"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="mm"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/textViewPlageMidi"
+                    android:gravity="center" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFinMidiMinute"
+                    android:layout_width="40dp"
                     android:gravity="center"
+                    android:hint="mm"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebutMidi"
@@ -342,16 +382,36 @@
                     android:id="@+id/EditTDebutSoir"
                     android:layout_width="40dp"
                     android:gravity="center"
+                    android:hint="hh"
                     android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textVdebutSoir"
                     android:layout_marginStart="46dp" />
 
                 <EditText
-                    android:layout_marginTop="4dp"
                     android:id="@+id/EditTFinSoir"
                     android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="hh"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/textVfinSoir"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/EditTDebutSoirMinute"
+                    android:layout_width="40dp"
+                    android:layout_height="50dp"
+                    android:hint="mm"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toStartOf="@+id/textViewPlageSoir"
+                    android:gravity="center" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFinSoirMinute"
+                    android:layout_width="40dp"
                     android:gravity="center"
+                    android:hint="mm"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebutSoir"

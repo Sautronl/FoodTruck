@@ -34,8 +34,10 @@ public class HoraireActivity extends AppCompatActivity {
     private RadioGroup radioGroupDay, radioGroupIntervalle;
     private RadioButton radioSemaine, radioJour, radioHorsWE, radioQuinze, radioTrente;
     private Spinner spinnerJour;
-    private EditText EditTDebut, EditTFin, EditTDebutMidi, EditTFinMidi, EditTDebutSoir, EditTFinSoir;
-    private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin, relativePlageMidi, relativePlageSoir;
+    private EditText EditTDebut, EditTFin, EditTDebutMidi, EditTFinMidi, EditTDebutSoir, EditTFinSoir,
+            EditTDebutMidiMinute,EditTFinMidiMinute,EditTDebutSoirMinute,EditTFinSoirMinute,EditTDebutMinute,EditTFinMinute;
+    private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin,
+            relativePlageMidi, relativePlageSoir;
     private Button horaireValide, ValidCheckHoraire,buttonCheckH;
     private CheckBox checkMatin, checkMidi, checkSoir;
     int intervalle, getCheckedRadio, nbrHours,heureDebut,heureFin;
@@ -135,6 +137,12 @@ public class HoraireActivity extends AppCompatActivity {
         EditTDebutMidi = (EditText) findViewById(R.id.EditTDebutMidi);
         EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
         EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
+        EditTDebutMidiMinute = (EditText) findViewById(R.id.EditTDebutMidiMinute);
+        EditTFinMidiMinute = (EditText) findViewById(R.id.EditTFinMidiMinute);
+        EditTDebutSoirMinute = (EditText) findViewById(R.id.EditTDebutSoirMinute);
+        EditTFinSoirMinute = (EditText) findViewById(R.id.EditTFinSoirMinute);
+        EditTDebutMinute = (EditText) findViewById(R.id.EditTDebutMinute);
+        EditTFinMinute = (EditText) findViewById(R.id.EditTFinMinute);
 
 
         buttonCheckH.setOnClickListener(new View.OnClickListener() {
