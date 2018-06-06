@@ -36,11 +36,11 @@ public class HoraireActivity extends AppCompatActivity {
     private Spinner spinnerJour;
     private EditText EditTDebut, EditTFin, EditTDebutMidi, EditTFinMidi, EditTDebutSoir, EditTFinSoir;
     private RelativeLayout relativeInter, relativeSpinner, relativeCheckD, relativePlageMatin, relativePlageMidi, relativePlageSoir;
-    private Button horaireValide, ValidCheckHoraire;
+    private Button horaireValide, ValidCheckHoraire,buttonCheckH;
     private CheckBox checkMatin, checkMidi, checkSoir;
-    int intervalle, getCheckedRadio, nbrHours;
+    int intervalle, getCheckedRadio, nbrHours,heureDebut,heureFin;
     String getDay;
-
+    int debutMatin,finMatin,debutMi,finMi,debutS,finS;
 
     private ArrayList<String> matinQuinze = new ArrayList<>();
     private ArrayList<String> hours = new ArrayList<>();
@@ -55,12 +55,6 @@ public class HoraireActivity extends AppCompatActivity {
 
         radioGroupDay = (RadioGroup) findViewById(R.id.radioGroupDay);
         radioGroupIntervalle = (RadioGroup) findViewById(R.id.radioGroupIntervalle);
-        EditTDebut = (EditText) findViewById(R.id.EditTDebut);
-        EditTFin = (EditText) findViewById(R.id.EditTFin);
-        EditTFinMidi = (EditText) findViewById(R.id.EditTFinMidi);
-        EditTDebutMidi = (EditText) findViewById(R.id.EditTDebutMidi);
-        EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
-        EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
         spinnerJour = (Spinner) findViewById(R.id.spinnerJour);
         radioSemaine = (RadioButton) findViewById(R.id.radioSemaine);
         radioJour = (RadioButton) findViewById(R.id.radioJour);
@@ -74,6 +68,7 @@ public class HoraireActivity extends AppCompatActivity {
         relativePlageMidi = (RelativeLayout) findViewById(R.id.relativePlageMidi);
         relativePlageSoir = (RelativeLayout) findViewById(R.id.relativePlageSoir);
         horaireValide = (Button) findViewById(R.id.horaireValide);
+        buttonCheckH = (Button) findViewById(R.id.buttonCheckH);
         ValidCheckHoraire = (Button) findViewById(R.id.ValidCheckHoraire);
         checkMatin = (CheckBox) findViewById(R.id.checkMatin);
         checkMidi = (CheckBox) findViewById(R.id.checkMidi);
@@ -102,20 +97,73 @@ public class HoraireActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkMatin.isChecked()){
                     relativePlageMatin.setVisibility(View.VISIBLE);
+                    buttonCheckH.setVisibility(View.VISIBLE);
+                    getHeure("matin",getDay);
                 }else {
                     relativePlageMatin.setVisibility(View.GONE);
                 }
                 if (checkMidi.isChecked()){
                     relativePlageMidi.setVisibility(View.VISIBLE);
+                    buttonCheckH.setVisibility(View.VISIBLE);
+                    getHeure("midi",getDay);
                 }else {
                     relativePlageMidi.setVisibility(View.GONE);
                 }
                 if (checkSoir.isChecked()){
                     relativePlageSoir.setVisibility(View.VISIBLE);
+                    buttonCheckH.setVisibility(View.VISIBLE);
+                    getHeure("soir",getDay);
                 }else {
                     relativePlageSoir.setVisibility(View.GONE);
                 }if (!checkMatin.isChecked() && !checkMidi.isChecked() && !checkSoir.isChecked()){
                     Toast.makeText(HoraireActivity.this, "Veuillez cocher une/des propositions", Toast.LENGTH_SHORT).show();
+                    buttonCheckH.setVisibility(View.GONE);
+                }else{
+                    buttonCheckH.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+    }
+
+    private void getHeure(String momentJournee, String jourSpinner) {
+
+        EditTDebut = (EditText) findViewById(R.id.EditTDebut);
+        EditTFin = (EditText) findViewById(R.id.EditTFin);
+        EditTFinMidi = (EditText) findViewById(R.id.EditTFinMidi);
+        EditTDebutMidi = (EditText) findViewById(R.id.EditTDebutMidi);
+        EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
+        EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
+
+
+        buttonCheckH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (momentJournee.equals("matin")){
+                    if (EditTDebut.getText().toString().isEmpty() || EditTFin.getText().toString().isEmpty()){
+                        Toast.makeText(HoraireActivity.this, "Veuillez remplir les champs", Toast.LENGTH_SHORT).show();
+                    }else{
+                        debutMatin = Integer.parseInt(EditTDebut.getText().toString());
+                        finMatin = Integer.parseInt(EditTFin.getText().toString());
+                        relativeInter.setVisibility(View.VISIBLE);
+                    }
+                }if (momentJournee.equals("midi")){
+                    if (EditTDebutMidi.getText().toString().isEmpty() || EditTFinMidi.getText().toString().isEmpty()){
+                        Toast.makeText(HoraireActivity.this, "Veuillez remplir les champs", Toast.LENGTH_SHORT).show();
+                    }else{
+                        debutMi = Integer.parseInt(EditTDebutMidi.getText().toString());
+                        finMi = Integer.parseInt(EditTFinMidi.getText().toString());
+                        relativeInter.setVisibility(View.VISIBLE);
+                    }
+                }if (momentJournee.equals("soir")){
+                    if (EditTDebutSoir.getText().toString().isEmpty() || EditTFinSoir.getText().toString().isEmpty()){
+                        Toast.makeText(HoraireActivity.this, "Veuillez remplir les champs", Toast.LENGTH_SHORT).show();
+                    }else{
+                        debutS = Integer.parseInt(EditTDebutSoir.getText().toString());
+                        finS = Integer.parseInt(EditTFinSoir.getText().toString());
+                        relativeInter.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

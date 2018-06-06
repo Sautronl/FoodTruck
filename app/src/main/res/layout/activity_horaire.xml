@@ -183,7 +183,7 @@
             android:layout_below="@+id/relativeCheckD"
             android:id="@+id/RelativeIntervalle"
             android:layout_width="match_parent"
-            android:layout_height="390dp"
+            android:layout_height="wrap_content"
             >
 
             <RelativeLayout
@@ -224,8 +224,9 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTDebut"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textVdebut"
                     android:layout_marginStart="46dp" />
@@ -233,8 +234,9 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTFin"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebut"
                     android:layout_marginEnd="33dp" />
@@ -280,8 +282,9 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTDebutMidi"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textVdebutMidi"
                     android:layout_marginStart="46dp" />
@@ -289,8 +292,9 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTFinMidi"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebutMidi"
                     android:layout_marginEnd="33dp" />
@@ -336,8 +340,9 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTDebutSoir"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textVdebutSoir"
                     android:layout_marginStart="46dp" />
@@ -345,17 +350,29 @@
                 <EditText
                     android:layout_marginTop="4dp"
                     android:id="@+id/EditTFinSoir"
-                    android:layout_width="70dp"
-                    android:layout_height="30dp"
+                    android:layout_width="40dp"
+                    android:gravity="center"
+                    android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebutSoir"
                     android:layout_marginEnd="33dp" />
 
             </RelativeLayout>
 
+            <Button
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/buttonCheckH"
+                android:text="Valider Plage Horaire"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_below="@+id/relativePlageSoir"
+                android:layout_centerHorizontal="true" />
+
             <RelativeLayout
                 android:visibility="gone"
-                android:layout_below="@+id/relativePlageSoir"
+                android:layout_below="@+id/buttonCheckH"
                 android:id="@+id/relativeInter"
                 android:layout_width="match_parent"
                 android:layout_height="90dp">
@@ -392,6 +409,8 @@
                         android:text="30Min" />
 
                 </RadioGroup>
+
+
 
             </RelativeLayout>
 
