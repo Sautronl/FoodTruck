@@ -139,7 +139,8 @@
             android:theme="@style/NoActionBar" />
         <activity android:name=".UI.Activity.Admin.AdminSliderActivity" />
         <activity android:name=".UI.Activity.Admin.StuffActivity" />
-        <activity android:name=".UI.Activity.Admin.scheduleActivity"></activity>
+        <activity android:name=".UI.Activity.Admin.scheduleActivity" />
+        <activity android:name=".UI.Activity.Admin.HoraireActivity"></activity>
     </application>
 
 </manifest>

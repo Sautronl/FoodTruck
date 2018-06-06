@@ -26,7 +26,7 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
 
     private ListView mListeJour;
     private List<ListeJourModel> mLtJour;
-    private Button boissonAdmin,jobDispo;
+    private Button boissonAdmin,jobDispo,spinnerHoraire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +40,18 @@ public class AdminListeMenuDuJour extends AppCompatActivity {
 
         boissonAdmin = (Button)findViewById(R.id.boissonAdmin);
         jobDispo = (Button)findViewById(R.id.jobDispo);
+        spinnerHoraire = (Button) findViewById(R.id.spinnerHoraire);
 
         //Toolbar personnalisée avec bouton retour à la page précédente
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
+
+        spinnerHoraire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AdminListeMenuDuJour.this,HoraireActivity.class));
+            }
+        });
 
         jobDispo.setOnClickListener(new View.OnClickListener() {
             @Override

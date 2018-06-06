@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,8 @@ import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -150,8 +153,13 @@ public class ContactFragment extends Fragment {
                             mSujet.getText().toString(),
                             mMessage.getText().toString());
 
-                    mref.child("contact").child(contact.getId()).setValue(contact);
-                    clearEditText();
+                    mref.child("contact").child(contact.getId()).setValue(contact).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(getContext(), getResources().getString(R.string.messToastValider), Toast.LENGTH_SHORT).show();
+                            clearEditText();
+                        }
+                    });
                 }
             }
         });
