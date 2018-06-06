@@ -241,21 +241,19 @@
                     android:layout_toStartOf="@+id/textVfin"
                     android:gravity="center" />
 
-                <EditText
-                    android:id="@+id/EditTDebutMinute"
+                <Spinner
+                    android:id="@+id/spinnerDebutMinute"
                     android:layout_width="40dp"
                     android:layout_height="50dp"
-                    android:hint="mm"
                     android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@+id/textVdebut"
                     android:gravity="center" />
 
-                <EditText
+                <Spinner
                     android:layout_marginTop="4dp"
-                    android:id="@+id/EditTFinMinute"
+                    android:id="@+id/spinnerTFinMinute"
                     android:layout_width="40dp"
                     android:gravity="center"
-                    android:hint="mm"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_below="@+id/textVdebut"
@@ -265,8 +263,8 @@
 
             <RelativeLayout
                 android:visibility="gone"
-                android:layout_below="@+id/relativePlageMatin"
                 android:id="@+id/relativePlageMidi"
+                android:layout_below="@+id/relativePlageMatin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -319,18 +317,17 @@
                     android:layout_toStartOf="@+id/textVfinMidi"
                     android:gravity="center" />
 
-                <EditText
-                    android:id="@+id/EditTDebutMidiMinute"
+                <Spinner
+                    android:id="@+id/spinnerDebutMidiMinute"
                     android:layout_width="40dp"
                     android:layout_height="50dp"
-                    android:hint="mm"
                     android:layout_alignParentBottom="true"
                     android:layout_toStartOf="@+id/textViewPlageMidi"
                     android:gravity="center" />
 
-                <EditText
+                <Spinner
                     android:layout_marginTop="4dp"
-                    android:id="@+id/EditTFinMidiMinute"
+                    android:id="@+id/spinnerFinMidiMinute"
                     android:layout_width="40dp"
                     android:gravity="center"
                     android:hint="mm"
@@ -343,8 +340,8 @@
 
             <RelativeLayout
                 android:visibility="gone"
-                android:layout_below="@+id/relativePlageMidi"
                 android:id="@+id/relativePlageSoir"
+                android:layout_below="@+id/relativePlageMidi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -397,8 +394,8 @@
                     android:layout_toStartOf="@+id/textVfinSoir"
                     android:gravity="center" />
 
-                <EditText
-                    android:id="@+id/EditTDebutSoirMinute"
+                <Spinner
+                    android:id="@+id/spinnerDebutSoirMinute"
                     android:layout_width="40dp"
                     android:layout_height="50dp"
                     android:hint="mm"
@@ -406,9 +403,9 @@
                     android:layout_toStartOf="@+id/textViewPlageSoir"
                     android:gravity="center" />
 
-                <EditText
+                <Spinner
                     android:layout_marginTop="4dp"
-                    android:id="@+id/EditTFinSoirMinute"
+                    android:id="@+id/spinnerFinSoirMinute"
                     android:layout_width="40dp"
                     android:gravity="center"
                     android:hint="mm"
@@ -432,9 +429,9 @@
 
             <RelativeLayout
                 android:visibility="gone"
-                android:layout_below="@+id/buttonCheckH"
                 android:id="@+id/relativeInter"
                 android:layout_width="match_parent"
+                android:layout_below="@+id/buttonCheckH"
                 android:layout_height="90dp">
 
                 <TextView
