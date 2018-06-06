@@ -72,9 +72,8 @@
             android:id="@+id/relativeSpinner"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:visibility="gone"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeHoraire"
+            android:layout_below="@+id/RelativeIntervalle"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -91,6 +90,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
+                android:background="#ffffff"
                 android:id="@+id/spinnerDebutHoraire"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,9 +135,8 @@
             android:id="@+id/RelativeIntervalle"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:visibility="gone"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeSpinner">
+            android:layout_below="@+id/relativeHoraire">
 
 
             <TextView
@@ -180,12 +179,12 @@
 
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/RelativeDayWeek"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:visibility="gone"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/RelativeIntervalle"
+            android:layout_below="@+id/relativeSpinner"
             tools:layout_editor_absoluteX="0dp">
 
             <TextView
@@ -231,10 +230,10 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/relativeEditDay"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:visibility="gone"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/RelativeDayWeek">
 
@@ -255,6 +254,7 @@
         </RelativeLayout>
 
         <Button
+            android:id="@+id/horaireValide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
