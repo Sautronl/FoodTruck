@@ -27,7 +27,7 @@
         </LinearLayout>
 
         <RelativeLayout
-            android:id="@+id/relativeHoraire"
+            android:id="@+id/relativeCheckDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -35,7 +35,7 @@
             android:layout_marginTop="37dp">
 
             <RadioGroup
-                android:id="@+id/radioGroupHoraire"
+                android:id="@+id/radioGroupDay"
                 android:layout_marginTop="8dp"
                 android:weightSum="3"
                 android:orientation="horizontal"
@@ -43,24 +43,24 @@
                 android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:id="@+id/radioMatin"
+                    android:id="@+id/radioSemaine"
                     android:layout_weight="1"
-                    android:text="Matin"
+                    android:text="Semaine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <RadioButton
-                    android:id="@+id/radioSoir"
+                    android:id="@+id/radioJour"
                     android:layout_weight="1"
-                    android:text="Soir"
+                    android:text="Jour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <RadioButton
-                    android:id="@+id/radioPleinTemps"
+                    android:id="@+id/radioHorsWE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Plein temps"
+                    android:text="Semaine hors WE"
                     android:layout_weight="1"
                     />
 
@@ -71,9 +71,9 @@
         <RelativeLayout
             android:id="@+id/relativeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="90dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/RelativeIntervalle"
+            android:layout_below="@+id/relativeCheckDay"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -84,16 +84,16 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:text="Heure debut de service"
+                android:text="Quel jour de la semaine?"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Spinner
                 android:background="#ffffff"
-                android:id="@+id/spinnerDebutHoraire"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/spinnerJour"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="41dp"
@@ -103,153 +103,292 @@
 
             </Spinner>
 
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginBottom="46dp"
-                android:text="Heure fin de service"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerDebutHoraire" />
-
-            <Spinner
-                android:id="@+id/spinnerFinHoraire"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="11dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-            </Spinner>
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/RelativeIntervalle"
+            android:id="@+id/relativeCheckD"
+            android:layout_below="@+id/relativeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeHoraire">
-
+            android:layout_height="160dp">
 
             <TextView
-                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:layout_marginTop="15dp"
-                android:text="Intervalle reservation" />
+                android:text="Quand travaillez-vous?" />
 
-            <RadioGroup
-                android:id="@+id/radioGroupIntervalle"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/TextMatin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="46dp"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <RadioButton
-                    android:id="@+id/radioQuinze"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="15Min" />
-
-                <RadioButton
-                    android:id="@+id/radioTrente"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="30Min" />
-
-            </RadioGroup>
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:visibility="gone"
-            android:id="@+id/RelativeDayWeek"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/relativeSpinner"
-            tools:layout_editor_absoluteX="0dp">
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="42dp"
+                android:text="Matin" />
 
             <TextView
+                android:id="@+id/TextMidi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Tout les jours de la semaine" />
+                android:layout_alignTop="@+id/TextMatin"
+                android:layout_centerHorizontal="true"
+                android:text="Midi" />
 
             <TextView
+                android:id="@+id/TextSoir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_gravity="center"
-                android:layout_marginEnd="82dp"
-                android:text="Jour en particulier" />
+                android:layout_alignTop="@+id/TextMatin"
+                android:layout_marginEnd="70dp"
+                android:text="Soir" />
 
-
-            <RadioGroup
-                android:id="@+id/radioGroupDayOrWeek"
-                android:layout_width="match_parent"
+            <CheckBox
+                android:id="@+id/checkMatin"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:layout_alignEnd="@+id/TextMatin"
+                android:layout_below="@+id/TextMatin" />
 
-                <RadioButton
-                    android:id="@+id/radioAllDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Semaine" />
+            <CheckBox
+                android:id="@+id/checkMidi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/TextMatin"
+                android:layout_centerHorizontal="true" />
 
-                <RadioButton
-                    android:id="@+id/radioOneDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:text="Jour" />
+            <CheckBox
+                android:id="@+id/checkSoir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/TextSoir"
+                android:layout_below="@+id/TextMatin" />
 
-            </RadioGroup>
+            <Button
+                android:id="@+id/ValidCheckHoraire"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkMatin"
+                android:layout_centerHorizontal="true"
+                android:text="Valider" />
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:visibility="gone"
-            android:id="@+id/relativeEditDay"
+            android:layout_below="@+id/relativeCheckD"
+            android:id="@+id/RelativeIntervalle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/RelativeDayWeek">
+            android:layout_height="390dp"
+            >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:gravity="center"
-                android:text="Choisissez un jour" />
+            <RelativeLayout
+                android:id="@+id/relativePlageMatin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/choixJourHoraire"
-                android:layout_width="150dp"
-                android:layout_height="25dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true" />
+                <TextView
+                    android:id="@+id/textViewPlageH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:text="Plage Horaire Matin" />
+
+                <TextView
+                    android:id="@+id/textVdebut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="62dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Debut" />
+
+                <TextView
+                    android:id="@+id/textVfin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/textVdebut"
+                    android:layout_marginEnd="62dp"
+                    android:text="Fin" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTDebut"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textVdebut"
+                    android:layout_marginStart="46dp" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFin"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textVdebut"
+                    android:layout_marginEnd="33dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@+id/relativePlageMatin"
+                android:id="@+id/relativePlageMidi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewPlageMidi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:text="Plage Horaire Midi" />
+
+                <TextView
+                    android:id="@+id/textVdebutMidi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="62dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Debut" />
+
+                <TextView
+                    android:id="@+id/textVfinMidi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/textVdebutMidi"
+                    android:layout_marginEnd="62dp"
+                    android:text="Fin" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTDebutMidi"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textVdebutMidi"
+                    android:layout_marginStart="46dp" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFinMidi"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textVdebutMidi"
+                    android:layout_marginEnd="33dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@+id/relativePlageMidi"
+                android:id="@+id/relativePlageSoir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewPlageSoir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:text="Plage Horaire Midi" />
+
+                <TextView
+                    android:id="@+id/textVdebutSoir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="62dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Debut" />
+
+                <TextView
+                    android:id="@+id/textVfinSoir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/textVdebutSoir"
+                    android:layout_marginEnd="62dp"
+                    android:text="Fin" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTDebutSoir"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textVdebutSoir"
+                    android:layout_marginStart="46dp" />
+
+                <EditText
+                    android:layout_marginTop="4dp"
+                    android:id="@+id/EditTFinSoir"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@+id/textVdebutSoir"
+                    android:layout_marginEnd="33dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_below="@+id/relativePlageSoir"
+                android:id="@+id/relativeInter"
+                android:layout_width="match_parent"
+                android:layout_height="90dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="Intervalle Reservation" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupIntervalle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="27dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <RadioButton
+                        android:id="@+id/radioQuinze"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="15Min" />
+
+                    <RadioButton
+                        android:id="@+id/radioTrente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="30Min" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
 
         </RelativeLayout>
 
@@ -257,9 +396,8 @@
             android:id="@+id/horaireValide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/RelativeIntervalle"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="28dp"
             android:text="Valider" />
 
     </RelativeLayout>
