@@ -434,45 +434,132 @@ public class HoraireActivity extends AppCompatActivity {
         });
     }
 
-    private void getHoraireSpinner(int debutSHeure, int debutS, int finSHeure, int finMatin, ArrayList<String> horaireFill, int intervalle) {
-        int realDebut = debutSHeure;
-        for (int i = debutSHeure; i <= finSHeure; i++) {
-            if (i == finSHeure) {
-                debutS = 0;
-                for (int j = debutS; j <= finMatin; j = j + intervalle) {
-                    if (j == 0) {
-                        String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
-                        horaireFill.add(hSpinner);
+    private void getHoraireSpinner(int debutHeure, int debutMin, int finHeure, int finMin, ArrayList<String> horaireFill, int intervalle) {
+        int realDebut = debutHeure;
+        int diffIntervalleDebut45 = debutMin - intervalle;
+        int heurePlus =0;
+        int minutePlus=0;
+        int minDebutzero = debutMin;
+
+        int checkMinDebut= debutMin;
+        int checkMinFin= finMin;
+        int checkHeureFin= finHeure;
+
+        if (intervalle==30){
+            for (int i = debutHeure; i <=finHeure ; i++) {
+                if (checkMinDebut == 0) {
+                    if (i == checkHeureFin) {
+                        horaireFill.add(String.valueOf(checkHeureFin + "h00"));
+                        if (checkMinFin == 30) {
+                            horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                        }
                     } else {
-                        String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
-                        horaireFill.add(hSpinner);
-                    }
-                }
-            } else {
-                if (i != realDebut) {
-                    debutS = 0;
-                    for (int j = debutS; j < 60; j = j + intervalle) {
-                        if (j == 0) {
-                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
-                            horaireFill.add(hSpinner);
-                        } else {
-                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
-                            horaireFill.add(hSpinner);
+                        for (int j = debutMin; j < 60; j = j + intervalle) {
+                            if (j == 0) {
+                                String zero = String.valueOf(i + "h00");
+                                horaireFill.add(zero);
+                            } else {
+                                String trente = String.valueOf(i + "h" + intervalle);
+                                horaireFill.add(trente);
+                            }
                         }
                     }
-                }else{
-                    for (int j = debutS; j < 60; j = j + intervalle) {
-                        if (j == 0) {
-                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
-                            horaireFill.add(hSpinner);
-                        }else {
-                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
-                            horaireFill.add(hSpinner);
+                } else if (checkMinDebut == 30) {
+                    if (i == checkHeureFin) {
+                        horaireFill.add(String.valueOf(checkHeureFin + "h00"));
+                        if (checkMinFin == 30) {
+                            horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                        }
+                    } else {
+                        for (int j = debutMin; j < 60; j = j + intervalle) {
+                            if (j == 0) {
+                                String zero = String.valueOf(i + "h00");
+                                horaireFill.add(zero);
+                            } else {
+                                String trente = String.valueOf(i + "h" + intervalle);
+                                horaireFill.add(trente);
+                                debutMin = 0;
+                            }
+                        }
+                    }
+                } else if (checkMinDebut == 15) {
+                    if (i == checkHeureFin) {
+                        horaireFill.add(String.valueOf(checkHeureFin + "h15"));
+                        if (checkMinFin == 45) {
+                            horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                        }
+                    } else {
+                        for (int j = debutMin; j < 60; j = j + intervalle) {
+                            if (j == 15) {
+                                String quinze = String.valueOf(i + "h" + j);
+                                horaireFill.add(quinze);
+                            } else {
+                                String trente = String.valueOf(i + "h" + j);
+                                horaireFill.add(trente);
+                                debutMin = 15;
+                            }
+                        }
+                    }
+                } else if (checkMinDebut == 45) {
+                    if (i == checkHeureFin) {
+                        horaireFill.add(String.valueOf(checkHeureFin + "h15"));
+                        if (checkMinFin == 45) {
+                            horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                        }
+                    } else {
+                        for (int j = debutMin; j < 60; j = j + intervalle) {
+                            if (j == 45) {
+                                String quinze = String.valueOf(i + "h" + j);
+                                horaireFill.add(quinze);
+                                debutMin = 15;
+                            } else {
+                                String trente = String.valueOf(i + "h15");
+                                horaireFill.add(trente);
+                            }
                         }
                     }
                 }
             }
-        }
+        //Intervalle 15Min
+        }else{
+                for (int i = debutHeure; i <= finHeure; i++) {
+                    if (i == finHeure) {
+                        debutMin = 0;
+                        for (int j = debutMin; j <= finMin; j = j + intervalle) {
+                            if (j == 0) {
+                                String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
+                                horaireFill.add(hSpinner);
+                            } else {
+                                String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
+                                horaireFill.add(hSpinner);
+                            }
+                        }
+                    } else {
+                        if (i != realDebut) {
+                            debutMin = 0;
+                            for (int j = debutMin; j < 60; j = j + intervalle) {
+                                if (j == 0) {
+                                    String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
+                                    horaireFill.add(hSpinner);
+                                } else {
+                                    String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
+                                    horaireFill.add(hSpinner);
+                                }
+                            }
+                        }else{
+                            for (int j = debutMin; j < 60; j = j + intervalle) {
+                                if (j == 0) {
+                                    String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
+                                    horaireFill.add(hSpinner);
+                                }else {
+                                    String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
+                                    horaireFill.add(hSpinner);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         horaireValide.setVisibility(View.VISIBLE);
     }
 
