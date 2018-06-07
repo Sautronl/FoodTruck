@@ -42,7 +42,7 @@ public class HoraireActivity extends AppCompatActivity {
     private CheckBox checkMatin, checkMidi, checkSoir;
     int intervalle, getCheckedRadio, nbrHours, heureDebut, heureFin;
     String getDay;
-    int debutMatin, finMatin, debutMi, finMi, debutS, finS;
+    int debutMatin, finMatin, debutMi, finMi, debutS, finS,idRadioDay,idRadioWeek;
     int debutMatinHeure, finMatinHeure, debutMiHeure, finMiHeure, debutSHeure, finSHeure;
 
     private ArrayList<String> quinze = new ArrayList<>();
@@ -50,6 +50,7 @@ public class HoraireActivity extends AppCompatActivity {
     private ArrayList<String> horaireFillMatin = new ArrayList<>();
     private ArrayList<String> horaireFillMidi = new ArrayList<>();
     private ArrayList<String> horaireFillSoir = new ArrayList<>();
+    private ArrayList<String> jourSemaine = new ArrayList<>();
     private FirebaseDatabase mFire;
     private DatabaseReference mRefHoraire;
 
@@ -86,11 +87,22 @@ public class HoraireActivity extends AppCompatActivity {
         spinnerDebutMinute = (Spinner) findViewById(R.id.spinnerDebutMinute);
         spinnerFinMinute = (Spinner) findViewById(R.id.spinnerTFinMinute);
 
+        idRadioDay= R.id.radioJour;
+        idRadioWeek= R.id.radioSemaine;
+
         quinze.add("minute");
         quinze.add("00");
         quinze.add("15");
         quinze.add("30");
         quinze.add("45");
+
+        jourSemaine.add("Lundi");
+        jourSemaine.add("Mardi");
+        jourSemaine.add("Mercredi");
+        jourSemaine.add("Jeudi");
+        jourSemaine.add("Vendredi");
+        jourSemaine.add("Samedi");
+        jourSemaine.add("Dimanche");
 
         mFire = FirebaseDatabase.getInstance();
         mRefHoraire = mFire.getReference();
@@ -103,6 +115,7 @@ public class HoraireActivity extends AppCompatActivity {
                         radioSemaine.setEnabled(false);
                         radioHorsWE.setEnabled(false);
                         radioJour.setEnabled(false);
+                        relativeInter.setVisibility(View.VISIBLE);
                         //
                         break;
                     case R.id.radioJour:
@@ -245,19 +258,49 @@ public class HoraireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < etat.size(); i++) {
-                    removeHours(getDay);
+                    if (radioJour.isChecked()){
+                        removeHours(getDay);
+                    }
                     if (horaireFillMatin.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Matin", horaireFillMatin, getDay);
+                        setValuePlanning("Matin", horaireFillMatin, getDay,radioSemaine);
                     }
                     if (horaireFillMidi.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Midi", horaireFillMidi, getDay);
+                        setValuePlanning("Midi", horaireFillMidi, getDay,radioSemaine);
                     }
                     if (horaireFillSoir.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Soir", horaireFillSoir, getDay);
+                        setValuePlanning("Soir", horaireFillSoir, getDay,radioSemaine);
+                    }else{
+                        removeWeek("Horaire/");
+                        if (horaireFillMatin.size() > 0) {
+                            setValuePlanningWeek("Matin",horaireFillMatin, jourSemaine);
+                        }
+                        if (horaireFillMidi.size() > 0 ) {
+                            setValuePlanningWeek("Midi",horaireFillMidi, jourSemaine);
+                        }
+                        if (horaireFillSoir.size() > 0 ) {
+                            setValuePlanningWeek("Soir", horaireFillSoir,jourSemaine);
+                        }
                     }
                 }
             }
         });
+    }
+
+    private void removeWeek(String child) {
+        mRefHoraire.child(child).removeValue();
+
+    }
+
+    private void setValuePlanningWeek(String child, ArrayList<String> etat,ArrayList<String> jourSemaine) {
+
+        for (int i = 0; i <jourSemaine.size(); i++) {
+            mRefHoraire.child("Horaire/" + jourSemaine.get(i) + "/" + child).setValue(etat).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(HoraireActivity.this, "Horaire mise a jour", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     private void getPlanning(int debutSHeure, int debutS, int finSHeure, int finMatin, String etat) {
@@ -567,7 +610,8 @@ public class HoraireActivity extends AppCompatActivity {
         mRefHoraire.child("Horaire/" + getDay + "/").removeValue();
     }
 
-    private void setValuePlanning(String child, ArrayList<String> etat, String getDay) {
+    private void setValuePlanning(String child, ArrayList<String> etat, String getDay,RadioButton checkWeek) {
+
         if (getDay != null) {
             mRefHoraire.child("Horaire/" + getDay + "/" + child).setValue(etat).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
