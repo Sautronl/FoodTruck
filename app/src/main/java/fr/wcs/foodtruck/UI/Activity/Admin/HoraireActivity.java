@@ -78,7 +78,14 @@ public class HoraireActivity extends AppCompatActivity {
         checkMatin = (CheckBox) findViewById(R.id.checkMatin);
         checkMidi = (CheckBox) findViewById(R.id.checkMidi);
         checkSoir = (CheckBox) findViewById(R.id.checkSoir);
+        spinnerDebutMidiMinute = (Spinner) findViewById(R.id.spinnerDebutMidiMinute);
+        spinnerFinMidiMinute = (Spinner) findViewById(R.id.spinnerFinMidiMinute);
+        spinnerDebutSoirMinute = (Spinner) findViewById(R.id.spinnerDebutSoirMinute);
+        spinnerFinSoirMinute = (Spinner) findViewById(R.id.spinnerFinSoirMinute);
+        spinnerDebutMinute = (Spinner) findViewById(R.id.spinnerDebutMinute);
+        spinnerFinMinute = (Spinner) findViewById(R.id.spinnerTFinMinute);
 
+        quinze.add("minute");
         quinze.add("00");
         quinze.add("15");
         quinze.add("30");
@@ -103,6 +110,7 @@ public class HoraireActivity extends AppCompatActivity {
                         radioHorsWE.setEnabled(false);
 
                         afficherJour();
+
                         break;
                     case R.id.radioHorsWE:
                         radioJour.setEnabled(false);
@@ -171,12 +179,7 @@ public class HoraireActivity extends AppCompatActivity {
         EditTDebutMidi = (EditText) findViewById(R.id.EditTDebutMidi);
         EditTDebutSoir = (EditText) findViewById(R.id.EditTDebutSoir);
         EditTFinSoir = (EditText) findViewById(R.id.EditTFinSoir);
-        spinnerDebutMidiMinute = (Spinner) findViewById(R.id.spinnerDebutMidiMinute);
-        spinnerFinMidiMinute = (Spinner) findViewById(R.id.spinnerFinMidiMinute);
-        spinnerDebutSoirMinute = (Spinner) findViewById(R.id.spinnerDebutSoirMinute);
-        spinnerFinSoirMinute = (Spinner) findViewById(R.id.spinnerFinSoirMinute);
-        spinnerDebutMinute = (Spinner) findViewById(R.id.spinnerDebutMinute);
-        spinnerFinMinute = (Spinner) findViewById(R.id.spinnerTFinMinute);
+
 
         ValidCheckHoraire.setEnabled(false);
 
@@ -236,12 +239,12 @@ public class HoraireActivity extends AppCompatActivity {
         horaireValide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (horaireFillMatin.size()>0){
-                    setValuePlanning("Matin",horaireFillMatin);
-                }if (horaireFillMidi.size()>0){
-                    setValuePlanning("Midi",horaireFillMidi);
-                }if (horaireFillSoir.size()>0){
-                    setValuePlanning("Soir",horaireFillSoir);
+                if (horaireFillMatin.size()>0 && radioJour.isChecked()){
+                    setValuePlanning("Matin",horaireFillMatin,getDay);
+                }if (horaireFillMidi.size()>0 && radioJour.isChecked()){
+                    setValuePlanning("Midi",horaireFillMidi,getDay);
+                }if (horaireFillSoir.size()>0 && radioJour.isChecked()){
+                    setValuePlanning("Soir",horaireFillSoir,getDay);
                 }
             }
         });
@@ -275,7 +278,7 @@ public class HoraireActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0:
+                    case 1:
                         if (spinnerH.getId() == R.id.spinnerDebutMinute) {
                             debutMatin = 0;
                         } else if (spinnerH.getId() == R.id.spinnerDebutMidiMinute) {
@@ -290,7 +293,7 @@ public class HoraireActivity extends AppCompatActivity {
                             finS = 0;
                         }
                         break;
-                    case 1:
+                    case 2:
                         if (spinnerH.getId() == R.id.spinnerDebutMinute) {
                             debutMatin = 15;
                         } else if (spinnerH.getId() == R.id.spinnerDebutMidiMinute) {
@@ -305,7 +308,7 @@ public class HoraireActivity extends AppCompatActivity {
                             finS = 15;
                         }
                         break;
-                    case 2:
+                    case 3:
                         if (spinnerH.getId() == R.id.spinnerDebutMinute) {
                             debutMatin = 30;
                         } else if (spinnerH.getId() == R.id.spinnerDebutMidiMinute) {
@@ -396,28 +399,50 @@ public class HoraireActivity extends AppCompatActivity {
     }
 
     private void getHoraireSpinner(int debutSHeure,int debutS,int finSHeure,int finMatin,ArrayList<String> horaireFill){
-        for (int i = debutSHeure; i <finSHeure; i++) {
-            for (int j = debutS; j <60 ; j = j + 15) {
-                if (j==0){
-                    String hSpinner = String .valueOf(j) +"h" + String .valueOf(i)+"0";
-                    horaireFill.add(hSpinner);
-                }else{
-                    String hSpinner = String .valueOf(j) +"h" + String .valueOf(i);
-                    horaireFill.add(hSpinner);
+        for (int i = debutSHeure; i <=finSHeure; i++) {
+            if (i == finSHeure){
+                debutS = 0;
+                for (int j = debutS; j <=finMatin ; j = j + 15) {
+                    if (j==0){
+                        String hSpinner = String .valueOf(i) +"h" + String .valueOf(j)+"0";
+                        horaireFill.add(hSpinner);
+                    }else{
+                        String hSpinner = String .valueOf(i) +"h" + String .valueOf(j);
+                        horaireFill.add(hSpinner);
+                    }
+                }
+            }else{
+                for (int j = debutS; j <60 ; j = j + 15) {
+                    if (j==0){
+                        String hSpinner = String .valueOf(i) +"h" + String .valueOf(j)+"0";
+                        horaireFill.add(hSpinner);
+                    }else{
+                        String hSpinner = String .valueOf(i) +"h" + String .valueOf(j);
+                        horaireFill.add(hSpinner);
+                    }
                 }
             }
         }
-        horaireFill.add(String.valueOf(finMatin));
+//        horaireFill.add(String.valueOf(finSHeure)+"h");
 //        setValueSpinner(whichHours);
     }
 
-    private void setValuePlanning(String child,ArrayList<String> etat) {
-        mRefHoraire.child("Horaire/"+child).setValue(etat).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(HoraireActivity.this, "Horaire mise a jour", Toast.LENGTH_SHORT).show();
-            }
-        });
+    private void setValuePlanning(String child,ArrayList<String> etat,String getDay) {
+        if (getDay!=null){
+            mRefHoraire.child("Horaire/"+getDay+"/"+child).setValue(etat).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(HoraireActivity.this, "Horaire mise a jour", Toast.LENGTH_SHORT).show();
+                }
+            });
+//        }else{
+//            mRefHoraire.child("Horaire/"+child).setValue(etat).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    Toast.makeText(HoraireActivity.this, "Horaire mise a jour", Toast.LENGTH_SHORT).show();
+//                }
+//            });
+        }
     }
 }
 //        ArrayAdapter<String> adapterFinMin =  new ArrayAdapter<String>(HoraireActivity.this, android.R.layout.simple_spinner_item, quinze);

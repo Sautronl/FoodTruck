@@ -236,14 +236,14 @@
                     android:id="@+id/EditTFin"
                     android:layout_width="40dp"
                     android:layout_height="50dp"
-                    android:hint="hh"
                     android:layout_alignParentBottom="true"
-                    android:layout_toStartOf="@+id/textVfin"
-                    android:gravity="center" />
+                    android:layout_toStartOf="@+id/spinnerTFinMinute"
+                    android:gravity="center"
+                    android:hint="hh" />
 
                 <Spinner
                     android:id="@+id/spinnerDebutMinute"
-                    android:layout_width="40dp"
+                    android:layout_width="70dp"
                     android:layout_height="50dp"
                     android:layout_alignParentBottom="true"
                     android:layout_toEndOf="@+id/textVdebut"
@@ -252,7 +252,7 @@
                 <Spinner
                     android:layout_marginTop="4dp"
                     android:id="@+id/spinnerTFinMinute"
-                    android:layout_width="40dp"
+                    android:layout_width="70dp"
                     android:gravity="center"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
@@ -467,10 +467,7 @@
 
                 </RadioGroup>
 
-
-
             </RelativeLayout>
-
 
         </RelativeLayout>
 
