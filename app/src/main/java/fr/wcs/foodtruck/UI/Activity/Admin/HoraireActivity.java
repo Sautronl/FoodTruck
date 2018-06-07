@@ -89,6 +89,7 @@ public class HoraireActivity extends AppCompatActivity {
         quinze.add("00");
         quinze.add("15");
         quinze.add("30");
+        quinze.add("45");
 
         mFire = FirebaseDatabase.getInstance();
         mRefHoraire = mFire.getReference();
@@ -117,6 +118,27 @@ public class HoraireActivity extends AppCompatActivity {
                         radioSemaine.setEnabled(false);
                         radioHorsWE.setEnabled(false);
                         break;
+                }
+            }
+        });
+
+
+
+        radioGroupIntervalle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radioQuinze:
+                        intervalle = 15;
+                        radioQuinze.setEnabled(false);
+                        radioTrente.setEnabled(false);
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        break;
+                    case R.id.radioTrente:
+                        intervalle = 30;
+                        relativeCheckD.setVisibility(View.VISIBLE);
+                        radioQuinze.setEnabled(false);
+                        radioTrente.setEnabled(false);
                 }
             }
         });
@@ -169,6 +191,7 @@ public class HoraireActivity extends AppCompatActivity {
         });
 
 
+
     }
 
     private void getHeure(String momentJournee, String jourSpinner) {
@@ -192,7 +215,6 @@ public class HoraireActivity extends AppCompatActivity {
                     }else{
                         debutMatinHeure = Integer.parseInt(EditTDebut.getText().toString());
                         finMatinHeure = Integer.parseInt(EditTFin.getText().toString());
-                        relativeInter.setVisibility(View.VISIBLE);
                         getPlanning(debutMatinHeure,debutMatin,finMatinHeure,finMatin,"matin");
                     }
                 }if (momentJournee.equals("midi")){
@@ -201,7 +223,6 @@ public class HoraireActivity extends AppCompatActivity {
                     }else{
                         debutMiHeure = Integer.parseInt(EditTDebutMidi.getText().toString());
                         finMiHeure = Integer.parseInt(EditTFinMidi.getText().toString());
-                        relativeInter.setVisibility(View.VISIBLE);
                         getPlanning(debutMiHeure,debutMi,finMiHeure,finMi,"midi");
                     }
                 }if (momentJournee.equals("soir")){
@@ -210,28 +231,8 @@ public class HoraireActivity extends AppCompatActivity {
                     }else{
                         debutSHeure = Integer.parseInt(EditTDebutSoir.getText().toString());
                         finSHeure = Integer.parseInt(EditTFinSoir.getText().toString());
-                        relativeInter.setVisibility(View.VISIBLE);
                         getPlanning(debutSHeure,debutS,finSHeure,finMatin,"soir");
                     }
-                }
-            }
-        });
-
-        radioGroupIntervalle.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.radioQuinze:
-                        intervalle = 15;
-                        radioQuinze.setEnabled(false);
-                        radioTrente.setEnabled(false);
-                        horaireValide.setVisibility(View.VISIBLE);
-                        break;
-                    case R.id.radioTrente:
-                        intervalle = 30;
-                        horaireValide.setVisibility(View.VISIBLE);
-                        radioQuinze.setEnabled(false);
-                        radioTrente.setEnabled(false);
                 }
             }
         });
@@ -254,13 +255,13 @@ public class HoraireActivity extends AppCompatActivity {
 
         switch (etat){
             case "matin":
-                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillMatin);
+                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillMatin,intervalle);
                break;
             case "midi":
-                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillMidi);
+                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillMidi,intervalle);
                 break;
             case "soir":
-                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillSoir);
+                getHoraireSpinner(debutSHeure,debutS,finSHeure,finMatin,horaireFillSoir,intervalle);
                 break;
         }
     }
@@ -323,6 +324,21 @@ public class HoraireActivity extends AppCompatActivity {
                             finS = 30;
                         }
                         break;
+                    case 4:
+                        if (spinnerH.getId() == R.id.spinnerDebutMinute) {
+                            debutMatin = 45;
+                        } else if (spinnerH.getId() == R.id.spinnerDebutMidiMinute) {
+                            debutMi = 45;
+                        } else if (spinnerH.getId() == R.id.spinnerDebutSoirMinute){
+                            debutS = 45;
+                        }else if (spinnerH.getId() == R.id.spinnerTFinMinute){
+                            finMatin =45;
+                        }else if(spinnerH.getId() == R.id.spinnerFinMidiMinute){
+                            finMi = 45;
+                        }else if(spinnerH.getId() == R.id.spinnerFinSoirMinute){
+                            finS = 45;
+                        }
+                        break;
                 }
             }
 
@@ -354,37 +370,51 @@ public class HoraireActivity extends AppCompatActivity {
                 switch (position){
                     case 1:
                         getDay = "Lundi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 2:
                         getDay = "Mardi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 3:
                         getDay = "Mercredi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 4:
                         getDay = "Jeudi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 5:
                         getDay = "Vendredi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 6:
                         getDay = "Samedi";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
                     case 7:
                         getDay = "Dimanche";
-                        relativeCheckD.setVisibility(View.VISIBLE);
+                        if (getDay!= null){
+                            relativeInter.setVisibility(View.VISIBLE);
+                        }
                         spinnerJour.setEnabled(false);
                         break;
 
@@ -398,11 +428,11 @@ public class HoraireActivity extends AppCompatActivity {
         });
     }
 
-    private void getHoraireSpinner(int debutSHeure,int debutS,int finSHeure,int finMatin,ArrayList<String> horaireFill){
+    private void getHoraireSpinner(int debutSHeure,int debutS,int finSHeure,int finMatin,ArrayList<String> horaireFill,int intervalle){
         for (int i = debutSHeure; i <=finSHeure; i++) {
             if (i == finSHeure){
                 debutS = 0;
-                for (int j = debutS; j <=finMatin ; j = j + 15) {
+                for (int j = debutS; j <=finMatin ; j = j + intervalle) {
                     if (j==0){
                         String hSpinner = String .valueOf(i) +"h" + String .valueOf(j)+"0";
                         horaireFill.add(hSpinner);
@@ -412,7 +442,7 @@ public class HoraireActivity extends AppCompatActivity {
                     }
                 }
             }else{
-                for (int j = debutS; j <60 ; j = j + 15) {
+                for (int j = debutS; j <60 ; j = j + intervalle) {
                     if (j==0){
                         String hSpinner = String .valueOf(i) +"h" + String .valueOf(j)+"0";
                         horaireFill.add(hSpinner);
@@ -423,8 +453,7 @@ public class HoraireActivity extends AppCompatActivity {
                 }
             }
         }
-//        horaireFill.add(String.valueOf(finSHeure)+"h");
-//        setValueSpinner(whichHours);
+        horaireValide.setVisibility(View.VISIBLE);
     }
 
     private void setValuePlanning(String child,ArrayList<String> etat,String getDay) {

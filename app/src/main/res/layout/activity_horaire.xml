@@ -110,7 +110,7 @@
         <RelativeLayout
             android:visibility="gone"
             android:id="@+id/relativeCheckD"
-            android:layout_below="@+id/relativeSpinner"
+            android:layout_below="@+id/relativeInter"
             android:layout_width="match_parent"
             android:layout_height="160dp">
 
@@ -176,6 +176,48 @@
                 android:layout_below="@+id/checkMatin"
                 android:layout_centerHorizontal="true"
                 android:text="Valider" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/relativeInter"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/relativeSpinner"
+            android:layout_height="90dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:text="Intervalle Reservation" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupIntervalle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="27dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RadioButton
+                    android:id="@+id/radioQuinze"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="15Min" />
+
+                <RadioButton
+                    android:id="@+id/radioTrente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="30Min" />
+
+            </RadioGroup>
 
         </RelativeLayout>
 
@@ -427,47 +469,6 @@
                 android:layout_below="@+id/relativePlageSoir"
                 android:layout_centerHorizontal="true" />
 
-            <RelativeLayout
-                android:visibility="gone"
-                android:id="@+id/relativeInter"
-                android:layout_width="match_parent"
-                android:layout_below="@+id/buttonCheckH"
-                android:layout_height="90dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:text="Intervalle Reservation" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroupIntervalle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="27dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <RadioButton
-                        android:id="@+id/radioQuinze"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="15Min" />
-
-                    <RadioButton
-                        android:id="@+id/radioTrente"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="30Min" />
-
-                </RadioGroup>
-
-            </RelativeLayout>
 
         </RelativeLayout>
 
