@@ -215,6 +215,7 @@ public class HoraireActivity extends AppCompatActivity {
                         } else {
                             debutMatinHeure = Integer.parseInt(EditTDebut.getText().toString());
                             finMatinHeure = Integer.parseInt(EditTFin.getText().toString());
+                            setEnableHoraire();
                             getPlanning(debutMatinHeure, debutMatin, finMatinHeure, finMatin, "matin");
                         }
                     }if (etat.get(i).equals("midi")){
@@ -223,6 +224,7 @@ public class HoraireActivity extends AppCompatActivity {
                         } else {
                             debutMiHeure = Integer.parseInt(EditTDebutMidi.getText().toString());
                             finMiHeure = Integer.parseInt(EditTFinMidi.getText().toString());
+                            setEnableHoraire();
                             getPlanning(debutMiHeure, debutMi, finMiHeure, finMi, "midi");
                         }
                     }if (etat.get(i).equals("soir")){
@@ -231,6 +233,7 @@ public class HoraireActivity extends AppCompatActivity {
                         } else {
                             debutSHeure = Integer.parseInt(EditTDebutSoir.getText().toString());
                             finSHeure = Integer.parseInt(EditTFinSoir.getText().toString());
+                            setEnableHoraire();
                             getPlanning(debutSHeure, debutS, finSHeure, finMatin, "soir");
                         }
                     }
@@ -242,6 +245,7 @@ public class HoraireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < etat.size(); i++) {
+                    removeHours(getDay);
                     if (horaireFillMatin.size() > 0 && radioJour.isChecked()) {
                         setValuePlanning("Matin", horaireFillMatin, getDay);
                     }
@@ -431,6 +435,7 @@ public class HoraireActivity extends AppCompatActivity {
     }
 
     private void getHoraireSpinner(int debutSHeure, int debutS, int finSHeure, int finMatin, ArrayList<String> horaireFill, int intervalle) {
+        int realDebut = debutSHeure;
         for (int i = debutSHeure; i <= finSHeure; i++) {
             if (i == finSHeure) {
                 debutS = 0;
@@ -444,18 +449,35 @@ public class HoraireActivity extends AppCompatActivity {
                     }
                 }
             } else {
-                for (int j = debutS; j < 60; j = j + intervalle) {
-                    if (j == 0) {
-                        String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
-                        horaireFill.add(hSpinner);
-                    } else {
-                        String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
-                        horaireFill.add(hSpinner);
+                if (i != realDebut) {
+                    debutS = 0;
+                    for (int j = debutS; j < 60; j = j + intervalle) {
+                        if (j == 0) {
+                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
+                            horaireFill.add(hSpinner);
+                        } else {
+                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
+                            horaireFill.add(hSpinner);
+                        }
+                    }
+                }else{
+                    for (int j = debutS; j < 60; j = j + intervalle) {
+                        if (j == 0) {
+                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j) + "0";
+                            horaireFill.add(hSpinner);
+                        }else {
+                            String hSpinner = String.valueOf(i) + "h" + String.valueOf(j);
+                            horaireFill.add(hSpinner);
+                        }
                     }
                 }
             }
         }
         horaireValide.setVisibility(View.VISIBLE);
+    }
+
+    private void removeHours(String getDay) {
+        mRefHoraire.child("Horaire/" + getDay + "/").removeValue();
     }
 
     private void setValuePlanning(String child, ArrayList<String> etat, String getDay) {
@@ -467,5 +489,22 @@ public class HoraireActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void setEnableHoraire(){
+
+        EditTDebut.setEnabled(false);
+        EditTFin.setEnabled(false);
+        EditTFinMidi.setEnabled(false);
+        EditTDebutMidi.setEnabled(false);
+        EditTDebutSoir.setEnabled(false);
+        EditTFinSoir.setEnabled(false);
+        buttonCheckH.setEnabled(false);
+        spinnerDebutMidiMinute.setEnabled(false);
+        spinnerFinMidiMinute.setEnabled(false);
+        spinnerDebutSoirMinute.setEnabled(false);
+        spinnerFinSoirMinute.setEnabled(false);
+        spinnerDebutMinute.setEnabled(false);
+        spinnerFinMinute.setEnabled(false);
     }
 }
