@@ -252,12 +252,6 @@ public class HoraireActivity extends AppCompatActivity {
                         }
                     }
                 }
-            }
-        });
-
-        horaireValide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 for (int i = 0; i < etat.size(); i++) {
                     if (radioJour.isChecked()){
                         removeHours(getDay);
@@ -283,6 +277,13 @@ public class HoraireActivity extends AppCompatActivity {
                         }
                     }
                 }
+            }
+        });
+
+        horaireValide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }
@@ -499,8 +500,6 @@ public class HoraireActivity extends AppCompatActivity {
                             if (checkMinFin==45){
                                 horaireFill.add(String.valueOf(checkHeureFin + "h45"));
                             }
-                        }else{
-                            horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         }
                     } else {
                         for (int j = debutMin; j < 60; j = j + intervalle) {
@@ -541,7 +540,7 @@ public class HoraireActivity extends AppCompatActivity {
                         horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         if (checkMinFin == 45) {
                             horaireFill.add(String.valueOf(checkHeureFin + "h45"));
-                        }else if(checkMinFin==30){
+                        }if(checkMinFin==30){
                             horaireFill.add(String.valueOf(checkHeureFin + "h30"));
                         }else {
                             horaireFill.add(String.valueOf(checkHeureFin+ "h45"));
@@ -622,7 +621,7 @@ public class HoraireActivity extends AppCompatActivity {
                     }
                 }
             }
-        horaireValide.setVisibility(View.VISIBLE);
+//        horaireValide.setVisibility(View.VISIBLE);
     }
 
     private void removeHours(String getDay) {
