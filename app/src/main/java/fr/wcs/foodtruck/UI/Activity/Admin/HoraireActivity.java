@@ -87,22 +87,7 @@ public class HoraireActivity extends AppCompatActivity {
         spinnerDebutMinute = (Spinner) findViewById(R.id.spinnerDebutMinute);
         spinnerFinMinute = (Spinner) findViewById(R.id.spinnerTFinMinute);
 
-        idRadioDay= R.id.radioJour;
-        idRadioWeek= R.id.radioSemaine;
-
-        quinze.add("minute");
-        quinze.add("00");
-        quinze.add("15");
-        quinze.add("30");
-        quinze.add("45");
-
-        jourSemaine.add("Lundi");
-        jourSemaine.add("Mardi");
-        jourSemaine.add("Mercredi");
-        jourSemaine.add("Jeudi");
-        jourSemaine.add("Vendredi");
-        jourSemaine.add("Samedi");
-        jourSemaine.add("Dimanche");
+        initArray();
 
         mFire = FirebaseDatabase.getInstance();
         mRefHoraire = mFire.getReference();
@@ -207,6 +192,22 @@ public class HoraireActivity extends AppCompatActivity {
         });
     }
 
+    private void initArray() {
+        quinze.add("minute");
+        quinze.add("00");
+        quinze.add("15");
+        quinze.add("30");
+        quinze.add("45");
+
+        jourSemaine.add("Lundi");
+        jourSemaine.add("Mardi");
+        jourSemaine.add("Mercredi");
+        jourSemaine.add("Jeudi");
+        jourSemaine.add("Vendredi");
+        jourSemaine.add("Samedi");
+        jourSemaine.add("Dimanche");
+    }
+
     private void getHeure(String momentJournee, String jourSpinner) {
 
         EditTDebut = (EditText) findViewById(R.id.EditTDebut);
@@ -260,15 +261,15 @@ public class HoraireActivity extends AppCompatActivity {
                 for (int i = 0; i < etat.size(); i++) {
                     if (radioJour.isChecked()){
                         removeHours(getDay);
-                    }
-                    if (horaireFillMatin.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Matin", horaireFillMatin, getDay,radioSemaine);
-                    }
-                    if (horaireFillMidi.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Midi", horaireFillMidi, getDay,radioSemaine);
-                    }
-                    if (horaireFillSoir.size() > 0 && radioJour.isChecked()) {
-                        setValuePlanning("Soir", horaireFillSoir, getDay,radioSemaine);
+                        if (horaireFillMatin.size() > 0 && radioJour.isChecked()) {
+                            setValuePlanning("Matin", horaireFillMatin, getDay,radioSemaine);
+                        }
+                        if (horaireFillMidi.size() > 0 && radioJour.isChecked()) {
+                            setValuePlanning("Midi", horaireFillMidi, getDay,radioSemaine);
+                        }
+                        if (horaireFillSoir.size() > 0 && radioJour.isChecked()) {
+                            setValuePlanning("Soir", horaireFillSoir, getDay, radioSemaine);
+                        }
                     }else{
                         removeWeek("Horaire/");
                         if (horaireFillMatin.size() > 0) {
