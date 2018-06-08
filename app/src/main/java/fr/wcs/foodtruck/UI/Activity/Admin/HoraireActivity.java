@@ -494,8 +494,13 @@ public class HoraireActivity extends AppCompatActivity {
                 if (checkMinDebut == 0) {
                     if (i == checkHeureFin) {
                         horaireFill.add(String.valueOf(checkHeureFin + "h00"));
-                        if (checkMinFin == 30) {
+                        if (checkMinFin == 30 || checkMinFin==45) {
                             horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                            if (checkMinFin==45){
+                                horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                            }
+                        }else{
+                            horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         }
                     } else {
                         for (int j = debutMin; j < 60; j = j + intervalle) {
@@ -511,8 +516,13 @@ public class HoraireActivity extends AppCompatActivity {
                 } else if (checkMinDebut == 30) {
                     if (i == checkHeureFin) {
                         horaireFill.add(String.valueOf(checkHeureFin + "h00"));
-                        if (checkMinFin == 30) {
+                        if (checkMinFin == 30 || checkMinFin==45) {
                             horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                            if (checkMinFin==45){
+                                horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                            }
+                        }else{
+                            horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         }
                     } else {
                         for (int j = debutMin; j < 60; j = j + intervalle) {
@@ -531,6 +541,10 @@ public class HoraireActivity extends AppCompatActivity {
                         horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         if (checkMinFin == 45) {
                             horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                        }else if(checkMinFin==30){
+                            horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                        }else {
+                            horaireFill.add(String.valueOf(checkHeureFin+ "h45"));
                         }
                     } else {
                         for (int j = debutMin; j < 60; j = j + intervalle) {
@@ -549,6 +563,10 @@ public class HoraireActivity extends AppCompatActivity {
                         horaireFill.add(String.valueOf(checkHeureFin + "h15"));
                         if (checkMinFin == 45) {
                             horaireFill.add(String.valueOf(checkHeureFin + "h45"));
+                        }else if(checkMinFin==30){
+                            horaireFill.add(String.valueOf(checkHeureFin + "h30"));
+                        }else {
+                            horaireFill.add(String.valueOf(checkHeureFin+ "h45"));
                         }
                     } else {
                         for (int j = debutMin; j < 60; j = j + intervalle) {
