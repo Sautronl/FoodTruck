@@ -280,12 +280,12 @@ public class HoraireActivity extends AppCompatActivity {
             }
         });
 
-        horaireValide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        horaireValide.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     private void removeWeek(String child) {

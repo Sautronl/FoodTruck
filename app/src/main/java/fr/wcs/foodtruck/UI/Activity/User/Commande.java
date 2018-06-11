@@ -38,6 +38,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.UUID;
 
 import fr.wcs.foodtruck.Model.MajPlatDuJour;
@@ -54,7 +57,7 @@ import fr.wcs.foodtruck.Utils.SetTypeFace;
 public class Commande  extends AppCompatActivity {
 
     Button btReserverCommande,menuValiderCommande,finCommande;
-    String nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert;
+    String nomRes, telRes, horaireRes,nomBurg,prixBurg,choixBoisson,choixDessert,horaireSpinner;
     EditText txtNomCommande;
     EditText txtTelCommande,CommCommande;
     Spinner spinnerCommande;
@@ -64,9 +67,11 @@ public class Commande  extends AppCompatActivity {
     RecyclerView menuListe;
     ImageView editInfo;
     TextView textInfo;
+    ScrollView scrollCommande;
     AdapterMenuListe adapterMenu;
     ArrayList<MajPlatDuJour> menuDisplay = new ArrayList<>();
     ArrayList<ReservationModels> reservationCommande = new ArrayList<>();
+    ArrayList<String> spinner = new ArrayList<>();
     RadioButton[] rbutton;
     RadioButton[] rbuttonDessert;
     Integer[] tagRadio;
@@ -87,7 +92,7 @@ public class Commande  extends AppCompatActivity {
         mRefStuff = mFirebase.getReference();
         mRefFinal = mFirebase.getReference();
 
-        ScrollView scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
+        scrollCommande = (ScrollView) findViewById(R.id.scrollCommande);
         Typeface mainfont = Typeface.createFromAsset(getResources().getAssets(), Constant.GOTHAM);
         SetTypeFace.setAppFont(scrollCommande,mainfont);
 
@@ -111,33 +116,69 @@ public class Commande  extends AppCompatActivity {
         finCommande = (Button) findViewById(R.id.finCommande);
         CommCommande = (EditText) findViewById(R.id.CommCommande);
 
+        HashMap<Integer,String> checkDHoraire = new HashMap<Integer, String>();
+        checkDHoraire.put(2,"Lundi");
+        checkDHoraire.put(3,"Mardi");
+        checkDHoraire.put(4,"Mercredi");
+        checkDHoraire.put(5,"Jeudi");
+        checkDHoraire.put(6,"Vendredi");
+        checkDHoraire.put(7,"Samedi");
+        checkDHoraire.put(1,"Dimanche");
+
+        Calendar calendar = Calendar.getInstance();
+        int dayHoraireCalendar = calendar.get(Calendar.DAY_OF_WEEK);
+        Iterator iterator = checkDHoraire.keySet().iterator();
+        while (iterator.hasNext()){
+            Integer dayMapKey = (Integer) iterator.next();
+            String dayHoraire = (String) checkDHoraire.get(dayMapKey);
+            if (dayMapKey == dayHoraireCalendar){
+                mReservRef.child("Horaire/"+dayHoraire+"/Matin/").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snap: dataSnapshot.getChildren()){
+                            String horaire = snap.getValue(String.class);
+                            spinner.add(horaire);
+                        }
+                        ArrayAdapter<String> adapter =new ArrayAdapter<String>(Commande.this,
+                                android.R.layout.simple_spinner_item, spinner);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                        spinnerCommande.setAdapter(adapter);
+
+                        spinnerCommande.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                //Si aucune horaires n'est selectionner on affiche un toast
+                                if (i == 0) {
+                                    txtNomCommande.setEnabled(false);
+                                    txtTelCommande.setEnabled(false);
+                                }else
+                                {
+                                    txtNomCommande.setEnabled(true);
+                                    txtTelCommande.setEnabled(true);
+                                }
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        }
+
+
         // On crée l'adapter pour le spinner.
-        final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.model_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinnerCommande.setAdapter(adapter);
 
-        spinnerCommande.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                //Si aucune horaires n'est selectionner on affiche un toast
-                if (i == 0) {
-                    txtNomCommande.setEnabled(false);
-                    txtTelCommande.setEnabled(false);
-                }else
-                {
-                    txtNomCommande.setEnabled(true);
-                    txtTelCommande.setEnabled(true);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         btReserverCommande.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,12 +189,14 @@ public class Commande  extends AppCompatActivity {
                     firstPart.setVisibility(View.GONE);
                     partTwo.setVisibility(View.VISIBLE);
                     radioGroup.setVisibility(View.VISIBLE);
+                    scrollCommande.setBackgroundColor(getResources().getColor(R.color.blanc));
                     radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                         @Override
                         public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                             if (checkedId == R.id.menuOk){
                                 menuListe.setVisibility(View.VISIBLE);
+                                menuValiderCommande.setVisibility(View.VISIBLE);
 
                                 mReservRef.child("menu/").addValueEventListener(new ValueEventListener() {
                                     @Override
@@ -224,6 +267,7 @@ public class Commande  extends AppCompatActivity {
             public void onClick(View v) {
                 partTwo.setVisibility(View.GONE);
                 partThree.setVisibility(View.VISIBLE);
+                scrollCommande.setBackgroundResource(R.drawable.commandesdf);
                 menuValiderCommande.setVisibility(View.GONE);
                 radioGroupBoissonOne= new RadioGroup(getApplicationContext());
                 radioGroupBoissonOne.setOrientation(RadioGroup.VERTICAL);
@@ -252,7 +296,7 @@ public class Commande  extends AppCompatActivity {
                 }
                 for (int i = 0; i < convButRadio; i++) {
                     RadioButton rbn2 = new RadioButton(Commande.this);
-                    rbn2.setTextColor(getResources().getColor(R.color.blanc));
+                    rbn2.setTextColor(getResources().getColor(R.color.black));
                     rbn2.setText(dessertnbr.get(i));
                     rbn2.setTag(i+1548);
                     rbn2.setId(i+125486);
@@ -295,7 +339,7 @@ public class Commande  extends AppCompatActivity {
                     }
                     for (int i = 0; i < convButRadio; i++) {
                         RadioButton rbn = new RadioButton(Commande.this);
-                        rbn.setTextColor(getResources().getColor(R.color.blanc));
+                        rbn.setTextColor(getResources().getColor(R.color.black));
                         rbn.setText(drinknbr.get(i));
                         rbn.setTag(i + 154875541);
                         rbn.setId(i);

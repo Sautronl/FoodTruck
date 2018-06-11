@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:theme="@style/Theme.AppCompat.NoActionBar.FullScreen"
     android:layout_height="match_parent"
-    android:background="@drawable/vector_abstract_metal_background">
+    android:background="@drawable/commandesdf">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,45 +21,65 @@
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="22dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:textAllCaps="true"
-                android:textStyle="bold"
-                android:textSize="19sp"
                 android:text="Commande"
+                android:textAllCaps="true"
+                android:textColor="#979696"
+                android:textSize="19sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:layout_marginTop="64dp"
                 android:text="Choisissez votre creneau"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/textView3"
+                app:layout_constraintHorizontal_bias="0.446"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <Spinner
-                android:layout_marginTop="20dp"
-                android:id="@+id/spinnerCommande"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/imgSpin"
+                android:layout_width="150dp"
                 android:layout_height="40dp"
-                android:background="#ffffff"
-                app:layout_constraintEnd_toEndOf="@+id/textView2"
-                app:layout_constraintStart_toStartOf="@+id/textView2"
+                android:src="@drawable/borderblackmenu"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <Spinner
+                android:id="@+id/spinnerCommande"
+                android:gravity="center"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <TextView
-                android:layout_marginTop="15dp"
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,24 +87,44 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
                 android:text="Votre nom"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/spinnerCommande"
+                app:layout_constraintHorizontal_bias="0.816"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spinnerCommande" />
 
-            <EditText
-                android:id="@+id/editTextNom"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="200dp"
                 android:layout_height="55dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/spinnerCommande"
-                app:layout_constraintStart_toStartOf="@+id/spinnerCommande"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/borderblackmenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <EditText
+                android:id="@+id/editTextNom"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="19dp"
+                android:textColor="@color/black"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/imageView4"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -95,20 +135,38 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="15sp"
+                android:textColor="@color/black"
                 android:text="Votre numero"
                 app:layout_constraintEnd_toEndOf="@+id/editTextNom"
                 app:layout_constraintStart_toStartOf="@+id/editTextNom"
                 app:layout_constraintTop_toBottomOf="@+id/editTextNom" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="200dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/borderblackmenu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
             <EditText
                 android:id="@+id/editTextTel"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="55dp"
-                android:textAlignment="center"
-                android:inputType="phone"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/textView5"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
+                android:inputType="phone"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="@+id/imageView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
             <Button
@@ -121,12 +179,14 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="15dp"
-
+                android:background="@color/vert"
                 android:text="Valider"
+                android:textColor="@color/blanc"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/editTextTel"
-                app:layout_constraintStart_toStartOf="@+id/editTextTel"
-                app:layout_constraintTop_toBottomOf="@+id/editTextTel" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTel"
+                app:layout_constraintVertical_bias="0.113" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.constraint.ConstraintLayout
@@ -158,7 +218,7 @@
 
                 <TextView
                     android:id="@+id/infoModifText"
-                    android:textColor="@color/blanc"
+                    android:textColor="@color/black"
                     android:text="Modifier mes info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -176,7 +236,7 @@
                 android:layout_marginStart="8dp"
                 android:gravity="center"
                 android:text="Que souhaitez vous?"
-                android:textColor="@color/blanc"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
                 app:layout_constraintStart_toStartOf="@+id/linearLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
@@ -196,7 +256,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Reservation Menu"
-                    android:textColor="@color/blanc" />
+                    android:textColor="@color/black" />
 
                 <RadioButton
 
@@ -205,25 +265,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Reservation A l'unité"
-                    android:textColor="@color/blanc" />
+                    android:textColor="@color/black" />
             </RadioGroup>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/menuListe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="18dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-                app:layout_constraintVertical_bias="0.0">
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
 
             </android.support.v7.widget.RecyclerView>
@@ -238,6 +295,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:text="valider"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/menuListe"
                 app:layout_constraintStart_toStartOf="@+id/menuListe"
                 app:layout_constraintTop_toBottomOf="@+id/menuListe" />
@@ -245,6 +303,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/partThree"
+            android:layout_marginTop="45dp"
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -258,6 +317,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:textColor="@color/black"
                 android:text="Quelle boisson souhaitez vous?"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -291,6 +351,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -328,20 +389,37 @@
 
             </RelativeLayout>
 
+            <ImageView
+                android:id="@+id/imageLogoView"
+                android:layout_width="350dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/borderblackmenu"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/CommCommande"
+                app:layout_constraintStart_toStartOf="@+id/CommCommande"
+                app:layout_constraintTop_toBottomOf="@+id/containerDessert" />
+
             <EditText
                 android:id="@+id/CommCommande"
-                android:layout_width="match_parent"
+                android:layout_width="350dp"
                 android:layout_height="120dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:paddingLeft="15dp"
                 android:layout_weight="1"
                 android:ems="10"
+                android:textColor="@color/black"
                 android:gravity="left"
                 android:textStyle="normal"
                 android:textSize="13sp"
+                android:textColorHint="@color/black"
                 android:hint="Laissez un commentaire.."
                 android:inputType="text"
                 app:layout_constraintEnd_toEndOf="@+id/containerDessert"
